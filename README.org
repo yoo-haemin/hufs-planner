@@ -1,1 +1,3 @@
 #+TITLE: HUFS 학점 플래너!!
+#+OPTIONS: toc:nil
+#+STARTUP: indent
