@@ -1,26 +1,26 @@
-#+TITLE: API 구성
+#+TITLE: API Documentation
 #+OPTIONS: toc:nil
 #+STARTUP: indent
 
 #+BEGIN_COMMENT
 REST API Documentation Mechanism from : https://gist.github.com/iros/3426278
-
 More details available at: https://bocoup.com/blog/documenting-your-api
-
 Adapted to org format.
 #+END_COMMENT
 
-* Login User
-Signs in the user, returning a cookie and the result as JSON.
+* COMMENT Title
+<Additional information about your API call. Try to use verbs that match both request type (fetching vs modifying) and plurality (one vs multiple).>
 ** URL
-~/login~
+<The URL Structure (path only, no root url)>
 ** Method
-~POST~
+<The request type>
+~GET~ | ~POST~ | ~DELETE~ | ~PUT~
 ** URL Params
+<If URL params exist, specify them in accordance with name mentioned in URL section. Separate into optional and required. Document data constraints.>
 *** Required
-~None~
+~id=[integer]~
 *** Optional
-~None~
+~photo_id=[alphanumeric]~
 *** Example
 #+BEGIN_EXAMPLE
 /login
@@ -29,44 +29,45 @@ Signs in the user, returning a cookie and the result as JSON.
 *** Required
 **** email
 **** password
-*** Optional
+*** Optional (nullable)
 None
 *** Form
-#+BEGIN_SRC JSON
+#+BEGIN_EXAMPLE
 {
-  "email" : [String],
-  "password" : [Number]
+  "email" : <String>,
+  "password" : <Number>
 }
-#+END_SRC
+#+END_EXAMPLE
 *** Example
 #+BEGIN_SRC JSON
 {
-  email : "example@hufs.ac.kr",
-  password : "mY!_pa$sw0RDD"
+  "email" : "example@hufs.ac.kr",
+  "password" : "mY!_pa$sw0RDD"
 }
 #+END_SRC
-** Success Response:
-*** Code 200
+** Success Response
+*** Code 200 OK
 **** Form
-#+BEGIN_SRC JSON
+#+BEGIN_EXAMPLE
 {
-  "id" : "Number"
+  "id" : <Number>
 }
-#+END_SRC
+#+END_EXAMPLE
 **** Example
 #+BEGIN_SRC JSON
 {
   "id" : 12
 }
 #+END_SRC
-** Error Response:
+** Error Response
+<Most endpoints will have many ways they can fail. From unauthorized access, to wrongful parameters etc. All of those should be liste d here. It might seem repetitive, but it helps prevent assumptions from being made where they should be.>
 *** Code 401 Unauthorized
 **** Form
-#+BEGIN_SRC JSON
+#+BEGIN_EXAMPLE
 {
-  "error" : [String]
+  "error" : <String>
 }
-#+END_SRC
+#+END_EXAMPLE
 **** Example
 #+BEGIN_SRC JSON
 {
@@ -74,10 +75,154 @@ None
 }
 #+END_SRC
 ** Sample Call
+<Just a sample call to your endpoint in a runnable format ($.ajax call or a curl request) - this makes life easier and more predictable.>
 #+BEGIN_EXAMPLE
 
 #+END_EXAMPLE
+** Notes
+<This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself when leaving comments here.>
 
+* API Lists
+** User Login
+Signs in the user, returning a cookie and the result as JSON.
+*** URL
+~/login~
+*** Method
+~POST~
+*** URL Params
+**** Required
+~None~
+**** Optional
+~None~
+**** Example
+#+BEGIN_EXAMPLE
+/login
+#+END_EXAMPLE
+*** Data Params
+**** Required
+***** email
+***** password
+**** Optional (nullable)
+None
+**** Form
+#+BEGIN_EXAMPLE
+{
+  "email" : <String>,
+  "password" : <Number>
+}
+#+END_EXAMPLE
+**** Example
+#+BEGIN_SRC JSON
+{
+  "email" : "example@hufs.ac.kr",
+  "password" : "mY!_pa$sw0RDD"
+}
+#+END_SRC
+*** Success Response
+**** Code 200 OK
+***** Form
+#+BEGIN_EXAMPLE
+{
+  "id" : <Number>
+}
+#+END_EXAMPLE
+***** Example
+#+BEGIN_SRC JSON
+{
+  "id" : 12
+}
+#+END_SRC
+*** Error Response
+**** Code 401 Unauthorized
+***** Form
+#+BEGIN_EXAMPLE
+{
+  "error" : <String>
+}
+#+END_EXAMPLE
+***** Example
+#+BEGIN_SRC JSON
+{
+  "error" : "Wrong credentials"
+}
+#+END_SRC
+*** Sample Call
+#+BEGIN_EXAMPLE
+
+#+END_EXAMPLE
+*** Notes
+
+
+* API Lists2
+*** User Login
+CLOSED: [2017-03-25 토 17:17]
+Signs in the user, returning a cookie and the result as JSON.
+**** URL
+~/login~
+**** Method
+~POST~
+**** URL Params
+***** Required
+~None~
+***** Optional
+~None~
+***** Example
+#+BEGIN_EXAMPLE
+/login
+#+END_EXAMPLE
+**** Data Params
+***** Required
+****** email
+****** password
+***** Optional (nullable)
+None
+***** Form
+#+BEGIN_EXAMPLE
+{
+  "email" : <String>,
+  "password" : <Number>
+}
+#+END_EXAMPLE
+***** Example
+#+BEGIN_SRC JSON
+{
+  "email" : "example@hufs.ac.kr",
+  "password" : "mY!_pa$sw0RDD"
+}
+#+END_SRC
+**** Success Response
+***** Code 200 OK
+****** Form
+#+BEGIN_EXAMPLE
+{
+  "id" : <Number>
+}
+#+END_EXAMPLE
+****** Example
+#+BEGIN_SRC JSON
+{
+  "id" : 12
+}
+#+END_SRC
+**** Error Response
+***** Code 401 Unauthorized
+****** Form
+#+BEGIN_EXAMPLE
+{
+  "error" : <String>
+}
+#+END_EXAMPLE
+****** Example
+#+BEGIN_SRC JSON
+{
+  "error" : "Wrong credentials"
+}
+#+END_SRC
+**** Sample Call
+#+BEGIN_EXAMPLE
+
+#+END_EXAMPLE
+**** Notes
 
 
 * Login Page
