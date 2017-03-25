@@ -1,0 +1,72 @@
+package course_fetcher
+
+import scalaj.http._
+import CourseFetcherData._
+
+object CourseFetcher extends App {
+  val baseRequest: HttpRequest =
+  Http("http://webs.hufs.ac.kr:8989/src08/jsp/lecture/LECTURE2020L.jsp")
+    .postForm
+
+  val courseFetchBaseParams = Map(
+      "tab_lang" -> "K",
+      "type" -> "",
+      "ag_ledg_year" -> "2017",
+      "ag_ledg_sessn" -> "1",
+      "ag_org_sect" -> "A",
+      "campus_sect" -> "H1",
+      "gubun" -> "2", //"1",
+      "ag_crs_strct_cd" -> "AAR01_H1", //
+      "ag_compt_fld_cd" -> "302_H1" //
+    )
+
+  val majorFetchParams = courseFetchBaseParams ++ Map(
+    "gubun" -> "1",
+    "ag_compt_fld_cd" -> "302_H1"
+  )
+
+  val liberalArtsFetchParams = courseFetchBaseParams ++ Map(
+    "gubun" -> "1",
+    "ag_crs_strct_cd" -> "AAR01_H1"
+  )
+
+  val majorCourseRaw: Vector[String] = (for {
+    c <- majorCourses.keys
+  } yield baseRequest.params(majorFetchParams + ("ag_crs_strct_cd" -> c)).asString.body).toVector
+
+  val liberalArtsCourseRaw: Vector[String] = (for {
+    c <- liberalArtsCourses.keys
+  } yield baseRequest.params(liberalArtsFetchParams + ("ag_compt_fld_cd" -> )).asString.body).toVector
+
+  val courseInfo = for (m <- courseRegex findAllMatchIn body) yield (matchGroupNames zip m.subgroups.map(x => Option(x))).toMap
+
+  println(courseInfo.toVector)
+}
+
+//request parameters:
+/*
+"ag_ledg_year""
+("2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000", "1999")
+
+"ag_ledg_sessn"
+("1" -> 1st Semester,
+"2" -> Summer Session,
+"3" -> 2nd Semester,
+"4" -> Winter Session)
+
+"ag_org_sect"
+("A" -> "학부 (Undergraduate)",
+"B" -> "대학원 (Graduate School)",
+"D" -> "통번역대학원 (Graduate School of Interpretation and Translation)",
+"E" -> "교육대학원 (Graduate School of Education)",
+"G" -> "정치행정언론대학원 (Graduate School of Politics, Government, and Communication)",
+"H" -> "국제지역대학원 (Graduate School of International and Area Studies)",
+"I" -> "경영대학원(주간) (Graduate School of Business)",
+"J" -> "경영대학원(야간) (Graduate School of Business)",
+"L" -> "법학전문대학원 (Law School)",
+n"M" -> "TESOL대학원 (Graduate School of TESOL)",
+"T" -> "TESOL 전문교육원 (TESOL Professional Education Center)")
+
+"campus_sect"
+("H1", "H2") //서울 글로벌
+ */

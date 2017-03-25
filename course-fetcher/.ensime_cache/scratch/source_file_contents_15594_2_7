@@ -1,0 +1,70 @@
+package course_fetcher
+
+import scalaj.http._
+import CourseFetcherD
+
+object CourseFetcher extends App {
+  val baseRequest: HttpRequest =
+  Http("http://webs.hufs.ac.kr:8989/src08/jsp/lecture/LECTURE2020L.jsp")
+    .postForm
+    .params(Map(
+      "tab_lang" -> "K",
+      "type" -> "",
+      "ag_ledg_year" -> "2017",
+      "ag_ledg_sessn" -> "1",
+      "ag_org_sect" -> "A",
+      "campus_sect" -> "H1",
+      "gubun" -> "2", //"1",
+      "ag_crs_strct_cd" -> "AAR01_H1", //
+      "ag_compt_fld_cd" -> "302_H1" //
+    ))
+
+  //gubun 1
+  //"ag_crs_strct_cd"
+
+  //gubun = 2
+  //"ag_compt_fld_cd" -> "302_H1"
+
+
+  val body = baseRequest.asString.body
+
+  val courseRegex = """<td>(.*)<\/td>\s*<td>(\d)<\/td>\s*<td>([A-Z]\d{5}[A-Z0-9]\d{2})<\/td>\s*<td align="left">\s*<!--.*-->\s*<div\s*.*\s*.\s*<font class="txt_navy">(.*)<\/font><br>\s*(?:<font class=['"]txt_gray8['"]>\((.*)\)<\/font>\s*)?<\/div>\s*<\/td>\s*<td>\s*.*\s*.*\s*<\/td>\s*(?:<td>.*<\/td>\s*){4}<td align="left">(.*)\s*(?:<br>\s*<font class="txt_gray8">\((.*)\)<\/font>)?\s*<\/td>\s*<td>(\d)<\/td>\s*<td>(\d)<\/td>\s*<td align="left">.*<br><font class="txt_gray8">\((?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\(((?:[C0-9]\d{3,4}(?:-1)?)|(?:B[12]-\d{2})|(?:사이버관 대강당))\)? ?)?)(?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\(((?:[C0-9]\d{3,4}(?:-1)?)|(?:B[12]-\d{2})|(?:사이버관 대강당))\)? ?)?)?(?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\(((?:[C0-9]\d{3,4}(?:-1)?)|(?:B[12]-\d{2})|(?:사이버관 대강당))\)? ?)?)?\)<\/font><\/td>\s*<td>(\d{1,})&nbsp;\/&nbsp;(\d{1,})<\/td>\s*<td align="left">(.*)<br>""".r
+
+  val embeddedCourses = courseRegex.unanchored
+
+  val matchGroupNames = Vector(
+    "courseType", "courseYear", "courseNo", "courseNameMain", "courseNameAdditional", "professorNameMain", "professorNameAdditional", "creditHours", "courseHours",
+    "dayOfWeek1", "time11", "time12", "time13", "classroom1", "dayOfWeek2", "time21", "time22", "time23", "classroom2", "dayOfWeek3", "time31", "time32", "time33", "classroom3", "currentlyEnrolled", "maximumEnrolled", "note"
+  )
+  val courseInfo = for (m <- courseRegex findAllMatchIn body) yield (matchGroupNames zip m.subgroups.map(x => Option(x))).toMap
+
+  println(courseInfo.toVector)
+}
+
+//request parameters:
+/*
+"ag_ledg_year""
+("2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000", "1999")
+
+"ag_ledg_sessn"
+("1" -> 1st Semester,
+"2" -> Summer Session,
+"3" -> 2nd Semester,
+"4" -> Winter Session)
+
+"ag_org_sect"
+("A" -> "학부 (Undergraduate)",
+"B" -> "대학원 (Graduate School)",
+"D" -> "통번역대학원 (Graduate School of Interpretation and Translation)",
+"E" -> "교육대학원 (Graduate School of Education)",
+"G" -> "정치행정언론대학원 (Graduate School of Politics, Government, and Communication)",
+"H" -> "국제지역대학원 (Graduate School of International and Area Studies)",
+"I" -> "경영대학원(주간) (Graduate School of Business)",
+"J" -> "경영대학원(야간) (Graduate School of Business)",
+"L" -> "법학전문대학원 (Law School)",
+n"M" -> "TESOL대학원 (Graduate School of TESOL)",
+"T" -> "TESOL 전문교육원 (TESOL Professional Education Center)")
+
+"campus_sect"
+("H1", "H2") //서울 글로벌
+ */
