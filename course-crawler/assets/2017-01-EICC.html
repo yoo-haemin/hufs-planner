@@ -1,0 +1,3380 @@
+<html><head>
+  <title>강의시간표 조회</title>
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache">
+
+  <link rel="stylesheet" type="text/css" href="/src08/jsp/profGrade/css/haksa.css">
+
+
+
+  <script language="javascript" src="/src08/js/common.js"></script>
+  <script language="javascript">
+   function popupWindow(){
+     var printwin=window.open('/jsp/HUFS/stu1/english_help.html','','toolbar=no,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=1,width=750,height=600');
+
+   }
+
+
+   function lecture_open(ag_1,ag_2,ag_3,ag_4){
+     /*		var printwin=window.open("/jsp/HUFS/stu1/stu1_c0_a0_d3.jsp?mode=print&ledg_year="+ag_1+"&ledg_sessn="+ag_2+"&org_sect="+ag_3+"&lssn_cd="+ag_4,
+        'print','toolbar=yes,location=0,directories=0,status=0,menubar=1,scrollbars=1,resizable=1,width=750,height=700');*/
+     var printwin=window.open("/src08/jsp/lecture/syllabus.jsp?mode=print&ledg_year="+ag_1+"&ledg_sessn="+ag_2+"&org_sect="+ag_3+"&lssn_cd="+ag_4,
+                              'print','toolbar=yes,location=0,directories=0,status=0,menubar=1,scrollbars=1,resizable=1,width=950,height=850');
+   }
+
+
+   function doSearch() {
+     document.form1.action = '/src08/jsp/lecture/LECTURE2020L.jsp';
+     document.form1.submit();
+   }
+
+
+   function org_change() {
+     if ( document.form1.ag_crs_strct_cd ) document.form1.ag_crs_strct_cd.value = "!_!";
+     if ( document.form1.ag_compt_fld_cd ) document.form1.ag_compt_fld_cd.value = "!_!";
+
+     premier1.style.visibility = "hidden";
+
+     doSearch();
+   }
+
+
+   function time_submit() {
+     premier1.style.visibility = "visible";
+
+     doSearch();
+   }
+
+
+   function gubun_change(ag_gubun) {
+     if ( document.form1.ag_crs_strct_cd ) document.form1.ag_crs_strct_cd.value = "!_!";
+     if ( document.form1.ag_compt_fld_cd ) document.form1.ag_compt_fld_cd.value = "!_!";
+
+     if ( ag_gubun == "1" ) {
+       document.form1.ag_crs_strct_cd.style.visibility = "visible";
+       document.form1.ag_compt_fld_cd.style.visibility = "hidden";
+     } else {
+       document.form1.ag_crs_strct_cd.style.visibility = "hidden";
+       document.form1.ag_compt_fld_cd.style.visibility = "visible";
+     }
+
+     premier1.style.visibility = "visible";
+
+     doSearch();
+   }
+
+  </script>
+</head>
+
+<body leftmargin="0" topmargin="0" oncontextmenu="return false" bgcolor="#ffffff" marginwidth="0" marginheight="0">
+  <center>
+    <table cellspacing="0" cellpadding="0" width="95%" border="0">
+      <tbody><tr>
+        <td>
+
+          <table style="BORDER-RIGHT: #eeeeee 3px solid; BORDER-TOP: #eeeeee 3px solid; MARGIN-TOP: 5px; BACKGROUND: #f8f8f8; BORDER-LEFT: #eeeeee 3px solid; BORDER-BOTTOM: #eeeeee 3px solid" cellspacing="0" cellpadding="0" align="center" width="100%" border="0">
+            <tbody><tr>
+              <td style="PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px" bgcolor="#F9F9F9">
+                <p><font size="3"><b>※ 강의/수업정보(Class/Enrollment Management)&nbsp;▶&nbsp;&nbsp;강의시간표(Class Schedule)</b></font></p>
+              </td>
+            </tr>
+            </tbody></table>
+
+          <br>
+          <form name="form1" method="post">
+            <input name="tab_lang" value="K" type="hidden">
+            <input name="type" value="" type="hidden">
+            <table class="table_gray" cellspacing="1" cellpadding="1" width="100%" border="0">
+              <tbody><tr class="table_whiteL">
+                <td class="table_yellow" width="300">년도/학기<font class="txt_gray8">(Year/Semester)</font></td>
+                <td><select name="ag_ledg_year" onchange="time_submit()">
+
+                  <option value="2017" selected="">&nbsp;2017&nbsp;</option>
+
+                  <option value="2016">&nbsp;2016&nbsp;</option>
+
+                  <option value="2015">&nbsp;2015&nbsp;</option>
+
+                  <option value="2014">&nbsp;2014&nbsp;</option>
+
+                  <option value="2013">&nbsp;2013&nbsp;</option>
+
+                  <option value="2012">&nbsp;2012&nbsp;</option>
+
+                  <option value="2011">&nbsp;2011&nbsp;</option>
+
+                  <option value="2010">&nbsp;2010&nbsp;</option>
+
+                  <option value="2009">&nbsp;2009&nbsp;</option>
+
+                  <option value="2008">&nbsp;2008&nbsp;</option>
+
+                  <option value="2007">&nbsp;2007&nbsp;</option>
+
+                  <option value="2006">&nbsp;2006&nbsp;</option>
+
+                  <option value="2005">&nbsp;2005&nbsp;</option>
+
+                  <option value="2004">&nbsp;2004&nbsp;</option>
+
+                  <option value="2003">&nbsp;2003&nbsp;</option>
+
+                  <option value="2002">&nbsp;2002&nbsp;</option>
+
+                  <option value="2001">&nbsp;2001&nbsp;</option>
+
+                  <option value="2000">&nbsp;2000&nbsp;</option>
+
+                  <option value="1999">&nbsp;1999&nbsp;</option>
+
+                </select>
+                &nbsp;
+                <select name="ag_ledg_sessn" onchange="time_submit()">
+                  <option value="1" selected="">&nbsp;1st Semester&nbsp;</option>
+                  <option value="2">&nbsp;Summer Session&nbsp;</option>
+                  <option value="3">&nbsp;2nd Semester&nbsp;</option>
+                  <option value="4">&nbsp;Winter Session&nbsp;</option>
+                </select></td>
+              </tr>
+              <tr class="table_whiteL">
+                <td class="table_yellow" width="300">소속<font class="txt_gray8">(Affiliation)</font></td>
+                <td><select name="ag_org_sect" onchange="org_change()">
+
+                  <option value="A" selected="">
+                    &nbsp;학부&nbsp;(Undergraduate)&nbsp;</option>
+
+                  <option value="B">
+                    &nbsp;대학원&nbsp;(Graduate School)&nbsp;</option>
+
+                  <option value="D">
+                    &nbsp;통번역대학원&nbsp;(Graduate School of Interpretation and Translation)&nbsp;</option>
+
+                  <option value="E">
+                    &nbsp;교육대학원&nbsp;(Graduate School of Education)&nbsp;</option>
+
+                  <option value="G">
+                    &nbsp;정치행정언론대학원&nbsp;(Graduate School of Politics, Government, and Communication)&nbsp;</option>
+
+                  <option value="H">
+                    &nbsp;국제지역대학원&nbsp;(Graduate School of International and Area Studies)&nbsp;</option>
+
+                  <option value="I">
+                    &nbsp;경영대학원(주간)&nbsp;(Graduate School of Business)&nbsp;</option>
+
+                  <option value="J">
+                    &nbsp;경영대학원(야간)&nbsp;(Graduate School of Business)&nbsp;</option>
+
+                  <option value="L">
+                    &nbsp;법학전문대학원&nbsp;(Law School)&nbsp;</option>
+
+                  <option value="M">
+                    &nbsp;TESOL대학원&nbsp;(Graduate School of TESOL)&nbsp;</option>
+
+                  <option value="T">
+                    &nbsp;TESOL 전문교육원&nbsp;(TESOL Professional Education Center)&nbsp;</option>
+
+                </select></td>
+              </tr>
+
+              <tr class="table_whiteL">
+                <td class="table_yellow" width="300">캠퍼스<font class="txt_gray8">(Campus)</font></td>
+                <td><input name="campus_sect" value="H1" onclick="org_change()" checked="" type="radio">서울<font class="txt_gray8">(Seoul)</font>&nbsp;&nbsp;&nbsp;
+                  <input name="campus_sect" value="H2" onclick="org_change()" type="radio">글로벌<font class="txt_gray8">(Global)</font></td>
+              </tr>
+              <tr class="table_whiteL">
+                <td class="table_lavender" align="left" width="300">
+                  <input name="gubun" value="1" onclick="gubun_change(1)" checked="" type="radio">전공/부전공<font class="txt_gray8">(Major/Minor)</font></td>
+                <td><select name="ag_crs_strct_cd" style="visibility:visible" onchange="time_submit()">
+
+                  <option value="AAR01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;CORE글로벌지역학&nbsp;(CORE Global Studies)&nbsp;
+                  </option>
+
+                  <option value="A1CE1_H1" selected="">
+                    &nbsp;(서울)&nbsp;-&nbsp;EICC학과&nbsp;(Department of English for International Conferences and Communication)&nbsp;
+                  </option>
+
+                  <option value="AAQ01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;EU전공&nbsp;(EU  Major)&nbsp;
+                  </option>
+
+                  <option value="AKAA1_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;Language &amp; Diplomacy전공&nbsp;(Language &amp; Diplomacy)&nbsp;
+                  </option>
+
+                  <option value="AKA_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;Language &amp; Diplomacy학부&nbsp;(Division of Language &amp; Diplomacy)&nbsp;
+                  </option>
+
+                  <option value="A2AA1_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;Language &amp; Trade전공&nbsp;(Language &amp; Trade)&nbsp;
+                  </option>
+
+                  <option value="A2A_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;Language &amp; Trade학부&nbsp;(Division of Language &amp; Trade)&nbsp;
+                  </option>
+
+                  <option value="ALA_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;경영학부&nbsp;(Business Administration Division)&nbsp;
+                  </option>
+
+                  <option value="ALAA1_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;경영학전공&nbsp;(Business Administration)&nbsp;
+                  </option>
+
+                  <option value="AEC_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;경제학부&nbsp;(Division of Economics)&nbsp;
+                  </option>
+
+                  <option value="AECA1_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;경제학전공&nbsp;(Economics)&nbsp;
+                  </option>
+
+                  <option value="ACDD1_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;광고·PR·브랜딩전공&nbsp;(Advertising·Public Relations·Branding)&nbsp;
+                  </option>
+
+                  <option value="AFF01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;교육학&nbsp;(Education)&nbsp;
+                  </option>
+
+                  <option value="ACAI1_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;국가리더전공&nbsp;(National Leader)&nbsp;
+                  </option>
+
+                  <option value="AEAA1_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;국제통상학과&nbsp;(Department of International  Economics and Law)&nbsp;
+                  </option>
+
+                  <option value="AGA_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;국제학부&nbsp;(Division of International Studies)&nbsp;
+                  </option>
+
+                  <option value="AGAA1_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;국제학전공&nbsp;(International Studies)&nbsp;
+                  </option>
+
+                  <option value="AAH01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;네덜란드어과&nbsp;(Department of Dutch)&nbsp;
+                  </option>
+
+                  <option value="AAD01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;노어과&nbsp;(Department of Russian)&nbsp;
+                  </option>
+
+                  <option value="AAC01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;독일어과&nbsp;(Department of German)&nbsp;
+                  </option>
+
+                  <option value="AFC01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;독일어교육과&nbsp;(Department of German Education)&nbsp;
+                  </option>
+
+                  <option value="ABP01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;동북아전공&nbsp;(North-East Asian Studies Major)&nbsp;
+                  </option>
+
+                  <option value="ANJA1_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;디지털인문한국학전공&nbsp;(Digital Korean Studies in Humanities)&nbsp;
+                  </option>
+
+                  <option value="ABC01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;말레이.인도네시아어과&nbsp;(Department of Malay-Indonesian)&nbsp;
+                  </option>
+
+                  <option value="ABJ01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;몽골어과&nbsp;(Department  of Mongolian)&nbsp;
+                  </option>
+
+                  <option value="ANDD2_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;문화콘텐츠학전공&nbsp;(Cultural Contents Major)&nbsp;
+                  </option>
+
+                  <option value="ACD_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;미디어커뮤니케이션학부&nbsp;(Division of Media &amp; Communication)&nbsp;
+                  </option>
+
+                  <option value="ACDE1_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;방송·영상·뉴미디어전공&nbsp;(Broadcasting·Film·New Media)&nbsp;
+                  </option>
+
+                  <option value="ADA01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;법학과&nbsp;(Department of Law)&nbsp;
+                  </option>
+
+                  <option value="ABF01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;베트남어과&nbsp;(Department of Vietnamese)&nbsp;
+                  </option>
+
+                  <option value="AAP01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;브릭스전공&nbsp;(BRICs Major)&nbsp;
+                  </option>
+
+                  <option value="ANDB2_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;사학과&nbsp;(Department of History)&nbsp;
+                  </option>
+
+                  <option value="AKAB1_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;사회과학전공&nbsp;(Social Science)&nbsp;
+                  </option>
+
+                  <option value="AANA1_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;세계문화예술경영전공&nbsp;(Art and Cultural Mediation)&nbsp;
+                  </option>
+
+                  <option value="AAI01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;스칸디나비아어과&nbsp;(Department of Scandinavian Languages)&nbsp;
+                  </option>
+
+                  <option value="AAE01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;스페인어과&nbsp;(Department of Spanish)&nbsp;
+                  </option>
+
+                  <option value="ABD01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;아랍어과&nbsp;(Department of Arabic)&nbsp;
+                  </option>
+
+                  <option value="ACDA1_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;언론·정보전공&nbsp;(Journalism &amp; Information)&nbsp;
+                  </option>
+
+                  <option value="A1CF1_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;언어와공학전공&nbsp;(Language and Technology)&nbsp;
+                  </option>
+
+                  <option value="ANDC2_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;언어인지과학과&nbsp;(Department of Linguistics and Cognitive Science)&nbsp;
+                  </option>
+
+                  <option value="A1CD1_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;영미문학·문화학과&nbsp;(Department of English Literature and Culture)&nbsp;
+                  </option>
+
+                  <option value="AFA01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;영어교육과&nbsp;(Department of English Education)&nbsp;
+                  </option>
+
+                  <option value="A1BD1_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;영어전공&nbsp;(English Major)&nbsp;
+                  </option>
+
+                  <option value="A1CA1_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;영어학과&nbsp;(Department of English Linguistics)&nbsp;
+                  </option>
+
+                  <option value="AFH01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;외국어로서의한국어교육전공&nbsp;(Teaching Korean as a Foreign Language)&nbsp;
+                  </option>
+
+                  <option value="ATMB2_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;융복합소프트웨어전공&nbsp;(Software Convergence Major)&nbsp;
+                  </option>
+
+                  <option value="AJDA1_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;융합일본지역전공&nbsp;(Integrated Japanese Studies)&nbsp;
+                  </option>
+
+                  <option value="AJD_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;융합일본지역학부&nbsp;(Division of Integrated Japanese Studies)&nbsp;
+                  </option>
+
+                  <option value="ABI01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;이란어과&nbsp;(Department of Persian)&nbsp;
+                  </option>
+
+                  <option value="AAF01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;이탈리아어과&nbsp;(Department of Italian)&nbsp;
+                  </option>
+
+                  <option value="ABG01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;인도어과&nbsp;(Department of Hindi)&nbsp;
+                  </option>
+
+                  <option value="AJCA1_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;일본언어문화전공&nbsp;(Japanese Language, Literature and Culture)&nbsp;
+                  </option>
+
+                  <option value="AJC_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;일본언어문화학부&nbsp;(Division of Japanese Language, Literature and Culture)&nbsp;
+                  </option>
+
+                  <option value="ACBA1_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;정치외교학과&nbsp;(Department of Political Science and Diplomacy)&nbsp;
+                  </option>
+
+                  <option value="AFI01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;중국어교육과&nbsp;(Department of Chinese Education)&nbsp;
+                  </option>
+
+                  <option value="AICA1_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;중국언어문화전공&nbsp;(Chinese Language, Literature and Culture)&nbsp;
+                  </option>
+
+                  <option value="AIC_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;중국언어문화학부&nbsp;(Division of Chinese Language, Literature and Culture)&nbsp;
+                  </option>
+
+                  <option value="AIDA1_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;중국외교통상전공&nbsp;(Chinese Foreign Affairs and Commerce)&nbsp;
+                  </option>
+
+                  <option value="AID_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;중국외교통상학부&nbsp;(Division of Chinese Foreign Affairs and Commerce)&nbsp;
+                  </option>
+
+                  <option value="ANDA2_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;철학과&nbsp;(Department of Philosophy)&nbsp;
+                  </option>
+
+                  <option value="ABE01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;태국어과&nbsp;(Department of Thai)&nbsp;
+                  </option>
+
+                  <option value="ABH11_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;터키.아제르바이잔어과&nbsp;(Department of Turkish and Azerbaijani)&nbsp;
+                  </option>
+
+                  <option value="AAK01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;포르투갈어과&nbsp;(Department of Portuguese)&nbsp;
+                  </option>
+
+                  <option value="AAB01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;프랑스어과&nbsp;(Department of French)&nbsp;
+                  </option>
+
+                  <option value="AFB01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;프랑스어교육과&nbsp;(Department of French Education)&nbsp;
+                  </option>
+
+                  <option value="AAM_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;프랑스어학부&nbsp;(Division of French Language)&nbsp;
+                  </option>
+
+                  <option value="AFD01_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;한국어교육과&nbsp;(Department of Korean Education)&nbsp;
+                  </option>
+
+                  <option value="ACBB1_H1">
+                    &nbsp;(서울)&nbsp;-&nbsp;행정학과&nbsp;(Department of Public Administration)&nbsp;
+                  </option>
+
+                </select>
+                </td>
+              </tr>
+              <tr class="table_whiteL">
+                <td class="table_lavender" align="left" width="300">
+                  <input name="gubun" value="2" onclick="gubun_change(2)" type="radio">실용외국어/교양과목<font class="txt_gray8">(Practical foreign language/Liberal arts)</font></td>
+                <td><select name="ag_compt_fld_cd" style="visibility:hidden" onchange="time_submit()">
+
+                  <option value="301_H1" selected="">
+                    &nbsp;인문강좌(서울)&nbsp;
+                  </option>
+
+                  <option value="302_H1">
+                    &nbsp;교양외국어(서울)&nbsp;
+                  </option>
+
+                  <option value="303_H1">
+                    &nbsp;신입생세미나(서울)&nbsp;
+                  </option>
+
+                  <option value="304_H1">
+                    &nbsp;HUFS CAREER(서울)&nbsp;
+                  </option>
+
+                  <option value="320_H1">
+                    &nbsp;학습포트폴리오(서울)&nbsp;
+                  </option>
+
+                  <option value="327_H1">
+                    &nbsp;건강과레포츠(서울)&nbsp;
+                  </option>
+
+                  <option value="328_H1">
+                    &nbsp;특별교양(서울)&nbsp;
+                  </option>
+
+                  <option value="32A_H1">
+                    &nbsp;실용외국어(선택)(서울)&nbsp;
+                  </option>
+
+                  <option value="32V_H1">
+                    &nbsp;외국인을 위한 한국학(서울)&nbsp;
+                  </option>
+
+                  <option value="32Z_H1">
+                    &nbsp;공동교양(한예종)(서울)&nbsp;
+                  </option>
+
+                  <option value="330_H1">
+                    &nbsp;언어와문학(서울)&nbsp;
+                  </option>
+
+                  <option value="331_H1">
+                    &nbsp;문화와예술(서울)&nbsp;
+                  </option>
+
+                  <option value="332_H1">
+                    &nbsp;역사와철학(서울)&nbsp;
+                  </option>
+
+                  <option value="333_H1">
+                    &nbsp;국가와사회(서울)&nbsp;
+                  </option>
+
+                  <option value="334_H1">
+                    &nbsp;과학과기술(서울)&nbsp;
+                  </option>
+
+                  <option value="335_H1">
+                    &nbsp;핵심인문기초(서울)&nbsp;
+                  </option>
+
+                  <option value="61_H1">
+                    &nbsp;군사학(서울)&nbsp;
+                  </option>
+
+                </select>
+                </td>
+              </tr>
+
+
+              </tbody></table>
+
+            <table width="100%" border="0">
+              <tbody><tr class="table_white">
+                <td><input class="btn" name="btnSearch" value="조회(Search)" onclick="javascript:time_submit();" type="button"></td>
+              </tr>
+              </tbody></table>
+            <br>
+
+
+
+
+
+
+            <!--
+
+               -->
+
+            <br>
+            <span id="premier1" style="visibility: visible;">
+              <font class="txt_gray">
+                Syllabus : 강의계획서&nbsp;&nbsp;&nbsp;
+                <img src="/src08/images/common/ico_check.gif">전필(R) : Major Requirement&nbsp;&nbsp;&nbsp;
+                <img src="/src08/images/common/ico_check4.gif">원어(F) : Taught in Foreign Language&nbsp;&nbsp;&nbsp;
+                <img src="/src08/images/common/ico_check2.gif">온라인(O) : Online Course</font>&nbsp;&nbsp;&nbsp;
+                <a href="javascript:popupWindow()"><img src="/img/bt1.gif" border="0"></a>
+                <table class="table_gray" cellspacing="1" cellpadding="1" width="100%" border="0">
+                  <tbody><tr class="table_green">
+                    <td>No.</td>
+                    <td>개설영역<br><font class="txt_gray8">(Area)</font></td>
+                    <td>학년<br><font class="txt_gray8">(Year)</font></td>
+                    <td>학수번호<br><font class="txt_gray8">(Course number)</font></td>
+                    <td>교과목명<br><font class="txt_gray8">(Subject name)</font></td>
+                    <td><font class="txt_gray8">Syllabus</font></td>
+                    <td>전필<br>(R)<br><img src="/src08/images/common/ico_check.gif"></td>
+                    <td>온라인<br>(O)<br><img src="/src08/images/common/ico_check2.gif"></td>
+                    <td>원어<br>(F)<br><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td><font class="txt_gray8">Team<br>Teaching<br><img src="/src08/images/common/ico_check5.gif"></font></td>
+                    <td>담당교수<br><font class="txt_gray8">(Professor)</font></td>
+                    <td>학점<br><font class="txt_gray8">(Credit)</font></td>
+                    <td>시간<br><font class="txt_gray8">(Time)</font></td>
+                    <td>강의시간/강의실<br><font class="txt_gray8">(Class time/Lecture room)</font></td>
+                    <td>신청/제한인원<br><font class="txt_gray8">(Apply/Restricted number of people)</font></td>
+                    <td>비고<br><font class="txt_gray8">(Note)</font></td>
+                  </tr>
+
+
+                  <tr style="cursor: pointer; background-color: rgb(255, 255, 255);" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">1</td>
+
+                    <td>전공</td>
+
+                    <td>1</td>
+                    <td>A01699101</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01699101')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01699101')">
+                        <font class="txt_navy">Discussion &amp; Debate (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01699101')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Chris Larsen
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">월 3 4 (1605)<br><font class="txt_gray8">(Mon 3 4 (1605))</font></td>
+                    <td>20&nbsp;/&nbsp;20</td>
+                    <td align="left">영어주제토론입문(1), Speaking in Context(1)과 동일과목<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor: pointer; background-color: rgb(255, 255, 255);" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">2</td>
+
+                    <td>전공</td>
+
+                    <td>1</td>
+                    <td>A01699102</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01699102')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01699102')">
+                        <font class="txt_navy">Discussion &amp; Debate (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01699102')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Michael Chesnut
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">수 3 4 (2604)<br><font class="txt_gray8">(Wed 3 4 (2604))</font></td>
+                    <td>21&nbsp;/&nbsp;21</td>
+                    <td align="left">영어주제토론입문(1), Speaking in Context(1)과 동일과목<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor: pointer; background-color: rgb(255, 255, 255);" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">3</td>
+
+                    <td>전공</td>
+
+                    <td>1</td>
+                    <td>A01705101</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01705101')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01705101')">
+                        <font class="txt_navy">English for International Conferences (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01705101')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">마승혜
+
+                      <br><font class="txt_gray8">(Mah, Seung-Hye)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">수 9 10 (2605)<br><font class="txt_gray8">(Wed 9 10 (2605))</font></td>
+                    <td>23&nbsp;/&nbsp;31</td>
+                    <td align="left"><br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">4</td>
+
+                    <td>전공</td>
+
+                    <td>1</td>
+                    <td>A01705102</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01705102')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01705102')">
+                        <font class="txt_navy">English for International Conferences (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01705102')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">조성은
+
+                      <br><font class="txt_gray8">(Sung-Eun Cho)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">수 3 4 (2204)<br><font class="txt_gray8">(Wed 3 4 (2204))</font></td>
+                    <td>29&nbsp;/&nbsp;30</td>
+                    <td align="left"><br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">5</td>
+
+                    <td>전공</td>
+
+                    <td>1</td>
+                    <td>A01697101</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01697101')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01697101')">
+                        <font class="txt_navy">Foundations of Interpreting and Translation (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01697101')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">마승혜
+
+                      <br><font class="txt_gray8">(Mah, Seung-Hye)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">수 5 6 (2605)<br><font class="txt_gray8">(Wed 5 6 (2605))</font></td>
+                    <td>19&nbsp;/&nbsp;20</td>
+                    <td align="left">텍스트분석및번역입문(1), 통번역학개론(1)과 동일과목, 영어통번역학과생만 전필, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">6</td>
+
+                    <td>전공</td>
+
+                    <td>1</td>
+                    <td>A01697102</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01697102')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01697102')">
+                        <font class="txt_navy">Foundations of Interpreting and Translation (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01697102')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">박지영
+
+                      <br><font class="txt_gray8">(Park Ji-young)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">목 3 4 (B1-14)<br><font class="txt_gray8">(Thu 3 4 (B1-14))</font></td>
+                    <td>20&nbsp;/&nbsp;21</td>
+                    <td align="left">텍스트분석및번역입문(1), 통번역학개론(1)과 동일과목, 영어통번역학과생만 전필, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">7</td>
+
+                    <td>전공</td>
+
+                    <td>1</td>
+                    <td>A01697103</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01697103')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01697103')">
+                        <font class="txt_navy">Foundations of Interpreting and Translation (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01697103')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">최희경
+
+                      <br><font class="txt_gray8">(Heekyung Choi)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">월 3 4 (6502)<br><font class="txt_gray8">(Mon 3 4 (6502))</font></td>
+                    <td>20&nbsp;/&nbsp;21</td>
+                    <td align="left">텍스트분석및번역입문(1), 통번역학개론(1)과 동일과목, 영어통번역학과생만 전필, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">8</td>
+
+                    <td>전공</td>
+
+                    <td>1</td>
+                    <td>A01697104</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01697104')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01697104')">
+                        <font class="txt_navy">Foundations of Interpreting and Translation (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01697104')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">최희경
+
+                      <br><font class="txt_gray8">(Heekyung Choi)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">월 5 6 (6502)<br><font class="txt_gray8">(Mon 5 6 (6502))</font></td>
+                    <td>21&nbsp;/&nbsp;21</td>
+                    <td align="left">텍스트분석및번역입문(1), 통번역학개론(1)과 동일과목, 영어통번역학과생만 전필, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">9</td>
+
+                    <td>전공</td>
+
+                    <td>1</td>
+                    <td>A01698101</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01698101')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01698101')">
+                        <font class="txt_navy">Presenting in English (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01698101')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Jon H. Bahk-Halberg
+
+                      <br><font class="txt_gray8">(Jonny H. Bahk-Halberg)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">목 1 2 (2204)<br><font class="txt_gray8">(Thu 1 2 (2204))</font></td>
+                    <td>15&nbsp;/&nbsp;21</td>
+                    <td align="left">영어프레젠테이션입문(1), Rhetoric&amp;Debate(1)과 동일과목<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">10</td>
+
+                    <td>전공</td>
+
+                    <td>1</td>
+                    <td>A01698102</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01698102')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01698102')">
+                        <font class="txt_navy">Presenting in English (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01698102')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Jon H. Bahk-Halberg
+
+                      <br><font class="txt_gray8">(Jonny H. Bahk-Halberg)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">목 3 4 (2204)<br><font class="txt_gray8">(Thu 3 4 (2204))</font></td>
+                    <td>20&nbsp;/&nbsp;21</td>
+                    <td align="left">영어프레젠테이션입문(1), Rhetoric&amp;Debate(1)과 동일과목<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">11</td>
+
+                    <td>전공</td>
+
+                    <td>1</td>
+                    <td>A01700101</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01700101')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01700101')">
+                        <font class="txt_navy">Prose &amp; Paragraphs</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01700101')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Jon H. Bahk-Halberg
+
+                      <br><font class="txt_gray8">(Jonny H. Bahk-Halberg)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">수 1 2 (2204)<br><font class="txt_gray8">(Wed 1 2 (2204))</font></td>
+                    <td>19&nbsp;/&nbsp;20</td>
+                    <td align="left">영어글쓰기입문(1), Culture&amp;Writing(1)과 동일과목<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">12</td>
+
+                    <td>전공</td>
+
+                    <td>1</td>
+                    <td>A01700102</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01700102')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01700102')">
+                        <font class="txt_navy">Prose &amp; Paragraphs</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01700102')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Vivian Wei-wan Lee
+
+                      <br><font class="txt_gray8">(-)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">수 5 6 (1508)<br><font class="txt_gray8">(Wed 5 6 (1508))</font></td>
+                    <td>22&nbsp;/&nbsp;21</td>
+                    <td align="left">영어글쓰기입문(1), Culture&amp;Writing(1)과 동일과목<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">13</td>
+
+                    <td>전공</td>
+
+                    <td>2</td>
+                    <td>A01707101</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01707101')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01707101')">
+                        <font class="txt_navy">English for Negotiations (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01707101')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Michael Chesnut
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">목 3 4 (2507)<br><font class="txt_gray8">(Thu 3 4 (2507))</font></td>
+                    <td>19&nbsp;/&nbsp;20</td>
+                    <td align="left"><br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">14</td>
+
+                    <td>전공</td>
+
+                    <td>2</td>
+                    <td>A01707102</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01707102')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01707102')">
+                        <font class="txt_navy">English for Negotiations (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01707102')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Michael Chesnut
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">목 5 6 (2507)<br><font class="txt_gray8">(Thu 5 6 (2507))</font></td>
+                    <td>19&nbsp;/&nbsp;20</td>
+                    <td align="left"><br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">15</td>
+
+                    <td>전공</td>
+
+                    <td>2</td>
+                    <td>A01513401</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01513401')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01513401')">
+                        <font class="txt_navy">English-Korean Consecutive Interpreting (1)</font><br>
+                        <font class="txt_gray8">(English-Korean Consecutive Interpretation (1))</font>
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01513401')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">이상빈
+
+                      <br><font class="txt_gray8">(Lee, Sang-Bin)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">수 5 6 (2403)<br><font class="txt_gray8">(Wed 5 6 (2403))</font></td>
+                    <td>20&nbsp;/&nbsp;21</td>
+                    <td align="left">영한순차통역(1)과 동일과목, 영어통번역학과생만 전필, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">16</td>
+
+                    <td>전공</td>
+
+                    <td>2</td>
+                    <td>A01513402</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01513402')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01513402')">
+                        <font class="txt_navy">English-Korean Consecutive Interpreting (1)</font><br>
+                        <font class="txt_gray8">(English-Korean Consecutive Interpretation (1))</font>
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01513402')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">이상빈
+
+                      <br><font class="txt_gray8">(Lee, Sang-Bin)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">수 7 8 (2403)<br><font class="txt_gray8">(Wed 7 8 (2403))</font></td>
+                    <td>20&nbsp;/&nbsp;20</td>
+                    <td align="left">영한순차통역(1)과 동일과목, 영어통번역학과생만 전필, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">17</td>
+
+                    <td>전공</td>
+
+                    <td>2</td>
+                    <td>A01513404</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01513404')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01513404')">
+                        <font class="txt_navy">English-Korean Consecutive Interpreting (1)</font><br>
+                        <font class="txt_gray8">(English-Korean Consecutive Interpretation (1))</font>
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01513404')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td align="left">최희경
+
+                      <br><font class="txt_gray8">(Heekyung Choi)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">금 3 4 (2405)<br><font class="txt_gray8">(Fri 3 4 (2405))</font></td>
+                    <td>18&nbsp;/&nbsp;21</td>
+                    <td align="left">영한순차통역(1)과 동일과목, 영어통번역학과생만 전필, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">18</td>
+
+                    <td>전공</td>
+
+                    <td>2</td>
+                    <td>A01253201</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01253201')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01253201')">
+                        <font class="txt_navy">English-Korean Translation (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01253201')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">박영종
+
+                      <br><font class="txt_gray8">(Park Youngjong)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">수 7 8 (01202)<br><font class="txt_gray8">(Wed 7 8 (01202))</font></td>
+                    <td>30&nbsp;/&nbsp;30</td>
+                    <td align="left">영한번역입문(1)과 동일과목, 영어통번역학과생만 전필, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">19</td>
+
+                    <td>전공</td>
+
+                    <td>2</td>
+                    <td>A01253202</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01253202')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01253202')">
+                        <font class="txt_navy">English-Korean Translation (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01253202')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">이용만
+
+                      <br><font class="txt_gray8">(LEE YONGMAN)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">월 7 8 (1407)<br><font class="txt_gray8">(Mon 7 8 (1407))</font></td>
+                    <td>15&nbsp;/&nbsp;30</td>
+                    <td align="left">영한번역입문(1)과 동일과목, 영어통번역학과생만 전필, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">20</td>
+
+                    <td>전공</td>
+
+                    <td>2</td>
+                    <td>A01253203</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01253203')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01253203')">
+                        <font class="txt_navy">English-Korean Translation (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01253203')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">최중범
+
+                      <br><font class="txt_gray8">(Choi Jung-Baum)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">월 5 6 (C302)<br><font class="txt_gray8">(Mon 5 6 (C302))</font></td>
+                    <td>27&nbsp;/&nbsp;30</td>
+                    <td align="left">영한번역입문(1)과 동일과목, 영어통번역학과생만 전필, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">21</td>
+
+                    <td>전공</td>
+
+                    <td>2</td>
+                    <td>A01503201</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01503201')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01503201')">
+                        <font class="txt_navy">Korean-English Translation (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01503201')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Alyssa Kim
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">화 1 2 (2402)<br><font class="txt_gray8">(Tue 1 2 (2402))</font></td>
+                    <td>25&nbsp;/&nbsp;30</td>
+                    <td align="left">한영번역입문(1)과 동일과목, 영어통번역학과생만 전필, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">22</td>
+
+                    <td>전공</td>
+
+                    <td>2</td>
+                    <td>A01503202</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01503202')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01503202')">
+                        <font class="txt_navy">Korean-English Translation (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01503202')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Vivian Wei-wan Lee
+
+                      <br><font class="txt_gray8">(-)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">화 3 4 (1606)<br><font class="txt_gray8">(Tue 3 4 (1606))</font></td>
+                    <td>19&nbsp;/&nbsp;30</td>
+                    <td align="left">한영번역입문(1)과 동일과목, 영어통번역학과생만 전필, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">23</td>
+
+                    <td>전공</td>
+
+                    <td>2</td>
+                    <td>A01503203</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01503203')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01503203')">
+                        <font class="txt_navy">Korean-English Translation (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01503203')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">이용만
+
+                      <br><font class="txt_gray8">(LEE YONGMAN)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">금 5 6 (2204)<br><font class="txt_gray8">(Fri 5 6 (2204))</font></td>
+                    <td>23&nbsp;/&nbsp;30</td>
+                    <td align="left">한영번역입문(1)과 동일과목, 영어통번역학과생만 전필, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">24</td>
+
+                    <td>전공</td>
+
+                    <td>2</td>
+                    <td>A01241301</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01241301')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01241301')">
+                        <font class="txt_navy">Public Speaking (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01241301')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Joseph R. Vincent
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">화 5 6 (2204)<br><font class="txt_gray8">(Tue 5 6 (2204))</font></td>
+                    <td>18&nbsp;/&nbsp;20</td>
+                    <td align="left">중급영어프레젠테이션(1)과 동일과목<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">25</td>
+
+                    <td>전공</td>
+
+                    <td>2</td>
+                    <td>A01241302</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01241302')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01241302')">
+                        <font class="txt_navy">Public Speaking (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01241302')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Vivian Wei-wan Lee
+
+                      <br><font class="txt_gray8">(-)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">화 7 8 (1606)<br><font class="txt_gray8">(Tue 7 8 (1606))</font></td>
+                    <td>20&nbsp;/&nbsp;20</td>
+                    <td align="left">중급영어프레젠테이션(1)과 동일과목<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">26</td>
+
+                    <td>전공</td>
+
+                    <td>2</td>
+                    <td>A01336101</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01336101')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01336101')">
+                        <font class="txt_navy">Translation Theory &amp; Practice (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01336101')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">한승희
+
+                      <br><font class="txt_gray8">(Han Seung Hee)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">목 1 2 (2605)<br><font class="txt_gray8">(Thu 1 2 (2605))</font></td>
+                    <td>27&nbsp;/&nbsp;30</td>
+                    <td align="left">영어번역이론및실제(1)과 동일과목, 영어통번역학과생만 전필, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">27</td>
+
+                    <td>전공</td>
+
+                    <td>2</td>
+                    <td>A01336102</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01336102')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01336102')">
+                        <font class="txt_navy">Translation Theory &amp; Practice (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01336102')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">한승희
+
+                      <br><font class="txt_gray8">(Han Seung Hee)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">목 7 8 (2601)<br><font class="txt_gray8">(Thu 7 8 (2601))</font></td>
+                    <td>29&nbsp;/&nbsp;30</td>
+                    <td align="left">영어번역이론및실제(1)과 동일과목, 영어통번역학과생만 전필, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">28</td>
+
+                    <td>전공</td>
+
+                    <td>2</td>
+                    <td>A01336103</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01336103')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01336103')">
+                        <font class="txt_navy">Translation Theory &amp; Practice (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01336103')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td align="left">김자경
+
+                      <br><font class="txt_gray8">(Kim, Ja Kyoung)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">목 5 6 (3405)<br><font class="txt_gray8">(Thu 5 6 (3405))</font></td>
+                    <td>30&nbsp;/&nbsp;31</td>
+                    <td align="left">영어번역이론및실제(1)과 동일과목, 영어통번역학과생만 전필, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">29</td>
+
+                    <td>전공</td>
+
+                    <td>2</td>
+                    <td>A01268101</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01268101')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01268101')">
+                        <font class="txt_navy">Writing &amp; Rhetoric</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01268101')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">정주경
+
+                      <br><font class="txt_gray8">(Jung, Jookyoung)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">금 7 8 (1206)<br><font class="txt_gray8">(Fri 7 8 (1206))</font></td>
+                    <td>19&nbsp;/&nbsp;20</td>
+                    <td align="left">중급영어글쓰기(1)과 동일과목<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">30</td>
+
+                    <td>전공</td>
+
+                    <td>3</td>
+                    <td>A01724101</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01724101')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01724101')">
+                        <font class="txt_navy">Advanced English-Korean ConsecutiveInterpreting(1)</font><br>
+                        <font class="txt_gray8">(Advanced English-Korean Consecutive Interpreting (1))</font>
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01724101')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">김윤숙
+
+                      <br><font class="txt_gray8">(Yoon Sook Kim)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">수 1 2 (2506)<br><font class="txt_gray8">(Wed 1 2 (2506))</font></td>
+                    <td>12&nbsp;/&nbsp;20</td>
+                    <td align="left">영한순차통역심화(1)과 동일과목, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">31</td>
+
+                    <td>전공</td>
+
+                    <td>3</td>
+                    <td>A01724102</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01724102')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01724102')">
+                        <font class="txt_navy">Advanced English-Korean ConsecutiveInterpreting(1)</font><br>
+                        <font class="txt_gray8">(Advanced English-Korean Consecutive Interpreting (1))</font>
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01724102')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">유한내
+
+                      <br><font class="txt_gray8">(Yu Han Nae)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">화 5 6 (2602)<br><font class="txt_gray8">(Tue 5 6 (2602))</font></td>
+                    <td>16&nbsp;/&nbsp;20</td>
+                    <td align="left">영한순차통역심화(1)과 동일과목, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">32</td>
+
+                    <td>전공</td>
+
+                    <td>3</td>
+                    <td>A01724103</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01724103')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01724103')">
+                        <font class="txt_navy">Advanced English-Korean ConsecutiveInterpreting(1)</font><br>
+                        <font class="txt_gray8">(Advanced English-Korean Consecutive Interpreting (1))</font>
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01724103')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">유한내
+
+                      <br><font class="txt_gray8">(Yu Han Nae)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">화 7 8 (2602)<br><font class="txt_gray8">(Tue 7 8 (2602))</font></td>
+                    <td>11&nbsp;/&nbsp;20</td>
+                    <td align="left">영한순차통역심화(1)과 동일과목, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">33</td>
+
+                    <td>전공</td>
+
+                    <td>3</td>
+                    <td>A01725102</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01725102')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01725102')">
+                        <font class="txt_navy">Advanced English-Korean Translation (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01725102')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td align="left">우경조
+
+                      <br><font class="txt_gray8">(Woo  Kyongjo)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">목 5 6 (1608)<br><font class="txt_gray8">(Thu 5 6 (1608))</font></td>
+                    <td>28&nbsp;/&nbsp;30</td>
+                    <td align="left">정치경제번역(1)과 동일과목, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">34</td>
+
+                    <td>전공</td>
+
+                    <td>3</td>
+                    <td>A01725103</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01725103')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01725103')">
+                        <font class="txt_navy">Advanced English-Korean Translation (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01725103')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">최중범
+
+                      <br><font class="txt_gray8">(Choi Jung-Baum)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">월 3 4 (C302)<br><font class="txt_gray8">(Mon 3 4 (C302))</font></td>
+                    <td>12&nbsp;/&nbsp;30</td>
+                    <td align="left">정치경제번역(1)과 동일과목, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">35</td>
+
+                    <td>전공</td>
+
+                    <td>3</td>
+                    <td>A01713101</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01713101')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01713101')">
+                        <font class="txt_navy">Culture &amp; Language</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01713101')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Chris Larsen
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">수 9 10 (2601)<br><font class="txt_gray8">(Wed 9 10 (2601))</font></td>
+                    <td>21&nbsp;/&nbsp;30</td>
+                    <td align="left">문화와언어와 동일과목, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">36</td>
+
+                    <td>전공</td>
+
+                    <td>3</td>
+                    <td>A01713102</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01713102')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01713102')">
+                        <font class="txt_navy">Culture &amp; Language</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01713102')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Chris Larsen
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">수 7 8 (2601)<br><font class="txt_gray8">(Wed 7 8 (2601))</font></td>
+                    <td>28&nbsp;/&nbsp;30</td>
+                    <td align="left">문화와언어와 동일과목, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">37</td>
+
+                    <td>전공</td>
+
+                    <td>3</td>
+                    <td>A01711101</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01711101')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01711101')">
+                        <font class="txt_navy">Culture &amp; Media Translation (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01711101')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Alyssa Kim
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">금 1 2 (2204)<br><font class="txt_gray8">(Fri 1 2 (2204))</font></td>
+                    <td>18&nbsp;/&nbsp;30</td>
+                    <td align="left">문화미디어번역(1)과 동일과목, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">38</td>
+
+                    <td>전공</td>
+
+                    <td>3</td>
+                    <td>A01711102</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01711102')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01711102')">
+                        <font class="txt_navy">Culture &amp; Media Translation (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01711102')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Alyssa Kim
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">금 3 4 (2204)<br><font class="txt_gray8">(Fri 3 4 (2204))</font></td>
+                    <td>19&nbsp;/&nbsp;30</td>
+                    <td align="left">문화미디어번역(1)과 동일과목, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">39</td>
+
+                    <td>전공</td>
+
+                    <td>3</td>
+                    <td>A01714101</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01714101')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01714101')">
+                        <font class="txt_navy">Global English Perspectives</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01714101')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Michael Chesnut
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">금 3 4 (6504)<br><font class="txt_gray8">(Fri 3 4 (6504))</font></td>
+                    <td>18&nbsp;/&nbsp;30</td>
+                    <td align="left">비즈니스커뮤니케이션과 동일과목<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">40</td>
+
+                    <td>전공</td>
+
+                    <td>3</td>
+                    <td>A01714102</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01714102')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01714102')">
+                        <font class="txt_navy">Global English Perspectives</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01714102')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Michael Chesnut
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">금 5 6 (6504)<br><font class="txt_gray8">(Fri 5 6 (6504))</font></td>
+                    <td>29&nbsp;/&nbsp;30</td>
+                    <td align="left">비즈니스커뮤니케이션과 동일과목<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">41</td>
+
+                    <td>전공</td>
+
+                    <td>3</td>
+                    <td>A01717101</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01717101')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01717101')">
+                        <font class="txt_navy">Issues in International Relations (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01717101')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Chris Larsen
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">수 3 4 (2608)<br><font class="txt_gray8">(Wed 3 4 (2608))</font></td>
+                    <td>26&nbsp;/&nbsp;30</td>
+                    <td align="left">영미권국제관계의이해(1)과 동일과목, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">42</td>
+
+                    <td>전공</td>
+
+                    <td>3</td>
+                    <td>A01717102</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01717102')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01717102')">
+                        <font class="txt_navy">Issues in International Relations (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01717102')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Chris Larsen
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">월 7 8 (1605)<br><font class="txt_gray8">(Mon 7 8 (1605))</font></td>
+                    <td>28&nbsp;/&nbsp;30</td>
+                    <td align="left">영미권국제관계의이해(1)과 동일과목, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">43</td>
+
+                    <td>전공</td>
+
+                    <td>3</td>
+                    <td>A01723101</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01723101')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01723101')">
+                        <font class="txt_navy">Korean-English Consecutive Interpreting (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01723101')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">이혜숙(E)
+
+                      <br><font class="txt_gray8">(Lee, Hyesook)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">화 3 4 (2203)<br><font class="txt_gray8">(Tue 3 4 (2203))</font></td>
+                    <td>19&nbsp;/&nbsp;20</td>
+                    <td align="left">한영순차통역(1)과 동일과목, 영어통번역학과생만 전필, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">44</td>
+
+                    <td>전공</td>
+
+                    <td>3</td>
+                    <td>A01723102</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01723102')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01723102')">
+                        <font class="txt_navy">Korean-English Consecutive Interpreting (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01723102')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">최지혜
+
+                      <br><font class="txt_gray8">(Ji-Hye Choi)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">금 7 8 (2604)<br><font class="txt_gray8">(Fri 7 8 (2604))</font></td>
+                    <td>18&nbsp;/&nbsp;20</td>
+                    <td align="left">한영순차통역(1)과 동일과목, 영어통번역학과생만 전필, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">45</td>
+
+                    <td>전공</td>
+
+                    <td>3</td>
+                    <td>A01723103</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01723103')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01723103')">
+                        <font class="txt_navy">Korean-English Consecutive Interpreting (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01723103')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">함희주
+
+                      <br><font class="txt_gray8">(Ham, Heejoo)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">금 3 4 (2604)<br><font class="txt_gray8">(Fri 3 4 (2604))</font></td>
+                    <td>17&nbsp;/&nbsp;20</td>
+                    <td align="left">한영순차통역(1)과 동일과목, 영어통번역학과생만 전필, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">46</td>
+
+                    <td>전공</td>
+
+                    <td>3</td>
+                    <td>A01709101</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01709101')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01709101')">
+                        <font class="txt_navy">Literary Translation (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01709101')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">권오숙
+
+                      <br><font class="txt_gray8">(-)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">월 7 8 (2208)<br><font class="txt_gray8">(Mon 7 8 (2208))</font></td>
+                    <td>28&nbsp;/&nbsp;30</td>
+                    <td align="left">문학번역(1)과 동일과목, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">47</td>
+
+                    <td>전공</td>
+
+                    <td>3</td>
+                    <td>A01709102</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01709102')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01709102')">
+                        <font class="txt_navy">Literary Translation (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01709102')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">조윤주
+
+                      <br><font class="txt_gray8">(Cho Yoon Joo)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">수 1 2 (1408)<br><font class="txt_gray8">(Wed 1 2 (1408))</font></td>
+                    <td>27&nbsp;/&nbsp;30</td>
+                    <td align="left">문학번역(1)과 동일과목, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">48</td>
+
+                    <td>전공</td>
+
+                    <td>3</td>
+                    <td>A01715101</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01715101')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01715101')">
+                        <font class="txt_navy">Understanding Story Structures for Translation (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01715101')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Joseph R. Vincent
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">화 1 2 (2204)<br><font class="txt_gray8">(Tue 1 2 (2204))</font></td>
+                    <td>27&nbsp;/&nbsp;30</td>
+                    <td align="left">번역을위한이야기구조이해(1)과 동일과목, 영어대교류<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">49</td>
+
+                    <td>이중(부)전공</td>
+
+                    <td>2</td>
+                    <td>A01699103</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01699103')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01699103')">
+                        <font class="txt_navy">Discussion &amp; Debate (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01699103')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Chris Larsen
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">월 5 6 (1605)<br><font class="txt_gray8">(Mon 5 6 (1605))</font></td>
+                    <td>30&nbsp;/&nbsp;30</td>
+                    <td align="left">영어주제토론입문(1), Speaking in Context(1)과 동일과목, 1전공자수강금지<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">50</td>
+
+                    <td>이중(부)전공</td>
+
+                    <td>2</td>
+                    <td>A01699104</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01699104')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01699104')">
+                        <font class="txt_navy">Discussion &amp; Debate (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01699104')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Michael Chesnut
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">수 5 6 (2604)<br><font class="txt_gray8">(Wed 5 6 (2604))</font></td>
+                    <td>29&nbsp;/&nbsp;30</td>
+                    <td align="left">영어주제토론입문(1), Speaking in Context(1)과 동일과목, 1전공자수강금지<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">51</td>
+
+                    <td>이중(부)전공</td>
+
+                    <td>2</td>
+                    <td>A01697105</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01697105')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01697105')">
+                        <font class="txt_navy">Foundations of Interpreting and Translation (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01697105')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">박지영
+
+                      <br><font class="txt_gray8">(Park Ji-young)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">금 3 4 (3504)<br><font class="txt_gray8">(Fri 3 4 (3504))</font></td>
+                    <td>25&nbsp;/&nbsp;30</td>
+                    <td align="left">텍스트분석및번역입문(1), 통번역학개론(1)과 동일과목, 1전공자수강금지, 영어대교류(이중)<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">52</td>
+
+                    <td>이중(부)전공</td>
+
+                    <td>2</td>
+                    <td>A01697106</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01697106')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01697106')">
+                        <font class="txt_navy">Foundations of Interpreting and Translation (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01697106')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">이혜숙(E)
+
+                      <br><font class="txt_gray8">(Lee, Hyesook)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">화 5 6 (2203)<br><font class="txt_gray8">(Tue 5 6 (2203))</font></td>
+                    <td>28&nbsp;/&nbsp;30</td>
+                    <td align="left">텍스트분석및번역입문(1), 통번역학개론(1)과 동일과목, 1전공자수강금지, 영어대교류(이중)<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">53</td>
+
+                    <td>이중(부)전공</td>
+
+                    <td>2</td>
+                    <td>A01697107</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01697107')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01697107')">
+                        <font class="txt_navy">Foundations of Interpreting and Translation (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01697107')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">마승혜
+
+                      <br><font class="txt_gray8">(Mah, Seung-Hye)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">수 7 8 (2605)<br><font class="txt_gray8">(Wed 7 8 (2605))</font></td>
+                    <td>30&nbsp;/&nbsp;30</td>
+                    <td align="left">텍스트분석및번역입문(1), 통번역학개론(1)과 동일과목, 1전공자수강금지, 영어대교류(이중)<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">54</td>
+
+                    <td>이중(부)전공</td>
+
+                    <td>2</td>
+                    <td>A01698103</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01698103')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01698103')">
+                        <font class="txt_navy">Presenting in English (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01698103')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Jon H. Bahk-Halberg
+
+                      <br><font class="txt_gray8">(Jonny H. Bahk-Halberg)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">화 1 2 (2210)<br><font class="txt_gray8">(Tue 1 2 (2210))</font></td>
+                    <td>7&nbsp;/&nbsp;30</td>
+                    <td align="left">영어프레젠테이션입문(1), Rhetoric&amp;Debate(1)과 동일과목, 1전공자수강금지<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">55</td>
+
+                    <td>이중(부)전공</td>
+
+                    <td>2</td>
+                    <td>A01698104</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01698104')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01698104')">
+                        <font class="txt_navy">Presenting in English (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01698104')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Jon H. Bahk-Halberg
+
+                      <br><font class="txt_gray8">(Jonny H. Bahk-Halberg)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">화 3 4 (2210)<br><font class="txt_gray8">(Tue 3 4 (2210))</font></td>
+                    <td>24&nbsp;/&nbsp;30</td>
+                    <td align="left">영어프레젠테이션입문(1), Rhetoric&amp;Debate(1)과 동일과목, 1전공자수강금지<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor: pointer; background-color: rgb(255, 255, 255);" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">56</td>
+
+                    <td>이중(부)전공</td>
+
+                    <td>2</td>
+                    <td>A01700103</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01700103')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01700103')">
+                        <font class="txt_navy">Prose &amp; Paragraphs</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01700103')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Vivian Wei-wan Lee
+
+                      <br><font class="txt_gray8">(-)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">수 3 4 (1508)<br><font class="txt_gray8">(Wed 3 4 (1508))</font></td>
+                    <td>28&nbsp;/&nbsp;30</td>
+                    <td align="left">영어글쓰기입문(1), Culture&amp;Writing(1)과 동일과목, 1전공자수강금지<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor: pointer; background-color: rgb(255, 255, 255);" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">57</td>
+
+                    <td>이중(부)전공</td>
+
+                    <td>2</td>
+                    <td>A01700104</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01700104')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01700104')">
+                        <font class="txt_navy">Prose &amp; Paragraphs</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01700104')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Vivian Wei-wan Lee
+
+                      <br><font class="txt_gray8">(-)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">수 1 2 (1508)<br><font class="txt_gray8">(Wed 1 2 (1508))</font></td>
+                    <td>29&nbsp;/&nbsp;30</td>
+                    <td align="left">영어글쓰기입문(1), Culture&amp;Writing(1)과 동일과목, 1전공자수강금지<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor: pointer; background-color: rgb(255, 255, 255);" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">58</td>
+
+                    <td>이중(부)전공</td>
+
+                    <td>3</td>
+                    <td>A01513406</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01513406')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01513406')">
+                        <font class="txt_navy">English-Korean Consecutive Interpreting (1)</font><br>
+                        <font class="txt_gray8">(English-Korean Consecutive Interpretation (1))</font>
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01513406')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">조수연
+
+                      <br><font class="txt_gray8">(Jo, Sue Yeon)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">금 3 4 (2601)<br><font class="txt_gray8">(Fri 3 4 (2601))</font></td>
+                    <td>15&nbsp;/&nbsp;20</td>
+                    <td align="left">영한순차통역(1)과 동일과목, 1전공자수강금지, 영어대교류(이중)<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor: pointer; background-color: rgb(255, 255, 255);" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">59</td>
+
+                    <td>이중(부)전공</td>
+
+                    <td>3</td>
+                    <td>A01513407</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01513407')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01513407')">
+                        <font class="txt_navy">English-Korean Consecutive Interpreting (1)</font><br>
+                        <font class="txt_gray8">(English-Korean Consecutive Interpretation (1))</font>
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01513407')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td align="left">최희경
+
+                      <br><font class="txt_gray8">(Heekyung Choi)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">금 1 2 (2405)<br><font class="txt_gray8">(Fri 1 2 (2405))</font></td>
+                    <td>16&nbsp;/&nbsp;20</td>
+                    <td align="left">영한순차통역(1)과 동일과목, 1전공자수강금지, 영어대교류(이중)<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor: pointer; background-color: rgb(255, 255, 255);" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">60</td>
+
+                    <td>이중(부)전공</td>
+
+                    <td>3</td>
+                    <td>A01253204</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01253204')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01253204')">
+                        <font class="txt_navy">English-Korean Translation (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01253204')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">이용만
+
+                      <br><font class="txt_gray8">(LEE YONGMAN)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">월 5 6 (1407)<br><font class="txt_gray8">(Mon 5 6 (1407))</font></td>
+                    <td>30&nbsp;/&nbsp;30</td>
+                    <td align="left">영한번역입문(1)과 동일과목,  1전공자수강금지, 영어대교류(이중)<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor: pointer; background-color: rgb(255, 255, 255);" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">61</td>
+
+                    <td>이중(부)전공</td>
+
+                    <td>3</td>
+                    <td>A01253205</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01253205')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01253205')">
+                        <font class="txt_navy">English-Korean Translation (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01253205')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">조수연
+
+                      <br><font class="txt_gray8">(Jo, Sue Yeon)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">금 5 6 (2601)<br><font class="txt_gray8">(Fri 5 6 (2601))</font></td>
+                    <td>26&nbsp;/&nbsp;30</td>
+                    <td align="left">영한번역입문(1)과 동일과목,  1전공자수강금지, 영어대교류(이중)<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor: pointer; background-color: rgb(255, 255, 255);" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">62</td>
+
+                    <td>이중(부)전공</td>
+
+                    <td>3</td>
+                    <td>A01503204</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01503204')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01503204')">
+                        <font class="txt_navy">Korean-English Translation (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01503204')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">이용만
+
+                      <br><font class="txt_gray8">(LEE YONGMAN)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">금 7 8 (2204)<br><font class="txt_gray8">(Fri 7 8 (2204))</font></td>
+                    <td>22&nbsp;/&nbsp;30</td>
+                    <td align="left">한영번역입문(1)과 동일과목, 1전공자수강금지, 영어대교류(이중)<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor: pointer; background-color: rgb(255, 255, 255);" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">63</td>
+
+                    <td>이중(부)전공</td>
+
+                    <td>3</td>
+                    <td>A01503205</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01503205')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01503205')">
+                        <font class="txt_navy">Korean-English Translation (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01503205')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td align="left">김자경
+
+                      <br><font class="txt_gray8">(Kim, Ja Kyoung)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">목 3 4 (3405)<br><font class="txt_gray8">(Thu 3 4 (3405))</font></td>
+                    <td>28&nbsp;/&nbsp;30</td>
+                    <td align="left">한영번역입문(1)과 동일과목,  1전공자수강금지, 영어대교류(이중)<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor: pointer; background-color: rgb(255, 255, 255);" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">64</td>
+
+                    <td>이중(부)전공</td>
+
+                    <td>3</td>
+                    <td>A01241303</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01241303')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01241303')">
+                        <font class="txt_navy">Public Speaking (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01241303')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">Vivian Wei-wan Lee
+
+                      <br><font class="txt_gray8">(-)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">화 5 6 (1606)<br><font class="txt_gray8">(Tue 5 6 (1606))</font></td>
+                    <td>18&nbsp;/&nbsp;20</td>
+                    <td align="left">중급영어프레젠테이션(1)과 동일과목, 1전공자수강금지<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor: pointer; background-color: rgb(255, 255, 255);" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">65</td>
+
+                    <td>이중(부)전공</td>
+
+                    <td>3</td>
+                    <td>A01336104</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01336104')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01336104')">
+                        <font class="txt_navy">Translation Theory &amp; Practice (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01336104')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">이현경(E)
+
+                      <br><font class="txt_gray8">(Lee Hyun-kyung)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">목 5 6 (2204)<br><font class="txt_gray8">(Thu 5 6 (2204))</font></td>
+                    <td>23&nbsp;/&nbsp;30</td>
+                    <td align="left">영어번역이론및실제(1)과 동일과목, 1전공자수강금지, 영어대교류(이중)<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">66</td>
+
+                    <td>이중(부)전공</td>
+
+                    <td>3</td>
+                    <td>A01336105</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01336105')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01336105')">
+                        <font class="txt_navy">Translation Theory &amp; Practice (1)</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01336105')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">이현경(E)
+
+                      <br><font class="txt_gray8">(Lee Hyun-kyung)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">월 7 8 (2204)<br><font class="txt_gray8">(Mon 7 8 (2204))</font></td>
+                    <td>9&nbsp;/&nbsp;30</td>
+                    <td align="left">영어번역이론및실제(1)과 동일과목, 1전공자수강금지, 영어대교류(이중)<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+
+                  <tr style="cursor:pointer;" onmouseover="this.style.backgroundColor='#FAF4C0'" onmouseout="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF" align="center" height="55">
+                    <td class="table_green">67</td>
+
+                    <td>이중(부)전공</td>
+
+                    <td>3</td>
+                    <td>A01268102</td>
+                    <td align="left">
+
+                      <!-- onClick="javascript:go_syllabus('2017','1','A','A01268102')" -->
+                      <div onclick="javascript:lecture_open('2017','1','A','A01268102')">
+                        <font class="txt_navy">Writing &amp; Rhetoric</font><br>
+
+                      </div>
+
+                    </td>
+                    <td>
+
+                      <a href="javascript:lecture_open('2017','1','A','A01268102')">
+                        <img src="/src08/images/common/ico_file.gif" border="0"></a>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="/src08/images/common/ico_check4.gif"></td>
+                    <td></td>
+                    <td align="left">정주경
+
+                      <br><font class="txt_gray8">(Jung, Jookyoung)</font>
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td align="left">금 5 6 (1206)<br><font class="txt_gray8">(Fri 5 6 (1206))</font></td>
+                    <td>29&nbsp;/&nbsp;31</td>
+                    <td align="left">중급영어글쓰기(1)과 동일과목, 1전공자수강금지<br>
+
+                      <font class="txt_navy"></font>
+                    </td>
+                  </tr>
+
+                  </tbody></table>
+            </span>
+
+          </form>
+        </td>
+      </tr>
+      </tbody></table>
+  </center>
+
+
+</body></html>

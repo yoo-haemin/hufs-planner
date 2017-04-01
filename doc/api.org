@@ -448,48 +448,36 @@ None
 <This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself when leaving comments here.>
 
 ** 성적 받아오기
-<Additional information about your API call. Try to use verbs that match both request type (fetching vs modifying) and plurality (one vs multiple).>
 *** URL
-<The URL Structure (path only, no root url)>
+/grades
 *** Method
-<The request type>
-~GET~ | ~POST~ | ~DELETE~ | ~PUT~
+~GET~
 *** URL Params
-<If URL params exist, specify them in accordance with name mentioned in URL section. Separate into optional and required. Document data constraints.>
 **** Required
-~id=[integer]~
+~None~
 **** Optional
-~photo_id=[alphanumeric]~
+~None~
 **** Example
 #+BEGIN_EXAMPLE
-/login
+/grades
 #+END_EXAMPLE
 *** Data Params
 **** Required
-***** email
-***** password
+~None~
 **** Optional (nullable)
-None
+~None~
 **** Form
-#+BEGIN_EXAMPLE
-{
-  "email" : <String>,
-  "password" : <Number>
-}
-#+END_EXAMPLE
+~None~
 **** Example
-#+BEGIN_SRC JSON
-{
-  "email" : "example@hufs.ac.kr",
-  "password" : "mY!_pa$sw0RDD"
-}
-#+END_SRC
+~None~
 *** Success Response
 **** Code 200 OK
 ***** Form
 #+BEGIN_EXAMPLE
 {
-  "id" : <Number>
+  "grades" : [
+    ["", 3.5]
+  ]
 }
 #+END_EXAMPLE
 ***** Example
@@ -514,12 +502,11 @@ None
 }
 #+END_SRC
 *** Sample Call
-<Just a sample call to your endpoint in a runnable format ($.ajax call or a curl request) - this makes life easier and more predictable.>
 #+BEGIN_EXAMPLE
 
 #+END_EXAMPLE
 *** Notes
-<This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself when leaving comments here.>
+
 
 ** Planning
 <Additional information about your API call. Try to use verbs that match both request type (fetching vs modifying) and plurality (one vs multiple).>
