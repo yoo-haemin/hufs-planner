@@ -1,2 +1,2 @@
 #Ignore org-mode exported html
-*.html
+#*.html
