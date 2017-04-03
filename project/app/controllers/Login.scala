@@ -6,7 +6,7 @@ import play.api.mvc._
 class Login extends Controller {
 
   def get = Action {
-    Ok(views.html.login("babo1"))
+    Ok(views.html.login())
   }
 
   def post = Action { request =>
