@@ -1,3 +1,4 @@
+/*
 import org.squeryl.adapters.H2Adapter
 import org.squeryl.{Session, SessionFactory}
 import play.api.db.DB
@@ -10,3 +11,4 @@ object Global extends GlobalSettings {
     )
   }
 }
+ */
