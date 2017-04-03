@@ -5,7 +5,7 @@
 
 @main(Messages("sign.in.title")) {
     <fieldset class="col-md-6 col-md-offset-3">
-        <legend>@Messages("info")123123</legend>
+        <legend>@Messages("info")</legend>
         @helper.form(action = routes.SignInController.submit()) {
             @helper.CSRF.formField
             @b3.email(signInForm("email"), '_hiddenLabel -> Messages("email"), 'placeholder -> Messages("email"), 'class -> "form-control input-lg")
