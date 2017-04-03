@@ -6,16 +6,16 @@ import play.api.mvc._
 class Login extends Controller {
 
   def get = Action {
-    Ok(views.html.login())
+    Ok(views.html.login("babo"))
   }
 
   def post = Action { request =>
     val urlBody = request.body.asFormUrlEncoded
     urlBody.map { body =>
-      if (body("username")(0) == "test" && body("password")(0) == "test")
+      if (body("username").head == "test" && body("password").head == "test")
         Ok("Logged in!")
       else
-        Forbidden(s"""Wrong credentials!, You entered: username = ${body("username")(0)}, password = ${body("password")(0)}""")
+        Forbidden(s"""Wrong credentials!, You entered: username = ${body("username").head}, password = ${body("password").head}""")
     }.getOrElse {
       BadRequest("Expecting urlencoded request body")
     }
