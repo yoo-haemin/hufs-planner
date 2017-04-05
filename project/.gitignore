@@ -32,3 +32,4 @@ server.pid
 .cache    
 
 db.conf
+mail.conf
