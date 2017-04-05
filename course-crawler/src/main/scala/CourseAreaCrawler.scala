@@ -13,9 +13,7 @@ object CourseAreaCrawler {
     majorFullRegex.findFirstIn(body).map { body =>
       majorCourseRegex.findAllMatchIn(body).toVector.map { courseMatch =>
         val details = courseMatch.subgroups.toList
-        Major(details(0), details(1), details(2),
-
-        )
+        Major(details(0), details(1), details(2), Course.fromSchoolCourseBody(body))
       }.toSet
     }
   }
@@ -29,7 +27,7 @@ object CourseAreaCrawler {
     liberalArtsFullRegex.findFirstIn(body).map { body =>
       liberalArtsCourseRegex.findAllMatchIn(body).toVector.map { courseMatch =>
         val details = courseMatch.subgroups.toList
-        LiberalArts(details(0), details(1), null)
+        LiberalArts(details(0), details(1), Course.fromSchoolCourseBody(body))
       }.toSet
     }
   }

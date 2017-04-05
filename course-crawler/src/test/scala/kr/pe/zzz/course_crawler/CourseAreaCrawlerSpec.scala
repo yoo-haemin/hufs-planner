@@ -1,4 +1,4 @@
-package course_crawler
+package kr.pe.zzz.course_crawler
 
 import org.scalatest._
 import CourseAreaCrawler._
@@ -20,7 +20,7 @@ class CourseAreaCrawlerSpec extends FlatSpec with Matchers {
 
   val body = Http(coursePageUrl).postForm.params(courseFetchBaseParams + ("ag_ledg_year" -> "2017") + ("ag_ledg_sessn" -> "1")).asString.body
   "the HTTP connection" should "be able to get 2017-01 body" in {
-    println(body)
+    //println(body)
     body.length shouldNot equal(0)
   }
 
