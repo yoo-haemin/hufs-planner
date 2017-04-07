@@ -13,25 +13,44 @@ package object course_crawler {
 
   // }
 
+  implicit val optionReads[A]: Reads[Option[A]] = {
+    def reads(opt: Option[A]) = opt match {
+      case Some(v) => opt.read[A]
+      case None => JsNull
+    }
+  }
+
+/*
+Hi, I'm using play json library to parse some input. It seems that parsing Option types are not implemented out of the box, so I decided to write my own -- it seemed trivial. it looks like this:
+
+  implicit val optionReads[A]: Reads[Option[A]] = {
+    def reads(opt: Option[A]) = opt match {
+      case Some(v) => opt.read[A]
+      case None => JsNull
+    }
+  }
+
+
+ */
 
   implicit val courseReads: Reads[Course] = (
     (__ \ "courseType")               .read[String] and
       (__ \ "courseYear")             .read[Int] and
       (__ \ "courseNo")               .read[String] and
       (__ \ "courseName1")            .read[String] and
-      (__ \ "courseName2")            .read[String] and
+      (__ \ "courseName2")            .read[Option[String]] and
       (__ \ "required")               .read[Boolean] and
       (__ \ "online")                 .read[Boolean] and
       (__ \ "foreignLanguage")        .read[Boolean] and
       (__ \ "teamTeaching")           .read[Boolean] and
       (__ \ "professorNameMain")      .read[String] and
-      (__ \ "professorNameAdditional").read[String] and
+      (__ \ "professorNameAdditional").read[Option[String]] and
       (__ \ "creditHours")            .read[Int] and
       (__ \ "courseHours")            .read[Int] and
       (__ \ "courseTime")             .read[Map[DayOfWeek,CourseTime]] and
       (__ \ "currentlyEnrolled")      .read[Int] and
       (__ \ "maximumEnrolled")        .read[Int] and
-      (__ \ "note")                   .read[String]
+      (__ \ "note")                   .read[Option[String]]
   )
 
 

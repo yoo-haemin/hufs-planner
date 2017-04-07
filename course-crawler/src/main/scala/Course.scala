@@ -49,7 +49,7 @@ object Course {
 
     (for {
       c <- courseRegex findAllMatchIn body
-    } yield c.subgroups).map { courseMatch: List[String] =>
+    } yield c.subgroups).map { courseMatch =>
       Course(
         courseMatch(0),        //courseType
         courseMatch(1).toInt,  //courseYear
