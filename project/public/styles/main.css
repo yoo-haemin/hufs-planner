@@ -2,6 +2,18 @@ body {
     padding-top: 50px;
     font-size: 16px;
     background: #f5f7f9;
+
+
+
+}
+
+main.container{
+
+    background-image: url("../images/simbol.gif");
+    background-position: center 5%;
+    background-repeat: no-repeat;
+    background-size: 35%;
+
 }
 
 h1 {
