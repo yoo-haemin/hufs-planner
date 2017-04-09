@@ -19,7 +19,7 @@ sign.up.account = Sign up for a new account
 sign.in.credentials = Sign in with your credentials
 
 error = Error!
-info = Info!
+info = Äg½ºÇÃ·¡³Ê
 success = Success!
 home = Home
 first.name = First name
@@ -27,6 +27,8 @@ last.name = Last name
 full.name = Full name
 email = Email
 password = Password
+passwordcheck = Password Check
+SchoolNumber = School Number
 send = Send
 change = Change
 reset = Reset
