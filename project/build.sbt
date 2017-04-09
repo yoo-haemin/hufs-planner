@@ -2,9 +2,9 @@ import com.typesafe.sbt.SbtScalariform._
 
 import scalariform.formatter.preferences._
 
-name := """play-silhouette-seed"""
+name := """hufs-planner"""
 
-version := "4.0.0"
+version := "0.0.1"
 
 scalaVersion := "2.11.8"
 
@@ -22,6 +22,10 @@ libraryDependencies ++= Seq(
   "com.enragedginger" %% "akka-quartz-scheduler" % "1.5.0-akka-2.4.x",
   "com.adrianhurt" %% "play-bootstrap" % "1.0-P25-B3",
   "com.mohiva" %% "play-silhouette-testkit" % "4.0.0" % "test",
+  "com.typesafe.play" %% "play-slick" % "2.1.0",
+  "com.typesafe.play" %% "play-slick-evolutions" % "2.1.0",
+  "com.typesafe.slick" %% "slick" % "3.2.0",
+  //"com.typesafe.slick" %% "" % "",
   specs2 % Test,
   cache,
   filters
