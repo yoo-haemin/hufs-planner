@@ -18,6 +18,7 @@ $(function() {
     // Update the password strength meter
     meter.val(result.score);
 
+
     // Update the text indicator
     if (val !== "") {
       msg.text("Strength: " + strength[result.score]);
