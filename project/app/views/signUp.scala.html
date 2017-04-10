@@ -11,6 +11,7 @@
             @b3.text(signUpForm("SchoolNumber"), '_hiddenLabel -> Messages("SchoolNumber"), 'placeholder -> Messages("SchoolNumber"), 'class -> "form-control input-lg", 'pattern -> "[0-9]{9}")
             @passwordStrength(signUpForm("password"), '_hiddenLabel -> Messages("password"), 'placeholder -> Messages("password"), 'class -> "form-control input-lg")
             <input type="password" class="form-control input-lg" id="passwordcheck" data-rule-required="true" placeholder="비밀번호 확인" maxlength="30">
+            <p id="password-match"></p>
 
 
                 <!--
@@ -649,4 +650,6 @@
             </div>
         }
     </fieldset>
+    <script src="@routes.Assets.at("javascripts/signUp.js")"></script>
+
 }
