@@ -370,12 +370,12 @@ None
 }
 #+END_SRC
 *** Sample Call
-<Just a sample call to your endpoint in a runnable format ($.ajax call or a curl request) - this makes life easier and more predictable.>
+# <Just a sample call to your endpoint in a runnable format ($.ajax call or a curl request) - this makes life easier and more predictable.>
 #+BEGIN_EXAMPLE
 
 #+END_EXAMPLE
 *** Notes
-<This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself when leaving comments here.>
+# <This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself when leaving comments here.>
 ** 성적 입력
 사용자의 성적을 입력
 *** URL
@@ -440,12 +440,12 @@ None
 }
 #+END_SRC
 *** Sample Call
-<Just a sample call to your endpoint in a runnable format ($.ajax call or a curl request) - this makes life easier and more predictable.>
+# <Just a sample call to your endpoint in a runnable format ($.ajax call or a curl request) - this makes life easier and more predictable.>
 #+BEGIN_EXAMPLE
 
 #+END_EXAMPLE
 *** Notes
-<This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself when leaving comments here.>
+# <This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself when leaving comments here.>
 
 ** 성적 받아오기
 *** URL
@@ -487,7 +487,7 @@ None
 }
 #+END_SRC
 *** Error Response
-<Most endpoints will have many ways they can fail. From unauthorized access, to wrongful parameters etc. All of those should be liste d here. It might seem repetitive, but it helps prevent assumptions from being made where they should be.>
+# <Most endpoints will have many ways they can fail. From unauthorized access, to wrongful parameters etc. All of those should be liste d here. It might seem repetitive, but it helps prevent assumptions from being made where they should be.>
 **** Code 401 Unauthorized
 ***** Form
 #+BEGIN_EXAMPLE
@@ -509,21 +509,21 @@ None
 
 
 ** Planning
-<Additional information about your API call. Try to use verbs that match both request type (fetching vs modifying) and plurality (one vs multiple).>
+# <Additional information about your API call. Try to use verbs that match both request type (fetching vs modifying) and plurality (one vs multiple).>
 *** URL
-<The URL Structure (path only, no root url)>
+# <The URL Structure (path only, no root url)>
 *** Method
 <The request type>
 ~GET~ | ~POST~ | ~DELETE~ | ~PUT~
 *** URL Params
-<If URL params exist, specify them in accordance with name mentioned in URL section. Separate into optional and required. Document data constraints.>
+# <If URL params exist, specify them in accordance with name mentioned in URL section. Separate into optional and required. Document data constraints.>
 **** Required
 ~id=[integer]~
 **** Optional
 ~photo_id=[alphanumeric]~
 **** Example
 #+BEGIN_EXAMPLE
-/login
+/plan
 #+END_EXAMPLE
 *** Data Params
 **** Required
@@ -560,7 +560,7 @@ None
 }
 #+END_SRC
 *** Error Response
-<Most endpoints will have many ways they can fail. From unauthorized access, to wrongful parameters etc. All of those should be liste d here. It might seem repetitive, but it helps prevent assumptions from being made where they should be.>
+# <Most endpoints will have many ways they can fail. From unauthorized access, to wrongful parameters etc. All of those should be liste d here. It might seem repetitive, but it helps prevent assumptions from being made where they should be.>
 **** Code 401 Unauthorized
 ***** Form
 #+BEGIN_EXAMPLE
@@ -575,186 +575,14 @@ None
 }
 #+END_SRC
 *** Sample Call
-<Just a sample call to your endpoint in a runnable format ($.ajax call or a curl request) - this makes life easier and more predictable.>
+# <Just a sample call to your endpoint in a runnable format ($.ajax call or a curl request) - this makes life easier and more predictable.>
 #+BEGIN_EXAMPLE
 
 #+END_EXAMPLE
 *** Notes
-<This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself when leaving comments here.>
+# <This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself when leaving comments here.>
 
 
-* Login Page
-** 로그인하기
-** ID/PW분실 찾기 페이지로 이동
-** 회원가입 페이지로 이동
-
-* 회원가입 페이지
-** 회원가입 양식 제출
-
-* 회원 기본정보
-** 특정 학기와 특정 영역에 대해 모든 과목 정보 전달
-- URL: https://hufs-planner.com/course_list
-- 메소드: GET
-- 인증 방식:
-*** Request
-**** 예시
-#+BEGIN_EXAMPLE
-http://hufs-planner.com/course_list
-?year_semester=2017-01
-&major=major_name
-&area=area_name
-&details=name
-&details=professor_name
-&details=course_number
-#+END_EXAMPLE
-**** 각 항목 설명
-***** year_semester
-- 과목 리스트를 조회할 학년도와 학기를 지정
-- 형식: (학년도 4자리 연도)-(학기)
-  - 학년도: 앞 두 자리에 20을 포함한 학년도
-  - 학기: 01, summer, 02, winter 네 값중 하나
-  - 예시
-    - ~2015-01~
-    - ~2015-summer~
-    - ~2015-02~
-    - ~2015-winter~
-***** major
-- 조회할 영역을 지정(전공, 교양 영역을 포함)
-- 형식: 강의시간표 페이지에 있는 영역 이름
-  - 예시
-    - 국제통상학과
-    - 언론.정보전공
-    - HUFS CAREER
-***** area
-- 개설영역을 지정
-- 형식: 아래에 있는 값중 하나
-  - 1전공
-  - 이중전공
-  - 부전공
-  - 교직
-  - 교양
-***** details
-- (선택)받아올 정보를 지정
-- 형식: 아래의 값 중 하나
-  - Year
-  - Course Number
-  - Subject Name
-  - Required
-  - Online
-  - Foreign Language
-  - Team Teaching
-  - Professor
-  - Credit
-  - Time
-  - Class Time
-  - Lecture Room
-  - Enrolled Students
-  - Maximum Students
-  - Note
-- 미지정일 때에는 모든 정보를 받아옴
-*** Response
-
-** 과목 검색
-- URL: https://hufs-planner.com/search_course
-- 메소드: GET
-- 인증 방식:
-*** Request
-**** 예시
-#+BEGIN_EXAMPLE
-http://hufs-planner.com/search_course
-?name=경제학
-&details=name
-&details=professor_name
-&details=course_number
-#+END_EXAMPLE
-**** 각 항목 설명
-***** name
-- 과목명
-***** details
-- ~/course_list~ 참조
-*** Response
-
-
-* 도표 요약
-** 유저의 평균 점수정보 받아오기
-학기별 점수정보, 전공구분별 점수정보를 받아온다
-** 유저의 세부 점수정보 받아오기
-유저가 들었던 세부 점수정보를 모두 받아온다
-
-** 유저의 다음학기 정보
-
-** 다음학기 정보
-*** 출력
-**** 점수정보
-- 바뀐 점수를 빨강/초록으로 구분해서 표시
-**** 요약정보
-- 바뀐 정보를 표시
-  - 오른쪽에 화살표로 증감을 표시
-  - 셀 안의 글자색깔로 좋고 나쁨을 표시
-**** 세부표
-- 각 분류별로 과목을 기존 과목과 동일하게 표시하되 배경색 추가(초록색?)
-* 목표과목과 학점
-기본정보와 동일하게 보여주되 시간표와 실시간 요약정보 업데이트해서 표시
-** 출력
-*** 상단고정
-- 시간표
-  - 매우 작게, 신청한 시간대만 색깔로 표시
-*** 페이지
-**** 정보입력
-- 회원 기본정보와 같음
-  - 1전공, 이중전공
-    - 드롭다운 1: 다음학기 추천 강의
-    - 드롭다운 2: 재수강 대상 과목
-    - 드롭다운 3: 기타 전공인정 (다른학년 전공수업, 전공인정 교양, 전공교류, 인턴쉽 학점인정 등 포함)
-      - 드롭다운을 카테고리별로 분류해서 세부 드롭다운 생성
-      - 카테고리:
-        - 타학년 전공수업
-        - 전공인정 교양
-        - 전공교류
-        - 인턴쉽, 코트라
-        - 등등
-  - 교양
-    - 드롭다운: 앞에꺼랑 똑같이
-**** 학점계산
-앞에꺼랑 똑같이
-**** 신청과목 요약
-드롭다운 밑에 있는 표 칸을 그대로 보여주기
-** 입력
-- 기본정보 입력 페이지와 동일
-  - 탭해서 과목선택
-- 신청과목 요약 틀
-  - 탭해서 과목 제거
-
-* 총 요약 페이지
-** 출력
-*** 상단 (현재상황 요약)
-**** 표시
-- 총 취득 학점 / 졸업필요 학점
-- 총 평점 / 4.5
-**** 강렬한 디자인
-*** 중단
-**** 학기
-- 다음학기 (내용 이미 기입되어 있음, 변경불가)
-- 그 후 학기 (최초 1개만 표시) (내용 사용자가 기입)
-  - 학기추가 버튼으로 추가입력 가능
-**** 학기별 내용
-- 들을 학점
-- 예상 평점
-*** 하단 (목표달성후 상황 요약)
-**** 표시
-- 총 취득 학점 / 졸업필요 학점
-- 총 평점 / 4.5
-**** 강렬한 디자인(상단과 동일한 디자인)
-** 입력
-- 그 후 학기의 들을 학점, 예상 평점
-- 학기추가 버튼
-- 저장 버튼
-* 앱 전반
-** 색깔
-- 수업의 영역별 칼라코딩하기
-  - 1전공
-  - 이중전공
-  - ...
 
 * Footnotes
 
