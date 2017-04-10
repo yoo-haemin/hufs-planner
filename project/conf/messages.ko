@@ -4,13 +4,13 @@ invalid.credentials = Invalid credentials!
 access.denied = Access denied!
 could.not.authenticate = Could not authenticate with social provider! Please try again!
 
-home.title = Silhouette - Home
-sign.up.title = Silhouette - Sign Up
-sign.in.title = Silhouette - Sign In
-forgot.password.title = Silhouette - Forgot Password
-reset.password.title = Silhouette - Reset Password
-change.password.title = Silhouette - Change Password
-activate.account.title = Silhouette - Activate Account
+home.title = 훕스플래너 - Home
+sign.up.title = 훕스플래너 - Sign Up
+sign.in.title = 훕스플래너 - Sign In
+forgot.password.title = 훕스플래너 - Forgot Password
+reset.password.title = 훕스플래너 - Reset Password
+change.password.title = 훕스플래너 - Change Password
+activate.account.title = 훕스플래너 - Activate Account
 
 toggle.navigation = Toggle navigation
 welcome.signed.in = Welcome, you are now signed in!
@@ -77,7 +77,7 @@ yahoo = Yahoo
 # Emails
 ##########
 
-email.from = Silhouette <noreply@mohiva.com>
+email.from = 훕스플래너 <noreply@mohiva.com>
 
 # Sign Up
 email.sign.up.subject = Welcome
