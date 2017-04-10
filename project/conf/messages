@@ -4,13 +4,13 @@ invalid.credentials = Invalid credentials!
 access.denied = Access denied!
 could.not.authenticate = Could not authenticate with social provider! Please try again!
 
-home.title = Silhouette - Home
-sign.up.title = Silhouette - Sign Up
-sign.in.title = Silhouette - Sign In
-forgot.password.title = Silhouette - Forgot Password
-reset.password.title = Silhouette - Reset Password
-change.password.title = Silhouette - Change Password
-activate.account.title = Silhouette - Activate Account
+home.title = Hufs Course Planner - Home
+sign.up.title = Hufs Course Planner - Sign Up
+sign.in.title = Hufs Course Planner - Sign In
+forgot.password.title = Hufs Course Planner - Forgot Password
+reset.password.title = Hufs Course Planner - Reset Password
+change.password.title = Hufs Course Planner - Change Password
+activate.account.title = Hufs Course Planner - Activate Account
 
 toggle.navigation = Toggle navigation
 welcome.signed.in = Welcome, you are now signed in!
@@ -19,7 +19,7 @@ sign.up.account = Sign up for a new account
 sign.in.credentials = Sign in with your credentials
 
 error = Error!
-info = Äg½ºÇÃ·¡³Ê
+info = Hufs Planner
 success = Success!
 home = Home
 first.name = First name
@@ -78,7 +78,7 @@ yahoo = Yahoo
 # Emails
 ##########
 
-email.from = Silhouette <noreply@mohiva.com>
+email.from = Hufs Course Planner <noreply@mohiva.com>
 
 # Sign Up
 email.sign.up.subject = Welcome
