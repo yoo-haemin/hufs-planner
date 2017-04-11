@@ -12,6 +12,7 @@ lazy val root = (project in file(".")).
       Seq(
         scalaTest % Test,
         "org.scalaj" %% "scalaj-http" % "2.3.0",
-        "com.typesafe.play" %% "play-json" % "2.6.0-M6"
+        "com.typesafe.play" %% "play-json" % "2.6.0-M6",
+        "org.joda" % "joda-convert" % "1.8.1"
       )
   )

@@ -1,3 +1,5 @@
+/*
+
 package kr.pe.zzz.course_crawler
 
 import org.scalatest._
@@ -10,12 +12,12 @@ class CourseAreaCrawlerSpec extends FlatSpec with Matchers {
 
 
   "Extracting Major from 2017-1" should "be of length 68" in {
-    extractMajor(eiccPage2017).get.size shouldEqual 68
+    extractSemesterMajorCode(eiccPage2017).get.size shouldEqual 68
     //println(extractMajor(eiccPage2017))
   }
 
   "Extracting Liberal Arts from 2017-1" should "be of length 16" in {
-    extractLiberalArts(eiccPage2017).get.size shouldEqual 16
+    extractSemesterLiberalArtsCode(eiccPage2017).get.size shouldEqual 16
   }
 
   val body = Http(coursePageUrl).postForm.params(courseFetchBaseParams + ("ag_ledg_year" -> "2017") + ("ag_ledg_sessn" -> "1")).asString.body
@@ -25,20 +27,22 @@ class CourseAreaCrawlerSpec extends FlatSpec with Matchers {
   }
 
   "extractMajor" should "be able to extract major from the body just received" in {
-    extractMajor(body).get.size shouldEqual(68)
+    extractSemesterMajorCode(body).get.size shouldEqual(68)
   }
 
   "extractLiberalArts" should "be able to extract liberal arts from the body just received" in {
-    extractLiberalArts(body).get.size shouldEqual(17)
+    extractSemesterLiberalArtsCode(body).get.size shouldEqual(17)
   }
 
   val courses201701 = CourseAreaCrawler(2017,1)
   "Extracting Majors from 2017-1 course" should "contain 68 areas" in {
     courses201701.get._1.size shouldEqual 68
+
+    //println(courses201701.get._1.head)
   }
 
   "Extracting Liberal Arts from 2017-1 course" should "contain 16 areas" in {
     courses201701.get._2.size shouldEqual 17
   }
-
 }
+ */

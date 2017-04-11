@@ -10,5 +10,5 @@ case object Semester {
 }
 
 trait CourseDivision
-case class Major(name: String, name2: String, code: String, courses: Seq[Course]) extends CourseDivision
-case class LiberalArts(name1: String, code: String, courses: Seq[Course]) extends CourseDivision
+case class Major(name: String, name2: String, code: String, courses: Set[Course]) extends CourseDivision
+case class LiberalArts(name1: String, code: String, courses: Set[Course]) extends CourseDivision
