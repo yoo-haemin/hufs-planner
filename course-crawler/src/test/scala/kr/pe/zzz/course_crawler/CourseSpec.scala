@@ -1,6 +1,5 @@
 package kr.pe.zzz.course_crawler
 
-import java.io.{ File, PrintWriter }
 import org.scalatest._
 import play.api.libs.json._
 import play.api.libs.json.Reads._
@@ -54,27 +53,11 @@ class CourseSpec extends FlatSpec with Matchers {
 
   "Writing a sample json and reading from it" should "result in the same thing" in {
     val sample = Course(
-      "전공",1,"D03208401","Business Law(기업법)",Some("Business Law"),true,false,true,false,"Yoon Soo Kim",Some("Jamie Kim"),
-      3,3,Map(DayOfWeek.MONDAY -> CourseTime(SortedSet(1, 2, 3),"3503")),48,61,Some("1전공자만 수강"))
+      "전공",Some(1),"D03208401","Business Law(기업법)",Some("Business Law"),true,false,true,false,"Yoon Soo Kim",Some("Jamie Kim"),
+      3,3,Map(DayOfWeek.MONDAY -> CourseTime(SortedSet(1, 2, 3),"3503")),48,Some(61),Some("1전공자만 수강"))
 
     val sample2JsonStr = Json.prettyPrint(Json.toJson(sample))
     println(sample2JsonStr)
     Json.parse(sample2JsonStr).validate[Course] shouldEqual JsSuccess(sample)
-  }
-
-  "Writing courses from EICC 2017 and reading from it" should "result in the same thing" in {
-    val eiccJson = courseEicc2017.map(c => Json.toJson(c))
-    val jsonFileWrite = new PrintWriter(new File("assets/2017-01-EICC.json"))
-    jsonFileWrite.write("[")
-    eiccJson.map(c => Json.prettyPrint(c)).foreach { c => jsonFileWrite.write(c + ",\n") }
-    jsonFileWrite.write("]")
-    jsonFileWrite.close
-
-    val jsonFileSource = io.Source.fromFile("assets/2017-01-EICC.json")
-    val jsonFileString = try jsonFileSource.mkString finally jsonFileSource.close()
-    val jsonFileJson = Json.parse(jsonFileString)
-
-
-
   }
 }

@@ -5,35 +5,12 @@ import java.time.DayOfWeek
 import play.api.libs.json._
 import play.api.libs.json.Reads._
 import play.api.libs.functional.syntax._
-import scala.collection.immutable.SortedSet
-import scala.util.matching.Regex
 import scala.util.Try
-
-
-case class CourseTime(time: SortedSet[Int], classroom: String) {
-  def this(time: List[String], classroom: String) =
-    this((SortedSet[Int]() /: time)((s, t) => Try(t.toInt).toOption match {
-        case Some(i) => s + i
-        case None => s
-      }), classroom)
-}
-
-object CourseTime {
-  implicit val courseTimeReads: Reads[CourseTime] = (
-    (__ \ "time").read[SortedSet[Int]] and
-      (__ \ "class").read[String]
-  )(CourseTime.apply _)
-
-  implicit val courseTimeWrites: Writes[CourseTime] = (
-    (JsPath \ "time").write[SortedSet[Int]] and
-      (JsPath \ "class").write[String]
-  )(unlift(CourseTime.unapply))
-}
-
+import scala.util.matching.Regex
 
 case class Course(
   courseType             : String,
-  courseYear             : Int,
+  courseYear             : Option[Int],
   courseNo               : String,
   courseName1            : String,
   courseName2            : Option[String],
@@ -47,7 +24,7 @@ case class Course(
   courseHours            : Int,
   courseTime             : Map[DayOfWeek, CourseTime],
   currentlyEnrolled      : Int,
-  maximumEnrolled        : Int,
+  maximumEnrolled        : Option[Int],
   note                   : Option[String])
 
 object Course {
@@ -83,7 +60,7 @@ object Course {
 
   val courseReads: Reads[Course] = (
     (__ \ "courseType")               .read[String] and
-      (__ \ "courseYear")             .read[Int] and
+      (__ \ "courseYear")             .readNullable[Int] and
       (__ \ "courseNo")               .read[String] and
       (__ \ "courseName1")            .read[String] and
       (__ \ "courseName2")            .readNullable[String] and
@@ -97,13 +74,13 @@ object Course {
       (__ \ "courseHours")            .read[Int] and
       (__ \ "courseTime")             .read[Map[DayOfWeek,CourseTime]] and
       (__ \ "currentlyEnrolled")      .read[Int] and
-      (__ \ "maximumEnrolled")        .read[Int] and
+      (__ \ "maximumEnrolled")        .readNullable[Int] and
       (__ \ "note")                   .readNullable[String]
   )(Course.apply _)
 
   val courseWrites: Writes[Course] = (
     (__ \ "courseType")               .write[String] and
-      (__ \ "courseYear")             .write[Int] and
+      (__ \ "courseYear")             .writeNullable[Int] and
       (__ \ "courseNo")               .write[String] and
       (__ \ "courseName1")            .write[String] and
       (__ \ "courseName2")            .writeNullable[String] and
@@ -117,13 +94,13 @@ object Course {
       (__ \ "courseHours")            .write[Int] and
       (__ \ "courseTime")             .write[Map[DayOfWeek,CourseTime]] and
       (__ \ "currentlyEnrolled")      .write[Int] and
-      (__ \ "maximumEnrolled")        .write[Int] and
+      (__ \ "maximumEnrolled")        .writeNullable[Int] and
       (__ \ "note")                   .writeNullable[String]
   )(unlift(Course.unapply))
 
   implicit val courseFormat: Format[Course] = Format(courseReads, courseWrites)
 
-  def fromSchoolCourseBody(body: String): Set[Course] = {
+  def fromSchoolCourseBody(body: String): Array[Course] = {
     def getDayOfWeek(str: String): DayOfWeek = str match {
       case "Mon" => DayOfWeek.MONDAY
       case "Tue" => DayOfWeek.TUESDAY
@@ -134,23 +111,56 @@ object Course {
       case "Sun" => DayOfWeek.SUNDAY
     }
 
-    val courseRegex: Regex = """<td>(.*)<\/td>\s*<td>(\d)<\/td>\s*<td>([A-Z]\d{5}[A-Z0-9]\d{2})<\/td>\s*<td align="left">\s*<!--.*-->\s*<div\s*.*\s*.\s*<font class="txt_navy">(.*)<\/font><br>\s*(?:<font class=['"]txt_gray8['"]>\((.*)\)<\/font>\s*)?<\/div>\s*<\/td>\s*<td>\s*.*\s*.*\s*<\/td>\s*(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)<td align="left">(.*)\s*(?:<br>\s*<font class="txt_gray8">\((.*)\)<\/font>)?\s*<\/td>\s*<td>(\d)<\/td>\s*<td>(\d)<\/td>\s*<td align="left">.*<br><font class="txt_gray8">\((?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\(((?:[C0-9]\d{3,4}(?:-1)?)|(?:B[12]-\d{2})|(?:사이버관 대강당))\)? ?)?)(?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\(((?:[C0-9]\d{3,4}(?:-1)?)|(?:B[12]-\d{2})|(?:사이버관 대강당))\)? ?)?)?(?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\(((?:[C0-9]\d{3,4}(?:-1)?)|(?:B[12]-\d{2})|(?:사이버관 대강당))\)? ?)?)?\)<\/font><\/td>\s*<td>(\d{1,})&nbsp;\/&nbsp;(\d{1,})<\/td>\s*<td align="left">(.+)?<br>""".r
 
-    (for {
+    val regexStrings = Seq(
+      //Regex part 1, capatures the following: courseType, courseYear, courseNo, courseName1, courseName2
+      """<td>(.*)<\/td>\s*<td>(\d)?<\/td>\s*<td>([A-Z]{1,2}\d{5}[A-Za-z0-9]\d{1,2})<\/td>\s*<td align="left">\s*<!--.*-->\s*<div\s*.*\s*.\s*<font class="txt_navy">(.*)<\/font><br>\s*(?:<font class=['"]txt_gray8['"]>\((.*)\)<\/font>\s*)?<\/div>\s*<\/td>\s*<td>\s*.*\s*.*\s*<\/td>\s*""",
+      //Regex part 2: required, online, foreignLanguage, teamteaching, professorNameMain, professornameadditional, creditHours, courseHours
+      """(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)<td align="left">(.*)\s*(?:<br>\s*<font class="txt_gray8">\((.*)\s*\)<\/font>)?\s*<\/td>\s*<td>(\d)<\/td>\s*<td>(\d)<\/td>\s*""",
+      //Regex part 2: courseTime
+      """<td align="left">.*<br><font class="txt_gray8">\((?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\((.*)\)\)? ?)?)?(?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\((.*)\)\)? ?)?)?(?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\((.*)\)\)? ?)?)?\)<\/font><\/td>\s*""",
+      //Regex part 3: rest
+      """<td>(\d{1,})&nbsp;\/&nbsp;((?:\d{1,})|(?:없음))<\/td>\s*<td align="left">(.+)?<br>"""
+    )
+
+    //Fullregex : <td>(.*)<\/td>\s*<td>(\d)?<\/td>\s*<td>([A-Z]{1,2}\d{5}[A-Za-z0-9]\d{1,2})<\/td>\s*<td align="left">\s*<!--.*-->\s*<div\s*.*\s*.\s*<font class="txt_navy">(.*)<\/font><br>\s*(?:<font class=['"]txt_gray8['"]>\((.*)\)<\/font>\s*)?<\/div>\s*<\/td>\s*<td>\s*.*\s*.*\s*<\/td>\s*(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)<td align="left">(.*)\s*(?:<br>\s*<font class="txt_gray8">\((.*)\s*\)<\/font>)?\s*<\/td>\s*<td>(\d)<\/td>\s*<td>(\d)<\/td>\s*<td align="left">.*<br><font class="txt_gray8">\((?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\((.*)\)\)? ?)?)?(?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\((.*)\)\)? ?)?)?(?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\((.*)\)\)? ?)?)?\)<\/font><\/td>\s*<td>(\d{1,})&nbsp;\/&nbsp;((?:\d{1,})|(?:없음))<\/td>\s*<td align="left">(.+)?<br>
+
+    //coursetime original regex: (?:[C0-9]\d{3,4}(?:-1)?)|(?:B[12]-\d{2})|(?:사이버관 대강당)|(?:오바마홀)|(?:무용실)|(?:AT [A-Z0-9]*)
+
+    val courseRegex = regexStrings.reduceLeft(_+_).r
+
+    val courseList = (for {
       c <- courseRegex findAllMatchIn body
-    } yield c.subgroups).map { courseMatch =>
+    } yield c.subgroups).toSeq
+
+    val courseListSize = (for {
+      m <- """<td class="table_green">(\d){1,}<\/td>""".r findAllMatchIn body
+    } yield m.subgroups).toArray.size
+
+    //Make sure we have read all the courses
+    if (courseList.size != courseListSize) {
+      println(s"Total size of the body: ${courseListSize}, but regex only matched ${courseList.size}!\nMore info:")
+      val regexFailBodyInfo = """<.*selected""".r findAllMatchIn body
+      regexFailBodyInfo.foreach(println)
+
+      println(body)
+
+      assert(false)
+    }
+
+    courseList.map { courseMatch =>
       Course(
         courseMatch(0),        //courseType
-        courseMatch(1).toInt,  //courseYear
+        Try(courseMatch(1).toInt).toOption,  //courseYear
         courseMatch(2),        //courseNo
         courseMatch(3),        //courseName1
-        if (courseMatch(4) == null) Some(courseMatch(4)) else None, //courseName2
+        if (courseMatch(4) != null) Some(courseMatch(4)) else None, //courseName2
         if (courseMatch(5).length > 0) true else false, //required
         if (courseMatch(6).length > 0) true else false, //online
         if (courseMatch(7).length > 0) true else false, //foreign language
         if (courseMatch(8).length > 0) true else false, //team teaching
         courseMatch(9),        //professornamemain
-        if (courseMatch(10) == null) Some(courseMatch(10)) else None, //professornameadditional
+        if (courseMatch(10) != null) Some(courseMatch(10)) else None, //professornameadditional
         courseMatch(11).toInt, //credithours
         courseMatch(12).toInt, //coursehours
         (Map[DayOfWeek,CourseTime]() /: List(
@@ -164,11 +174,9 @@ object Course {
             case t => m + (getDayOfWeek(t._1) -> new CourseTime(t._2, t._3))
           }),
         courseMatch(28).toInt, //currentlyenrolled
-        courseMatch(29).toInt, //maximumenrolled
-        if (courseMatch(30) == null) Some(courseMatch(30)) else None //note
+        Try(courseMatch(29).toInt).toOption, //maximumenrolled
+        if (courseMatch(30) != null) Some(courseMatch(30)) else None //note
       )
-    }.toSet
+    }.toArray
   }
-
-
 }

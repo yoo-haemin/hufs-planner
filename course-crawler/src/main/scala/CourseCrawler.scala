@@ -2,10 +2,10 @@ package kr.pe.zzz
 
 
 package object course_crawler {
-  import java.time.DayOfWeek
-  import play.api.libs.json._
-  import play.api.libs.json.Reads._
-  import play.api.libs.functional.syntax._
+  // import java.time.DayOfWeek
+  // import play.api.libs.json._
+  // import play.api.libs.json.Reads._
+  // import play.api.libs.functional.syntax._
 
 
   /*
@@ -143,16 +143,16 @@ package object course_crawler {
 /*
  * Beginning of Writes definitions
  */
-  implicit val dayOfWeekWrites = new Writes[DayOfWeek] {
-    def writes(dayOfWeek: DayOfWeek): JsValue = dayOfWeek match {
-      case DayOfWeek.MONDAY => Json.parse("Mon")
-      case DayOfWeek.TUESDAY => Json.parse("Tue")
-      case DayOfWeek.WEDNESDAY => Json.parse("Wed")
-      case DayOfWeek.THURSDAY => Json.parse("Thu")
-      case DayOfWeek.FRIDAY => Json.parse("Fri")
-      case DayOfWeek.SATURDAY => Json.parse("Sat")
-      case DayOfWeek.SUNDAY => Json.parse("Sun")
-      case _ => JsNull
-    }
-  }
+  // implicit val dayOfWeekWrites = new Writes[DayOfWeek] {
+  //   def writes(dayOfWeek: DayOfWeek): JsValue = dayOfWeek match {
+  //     case DayOfWeek.MONDAY => Json.parse("Mon")
+  //     case DayOfWeek.TUESDAY => Json.parse("Tue")
+  //     case DayOfWeek.WEDNESDAY => Json.parse("Wed")
+  //     case DayOfWeek.THURSDAY => Json.parse("Thu")
+  //     case DayOfWeek.FRIDAY => Json.parse("Fri")
+  //     case DayOfWeek.SATURDAY => Json.parse("Sat")
+  //     case DayOfWeek.SUNDAY => Json.parse("Sun")
+  //     case _ => JsNull
+  //   }
+  // }
 }
