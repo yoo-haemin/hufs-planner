@@ -6,7 +6,7 @@ import play.api.libs.json._
 import play.api.libs.json.Reads._
 import play.api.libs.functional.syntax._
 import scala.util.Try
-import scala.util.matching.Regex
+//import scala.util.matching.Regex
 
 case class Course(
   courseType             : String,
@@ -115,13 +115,18 @@ object Course {
     val regexStrings = Seq(
       //Regex part 1, capatures the following: courseType, courseYear, courseNo, courseName1, courseName2
       """<td>(.*)<\/td>\s*<td>(\d)?<\/td>\s*<td>([A-Z]{1,2}\d{5}[A-Za-z0-9]\d{1,2})<\/td>\s*<td align="left">\s*<!--.*-->\s*<div\s*.*\s*.\s*<font class="txt_navy">(.*)<\/font><br>\s*(?:<font class=['"]txt_gray8['"]>\((.*)\)<\/font>\s*)?<\/div>\s*<\/td>\s*<td>\s*.*\s*.*\s*<\/td>\s*""",
+
       //Regex part 2: required, online, foreignLanguage, teamteaching, professorNameMain, professornameadditional, creditHours, courseHours
       """(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)<td align="left">(.*)\s*(?:<br>\s*<font class="txt_gray8">\((.*)\s*\)<\/font>)?\s*<\/td>\s*<td>(\d)<\/td>\s*<td>(\d)<\/td>\s*""",
+
       //Regex part 2: courseTime
-      """<td align="left">.*<br><font class="txt_gray8">\((?:([A-Z][a-z]{2})?\s*(\d{1,2})?\s*(\d{1,2})?\s*?(\d{1,2})? ?(?:\((.*)\)\)? ?)?)?(?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\((.*)\)\)? ?)?)?(?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\((.*)\)\)? ?)?)?\)<\/font><\/td>\s*""",
+      """<td align="left">.*<br><font class="txt_gray8">\(.*?\)<\/font><\/td>\s*""",
+
       //Regex part 3: rest
       """<td>(\d{1,})&nbsp;\/&nbsp;((?:\d{1,})|(?:없음))<\/td>\s*<td align="left">(.+)?<br>"""
     )
+
+//<td>(.*)<\/td>\s*<td>(\d)?<\/td>\s*<td>([A-Z]{1,2}\d{5}[A-Za-z0-9]\d{1,2})<\/td>\s*<td align="left">\s*<!--.*-->\s*<div\s*.*\s*.\s*<font class="txt_navy">(.*)<\/font><br>\s*(?:<font class=['"]txt_gray8['"]>\((.*)\)<\/font>\s*)?<\/div>\s*<\/td>\s*<td>\s*.*\s*.*\s*<\/td>\s*(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)<td align="left">(.*)\s*(?:<br>\s*<font class="txt_gray8">\((.*)\s*\)<\/font>)?\s*<\/td>\s*<td>(\d)<\/td>\s*<td>(\d)<\/td>\s*<td align="left">.*<br><font class="txt_gray8">\(.*?\)<\/font><\/td>\s*<td>(\d{1,})&nbsp;\/&nbsp;((?:\d{1,})|(?:없음))<\/td>\s*<td align="left">(.+)?<br>
 
     //Fullregex : <td>(.*)<\/td>\s*<td>(\d)?<\/td>\s*<td>([A-Z]{1,2}\d{5}[A-Za-z0-9]\d{1,2})<\/td>\s*<td align="left">\s*<!--.*-->\s*<div\s*.*\s*.\s*<font class="txt_navy">(.*)<\/font><br>\s*(?:<font class=['"]txt_gray8['"]>\((.*)\)<\/font>\s*)?<\/div>\s*<\/td>\s*<td>\s*.*\s*.*\s*<\/td>\s*(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)<td align="left">(.*)\s*(?:<br>\s*<font class="txt_gray8">\((.*)\s*\)<\/font>)?\s*<\/td>\s*<td>(\d)<\/td>\s*<td>(\d)<\/td>\s*<td align="left">.*<br><font class="txt_gray8">\((?:([A-Z][a-z]{2})?\s*(\d{1,2})?\s*(\d{1,2})?\s*?(\d{1,2})? ?(?:\((.*)\)\)? ?)?)?(?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\((.*)\)\)? ?)?)?(?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\((.*)\)\)? ?)?)?\)<\/font><\/td>\s*<td>(\d{1,})&nbsp;\/&nbsp;((?:\d{1,})|(?:없음))<\/td>\s*<td align="left">(.+)?<br>
 
@@ -131,7 +136,7 @@ object Course {
 
     val courseList = (for {
       c <- courseRegex findAllMatchIn body
-    } yield c.subgroups).toSeq
+    } yield c).toSeq
 
     val courseListSize = (for {
       m <- """<td class="table_green">(\d){1,}<\/td>""".r findAllMatchIn body
@@ -145,7 +150,37 @@ object Course {
       assert(false)
     }
 
-    courseList.map { courseMatch =>
+    courseList.map { courseMatchOriginal =>
+      val courseMatch = courseMatchOriginal.subgroups
+      val timeRegex = """(Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s*(\d{0,2})\s*(\d{0,2})\s*(\d{0,2})\s*(\d{0,2})\s*(?:\((.*?)\))?""".r
+
+      val timeList = (for {
+        time <- timeRegex findAllMatchIn courseMatchOriginal.matched
+        timeList <- time.subgroups
+        hasClassroom = Try(timeList.last.toInt).toOption.getOrElse(21) > 20
+        classroom <- if (hasClassroom) Some(timeList.last) else None
+      } yield if (hasClassroom) timeList.init -> classroom else timeList -> classroom)
+
+
+
+
+      val timeMap = (Map[DayOfWeek,CourseTime]() /: timeList){ (acc, xs) =>
+        acc + (getDayOfWeek(xs(0)) -> new CourseTime(xs.tail)
+      }
+
+
+/*
+      val timeMap = (Map[DayOfWeek,CourseTime]() /: List(
+        (courseMatch(13), List(courseMatch(14), courseMatch(15), courseMatch(16)),
+          if (courseMatch(17) != null) courseMatch(17) else if (courseMatch(22) != null) courseMatch(22) else courseMatch(27)),
+        (courseMatch(18), List(courseMatch(19), courseMatch(20), courseMatch(21)),
+          if (courseMatch(22) == null) courseMatch(27) else courseMatch(22)),
+        (courseMatch(23), List(courseMatch(24), courseMatch(25), courseMatch(26)), courseMatch(27)))) (
+        (m, t) => t match {
+          case (null, _, _) => m
+          case t => m + (getDayOfWeek(t._1) -> new CourseTime(t._2, t._3))
+        })
+ */
       Course(
         courseMatch(0),        //courseType
         Try(courseMatch(1).toInt).toOption,  //courseYear
@@ -160,19 +195,10 @@ object Course {
         if (courseMatch(10) != null) Some(courseMatch(10)) else None, //professornameadditional
         courseMatch(11).toInt, //credithours
         courseMatch(12).toInt, //coursehours
-        (Map[DayOfWeek,CourseTime]() /: List(
-          (courseMatch(13), List(courseMatch(14), courseMatch(15), courseMatch(16)),
-            if (courseMatch(17) != null) courseMatch(17) else if (courseMatch(22) != null) courseMatch(22) else courseMatch(27)),
-          (courseMatch(18), List(courseMatch(19), courseMatch(20), courseMatch(21)),
-            if (courseMatch(22) == null) courseMatch(27) else courseMatch(22)),
-          (courseMatch(23), List(courseMatch(24), courseMatch(25), courseMatch(26)), courseMatch(27)))) (
-          (m, t) => t match {
-            case (null, _, _) => m
-            case t => m + (getDayOfWeek(t._1) -> new CourseTime(t._2, t._3))
-          }),
-        courseMatch(28).toInt, //currentlyenrolled
-        Try(courseMatch(29).toInt).toOption, //maximumenrolled
-        if (courseMatch(30) != null) Some(courseMatch(30)) else None //note
+        timeMap,
+        courseMatch(13).toInt, //currentlyenrolled
+        Try(courseMatch(14).toInt).toOption, //maximumenrolled
+        if (courseMatch(15) != null) Some(courseMatch(30)) else None //note
       )
     }.toArray
   }
