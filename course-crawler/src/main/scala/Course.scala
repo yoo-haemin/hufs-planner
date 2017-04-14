@@ -118,12 +118,12 @@ object Course {
       //Regex part 2: required, online, foreignLanguage, teamteaching, professorNameMain, professornameadditional, creditHours, courseHours
       """(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)<td align="left">(.*)\s*(?:<br>\s*<font class="txt_gray8">\((.*)\s*\)<\/font>)?\s*<\/td>\s*<td>(\d)<\/td>\s*<td>(\d)<\/td>\s*""",
       //Regex part 2: courseTime
-      """<td align="left">.*<br><font class="txt_gray8">\((?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\((.*)\)\)? ?)?)?(?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\((.*)\)\)? ?)?)?(?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\((.*)\)\)? ?)?)?\)<\/font><\/td>\s*""",
+      """<td align="left">.*<br><font class="txt_gray8">\((?:([A-Z][a-z]{2})?\s*(\d{1,2})?\s*(\d{1,2})?\s*?(\d{1,2})? ?(?:\((.*)\)\)? ?)?)?(?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\((.*)\)\)? ?)?)?(?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\((.*)\)\)? ?)?)?\)<\/font><\/td>\s*""",
       //Regex part 3: rest
       """<td>(\d{1,})&nbsp;\/&nbsp;((?:\d{1,})|(?:없음))<\/td>\s*<td align="left">(.+)?<br>"""
     )
 
-    //Fullregex : <td>(.*)<\/td>\s*<td>(\d)?<\/td>\s*<td>([A-Z]{1,2}\d{5}[A-Za-z0-9]\d{1,2})<\/td>\s*<td align="left">\s*<!--.*-->\s*<div\s*.*\s*.\s*<font class="txt_navy">(.*)<\/font><br>\s*(?:<font class=['"]txt_gray8['"]>\((.*)\)<\/font>\s*)?<\/div>\s*<\/td>\s*<td>\s*.*\s*.*\s*<\/td>\s*(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)<td align="left">(.*)\s*(?:<br>\s*<font class="txt_gray8">\((.*)\s*\)<\/font>)?\s*<\/td>\s*<td>(\d)<\/td>\s*<td>(\d)<\/td>\s*<td align="left">.*<br><font class="txt_gray8">\((?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\((.*)\)\)? ?)?)?(?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\((.*)\)\)? ?)?)?(?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\((.*)\)\)? ?)?)?\)<\/font><\/td>\s*<td>(\d{1,})&nbsp;\/&nbsp;((?:\d{1,})|(?:없음))<\/td>\s*<td align="left">(.+)?<br>
+    //Fullregex : <td>(.*)<\/td>\s*<td>(\d)?<\/td>\s*<td>([A-Z]{1,2}\d{5}[A-Za-z0-9]\d{1,2})<\/td>\s*<td align="left">\s*<!--.*-->\s*<div\s*.*\s*.\s*<font class="txt_navy">(.*)<\/font><br>\s*(?:<font class=['"]txt_gray8['"]>\((.*)\)<\/font>\s*)?<\/div>\s*<\/td>\s*<td>\s*.*\s*.*\s*<\/td>\s*(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)(?:<td>(.*)<\/td>\s*)<td align="left">(.*)\s*(?:<br>\s*<font class="txt_gray8">\((.*)\s*\)<\/font>)?\s*<\/td>\s*<td>(\d)<\/td>\s*<td>(\d)<\/td>\s*<td align="left">.*<br><font class="txt_gray8">\((?:([A-Z][a-z]{2})?\s*(\d{1,2})?\s*(\d{1,2})?\s*?(\d{1,2})? ?(?:\((.*)\)\)? ?)?)?(?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\((.*)\)\)? ?)?)?(?:([A-Z][a-z]{2}) (\d{1,2}) (\d{1,2})? ?(\d{1,2})? ?(?:\((.*)\)\)? ?)?)?\)<\/font><\/td>\s*<td>(\d{1,})&nbsp;\/&nbsp;((?:\d{1,})|(?:없음))<\/td>\s*<td align="left">(.+)?<br>
 
     //coursetime original regex: (?:[C0-9]\d{3,4}(?:-1)?)|(?:B[12]-\d{2})|(?:사이버관 대강당)|(?:오바마홀)|(?:무용실)|(?:AT [A-Z0-9]*)
 
@@ -140,11 +140,8 @@ object Course {
     //Make sure we have read all the courses
     if (courseList.size != courseListSize) {
       println(s"Total size of the body: ${courseListSize}, but regex only matched ${courseList.size}!\nMore info:")
-      val regexFailBodyInfo = """<.*selected""".r findAllMatchIn body
+      val regexFailBodyInfo = """<option\s*value=".*"\s*selected""".r findAllMatchIn body
       regexFailBodyInfo.foreach(println)
-
-      println(body)
-
       assert(false)
     }
 
