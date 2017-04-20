@@ -35,16 +35,4 @@ class CourseAreaCrawlerSpec extends FlatSpec with Matchers {
   }
 
   val courses201701 = CourseAreaCrawler(2017,1)
-  // "Extracting Majors from 2017-1 course" should "contain 68 areas" in {
-  //   courses201701.get._1.size shouldEqual 68
-
-  //   //println(courses201701.get._1.head)
-  // }
-
-  // "Extracting Liberal Arts from 2017-1 course" should "contain 16 areas" in {
-  //   courses201701.get._2.size shouldEqual 17
-  // }
-
-
-
 }

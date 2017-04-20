@@ -77,7 +77,6 @@ object CourseAreaCrawler {
     }
   }
 }
-
 /*
   def createMajorParams(majorParams: Map[String,String]): Map[String,String] =  majorParams ++ Map(
     "gubun" -> "1" //, //전공을 선택

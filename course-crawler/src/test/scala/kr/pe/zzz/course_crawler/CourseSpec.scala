@@ -44,7 +44,6 @@ class CourseSpec extends FlatSpec with Matchers {
 
   "Reading Courses from sample json" should "validate" in {
     val courseResult: JsResult[Course] = sampleCourseJson.validate[Course]
-    println(courseResult)
     courseResult match {
       case s: JsSuccess[Course] => assert(Course.unapply(s.get).get._14.size > 0)
       case e: JsError => fail(JsError.toJson(e).toString())
@@ -57,7 +56,6 @@ class CourseSpec extends FlatSpec with Matchers {
       3,3,Map(DayOfWeek.MONDAY -> CourseTime(SortedSet(1, 2, 3),"3503")),48,Some(61),Some("1전공자만 수강"))
 
     val sample2JsonStr = Json.prettyPrint(Json.toJson(sample))
-    println(sample2JsonStr)
     Json.parse(sample2JsonStr).validate[Course] shouldEqual JsSuccess(sample)
   }
 }
