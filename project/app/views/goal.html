@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Goal</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+    <link href="//fonts.googleapis.com/css?family=Roboto|Montserrat:400,700|Open+Sans:400,300,600" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="../../target/web/public/main/styles/summary.css"/>
+
+    <!--bootstrap ver4.0 -->
+    <!--
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    -->
+</head>
+
+<body>
+<!--navigation bar start-->
+<header class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <nav class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">홈으로</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+
+                <li><a href="/signIn">로그인</a></li>
+                <li><a href="/signUp">회원가입</a></li>
+                <li><a href="/summary">도표요약</a></li>
+                <li><a href="/goal">목표과목과 학점</a></li>
+
+            </ul>
+        </nav>
+    </div>
+</header>
+<!--navigation bar end-->
+
+<main class="container">
+
+    <div class="col-md-6" id="first_major">
+        <h1>제1전공</h1>
+
+        <div>
+        <h3>다음학기 추천 강의</h3>
+        </div>
+
+        <div>
+            <h3>재수강</h3>
+        </div>
+
+        <div>
+            <h3>기타 전공인정 강의 </h3>
+        </div>
+
+    </div>
+
+
+
+    <div class="col-md-6" id="second_major">
+        <h1>제2전공</h1>
+
+        <div>
+            <h3>다음학기 추천 강의</h3>
+        </div>
+
+        <div>
+            <h3>재수강</h3>
+        </div>
+
+        <div>
+            <h3>기타 전공인정 강의 </h3>
+        </div>
+
+    </div>
+
+
+
+    <div class="col-md-12">
+        <h1>교양과목</h1>
+
+
+
+            <label class="btn btn-success">
+                <input type="checkbox" autocomplete="off" id="checkAll">전체
+                <span class="glyphicon glyphicon-ok"></span>
+            </label>
+
+            <label class="btn btn-primary">
+                <input type="checkbox" autocomplete="off">월요일
+                <span class="glyphicon glyphicon-ok"></span>
+            </label>
+
+            <label class="btn btn-info">
+                <input type="checkbox" autocomplete="off">화요일
+                <span class="glyphicon glyphicon-ok"></span>
+            </label>
+
+            <label class="btn btn-default">
+                <input type="checkbox" autocomplete="off">수요일
+                <span class="glyphicon glyphicon-ok"></span>
+            </label>
+
+            <label class="btn btn-warning">
+                <input type="checkbox" autocomplete="off">목요일
+                <span class="glyphicon glyphicon-ok"></span>
+            </label>
+
+            <label class="btn btn-danger">
+                <input type="checkbox" autocomplete="off">금요일
+                <span class="glyphicon glyphicon-ok"></span>
+            </label>
+
+
+
+
+
+    </div>
+</main>
+
+<script type="text/javascript">
+
+    $("#checkAll").change(function () {
+        $("input:checkbox").prop('checked', $(this).prop("checked"));
+    });
+
+
+</script>
+
+
+
+<!--bootstrap ver 4.0-->
+<!--
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+-->
+</body>
+</html>
