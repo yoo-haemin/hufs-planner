@@ -1,6 +1,7 @@
 package models
 
 import java.util.UUID
+import fun.lambda.coursecrawler._
 
 import com.mohiva.play.silhouette.api.{ Identity, LoginInfo }
 
@@ -24,7 +25,9 @@ case class User(
   fullName: Option[String],
   email: Option[String],
   avatarURL: Option[String],
-  activated: Boolean) extends Identity {
+  activated: Boolean,
+  course: Course
+) extends Identity {
 
   /**
    * Tries to construct a name.
@@ -38,5 +41,7 @@ case class User(
       case (None, Some(l)) => Some(l)
       case _ => None
     }
+    
+    
   }
 }

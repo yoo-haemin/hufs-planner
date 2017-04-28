@@ -9,6 +9,9 @@ version := "0.0.1"
 scalaVersion := "2.11.8"
 
 resolvers += Resolver.jcenterRepo
+resolvers += 
+  "Lambda Fun Repo" at "https://repo.lambda.fun/artifactory/sbt-dev-local/"
+
 
 libraryDependencies ++= Seq(
   "com.mohiva" %% "play-silhouette" % "4.0.0",
@@ -25,11 +28,13 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-slick" % "2.1.0",
   "com.typesafe.play" %% "play-slick-evolutions" % "2.1.0",
   "com.typesafe.slick" %% "slick" % "3.2.0",
-  //"com.typesafe.slick" %% "" % "",
+  "fun.lambda" %% "hufs-course-crawler" % "0.0.1",
   specs2 % Test,
   cache,
   filters
 )
+
+
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
