@@ -1,0 +1,30 @@
+#+TITLE: 데이터베이스 만들기
+#+OPTIONS: toc:nil
+#+startup: indent
+
+https://www.ntu.edu.sg/home/ehchua/programming/sql/relational_database_design.html
+
+* Define the Purpose of the Database (Requirement Analysis)
+** Sample input forms
+- 유저와
+- 
+** Sample queries
+- 유저
+** Sample reports
+
+* Gather Data, Organize in tables and Specify the Primary Keys
+
+
+* Create Relationships among Tables
+** STUDENT
+*** Description
+** COURSE_REG
+** COURSE
+** MAJOR_REG
+** MAJOR
+*** Description
+
+** COURSE_REQ
+*** Description
+Course Requirements
+
