@@ -41,7 +41,6 @@ case class User(
       case (None, Some(l)) => Some(l)
       case _ => None
     }
-    
-    
+
   }
 }

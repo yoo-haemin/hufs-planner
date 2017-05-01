@@ -7,7 +7,7 @@ import slick.lifted.ProvenShape.proveShapeOf
 
 trait DBTableDefinitions {
 
-  case class DBUser (
+  case class DBUser(
     userID: String,
     firstName: Option[String],
     lastName: Option[String],
@@ -26,7 +26,7 @@ trait DBTableDefinitions {
     def * = (id, firstName, lastName, fullName, email, avatarURL) <> (DBUser.tupled, DBUser.unapply)
   }
 
-  case class DBLoginInfo (
+  case class DBLoginInfo(
     id: Option[Long],
     providerID: String,
     providerKey: String
@@ -39,7 +39,7 @@ trait DBTableDefinitions {
     def * = (id.?, providerID, providerKey) <> (DBLoginInfo.tupled, DBLoginInfo.unapply)
   }
 
-  case class DBUserLoginInfo (
+  case class DBUserLoginInfo(
     userID: String,
     loginInfoId: Long
   )
@@ -50,7 +50,7 @@ trait DBTableDefinitions {
     def * = (userID, loginInfoId) <> (DBUserLoginInfo.tupled, DBUserLoginInfo.unapply)
   }
 
-  case class DBPasswordInfo (
+  case class DBPasswordInfo(
     hasher: String,
     password: String,
     salt: Option[String],
@@ -65,7 +65,7 @@ trait DBTableDefinitions {
     def * = (hasher, password, salt, loginInfoId) <> (DBPasswordInfo.tupled, DBPasswordInfo.unapply)
   }
 
-  case class DBOAuth1Info (
+  case class DBOAuth1Info(
     id: Option[Long],
     token: String,
     secret: String,
@@ -80,7 +80,7 @@ trait DBTableDefinitions {
     def * = (id.?, token, secret, loginInfoId) <> (DBOAuth1Info.tupled, DBOAuth1Info.unapply)
   }
 
-  case class DBOAuth2Info (
+  case class DBOAuth2Info(
     id: Option[Long],
     accessToken: String,
     tokenType: Option[String],
@@ -98,24 +98,24 @@ trait DBTableDefinitions {
     def loginInfoId = column[Long]("logininfoid")
     def * = (id.?, accessToken, tokenType, expiresIn, refreshToken, loginInfoId) <> (DBOAuth2Info.tupled, DBOAuth2Info.unapply)
   }
-  
-  case class DBOpenIDInfo (
+
+  case class DBOpenIDInfo(
     id: String,
     loginInfoId: Long
   )
-  
+
   class OpenIDInfos(tag: Tag) extends Table[DBOpenIDInfo](tag, "openidinfo") {
     def id = column[String]("id", O.PrimaryKey)
     def loginInfoId = column[Long]("logininfoid")
     def * = (id, loginInfoId) <> (DBOpenIDInfo.tupled, DBOpenIDInfo.unapply)
   }
-  
-  case class DBOpenIDAttribute (
+
+  case class DBOpenIDAttribute(
     id: String,
     key: String,
     value: String
   )
-  
+
   class OpenIDAttributes(tag: Tag) extends Table[DBOpenIDAttribute](tag, "openidattributes") {
     def id = column[String]("id")
     def key = column[String]("key")
@@ -132,8 +132,8 @@ trait DBTableDefinitions {
   val slickOAuth2Infos = TableQuery[OAuth2Infos]
   val slickOpenIDInfos = TableQuery[OpenIDInfos]
   val slickOpenIDAttributes = TableQuery[OpenIDAttributes]
-  
+
   // queries used in multiple places
-  def loginInfoQuery(loginInfo: LoginInfo) = 
+  def loginInfoQuery(loginInfo: LoginInfo) =
     slickLoginInfos.filter(dbLoginInfo => dbLoginInfo.providerID === loginInfo.providerID && dbLoginInfo.providerKey === loginInfo.providerKey)
 }
