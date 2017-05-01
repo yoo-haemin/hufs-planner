@@ -1,107 +1,171 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <title>외학도 팀 중간발표 2</title>
-    <meta name="description" content="외학도팀 중간발표 슬라이드">
-    <meta name="author" content="유해민, 정의형">
+    <head>
+        <meta charset="utf-8">
+        <title>외학도 팀 중간발표 2</title>
+        <meta name="description" content="외학도팀 중간발표 슬라이드">
+        <meta name="author" content="유해민, 정의형">
 
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/css/reveal.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/css/theme/beige.min.css" id="theme">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/css/reveal.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/css/theme/beige.min.css" id="theme">
 
-    <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/lib/css/zenburn.min.css">
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/lib/css/zenburn.min.css">
 
-    <!-- Printing and PDF exports -->
-    <script>
-     var link = document.createElement('link');
-     link.rel = 'stylesheet';
-     link.type = 'text/css';
-     link.href = window.location.search.match(/print-pdf/gi) ? 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/css/print/pdf.min.css' : 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/css/print/paper.min.css';
-     document.getElementsByTagName('head')[0].appendChild(link);
+        <!-- Printing and PDF exports -->
+        <script>
+         var link = document.createElement('link');
+         link.rel = 'stylesheet';
+         link.type = 'text/css';
+         link.href = window.location.search.match(/print-pdf/gi) ? 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/css/print/pdf.min.css' : 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/css/print/paper.min.css';
+         document.getElementsByTagName('head')[0].appendChild(link);
 
-    </script>
+        </script>
 
-    <!--[if lt IE 9]>
-      <script src="lib/js/html5shiv.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="reveal">
-      <div class="slides">
-        <section>
-          <h2>외대 학우들의 도우미</h2>
-          <h3>2차 중간발표</h3>
-          <h5>https://chi.zzz.pe.kr/mid2</h5>
-          <p>
-            <br />
-            <small>201302131 유해민</small>
-            <br />
-            <small>201203247 정의형</small>
-          </p>
-        </section>
-        <section>
+        <!--[if lt IE 9]>
+            <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h2>외대 학우들의 도우미</h2>
+                    <h3>2차 중간발표</h3>
+                    <h5>https://chi.zzz.pe.kr/mid2</h5>
+                    <p>
+                        <br />
+                        <small>201302131 유해민</small>
+                        <br />
+                        <small>201203247 정의형</small>
+                    </p>
+                </section>
+                <section>
+                    <h4>변명:
+                        <span class="fragment" data-fragment-index="0">
+                            목요일까지 중간고사를 치는 바람에 얼마 못했습니다.
+                        </span>
+                    </h4>
+                </section>
+                <section>
+                    <section>
+                        <h3>
+                            Course Crawler
+                        </h3>
+                        <h4>
+                            목적
+                        </h4>
+                        <ul>
+                            <li>
+                                학교의 강의를 모델링
+                            </li>
+                            <li>
+                                강의와 상호연동되는 JSON 형식을 만듬
+                            </li>
+                            <li>
+                                학교의 강희계획서 사이트에서 강의를 크롤링
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>모델링을 가져오고 싶은데?</h3>
+                        <ul>
+                            <li class="fragment">
+                                소스파일 복붙
+                            </li>
+                            <li class="fragment">
+                                JAR파일을 대상 프로젝트에 투하
+                            </li>
+                            <li class="fragment">
+                                프로젝트 관리 툴을 사용
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>내 라이브러리를 관리하자</h3>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>DB</h3>
+                        <h4>
+                            ERD 다이어그램?
+                        </h4>
+                    </section>
+                    <section>
+                        <h3>
+                            공책에 그린 다이어그램
+                        </h3>
+                        <a href="#" class="navigate-down enabled">
+                            <img alt="DB Diagram on paper" src="https://static.tonkotsu-ra.men:12212/erd-paper.jpg" width="982" height="559" />
+                        </a>
+                    </section>
+                    <section>
+                        <h3>
+                            MySQL Workbench로 그린 다이어그램
+                        </h3>
+                        <a href="#" class="navigate-down enabled">
+                            <img alt="DB Diagram with MySQL Workbench" src="https://static.tonkotsu-ra.men:12212/model.png" width="982" height="559" />
+                        </a>
+                    </section>
+                </section>
+            </div>
+        </div>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/lib/js/head.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/js/reveal.min.js"></script>
 
+        <script>
+         // More info https://github.com/hakimel/reveal.js#configuration
+         Reveal.initialize({
+             controls: true,
+             progress: true,
+             history: true,
+             center: true,
 
-        </section>
-      </div>
-    </div>
+             transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/lib/js/head.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/js/reveal.min.js"></script>
-
-    <script>
-     // More info https://github.com/hakimel/reveal.js#configuration
-     Reveal.initialize({
-       controls: true,
-       progress: true,
-       history: true,
-       center: true,
-
-       transition: 'slide', // none/fade/slide/convex/concave/zoom
-
-       // More info https://github.com/hakimel/reveal.js#dependencies
-       dependencies: [{
-         src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/lib/js/classList.js',
-         condition: function() {
-           return !document.body.classList;
-         }
-       },
-                      {
-                        src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/plugin/markdown/marked.js',
-                        condition: function() {
-                          return !!document.querySelector('[data-markdown]');
-                        }
-                      },
-                      {
-                        src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/plugin/markdown/markdown.min.js',
-                        condition: function() {
-                          return !!document.querySelector('[data-markdown]');
-                        }
-                      },
-                      {
-                        src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/plugin/highlight/highlight.min.js',
-                        async: true,
-                        callback: function() {
-                          hljs.initHighlightingOnLoad();
-                        }
-                      },
-                      {
-                        src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/plugin/zoom-js/zoom.min.js',
-                        async: true
-                      },
-                      {
-                        src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/plugin/notes/notes.min.js',
-                        async: true
-                      }
-       ]
-     });
-    </script>
-  </body>
+             // More info https://github.com/hakimel/reveal.js#dependencies
+             dependencies: [{
+                 src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/lib/js/classList.js',
+                 condition: function() {
+                     return !document.body.classList;
+                 }
+             },
+                            {
+                                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/plugin/markdown/marked.js',
+                                condition: function() {
+                                    return !!document.querySelector('[data-markdown]');
+                                }
+                            },
+                            {
+                                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/plugin/markdown/markdown.min.js',
+                                condition: function() {
+                                    return !!document.querySelector('[data-markdown]');
+                                }
+                            },
+                            {
+                                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/plugin/highlight/highlight.min.js',
+                                async: true,
+                                callback: function() {
+                                    hljs.initHighlightingOnLoad();
+                                }
+                            },
+                            {
+                                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/plugin/zoom-js/zoom.min.js',
+                                async: true
+                            },
+                            {
+                                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/plugin/notes/notes.min.js',
+                                async: true
+                            }
+             ]
+         });
+        </script>
+    </body>
 </html>
