@@ -9,8 +9,7 @@ version := "0.0.1"
 scalaVersion := "2.11.8"
 
 resolvers += Resolver.jcenterRepo
-resolvers += 
-  "Lambda Fun Repo" at "https://repo.lambda.fun/artifactory/sbt-dev-local/"
+resolvers += "Lambda Fun Repo" at "https://repo.lambda.fun/artifactory/sbt-dev-local/"
 
 
 libraryDependencies ++= Seq(
