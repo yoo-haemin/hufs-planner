@@ -6,18 +6,26 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+    <link rel="shortcut icon" type="image/png" href="@routes.Assets.at(" images
+    /favicon.png")">
     <link href="//fonts.googleapis.com/css?family=Roboto|Montserrat:400,700|Open+Sans:400,300,600" rel="stylesheet">
     <link href="//cdnjs.cloudflare.com/ajax/libs/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
 
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
 
     <link rel="stylesheet" type="text/css" href="../../target/web/public/main/styles/summary.css"/>
 
@@ -54,7 +62,7 @@
         <h1>제1전공</h1>
 
         <div>
-        <h3>다음학기 추천 강의</h3>
+            <h3>다음학기 추천 강의</h3>
         </div>
 
         <div>
@@ -66,7 +74,6 @@
         </div>
 
     </div>
-
 
 
     <div class="col-md-6" id="second_major">
@@ -87,59 +94,264 @@
     </div>
 
 
-
     <div class="col-md-12">
+
         <h1>교양과목</h1>
-
-
+        <fieldset>
+            <legend>요일</legend>
 
             <label class="btn btn-success">
                 <input type="checkbox" autocomplete="off" id="checkAll">전체
                 <span class="glyphicon glyphicon-ok"></span>
             </label>
 
-            <label class="btn btn-primary">
+            <label class="btn btn-primary btn-week">
                 <input type="checkbox" autocomplete="off">월요일
                 <span class="glyphicon glyphicon-ok"></span>
             </label>
 
-            <label class="btn btn-info">
+            <label class="btn btn-info btn-week">
                 <input type="checkbox" autocomplete="off">화요일
                 <span class="glyphicon glyphicon-ok"></span>
             </label>
 
-            <label class="btn btn-default">
+            <label class="btn btn-default btn-week">
                 <input type="checkbox" autocomplete="off">수요일
                 <span class="glyphicon glyphicon-ok"></span>
             </label>
 
-            <label class="btn btn-warning">
+            <label class="btn btn-warning btn-week">
                 <input type="checkbox" autocomplete="off">목요일
                 <span class="glyphicon glyphicon-ok"></span>
             </label>
 
-            <label class="btn btn-danger">
+            <label class="btn btn-danger btn-week">
                 <input type="checkbox" autocomplete="off">금요일
                 <span class="glyphicon glyphicon-ok"></span>
             </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>영역</legend>
+
+            <div class="panel-group col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#collapse1">공통교양</a>
+                        </h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse">
+                        <ul class="list-group">
+
+                            <li class="list-group-item">
+                                <label class="btn btn-success">
+                                    <input type="checkbox" autocomplete="off" id="checkAll_2">전체
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </label>
+                            </li>
+
+                            <li class="list-group-item">
+                                <label class="btn btn-info btn-area">
+                                    <input type="checkbox" autocomplete="off">인문강좌
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </label>
+                            </li>
+
+                            <li class="list-group-item">
+                                <label class="btn btn-info btn-area">
+                                    <input type="checkbox" autocomplete="off">교양외국어
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </label>
+                            </li>
+
+                            <li class="list-group-item">
+                                <label class="btn btn-info btn-area">
+                                    <input type="checkbox" autocomplete="off">실용외국어
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </label>
+                            </li>
+
+                            <li class="list-group-item">
+                                <label class="btn btn-info btn-area">
+                                    <input type="checkbox" autocomplete="off">언어와 문학
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </label>
+                            </li>
+
+                            <li class="list-group-item">
+                                <label class="btn btn-info btn-area">
+                                    <input type="checkbox" autocomplete="off">문화와 예술
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </label>
+                            </li>
+
+                            <li class="list-group-item">
+                                <label class="btn btn-info btn-area">
+                                    <input type="checkbox" autocomplete="off">역사와 철학
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </label>
+                            </li>
+
+                            <li class="list-group-item">
+                                <label class="btn btn-info btn-area">
+                                    <input type="checkbox" autocomplete="off">국가와 사회
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </label>
+                            </li>
+
+                            <li class="list-group-item">
+                                <label class="btn btn-info btn-area">
+                                    <input type="checkbox" autocomplete="off">과학과 기술
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </label>
+                            </li>
+
+                            <li class="list-group-item">
+                                <label class="btn btn-info btn-area">
+                                    <input type="checkbox" autocomplete="off">핵심인문기초
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </label>
+                            </li>
+
+                        </ul>
+                        <div class="panel-footer">교양과목의 영역을 선택하시오</div>
+                    </div>
+                </div>
+            </div>
 
 
 
+            <div class="panel-group col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#collapse2">특수교양</a>
+                        </h4>
+                    </div>
+                    <div id="collapse2" class="panel-collapse collapse">
+                        <ul class="list-group">
 
+                            <li class="list-group-item">
+                                <label class="btn btn-success">
+                                    <input type="checkbox" autocomplete="off" id="checkAll_3">전체 &nbsp; &nbsp; &nbsp;&nbsp;
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </label>
+
+
+                            <li class="list-group-item">
+                                <label class="btn btn-info btn-special">
+                                    <input type="checkbox" autocomplete="off">신입생세미나
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </label>
+                            </li>
+
+                            <li class="list-group-item">
+                                <label class="btn btn-info btn-special">
+                                    <input type="checkbox" autocomplete="off">HUFS CAREER
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </label>
+                            </li>
+
+                            <li class="list-group-item">
+                                <label class="btn btn-info btn-special">
+                                    <input type="checkbox" autocomplete="off">학습포트폴리오
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </label>
+                            </li>
+
+                            <li class="list-group-item">
+                                <label class="btn btn-info btn-special">
+                                    <input type="checkbox" autocomplete="off">건강과 레포츠
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </label>
+                            </li>
+
+                            <li class="list-group-item">
+                                <label class="btn btn-info btn-special">
+                                    <input type="checkbox" autocomplete="off">특별교양
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </label>
+                            </li>
+
+                            <li class="list-group-item">
+                                <label class="btn btn-info btn-special">
+                                    <input type="checkbox" autocomplete="off">외국인을 위한 한국학
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </label>
+                            </li>
+
+                            <li class="list-group-item">
+                                <label class="btn btn-info btn-special">
+                                    <input type="checkbox" autocomplete="off">공동교양(한예종)
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </label>
+                            </li>
+
+                            <li class="list-group-item">
+                                <label class="btn btn-info btn-special">
+                                    <input type="checkbox" autocomplete="off">군사학
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </label>
+                            </li>
+
+                            <li class="list-group-item">
+                                <label class="btn btn-info btn-special">
+                                    <input type="checkbox" autocomplete="off">핵심인문기초
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </label>
+                            </li>
+
+                        </ul>
+                        <div class="panel-footer">교양과목의 영역을 선택하시오</div>
+                    </div>
+                </div>
+            </div>
+
+
+        </fieldset>
 
     </div>
+
+    <div class="col-md-6">
+        <h2>교양과목</h2>
+        <div id="custom-search-input">
+            <div class="input-group col-md-12">
+                <input type="text" class="form-control input-lg"/>
+                <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+            </div>
+        </div>
+    </div>
+
+
+
+
 </main>
 
 <script type="text/javascript">
 
     $("#checkAll").change(function () {
-        $("input:checkbox").prop('checked', $(this).prop("checked"));
+        $(".col-md-12 .btn-week input:checkbox").prop('checked', $(this).prop("checked"));
     });
 
+    $("#checkAll_2").change(function () {
+        $(".col-md-12 .btn-area input:checkbox").prop('checked', $(this).prop("checked"));
+    });
+
+    $("#checkAll_3").change(function () {
+        $(".col-md-12 .btn-special input:checkbox").prop('checked', $(this).prop("checked"));
+    });
 
 </script>
 
+<script type="text/javascript" src="goal.json">
+    var mydata=JSON.parse()
 
+</script>
 
 <!--bootstrap ver 4.0-->
 <!--

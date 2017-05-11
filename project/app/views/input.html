@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Input</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="@routes.Assets.at(" images
+    /favicon.png")">
+    <link href="//fonts.googleapis.com/css?family=Roboto|Montserrat:400,700|Open+Sans:400,300,600" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="../../target/web/public/main/styles/summary.css"/>
+
+    <!--bootstrap ver4.0 -->
+    <!--
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    -->
+
+
+</head>
+
+
+
+<!--navigation bar start-->
+<header class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <nav class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">홈으로</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+
+                <li><a href="/signIn">로그인</a></li>
+                <li><a href="/signUp">회원가입</a></li>
+                <li><a href="/goal">회원정보 입력</a></li>
+                <li><a href="/summary">도표요약</a></li>
+                <li><a href="/goal">목표과목과 학점</a></li>
+
+            </ul>
+        </nav>
+    </div>
+</header>
+<!--navigation bar end-->
+
+<div class="col-md-10 col-md-offset-2">
+    <br>
+    <h3>회원정보 입력하는 방법</h3>
+    <ol>
+        <br>
+        <li> 먼저 "한국외대 종합정보시스템"에 들어가 로그인한다<img src="../../public/images/img1.PNG" width="700px"></li><br>
+        <li> 그 다음 화면좌측 목록에서 "성적/학점/졸업관리"탭을 누른 후 "성적취득현황"을 누른다<br><img src="../../public/images/img3.PNG" width="200px"></li><br>
+        <li>그 후 나타난 "성적취득현황" 페이지를 모두 선택(ctrl + a)한다<br><img src="../../public/images/img4.PNG" width="750px"><br><span class="glyphicon glyphicon-arrow-down" ></span><br><img src="../../public/images/img5.PNG" width="750px"></li><br>
+        <li>모두 선택한 부분을 복사(ctrl + c)한 후 아래 여백에 붙여넣기 한다(ctrl + v) </li><br>
+        <li>맨 아래 제출버튼 클릭!</li>
+    </ol>
+
+
+</div>
+
+<div class="col-md-10 col-md-offset-2">
+    <form method="get">
+
+        <textarea id="get_info" rows="40" cols="100">(여기에 붙여 넣으세요)</textarea><br>
+        <button type="submit">제출</button> <button type="reset"> 지우기</button>
+
+    </form>
+</div>
+
+
+
+
+</body>
+</html>
