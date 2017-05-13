@@ -21,8 +21,9 @@ class MajorDAOImpl @Inject() (
   def all(): Future[Seq[Major]] =
     db.run(majors.result)
 
-  def insert(major: Major): Future[String] =
+  def insert(major: Major): Future[String] = {
     db.run(majors returning majors.map(_.id) += major)
+  }
 
   class MajorsTable(tag: Tag) extends Table[Major](tag, "department_time") {
     def id = column[String]("id")

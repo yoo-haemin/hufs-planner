@@ -8,6 +8,11 @@ import scala.concurrent.Future
 import models.CourseTime
 
 trait CourseTimeDAO {
+  def findById(id: String): Future[Seq[CourseTime]]
+
+  def all(): Future[Map[java.time.DayOfWeek, CourseTime]]
+
+  def insert(major: CourseTime): Future[String]
 
 }
 
@@ -18,18 +23,18 @@ class CourseTimeDAOImpl @Inject() (
   import dbConfig.driver.api._
   val courseTimes = TableQuery[CourseTimesTable]
 
-  def findById(id: String): Future[Seq[CourseTime]] =
-    db.run(courseTimes.filter(_.courseId === id).result)
+  def findById(courseId: Int): Future[Seq[CourseTime]] =
+    db.run(courseTimes.filter(_.courseId === courseId).result)
 
-  def all(): Future[Map[java.time.DayOfWeek,CourseTime]] =
+  def all(): Future[Seq[CourseTime]] =
     db.run(courseTimes.result)
 
-  def insert(major: CourseTime): Future[String] =
-    db.run(courseTimes returning courseTimes.map(_.id) += major)
+  def insert(courseTime: CourseTime): Future[String] =
+    db.run(courseTimes returning courseTimes.map(_.courseId) += courseTime)
 
   class CourseTimesTable(tag: Tag) extends Table[CourseTime](tag, "department_time") {
-    def courseId      = column[Int]("course_id")
-    def courseIdFk = foreignKey("course_id_fk", courseId, courseDao.)
+    def courseId = column[Int]("course_id")
+    //    def courseIdFk = foreignKey("course_id_fk", courseId, courseDao.)
     def timeMon = column[Option[Int]]("time_mon")
     def timeTue = column[Option[Int]]("time_tue")
     def timeWed = column[Option[Int]]("time_wed")
@@ -45,8 +50,7 @@ class CourseTimeDAOImpl @Inject() (
     def roomSat = column[Option[String]]("room_sat")
     def roomSun = column[Option[String]]("room_sun")
 
-    def rowToSeq(t: Tuple15[Int, Option[Int], Option[Int], Option[Int], Option[Int], Option[Int], Option[Int], Option[Int],
-                            Option[String], Option[String], Option[String], Option[String], Option[String], Option[String], Option[String]]): CourseTime = {
+    def rowToSeq(t: Tuple15[Int, Option[Int], Option[Int], Option[Int], Option[Int], Option[Int], Option[Int], Option[Int], Option[String], Option[String], Option[String], Option[String], Option[String], Option[String], Option[String]]): CourseTime = {
       @annotation.tailrec
       def extractTime(timeColumn: Int, cur: Int, acc: Seq[Int]): Seq[Int] =
         if (cur == 33) acc
@@ -54,19 +58,19 @@ class CourseTimeDAOImpl @Inject() (
         else extractTime(timeColumn >>> 1, cur + 1, acc)
 
       CourseTime(t._1, Seq(
-        (DayOfWeek.MONDAY,    t._2, t._9),
-        (DayOfWeek.TUESDAY,   t._3, t._10),
+        (DayOfWeek.MONDAY, t._2, t._9),
+        (DayOfWeek.TUESDAY, t._3, t._10),
         (DayOfWeek.WEDNESDAY, t._4, t._11),
-        (DayOfWeek.THURSDAY,  t._5, t._12),
-        (DayOfWeek.FRIDAY,    t._6, t._13),
-        (DayOfWeek.SATURDAY,  t._7, t._14),
-        (DayOfWeek.SUNDAY,    t._8, t._15)
+        (DayOfWeek.THURSDAY, t._5, t._12),
+        (DayOfWeek.FRIDAY, t._6, t._13),
+        (DayOfWeek.SATURDAY, t._7, t._14),
+        (DayOfWeek.SUNDAY, t._8, t._15)
       ) filter {
-        case (dayOfWeek: DayOfWeek, Some(i), Some(s)) => true
-        case _ => false
-      } map { t =>
-        (t._1, extractTime(t._2.get, 0, Seq[Int]()), t._3.get)
-      })
+          case (dayOfWeek: DayOfWeek, Some(i), Some(s)) => true
+          case _ => false
+        } map { t =>
+          (t._1, extractTime(t._2.get, 0, Seq[Int]()), t._3.get)
+        })
     }
 
     def courseTimeToRow(courseTime: CourseTime): Option[Tuple15[Int, Option[Int], Option[Int], Option[Int], Option[Int], Option[Int], Option[Int], Option[Int], Option[String], Option[String], Option[String], Option[String], Option[String], Option[String], Option[String]]] = courseTime match {
@@ -80,11 +84,11 @@ class CourseTimeDAOImpl @Inject() (
           val timeMap = time.foldLeft(Map[DayOfWeek, (Int, String)]())(
             (acc, t) => acc + (t._1 -> (timeSeqToInt(t._2) -> t._3)))
           Seq(DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY,
-              DayOfWeek.FRIDAY, DayOfWeek.SATURDAY, DayOfWeek.SUNDAY)
+            DayOfWeek.FRIDAY, DayOfWeek.SATURDAY, DayOfWeek.SUNDAY)
             .map(timeMap.get(_) match {
-                   case Some((i, s)) => Some(i) -> Some(s)
-                   case None => None -> None
-                 })
+              case Some((i, s)) => Some(i) -> Some(s)
+              case None => None -> None
+            })
         }
         val timeTuple = (
           id, toRow(xs)(0)._1, toRow(xs)(1)._1, toRow(xs)(2)._1, toRow(xs)(3)._1, toRow(xs)(4)._1, toRow(xs)(5)._1, toRow(xs)(6)._1,
