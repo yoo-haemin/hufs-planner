@@ -6,6 +6,8 @@ import play.api.mvc.Results._
 
 import scala.concurrent.Future
 
+import controllers.routes
+
 /**
  * Custom unsecured error handler.
  */
@@ -20,6 +22,6 @@ class CustomUnsecuredErrorHandler extends UnsecuredErrorHandler {
    * @return The result to send to the client.
    */
   override def onNotAuthorized(implicit request: RequestHeader) = {
-    Future.successful(Redirect(controllers.routes.ApplicationController.index()))
+    Future.successful(Redirect(routes.ApplicationController.index()))
   }
 }

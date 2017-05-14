@@ -9,7 +9,7 @@ body {
 
 main.container{
 
-    background-image: url("../images/simbol.gif");
+    /* background-image: url("../images/simbol.gif"); */
     background-position: center 5%;
     background-repeat: no-repeat;
     background-size: 35%;

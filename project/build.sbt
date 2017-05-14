@@ -13,22 +13,31 @@ resolvers += "Lambda Fun Repo" at "https://repo.lambda.fun/artifactory/sbt-dev-l
 
 
 libraryDependencies ++= Seq(
+  //Dependencies for Silhouette
   "com.mohiva" %% "play-silhouette" % "4.0.0",
   "com.mohiva" %% "play-silhouette-password-bcrypt" % "4.0.0",
   "com.mohiva" %% "play-silhouette-persistence" % "4.0.0",
   "com.mohiva" %% "play-silhouette-crypto-jca" % "4.0.0",
+  "com.mohiva" %% "play-silhouette-testkit" % "4.0.0" % "test",
+
+  //Dependencies for WebJars
   "org.webjars" %% "webjars-play" % "2.5.0-2",
+  "com.adrianhurt" %% "play-bootstrap" % "1.0-P25-B3",
+  "org.webjars" % "ionicons" % "2.0.1",
+  "org.webjars" % "zxcvbn" % "4.3.0",
+
+
+  //General Dependencies
   "net.codingwell" %% "scala-guice" % "4.0.1",
   "com.iheart" %% "ficus" % "1.2.6",
   "com.typesafe.play" %% "play-mailer" % "5.0.0",
   "com.enragedginger" %% "akka-quartz-scheduler" % "1.5.0-akka-2.4.x",
-  "com.adrianhurt" %% "play-bootstrap" % "1.0-P25-B3",
-  "com.mohiva" %% "play-silhouette-testkit" % "4.0.0" % "test",
+  //"fun.lambda" %% "hufs-course-crawler" % "0.0.1",
+
+  //Database Dependencies
   "com.typesafe.play" %% "play-slick" % "2.1.0",
   "com.typesafe.play" %% "play-slick-evolutions" % "2.1.0",
-  "com.typesafe.slick" %% "slick" % "3.2.0",
   "com.h2database" % "h2" % "1.4.195",
-//  "fun.lambda" %% "hufs-course-crawler" % "0.0.1",
   specs2 % Test,
   cache,
   filters

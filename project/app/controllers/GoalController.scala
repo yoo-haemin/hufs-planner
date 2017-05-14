@@ -18,7 +18,7 @@ import scala.concurrent.Future
  * @param socialProviderRegistry The social provider registry.
  * @param webJarAssets The webjar assets implementation.
  */
-class SummaryController @Inject() (
+class GoalController @Inject() (
   val messagesApi: MessagesApi,
   silhouette: Silhouette[DefaultEnv],
   socialProviderRegistry: SocialProviderRegistry,
@@ -31,12 +31,17 @@ class SummaryController @Inject() (
    * @return The result to display.
    */
   def view = silhouette.UnsecuredAction.async { implicit request =>
-    Future.successful(Ok(views.html.summary()))
+    Future.successful(Ok(views.html.goal()))
   }
 
   /* TODO 윗 버전은 관상용, 이 버전으로 바꾸기!!
   def view = silhouette.SecuredAction.async { implicit request =>
-    Future.successful(Ok(views.html.summary(request.identity)))
+    Future.successful(Ok(views.html.input(request.identity)))
   }
    */
+
+  // TODO Finish me!
+  def submit = silhouette.UnsecuredAction.async { implicit request =>
+    Future.successful(Ok("OK"))
+  }
 }

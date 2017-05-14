@@ -12,6 +12,13 @@ reset.password.title = Hufs Course Planner - Reset Password
 change.password.title = Hufs Course Planner - Change Password
 activate.account.title = Hufs Course Planner - Activate Account
 
+# Navigation Bar
+nav.sign.in = Sign in
+nav.sign.up = Sign up
+nav.input = Your information
+nav.goal = Goals
+nav.summary = Summary
+
 toggle.navigation = Toggle navigation
 welcome.signed.in = Welcome, you are now signed in!
 
@@ -103,3 +110,13 @@ email.activate.account.subject = Activate account
 email.activate.account.hello = Hello {0},
 email.activate.account.html.text = Please follow <a href="{0}">this link</a> to confirm and activate your new account.
 email.activate.account.txt.text = Please follow the link to confirm and activate your new account: {0}
+
+# Input Page
+input.title = Input your grades!
+
+# Summary Page
+summary.title = Grade Summary
+
+
+# Goal Page
+goal.title = Input Goal

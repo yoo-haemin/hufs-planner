@@ -1,4 +1,215 @@
-@(user: models.User)(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+@()(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
 
-@main(Messages("home.title"), Some(user)) {
-}
+@main(Messages("summary.title")) {
+    <main class="container">
+        <!--grade info start-->
+        <div class="col-md-5">
+
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#grade_table1" data-toggle="tab">학기별</a></li>
+                <li><a href="#grade_table2" data-toggle="tab">전공구분별</a></li>
+            </ul>
+
+
+            <div class="tab-content">
+
+                <div class="tab-pane fade in active" id="grade_table1">
+                    <h3>학기별 점수</h3>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>학기</th>
+                                <th>점수</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>00</td>
+                                <td>00</td>
+                            </tr>
+                            <tr>
+                                <td>00</td>
+                                <td>00</td>
+                            </tr>
+                            <tr>
+                                <td>00</td>
+                                <td>00</td>
+                            </tr>
+                        </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <td>00</td>
+                                <td>00</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+
+                <div class="tab-pane fade" id="grade_table2">
+                    <h3>전공구분별 점수</h3>
+
+                    <table class="table">
+                        <thead class="thead-inverse">
+                            <tr>
+                                <th>구분</th>
+                                <th>점수</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <th scope="row">1전공</th>
+                                <td>00</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2중전공</th>
+                                <td>00</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">교양</th>
+                                <td>00</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">자선</th>
+                                <td>00</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">교직</th>
+                                <td>00</td>
+                            </tr>
+                        </tbody>
+
+                        <tfoot>
+                            <th>총</th>
+                            <td>00</td>
+                        </tfoot>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+        </div>
+        <!--grade info end-->
+
+        <!--summary info start-->
+        <div class="col-md-6 col-md-offset-1">
+            <table class="table">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>구분</th>
+                        <th>기수강</th>
+                        <th>C+이하</th>
+                        <th>미수강</th>
+                        <th>F</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <th scope="row">1전공</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>mdo</td>
+                        <td>00</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2중전공</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>fat</td>
+                        <td>00</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">교양</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>twitter</td>
+                        <td>00</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">자선</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>twitter</td>
+                        <td>00</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">교직</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>twitter</td>
+                        <td>00</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <th>총</th>
+                    <td>00</td>
+                    <td>00</td>
+                    <td>00</td>
+                    <td>00</td>
+                </tfoot>
+            </table>
+        </div>
+        <!--summary info end-->
+
+        <!--details start-->
+        <div class="column_bottom">
+
+            <table class="table table-bordered">
+                <thead class="thead-bordered">
+                    <tr>
+                        <th>1전공</th>
+                        <th>이중전공</th>
+                        <th>교양</th>
+                        <th>자선</th>
+                        <th>교직이수</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>00</td>
+                        <td>00</td>
+                        <td>00</td>
+                        <td>00</td>
+                        <td>00</td>
+                    </tr>
+                    <tr>
+                        <td>00</td>
+                        <td>00</td>
+                        <td>00</td>
+                        <td>00</td>
+                        <td>00</td>
+                    </tr>
+                    <tr>
+                        <td>00</td>
+                        <td>00</td>
+                        <td>00</td>
+                        <td>00</td>
+                        <td>00</td>
+                    </tr>
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <td>00</td>
+                        <td>00</td>
+                        <td>00</td>
+                        <td>00</td>
+                        <td>00</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <!--details start-->
+
+    </main>
+
+    }

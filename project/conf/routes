@@ -13,6 +13,14 @@ POST        /signUp                          controllers.SignUpController.submit
 GET         /signIn                          controllers.SignInController.view
 POST        /signIn                          controllers.SignInController.submit
 
+GET         /summary                         controllers.SummaryController.view
+
+GET         /input                           controllers.InputController.view
+POST        /input                           controllers.InputController.submit
+
+GET         /goal                            controllers.GoalController.view
+POST        /goal                            controllers.GoalController.submit
+
 GET         /password/forgot                 controllers.ForgotPasswordController.view
 POST        /password/forgot                 controllers.ForgotPasswordController.submit
 GET         /password/reset/:token           controllers.ResetPasswordController.view(token: java.util.UUID)

@@ -1,0 +1,30 @@
+@()(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+@*(user: User)(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets) *@
+
+@main(Messages("input.title")) {
+    <div class="col-md-10 col-md-offset-2">
+        <br>
+        <h3>회원정보 입력하는 방법</h3>
+        <ol>
+            <br>
+            <li> 먼저 "한국외대 종합정보시스템"에 들어가 로그인한다<img src="@routes.Assets.at("images/img1.PNG")" width="700px"></li><br>
+            <li> 그 다음 화면좌측 목록에서 "성적/학점/졸업관리"탭을 누른 후 "성적취득현황"을 누른다<br><img src="@routes.Assets.at("images/img2.PNG")" width="200px"></li><br>
+            <li>그 후 나타난 "성적취득현황" 페이지를 모두 선택(ctrl + a)한다<br><img src="@routes.Assets.at("images/img4.PNG")" width="750px"><br><span class="glyphicon glyphicon-arrow-down" ></span><br><img src="@routes.Assets.at("images/img5.PNG")" width="750px"></li><br>
+            <li>모두 선택한 부분을 복사(ctrl + c)한 후 아래 여백에 붙여넣기 한다(ctrl + v) </li><br>
+            <li>맨 아래 제출버튼 클릭!</li>
+        </ol>
+
+
+    </div>
+
+    <div class="col-md-10 col-md-offset-2">
+        <form method="get">
+
+            <textarea id="get_info" rows="40" cols="100">(여기에 붙여 넣으세요)</textarea><br>
+            <button type="submit">제출</button> <button type="reset"> 지우기</button>
+
+        </form>
+    </div>
+
+
+    }
