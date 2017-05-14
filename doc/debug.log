@@ -1,0 +1,6 @@
+[0513/200608.155:ERROR:scoped_process_suspend.cc(30)] NtSuspendProcess: 기존 프로세스에 액세스하려고 했습니다.  (0xc000010a)
+[0513/200608.170:ERROR:process_info.cc(116)] ReadProcessMemory bool __cdecl crashpad::`anonymous-namespace'::ReadStruct<struct crashpad::process_types::PEB<struct crashpad::process_types::internal::Traits32>>(void *,unsigned __int64,struct crashpad::process_types::PEB<struct crashpad::process_types::internal::Traits32> *): ReadProcessMemory 또는 WriteProcessMemory의 일부 작업만을 마쳤습니다. (0x12B)
+[0513/200608.170:ERROR:process_info.cc(559)] ReadProcessData failed
+[0513/200608.170:ERROR:process_reader_win.cc(233)] ReadMemory at 0x60467dc8 of 12 bytes failed: ReadProcessMemory 또는 WriteProcessMemory의 일부 작업만을 마쳤습니다. (0x12B)
+[0513/200608.170:WARNING:process_snapshot_win.cc(68)] ReadMemory ExceptionInformation failed
+[0513/200608.170:WARNING:crash_report_exception_handler.cc(60)] ProcessSnapshotWin::Initialize failed
