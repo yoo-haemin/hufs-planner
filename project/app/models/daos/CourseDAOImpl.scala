@@ -7,7 +7,7 @@ import play.api.db.slick.DatabaseConfigProvider
 import slick.jdbc.JdbcProfile
 
 import scala.concurrent.Future
-import fun.lambda.coursecrawler._
+//import fun.lambda.coursecrawler._
 import java.time.DayOfWeek
 /*
 class CourseDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigProvider) {

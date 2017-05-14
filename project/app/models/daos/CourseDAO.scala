@@ -1,6 +1,7 @@
 package models.daos
 
 import scala.concurrent.Future
+/*
 import fun.lambda.coursecrawler.Course
 
 trait CourseDAO {
@@ -15,3 +16,4 @@ trait CourseDAO {
 
   def insert(course: Course): Future[Long]
 }
+ */
