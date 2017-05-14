@@ -1,3 +1,4 @@
+/*
 package controllers
 
 import java.util.UUID
@@ -93,3 +94,4 @@ class ApplicationControllerSpec extends PlaySpecification with Mockito {
       .build()
   }
 }
+ */

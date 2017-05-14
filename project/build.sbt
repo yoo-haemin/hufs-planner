@@ -6,7 +6,7 @@ name := """hufs-planner"""
 
 version := "0.0.1"
 
-scalaVersion := "2.11.8"
+scalaVersion := "2.11.11"
 
 resolvers += Resolver.jcenterRepo
 resolvers += "Lambda Fun Repo" at "https://repo.lambda.fun/artifactory/sbt-dev-local/"
@@ -28,6 +28,7 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-slick-evolutions" % "2.1.0",
   "com.typesafe.slick" %% "slick" % "3.2.0",
   "fun.lambda" %% "hufs-course-crawler" % "0.0.1",
+//  "com.typesafe.play" %% "play-json" % "2.5.14",
   specs2 % Test,
   cache,
   filters

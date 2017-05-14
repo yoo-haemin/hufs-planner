@@ -4,16 +4,16 @@ import javax.inject.Inject
 
 import play.api.db.slick.DatabaseConfigProvider
 
-import slick.driver.JdbcProfile
+import slick.jdbc.JdbcProfile
 
 import scala.concurrent.Future
 import fun.lambda.coursecrawler._
 import java.time.DayOfWeek
-
+/*
 class CourseDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigProvider) {
   val dbConfig = dbConfigProvider.get[JdbcProfile]
   val db = dbConfig.db
-  import dbConfig.driver.api._
+  import dbConfig.profile.api._
   private val courses = TableQuery[CoursesTable]
 
   private class DBCourse(
@@ -77,9 +77,6 @@ class CourseDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigPro
   def insert(Course: Course): DBIO[Long] =
     courses returning courses.map(_.id) += Course
 
-  def _deleteAllInProject(projectId: Long): DBIO[Int] =
-    courses.filter(_.project === projectId).delete
-
   private class CoursesTable(tag: Tag) extends Table[DBCourse](tag, "COURSE") {
     def courseType = column[String]("course_type")
     def courseYear = column[Option[Int]]("course_year")
@@ -113,3 +110,4 @@ class CourseDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigPro
   implicit val courseStatusColumnType = MappedColumnType.base[CourseStatus.Value, String](
     _.toString, string => CourseStatus.withName(string))
 }
+ */

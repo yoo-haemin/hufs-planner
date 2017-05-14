@@ -4,7 +4,7 @@ import javax.inject.Inject
 
 import play.api.db.slick.DatabaseConfigProvider
 
-import slick.driver.JdbcProfile
+import slick.jdbc.JdbcProfile
 
 import scala.concurrent.Future
 
@@ -16,7 +16,7 @@ import models.{ Department, Campus, Affiliation }
 class DepartmentDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigProvider) extends DepartmentDAO {
   val dbConfig = dbConfigProvider.get[JdbcProfile]
   val db = dbConfig.db
-  import dbConfig.driver.api._
+  import dbConfig.profile.api._
   val departments = TableQuery[DepartmentsTable]
 
   def findById(id: String): Future[Department] =

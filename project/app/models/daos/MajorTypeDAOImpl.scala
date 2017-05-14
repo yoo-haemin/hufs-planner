@@ -4,7 +4,7 @@ import javax.inject.Inject
 
 import play.api.db.slick.DatabaseConfigProvider
 
-import slick.driver.JdbcProfile
+import slick.jdbc.JdbcProfile
 
 import scala.concurrent.Future
 
@@ -14,7 +14,7 @@ class MajorTypeDAOImpl @Inject() (
   protected val dbConfigProvider: DatabaseConfigProvider) extends MajorTypeDAO {
   val dbConfig = dbConfigProvider.get[JdbcProfile]
   val db = dbConfig.db
-  import dbConfig.driver.api._
+  import dbConfig.profile.api._
   val majorTypes = TableQuery[MajorTypesTable]
 
   def findById(id: Int): Future[MajorType] =

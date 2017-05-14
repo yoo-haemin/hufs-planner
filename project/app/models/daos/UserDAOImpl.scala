@@ -7,7 +7,7 @@ import com.mohiva.play.silhouette.api.LoginInfo
 import models.User
 
 import play.api.db.slick.DatabaseConfigProvider
-import slick.driver.JdbcProfile
+import slick.jdbc.JdbcProfile
 
 /**
  * Give access to the user object.
@@ -16,7 +16,7 @@ class UserDAOImpl @Inject() (
   protected val dbConfigProvider: DatabaseConfigProvider) extends UserDAO {
   val dbConfig = dbConfigProvider.get[JdbcProfile]
   val db = dbConfig.db
-  import dbConfig.driver.api._
+  import dbConfig.profile.api._
   val users = TableQuery[UsersTable]
 
   /**

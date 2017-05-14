@@ -8,7 +8,7 @@ import org.joda.time.DateTime
 
 import play.api.db.slick.DatabaseConfigProvider
 import scala.concurrent.Future
-import slick.driver.JdbcProfile
+import slick.jdbc.JdbcProfile
 
 import scala.concurrent.ExecutionContext.Implicits.global
 
@@ -19,7 +19,7 @@ class AuthTokenDAOImpl @Inject() (
   protected val dbConfigProvider: DatabaseConfigProvider) extends AuthTokenDAO {
   val dbConfig = dbConfigProvider.get[JdbcProfile]
   val db = dbConfig.db
-  import dbConfig.driver.api._
+  import dbConfig.profile.api._
   val authTokens = TableQuery[AuthTokensTable]
 
   /**

@@ -4,7 +4,7 @@ import javax.inject.Inject
 
 import play.api.db.slick.DatabaseConfigProvider
 
-import slick.driver.JdbcProfile
+import slick.jdbc.JdbcProfile
 
 import scala.concurrent.Future
 
@@ -15,7 +15,7 @@ class SubjectDAOImpl @Inject() (
   protected val dbConfigProvider: DatabaseConfigProvider) extends SubjectDAO {
   val dbConfig = dbConfigProvider.get[JdbcProfile]
   val db = dbConfig.db
-  import dbConfig.driver.api._
+  import dbConfig.profile.api._
   val subjects = TableQuery[SubjectsTable]
 
   def findByDepartmentId(id: String): Future[Subject] =

@@ -3,7 +3,7 @@ package models.daos
 import java.time.Year
 import javax.inject.Inject
 import play.api.db.slick.DatabaseConfigProvider
-import slick.driver.JdbcProfile
+import slick.jdbc.JdbcProfile
 import scala.concurrent.Future
 import models.Major
 
@@ -12,7 +12,7 @@ class MajorDAOImpl @Inject() (
   protected val dbConfigProvider: DatabaseConfigProvider) extends MajorDAO {
   val dbConfig = dbConfigProvider.get[JdbcProfile]
   val db = dbConfig.db
-  import dbConfig.driver.api._
+  import dbConfig.profile.api._
   val majors = TableQuery[MajorsTable]
 
   def findById(id: String): Future[Seq[Major]] =

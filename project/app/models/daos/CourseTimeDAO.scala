@@ -3,16 +3,16 @@ package models.daos
 import java.time.{ Year, DayOfWeek }
 import javax.inject.Inject
 import play.api.db.slick.DatabaseConfigProvider
-import slick.driver.JdbcProfile
+import slick.jdbc.JdbcProfile
 import scala.concurrent.Future
 import models.CourseTime
 
 trait CourseTimeDAO {
-  def findById(id: String): Future[Seq[CourseTime]]
+  def findById(courseId: Int): Future[Seq[CourseTime]]
 
-  def all(): Future[Map[java.time.DayOfWeek, CourseTime]]
+  def all(): Future[Seq[CourseTime]]
 
-  def insert(major: CourseTime): Future[String]
+  def insert(major: CourseTime): Future[Int]
 
 }
 
@@ -20,7 +20,7 @@ class CourseTimeDAOImpl @Inject() (
   protected val dbConfigProvider: DatabaseConfigProvider) extends CourseTimeDAO {
   val dbConfig = dbConfigProvider.get[JdbcProfile]
   val db = dbConfig.db
-  import dbConfig.driver.api._
+  import dbConfig.profile.api._
   val courseTimes = TableQuery[CourseTimesTable]
 
   def findById(courseId: Int): Future[Seq[CourseTime]] =
@@ -29,7 +29,7 @@ class CourseTimeDAOImpl @Inject() (
   def all(): Future[Seq[CourseTime]] =
     db.run(courseTimes.result)
 
-  def insert(courseTime: CourseTime): Future[String] =
+  def insert(courseTime: CourseTime): Future[Int] =
     db.run(courseTimes returning courseTimes.map(_.courseId) += courseTime)
 
   class CourseTimesTable(tag: Tag) extends Table[CourseTime](tag, "department_time") {
@@ -75,11 +75,9 @@ class CourseTimeDAOImpl @Inject() (
 
     def courseTimeToRow(courseTime: CourseTime): Option[Tuple15[Int, Option[Int], Option[Int], Option[Int], Option[Int], Option[Int], Option[Int], Option[Int], Option[String], Option[String], Option[String], Option[String], Option[String], Option[String], Option[String]]] = courseTime match {
       case CourseTime(id, xs) if xs.length > 0 => {
-        @annotation.tailrec
         def timeSeqToInt(xs: Seq[Int]): Int =
           xs.map(i => Math.pow(2, i.toDouble).toInt).sum
 
-        @annotation.tailrec
         def toRow(time: Seq[(DayOfWeek, Seq[Int], String)]): Seq[(Option[Int], Option[String])] = {
           val timeMap = time.foldLeft(Map[DayOfWeek, (Int, String)]())(
             (acc, t) => acc + (t._1 -> (timeSeqToInt(t._2) -> t._3)))

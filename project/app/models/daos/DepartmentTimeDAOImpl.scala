@@ -3,7 +3,7 @@ package models.daos
 import java.time.Year
 import javax.inject.Inject
 import play.api.db.slick.DatabaseConfigProvider
-import slick.driver.JdbcProfile
+import slick.jdbc.JdbcProfile
 import scala.concurrent.Future
 import java.time.Year
 import models.{ DepartmentTime, Semester }
@@ -13,7 +13,7 @@ class DepartmentTimeDAOImpl @Inject() (
   protected val dbConfigProvider: DatabaseConfigProvider) extends DepartmentTimeDAO {
   val dbConfig = dbConfigProvider.get[JdbcProfile]
   val db = dbConfig.db
-  import dbConfig.driver.api._
+  import dbConfig.profile.api._
   val departmentTimes = TableQuery[DepartmentTimesTable]
 
   def findByDepartmentId(id: String): Future[DepartmentTime] =
