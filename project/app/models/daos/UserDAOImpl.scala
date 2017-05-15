@@ -46,16 +46,13 @@ class UserDAOImpl @Inject() (
   def save(user: User) =
     db.run(users returning users += user)
 
-  class UsersTable(tag: Tag) extends Table[User](tag, "department_time") {
+  class UsersTable(tag: Tag) extends Table[User](tag, "users") {
     def userID = column[UUID]("user_id", O.PrimaryKey)
     def loginInfo = column[LoginInfo]("login_info")
-    def firstName = column[Option[String]]("first_name")
-    def lastName = column[Option[String]]("last_name")
-    def fullName = column[Option[String]]("full_name")
     def email = column[Option[String]]("email")
-    def avatarURL = column[Option[String]]("avatar_url")
+    def classYear = column[Short]("class_yr")
     def activated = column[Boolean]("activated")
-    def * = (userID, loginInfo, firstName, lastName, fullName, email, avatarURL, activated) <> (User.tupled, User.unapply _)
+    def * = (userID, loginInfo, email, classYear, activated) <> (User.tupled, User.unapply _)
   }
 
   val loginInfoSeparator = "`>|"

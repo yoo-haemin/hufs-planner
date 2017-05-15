@@ -29,7 +29,7 @@ class MajorTypeDAOImpl @Inject() (
   def insert(MajorType: MajorType): Future[Int] =
     db.run(majorTypes returning majorTypes.map(_.id) += MajorType)
 
-  class MajorTypesTable(tag: Tag) extends Table[MajorType](tag, "major_type") {
+  class MajorTypesTable(tag: Tag) extends Table[MajorType](tag, "major_types") {
     def name = column[String]("year")
     def id = column[Int]("id", O.PrimaryKey, O.AutoInc)
 

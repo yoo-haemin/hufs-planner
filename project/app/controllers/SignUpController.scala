@@ -81,15 +81,11 @@ class SignUpController @Inject() (
             val user = User(
               userID = UUID.randomUUID(),
               loginInfo = loginInfo,
-              firstName = Some(data.firstName),
-              lastName = Some(data.lastName),
-              fullName = Some(data.firstName + " " + data.lastName),
               email = Some(data.email),
-              avatarURL = None,
+              classYear = 0,
               activated = false
             )
             for {
-              avatar <- avatarService.retrieveURL(data.email)
               user <- userService.save(user.copy(avatarURL = avatar))
               authInfo <- authInfoRepository.add(loginInfo, authInfo)
               authToken <- authTokenService.create(user.userID)

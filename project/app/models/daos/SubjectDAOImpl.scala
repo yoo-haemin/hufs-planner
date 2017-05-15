@@ -30,7 +30,7 @@ class SubjectDAOImpl @Inject() (
   def insert(Subject: Subject): Future[String] =
     db.run(subjects returning subjects.map(_.departmentId) += Subject)
 
-  class SubjectsTable(tag: Tag) extends Table[Subject](tag, "department_time") {
+  class SubjectsTable(tag: Tag) extends Table[Subject](tag, "subjects") {
     def departmentId = column[String]("department_id")
     def department = foreignKey("department_id_fk", departmentId, departmentDao.departments)(_.id)
     def name = column[String]("year")

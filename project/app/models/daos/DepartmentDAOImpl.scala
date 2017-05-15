@@ -28,11 +28,11 @@ class DepartmentDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfi
   def insert(Department: Department): Future[String] =
     db.run(departments returning departments.map(_.id) += Department)
 
-  class DepartmentsTable(tag: Tag) extends Table[Department](tag, "DEPARTMENT") {
-    def id = column[String]("ID", O.PrimaryKey)
-    def name = column[String]("NAME")
-    def campus = column[Campus]("CAMPUS")
-    def affiliation = column[Affiliation]("AFFILIATION")
+  class DepartmentsTable(tag: Tag) extends Table[Department](tag, "departments") {
+    def id = column[String]("id", O.PrimaryKey)
+    def name = column[String]("name")
+    def campus = column[Campus]("campus")
+    def affiliation = column[Affiliation]("affiliation")
 
     def * = (id, name, campus, affiliation) <> (Department.tupled, Department.unapply _)
   }

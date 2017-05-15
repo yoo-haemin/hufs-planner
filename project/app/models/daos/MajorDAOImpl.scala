@@ -25,7 +25,7 @@ class MajorDAOImpl @Inject() (
     db.run(majors returning majors.map(_.id) += major)
   }
 
-  class MajorsTable(tag: Tag) extends Table[Major](tag, "department_time") {
+  class MajorsTable(tag: Tag) extends Table[Major](tag, "majors") {
     def id = column[String]("id")
     def majorType = column[Int]("major_type_id")
     def majorTypeId = foreignKey("major_type_id_fk", majorType, majorTypeDao.majorTypes)(_.id)
