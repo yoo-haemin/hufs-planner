@@ -58,7 +58,7 @@ class AuthTokenDAOImpl @Inject() (
     db.run(authTokens.filter { _.authTokenID === id }.delete).flatMap(_ => Future.successful(()))
   }
 
-  class AuthTokensTable(tag: Tag) extends Table[AuthToken](tag, "department_time") {
+  class AuthTokensTable(tag: Tag) extends Table[AuthToken](tag, "auth_tokens") {
     def authTokenID = column[UUID]("authToken_id", O.PrimaryKey)
     def userId = column[UUID]("user_id")
     def expiry = column[DateTime]("expiry")

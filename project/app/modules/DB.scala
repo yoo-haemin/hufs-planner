@@ -4,7 +4,7 @@ import com.mohiva.play.silhouette.api.LoginInfo
 import slick.jdbc.H2Profile.api._
 import scala.concurrent.ExecutionContext.Implicits.global
 import slick.lifted.ProvenShape.proveShapeOf
-
+/*
 trait DBTableDefinitions {
 
   case class DBUser(
@@ -137,3 +137,4 @@ trait DBTableDefinitions {
   def loginInfoQuery(loginInfo: LoginInfo) =
     slickLoginInfos.filter(dbLoginInfo => dbLoginInfo.providerID === loginInfo.providerID && dbLoginInfo.providerKey === loginInfo.providerKey)
 }
+ */

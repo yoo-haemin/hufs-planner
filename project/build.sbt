@@ -26,22 +26,22 @@ libraryDependencies ++= Seq(
   "org.webjars" % "ionicons" % "2.0.1",
   "org.webjars" % "zxcvbn" % "4.3.0",
 
+  //Dependencies for Slick
+  "com.typesafe.play" %% "play-slick" % "2.1.0",
+  "com.typesafe.play" %% "play-slick-evolutions" % "2.1.0",
+  "mysql" % "mysql-connector-java" % "5.1.23",
+  //"com.h2database" % "h2" % "1.4.195",
 
   //General Dependencies
   "net.codingwell" %% "scala-guice" % "4.0.1",
   "com.iheart" %% "ficus" % "1.2.6",
   "com.typesafe.play" %% "play-mailer" % "5.0.0",
   "com.enragedginger" %% "akka-quartz-scheduler" % "1.5.0-akka-2.4.x",
-  //"fun.lambda" %% "hufs-course-crawler" % "0.0.1",
-
-  //Database Dependencies
-  "com.typesafe.play" %% "play-slick" % "2.1.0",
-  "com.typesafe.play" %% "play-slick-evolutions" % "2.1.0",
-  "com.h2database" % "h2" % "1.4.195",
   specs2 % Test,
   cache,
   filters
-)
+  //"fun.lambda" %% "hufs-course-crawler" % "0.0.1",
+  )
 
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
