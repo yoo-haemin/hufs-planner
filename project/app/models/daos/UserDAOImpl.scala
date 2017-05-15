@@ -47,7 +47,7 @@ class UserDAOImpl @Inject() (
     db.run(users returning users += user)
 
   class UsersTable(tag: Tag) extends Table[User](tag, "users") {
-    def userID = column[UUID]("user_id", O.PrimaryKey)
+    def userID = column[UUID]("id", O.PrimaryKey)
     def loginInfo = column[LoginInfo]("login_info")
     def email = column[Option[String]]("email")
     def classYear = column[Short]("class_yr")
