@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `departments` (
   `campus` TINYINT NULL,
   `affiliation` VARCHAR(10) NULL,
   PRIMARY KEY (`id`))
-ENGINE = Aria;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `departments_with_time` (
   `department_id` CHAR(10) NOT NULL,
   PRIMARY KEY (`year`, `semester`),
   INDEX `fk_department_time_department1_idx` (`department_id` ASC))
-ENGINE = Aria;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `subjects` (
   `department_id` CHAR(10) NOT NULL,
   PRIMARY KEY (`id`, `department_id`),
   INDEX `fk_subject_department1_idx` (`department_id` ASC))
-ENGINE = Aria;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `course_times` (
   `room_sun` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC))
-ENGINE = Aria;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -136,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `courses` (
   INDEX `fk_course_department_time1_idx` (`department_time_year` ASC, `department_time_semester` ASC),
   INDEX `fk_course_subject1_idx` (`subject_id` ASC, `subject_department_id` ASC),
   INDEX `fk_course_course_time2_idx` (`course_time_id` ASC))
-ENGINE = Aria;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -162,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `majors` (
   `year` SMALLINT NOT NULL,
   PRIMARY KEY (`id`, `major_type_id`, `year`),
   INDEX `fk_major_major_type1_idx` (`major_type_id` ASC))
-ENGINE = Aria;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
