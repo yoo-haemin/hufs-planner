@@ -22,4 +22,4 @@ case class User(
   email: Option[String],
   classYear: Short,
   activated: Boolean
-) extends Identity 
+) extends Identity

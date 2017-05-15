@@ -28,6 +28,7 @@ full.name = Full name
 email = 이메일
 password = 비밀번호
 SchoolNumber = 학번
+classYear = 입학년도
 send = 보내기
 change = Change
 reset = Reset

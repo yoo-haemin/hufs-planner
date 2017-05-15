@@ -28,7 +28,7 @@ class AuthTokenDAOImpl @Inject() (
    * @param authTokenID The ID of the authToken to find.
    * @return The found authToken or None if no authToken for the given ID could be found.
    */
-  def find(authTokenID: Long) =
+  def find(authTokenID: UUID) =
     db.run(authTokens.filter(_.authTokenID === authTokenID).result.headOption)
 
   /**
@@ -59,7 +59,7 @@ class AuthTokenDAOImpl @Inject() (
   }
 
   class AuthTokensTable(tag: Tag) extends Table[AuthToken](tag, "auth_tokens") {
-    def authTokenID = column[Long]("authtoken_id", O.PrimaryKey)
+    def authTokenID = column[UUID]("authtoken_id", O.PrimaryKey)
     def userId = column[UUID]("user_id")
     def expiry = column[DateTime]("expiry")
     def * = (authTokenID, userId, expiry) <> (AuthToken.tupled, AuthToken.unapply _)

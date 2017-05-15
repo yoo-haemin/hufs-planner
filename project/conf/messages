@@ -36,6 +36,7 @@ email = Email
 password = Password
 passwordcheck = Password Check
 SchoolNumber = School Number
+classYear = Year of class
 send = Send
 change = Change
 reset = Reset

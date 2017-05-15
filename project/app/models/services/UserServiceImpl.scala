@@ -54,21 +54,15 @@ class UserServiceImpl @Inject() (userDAO: UserDAO) extends UserService {
     userDAO.find(profile.loginInfo).flatMap {
       case Some(user) => // Update user with profile
         userDAO.save(user.copy(
-          firstName = profile.firstName,
-          lastName = profile.lastName,
-          fullName = profile.fullName,
-          email = profile.email,
-          avatarURL = profile.avatarURL
+          email = profile.email
         ))
       case None => // Insert a new user
         userDAO.save(User(
           userID = UUID.randomUUID(),
           loginInfo = profile.loginInfo,
-          firstName = profile.firstName,
-          lastName = profile.lastName,
-          fullName = profile.fullName,
           email = profile.email,
-          avatarURL = profile.avatarURL,
+          //TODO change me!
+          classYear = java.time.Year.now().getValue.toShort,
           activated = true
         ))
     }

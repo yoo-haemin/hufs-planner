@@ -38,7 +38,7 @@
                         <li><a href="@routes.SummaryController.view">@Messages("nav.summary")</a></li>
                         <li><a href="@routes.GoalController.view">@Messages("nav.goal")</a></li>
                         @user.map { u =>
-                            <li><a href="@routes.ApplicationController.index">@u.name</a></li>
+                            <li><a href="@routes.ApplicationController.index">@u.email</a></li>
                             @if(u.loginInfo.providerID == com.mohiva.play.silhouette.impl.providers.CredentialsProvider.ID) {
                                 <li><a href="@routes.ChangePasswordController.view">@Messages("change.password")</a></li>
                             }

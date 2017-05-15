@@ -1,5 +1,3 @@
 package models
 
-import java.util.UUID
-
-case class MajorType(id: UUID, name: String)
+case class MajorType(id: Int, name: String)
