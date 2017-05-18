@@ -8,6 +8,8 @@ import slick.jdbc.JdbcProfile
 
 import scala.concurrent.Future
 
+import java.util.UUID
+
 import models.Subject
 
 class SubjectDAOImpl @Inject() (
@@ -31,11 +33,11 @@ class SubjectDAOImpl @Inject() (
     db.run(subjects returning subjects.map(_.departmentId) += Subject)
 
   class SubjectsTable(tag: Tag) extends Table[Subject](tag, "subjects") {
-    def departmentId = column[String]("department_id")
-    def department = foreignKey("department_id_fk", departmentId, departmentDao.departments)(_.id)
-    def name = column[String]("year")
-    def id = column[Int]("id", O.PrimaryKey, O.AutoInc)
+    def id = column[UUID]("id", O.PrimaryKey)
+    def code = column[String]("code", O.SqlType("char(7)"))
+    def departmentId = column[String]("department_id", O.SqlType("char(10)"))
+    def name = column[String]("year", O.SqlType("text"))
 
-    def * = (id, name, departmentId) <> (Subject.tupled, Subject.unapply _)
+    def * = (id, code, departmentId, name) <> (Subject.tupled, Subject.unapply _)
   }
 }

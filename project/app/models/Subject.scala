@@ -1,7 +1,8 @@
 package models
 
 case class Subject(
-  id: Int,
-  name: String,
-  departmentId: String
+  id: java.util.UUID,
+  code: String,
+  departmentId: String,
+  name: String
 )

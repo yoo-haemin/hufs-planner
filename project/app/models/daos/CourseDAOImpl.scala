@@ -1,16 +1,17 @@
 package models.daos
 
 import javax.inject.Inject
-
+import java.util.UUID
 import play.api.db.slick.DatabaseConfigProvider
-
+import slick.collection.heterogeneous.HNil
 import slick.jdbc.JdbcProfile
-
 import scala.concurrent.Future
-//import fun.lambda.coursecrawler._
-import java.time.DayOfWeek
-/*
-class CourseDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigProvider) {
+import fun.lambda.coursecrawler.Course
+import scala.concurrent.ExecutionContext.Implicits.global
+
+class CourseDAOImpl @Inject() (
+  protected val dbConfigProvider: DatabaseConfigProvider)(
+  protected val courseTimeDao: CourseTimeDAO) {
   val dbConfig = dbConfigProvider.get[JdbcProfile]
   val db = dbConfig.db
   import dbConfig.profile.api._
@@ -30,7 +31,6 @@ class CourseDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigPro
     val professorNameAdditional: Option[String],
     val creditHours: Int,
     val courseHours: Int,
-    val courseTime: Map[DayOfWeek, CourseTime],
     val currentlyEnrolled: Int,
     val maximumEnrolled: Option[Int],
     val note: Option[String],
@@ -41,43 +41,25 @@ class CourseDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigPro
     val departmentTimeYear: Int,
     val departmentTimeSemester: Int,
     val subjectDepartmentID: Int,
-    val subjectID: Int
-  ) extends Course(
-    courseType, courseYear, courseNo, courseName1, courseName2, required, online, foreignLanguage,
-    teamTeaching, professorNameMain, professorNameAdditional, creditHours, courseHours, courseTime,
-    currentlyEnrolled, maximumEnrolled, note) {
+    val subjectID: Int) {
 
-    def toCourse = Course(courseType, courseYear, courseNo, courseName1, courseName2, required, online, foreignLanguage, teamTeaching, professorNameMain, professorNameAdditional, creditHours, courseHours, courseTime, currentlyEnrolled, maximumEnrolled, note)
-  }
-
-  def findById(id: Long): Future[Course] =
-    db.run(courses.filter(_.id === id).result.head)
-
-  def findByColor(color: String): DBIO[Option[Course]] =
-    courses.filter(_.color === color).result.headOption
-
-  def findByProjectId(projectId: Long): Future[List[Course]] =
-    db.run(courses.filter(_.project === projectId).to[List].result)
-
-  def partialUpdate(id: Long, color: Option[String], status: Option[CourseStatus.Value], project: Option[Long]): Future[Int] = {
-    import scala.concurrent.ExecutionContext.Implicits.global
-
-    val query = courses.filter(_.id === id)
-
-    val update = query.result.head.flatMap { course =>
-      query.update(course.patch(color, status, project))
+    def toCourse: Future[Course] = {
+      for {
+        courseTime <- courseTimeDao.findById(this.id)
+        courseTimeMap = courseTime.getOrElse(
+          new models.CourseTime(
+            0, Seq[(java.time.DayOfWeek, fun.lambda.coursecrawler.CourseTime)]())).toMap
+      } yield Course(
+        courseType, courseYear, courseNo, courseName1, courseName2, required,
+        online, foreignLanguage, teamTeaching, professorNameMain, professorNameAdditional,
+        creditHours, courseHours, courseTimeMap, currentlyEnrolled, maximumEnrolled, note)
     }
-
-    db.run(update)
   }
 
-  def all(): DBIO[Seq[Course]] =
-    courses.result
+  def findById(id: Int): Future[Course] =
+    db.run(courses.filter(_.id === id).result.head).flatMap(_.toCourse)
 
-  def insert(Course: Course): DBIO[Long] =
-    courses returning courses.map(_.id) += Course
-
-  private class CoursesTable(tag: Tag) extends Table[DBCourse](tag, "COURSE") {
+  private class CoursesTable(tag: Tag) extends Table[DBCourse](tag, "courses") {
     def courseType = column[String]("course_type")
     def courseYear = column[Option[Int]]("course_year")
     def courseNo = column[String]("course_no")
@@ -87,27 +69,27 @@ class CourseDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigPro
     def online = column[Boolean]("online")
     def foreignLanguage = column[Boolean]("foreign_language")
     def teamTeaching = column[Boolean]("team_teaching")
-    def professorNameMain = column[String]("professorNameMain ")
-    def professorNameAdditional = column[Option[String]]("professorNameAdditional ")
-    def creditHours = column[Int]("creditHours ")
-    def courseHours = column[Int]("courseHours ")
-    def courseTime = column[Map[DayOfWeek, CourseTime]]("courseTime ")
-    def currentlyEnrolled = column[Int]("currentlyEnrolled ")
-    def maximumEnrolled = column[Option[Int]]("maximumEnrolled ")
-    def note = column[Option[String]]("note ")
+    def professorNameMain = column[String]("professor_name_main")
+    def professorNameAdditional = column[Option[String]]("professor_name_additional")
+    def creditHours = column[Int]("credit_hours")
+    def courseHours = column[Int]("course_hours")
+    def currentlyEnrolled = column[Int]("currently_enrolled")
+    def maximumEnrolled = column[Option[Int]]("maximum_enrolled")
+    def note = column[Option[String]]("note")
 
-    def id = column[Int]("id ")
-    def departmentID = column[Int]("departmentID ")
-    def courseTimeID = column[Int]("courseTimeID ")
-    def departmentTimeYear = column[Int]("departmentTimeYear ")
-    def departmentTimeSemester = column[Int]("departmentTimeSemester ")
-    def subjectDepartmentID = column[Int]("subjectDepartmentID ")
-    def subjectID = column[Int]("subjectID")
+    def id = column[Int]("id")
+    def departmentID = column[Int]("department_id")
+    def courseTimeID = column[Int]("course_time_id")
+    def departmentTimeYear = column[Int]("department_time_year")
+    def departmentTimeSemester = column[Int]("department_time_semester")
+    def subjectDepartmentID = column[Int]("subject_department_id")
+    def subjectID = column[Int]("subject_id")
+    def courseTime = column[Int]("course_time_id")
 
-    def * = (id, color, status, project) <> (Course.tupled, Course.unapply)
+    def * = courseType :: courseYear :: courseNo :: courseName1 :: courseName2 :: required ::
+      online :: foreignLanguage :: teamTeaching :: professorNameMain :: professorNameAdditional ::
+      creditHours :: courseHours :: currentlyEnrolled :: maximumEnrolled :: note :: id :: departmentID ::
+      courseTimeID :: departmentTimeYear :: departmentTimeSemester :: subjectDepartmentID :: subjectID ::
+      HNil
   }
-
-  implicit val courseStatusColumnType = MappedColumnType.base[CourseStatus.Value, String](
-    _.toString, string => CourseStatus.withName(string))
 }
- */

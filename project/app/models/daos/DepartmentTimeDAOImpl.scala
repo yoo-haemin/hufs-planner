@@ -16,8 +16,8 @@ class DepartmentTimeDAOImpl @Inject() (
   import dbConfig.profile.api._
   val departmentTimes = TableQuery[DepartmentTimesTable]
 
-  def findByDepartmentId(id: String): Future[DepartmentTime] =
-    db.run(departmentTimes.filter(_.departmentId === id).result.head)
+  def findByDepartmentId(id: String): Future[Seq[DepartmentTime]] =
+    db.run(departmentTimes.filter(_.departmentId === id).result)
 
   def all(): Future[Seq[DepartmentTime]] =
     db.run(departmentTimes.result)
@@ -25,11 +25,10 @@ class DepartmentTimeDAOImpl @Inject() (
   def insert(DepartmentTime: DepartmentTime): Future[String] =
     db.run(departmentTimes returning departmentTimes.map(_.departmentId) += DepartmentTime)
 
-  class DepartmentTimesTable(tag: Tag) extends Table[DepartmentTime](tag, "department_time") {
-    def departmentId = column[String]("department_id")
-    def departmentIdFk = foreignKey("department_id_fk", departmentId, departmentDao.departments)(_.id)
-    def year = column[Year]("year", O.PrimaryKey)
-    def semester = column[Semester]("semester", O.PrimaryKey)
+  class DepartmentTimesTable(tag: Tag) extends Table[DepartmentTime](tag, "departments_with_time") {
+    def year = column[Year]("year", O.PrimaryKey, O.SqlType("year"))
+    def semester = column[Semester]("semester", O.PrimaryKey, O.SqlType("tinyint"))
+    def departmentId = column[String]("department_id", O.SqlType("char(10)"))
 
     def * = (departmentId, year, semester) <> (DepartmentTime.tupled, DepartmentTime.unapply _)
   }

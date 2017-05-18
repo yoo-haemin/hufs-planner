@@ -30,6 +30,7 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-slick" % "2.1.0",
   "com.typesafe.play" %% "play-slick-evolutions" % "2.1.0",
   "mysql" % "mysql-connector-java" % "5.1.23",
+  jdbc,
   //"com.h2database" % "h2" % "1.4.195",
 
   //General Dependencies
@@ -39,8 +40,8 @@ libraryDependencies ++= Seq(
   "com.enragedginger" %% "akka-quartz-scheduler" % "1.5.0-akka-2.4.x",
   specs2 % Test,
   cache,
-  filters
-  //"fun.lambda" %% "hufs-course-crawler" % "0.0.1",
+  filters,
+  "fun.lambda" %% "hufs-course-crawler" % "0.0.1"
   )
 
 

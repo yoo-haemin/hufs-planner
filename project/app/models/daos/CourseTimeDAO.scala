@@ -4,7 +4,7 @@ import scala.concurrent.Future
 import models.CourseTime
 
 trait CourseTimeDAO {
-  def findById(courseId: Int): Future[Seq[CourseTime]]
+  def findById(courseId: Int): Future[Option[CourseTime]]
 
   def all(): Future[Seq[CourseTime]]
 
