@@ -40,8 +40,8 @@ libraryDependencies ++= Seq(
   "com.enragedginger" %% "akka-quartz-scheduler" % "1.5.0-akka-2.4.x",
   specs2 % Test,
   cache,
-  filters,
-  "fun.lambda" %% "hufs-course-crawler" % "0.0.1"
+  filters
+  //"fun.lambda" %% "hufs-course-crawler" % "0.0.1"
   )
 
 

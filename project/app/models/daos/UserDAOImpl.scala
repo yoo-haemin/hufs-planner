@@ -19,6 +19,10 @@ class UserDAOImpl @Inject() (
   import dbConfig.profile.api._
   val users = TableQuery[UsersTable]
 
+  //Arbitrary string, used to hold the info in one column
+  //Bad design
+  val loginInfoSeparator = "`>|"
+
   /**
    * Finds a user by its login info.
    *
@@ -52,10 +56,9 @@ class UserDAOImpl @Inject() (
     def email = column[Option[String]]("email", O.SqlType("varchar(255)"))
     def classYear = column[Short]("class_yr", O.SqlType("year"))
     def activated = column[Boolean]("activated", O.SqlType("boolean"))
+
     def * = (userID, loginInfo, email, classYear, activated) <> (User.tupled, User.unapply _)
   }
-
-  val loginInfoSeparator = "`>|"
 
   implicit val loginInfoColumnType: BaseColumnType[LoginInfo] =
     MappedColumnType.base[LoginInfo, String](

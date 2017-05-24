@@ -32,7 +32,7 @@ object Affiliation {
 
   def fromByte(v: Byte): Affiliation = v match {
     case 0 => Undergraduate
-    case _ => sys.error("Campus must be either Seoul or Global")
+    case _ => sys.error("Undefined Affiliation")
   }
 
   def toByte(aff: Affiliation): Byte = aff match {

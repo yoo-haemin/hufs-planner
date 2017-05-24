@@ -18,18 +18,18 @@ class ProfessorDAOImpl @Inject() (
   val dbConfig = dbConfigProvider.get[JdbcProfile]
   val db = dbConfig.db
   import dbConfig.profile.api._
-  val subjects = TableQuery[ProfessorsTable]
+  val professors = TableQuery[ProfessorsTable]
 
-  def findByPrimaryName(name: String): Future[Seq[Professor]] =
-    db.run(subjects.filter(_.name1 === name1).result.head)
+  def findByName(name: String): Future[Seq[Professor]] =
+    db.run(professors.filter(p => p.name1 === name || p.name2 === name).result)
 
   def all(): Future[Seq[Professor]] =
-    db.run(subjects.result)
+    db.run(professors.result)
 
-  def insert(Professor: Professor): Future[String] =
-    db.run(subjects returning subjects.map(_.departmentId) += Professor)
+  def insert(Professor: Professor): Future[UUID] =
+    db.run(professors returning professors.map(_.id) += Professor)
 
-  class ProfessorsTable(tag: Tag) extends Table[Professor](tag, "subjects") {
+  class ProfessorsTable(tag: Tag) extends Table[Professor](tag, "professors") {
     def id = column[UUID]("id", O.PrimaryKey)
     def name1 = column[String]("name1", O.SqlType("text"))
     def name2 = column[Option[String]]("name2", O.SqlType("text"))

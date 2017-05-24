@@ -16,7 +16,7 @@ class BaseModule extends AbstractModule with ScalaModule {
   def configure(): Unit = {
     bind[AuthTokenDAO].to[AuthTokenDAOImpl]
     bind[AuthTokenService].to[AuthTokenServiceImpl]
-    //bind[CourseDAO].to[CourseDAO]
+    //bind[CourseDAO].to[CourseDAOImpl]
     bind[CourseTimeDAO].to[CourseTimeDAOImpl]
     bind[DepartmentDAO].to[DepartmentDAOImpl]
     bind[DepartmentTimeDAO].to[DepartmentTimeDAOImpl]
