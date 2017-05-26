@@ -1,0 +1,3286 @@
+{
+  "year" : 2017,
+  "semester" : 2,
+  "major" : [ {
+    "name1" : "EICC학과",
+    "name2" : "Department of English for International Conferences and Communication",
+    "code" : "A1CE1_H1",
+    "courses" : [ {
+      "courseType" : "전공",
+      "courseYear" : 1,
+      "courseNo" : "A01698101",
+      "courseName1" : "Presenting in English (1)",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : true,
+      "teamTeaching" : false,
+      "professorNameMain" : "Jon H. Bahk-Halberg",
+      "professorNameAdditional" : "Jonny H. Bahk-Halberg",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 35,
+      "note" : "영어프레젠테이션입문(1), Rhetoric&Debate(1)과 동일과목"
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 1,
+      "courseNo" : "A01700101",
+      "courseName1" : "Prose & Paragraphs",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : true,
+      "teamTeaching" : false,
+      "professorNameMain" : "Jon H. Bahk-Halberg",
+      "professorNameAdditional" : "Jonny H. Bahk-Halberg",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 35,
+      "note" : "영어글쓰기입문(1), Culture&Writing(1)과 동일과목"
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 2,
+      "courseNo" : "A01503201",
+      "courseName1" : "Korean-English Translation (1)",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : true,
+      "teamTeaching" : false,
+      "professorNameMain" : "이용만",
+      "professorNameAdditional" : "LEE YONGMAN",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 35,
+      "note" : "한영번역입문(1)과 동일, 영어통번역학과생만 전필, 영어대교류"
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 3,
+      "courseNo" : "A01725101",
+      "courseName1" : "Advanced English-Korean Translation (1)",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : true,
+      "teamTeaching" : false,
+      "professorNameMain" : "조윤주",
+      "professorNameAdditional" : "Cho Yoon Joo",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 35,
+      "note" : "정치경제번역(1)과 동일과목, 영어대교류"
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 3,
+      "courseNo" : "A01725102",
+      "courseName1" : "Advanced English-Korean Translation (1)",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : true,
+      "teamTeaching" : false,
+      "professorNameMain" : "이용만",
+      "professorNameAdditional" : "LEE YONGMAN",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 35,
+      "note" : "정치경제번역(1)과 동일과목, 영어대교류"
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 3,
+      "courseNo" : "A01709101",
+      "courseName1" : "Literary Translation (1)",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : true,
+      "teamTeaching" : false,
+      "professorNameMain" : "조윤주",
+      "professorNameAdditional" : "Cho Yoon Joo",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 35,
+      "note" : "문학번역(1)과 동일과목, 영어대교류"
+    } ]
+  }, {
+    "name1" : "EU전공",
+    "name2" : "EU  Major",
+    "code" : "AAQ01_H1",
+    "courses" : [ {
+      "courseType" : "이중(제2)",
+      "courseYear" : 4,
+      "courseNo" : "A22036201",
+      "courseName1" : "유럽정치세미나",
+      "courseName2" : "The European Politics Seminars",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "박상준",
+      "professorNameAdditional" : "Park Sangjun",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    } ]
+  }, {
+    "name1" : "경제학전공",
+    "name2" : "Economics",
+    "code" : "AECA1_H1",
+    "courses" : [ {
+      "courseType" : "전공",
+      "courseYear" : 2,
+      "courseNo" : "D03310101",
+      "courseName1" : "거시경제학",
+      "courseName2" : "Macroeconomics",
+      "required" : true,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "이효창",
+      "professorNameAdditional" : "Lee Hyochang",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 2,
+      "courseNo" : "D02207101",
+      "courseName1" : "미시경제학",
+      "courseName2" : "Microeconomics",
+      "required" : true,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "황정빈",
+      "professorNameAdditional" : "-",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    } ]
+  }, {
+    "name1" : "광고·PR·브랜딩전공",
+    "name2" : "Advertising·Public Relations·Branding",
+    "code" : "ACDD1_H1",
+    "courses" : [ {
+      "courseType" : "전공",
+      "courseYear" : 2,
+      "courseNo" : "C03303101",
+      "courseName1" : "P.R의이해",
+      "courseName2" : "Introduction to Public Relations",
+      "required" : true,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "",
+      "professorNameAdditional" : "-",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : { },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 2,
+      "courseNo" : "C03301101",
+      "courseName1" : "광고의이해",
+      "courseName2" : "Introduction to Advertising",
+      "required" : true,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "이영화",
+      "professorNameAdditional" : "Lee Young Hwa",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 4,
+      "courseNo" : "C03489101",
+      "courseName1" : "공공브랜딩",
+      "courseName2" : "Public Branding",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "이효복",
+      "professorNameAdditional" : "Lee Hyo-bok",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    } ]
+  }, {
+    "name1" : "국제통상학과",
+    "name2" : "Department of International  Economics and Law",
+    "code" : "AEAA1_H1",
+    "courses" : [ {
+      "courseType" : "전공",
+      "courseYear" : 1,
+      "courseNo" : "D01101F01",
+      "courseName1" : "Principles of Economics (1)",
+      "required" : true,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "김장열",
+      "professorNameAdditional" : "JAN KIM",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 2,
+      "courseNo" : "D01235301",
+      "courseName1" : "Macroeconomic Analysis",
+      "required" : true,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "김장열",
+      "professorNameAdditional" : "JAN KIM",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    } ]
+  }, {
+    "name1" : "노어과",
+    "name2" : "Department of Russian",
+    "code" : "AAD01_H1",
+    "courses" : [ {
+      "courseType" : "전공",
+      "courseYear" : 1,
+      "courseNo" : "A04403101",
+      "courseName1" : "러시아어문법연습(1)",
+      "courseName2" : "Seminar for Russian Grammar(1)",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : true,
+      "professorNameMain" : "김준석",
+      "professorNameAdditional" : "Kim Joon Seok",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 40
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 3,
+      "courseNo" : "A07377301",
+      "courseName1" : "러시아역사(1)",
+      "courseName2" : "History of Russia (1)",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "",
+      "professorNameAdditional" : "-",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : { },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 40
+    } ]
+  }, {
+    "name1" : "독일어과",
+    "name2" : "Department of German",
+    "code" : "AAC01_H1",
+    "courses" : [ {
+      "courseType" : "전공",
+      "courseYear" : 1,
+      "courseNo" : "A03327101",
+      "courseName1" : "독일문화의이해1",
+      "courseName2" : "Understanding German Culture 1",
+      "required" : false,
+      "online" : true,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "장은수",
+      "professorNameAdditional" : "JANG, Eun-Soo",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : { },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 30,
+      "note" : "이중전공우선수강, 수강인원 30명 제한"
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 1,
+      "courseNo" : "A03101701",
+      "courseName1" : "초급독일어1",
+      "courseName2" : "Basic German 1",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "이완호",
+      "professorNameAdditional" : "Wan-Ho Lee",
+      "creditHours" : 3,
+      "courseHours" : 4,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 5, 6, 7, 8 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 5, 6, 7, 8 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 5, 6, 7, 8 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 5, 6, 7, 8 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 5, 6, 7, 8 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 40
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 3,
+      "courseNo" : "A03505101",
+      "courseName1" : "독일EU정책",
+      "courseName2" : "Germany's EU Policy",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "김일곤",
+      "professorNameAdditional" : "KIM, IL GON",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 40
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 3,
+      "courseNo" : "A03467301",
+      "courseName1" : "독일지역사정(역사)",
+      "courseName2" : "German Studies(History)",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "류용상",
+      "professorNameAdditional" : "Yong-Sang Lyu",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 40
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 4,
+      "courseNo" : "A03483101",
+      "courseName1" : "독일명작의이해",
+      "courseName2" : "Understanding Classics in German Literature",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "서송석",
+      "professorNameAdditional" : "Suh song suk",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 40
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 4,
+      "courseNo" : "A03391101",
+      "courseName1" : "전공FLEX독일어1",
+      "courseName2" : "Preparation Course for FLEX German 1",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "최경인",
+      "professorNameAdditional" : "Kyoung In Choe",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 40
+    } ]
+  }, {
+    "name1" : "문화콘텐츠학전공",
+    "name2" : "Cultural Contents Major",
+    "code" : "ANDD2_H1",
+    "courses" : [ {
+      "courseType" : "이중(제2)",
+      "courseYear" : 2,
+      "courseNo" : "R08217101",
+      "courseName1" : "글로벌문화와콘텐츠1",
+      "courseName2" : "Global Culture and Contents 1",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "조소연",
+      "professorNameAdditional" : "CHO SO YEON",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    }, {
+      "courseType" : "이중(제2)",
+      "courseYear" : 2,
+      "courseNo" : "R08235101",
+      "courseName1" : "디지털시대의텍스트와지식",
+      "courseName2" : "Text and Knowledge in the Digital Age",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "임동욱",
+      "professorNameAdditional" : "IM Dong Uk",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    }, {
+      "courseType" : "이중(제2)",
+      "courseYear" : 3,
+      "courseNo" : "R08205101",
+      "courseName1" : "문화콘텐츠와스토리텔링",
+      "courseName2" : "Cultural Contents and Storytelling",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "유제상",
+      "professorNameAdditional" : "Yu JaeSang",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    } ]
+  }, {
+    "name1" : "미디어커뮤니케이션학부",
+    "name2" : "Division of Media & Communication",
+    "code" : "ACD_H1",
+    "courses" : [ {
+      "courseType" : "전공",
+      "courseYear" : 1,
+      "courseNo" : "C04531101",
+      "courseName1" : "미디어커뮤니케이션1",
+      "courseName2" : "Media Communication 1",
+      "required" : true,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "최지선",
+      "professorNameAdditional" : "Choi, Ji Sun",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 2,
+      "courseNo" : "C04534101",
+      "courseName1" : "미디어연구방법론",
+      "courseName2" : "Media Research Methodology",
+      "required" : true,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "조인호",
+      "professorNameAdditional" : "Cho Inho",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    } ]
+  }, {
+    "name1" : "방송·영상·뉴미디어전공",
+    "name2" : "Broadcasting·Film·New Media",
+    "code" : "ACDE1_H1",
+    "courses" : [ {
+      "courseType" : "전공",
+      "courseYear" : 2,
+      "courseNo" : "C04527101",
+      "courseName1" : "뉴미디어의이해",
+      "courseName2" : "Understanding New Media",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "정지연",
+      "professorNameAdditional" : "Jung Ji Youn",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 2,
+      "courseNo" : "C03401101",
+      "courseName1" : "방송의이해",
+      "courseName2" : "Understanding Broadcasting",
+      "required" : true,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "최숙",
+      "professorNameAdditional" : "Sook Choi",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    } ]
+  }, {
+    "name1" : "언론·정보전공",
+    "name2" : "Journalism & Information",
+    "code" : "ACDA1_H1",
+    "courses" : [ {
+      "courseType" : "전공",
+      "courseYear" : 2,
+      "courseNo" : "C03201101",
+      "courseName1" : "저널리즘의이해",
+      "courseName2" : "Understanding of Journalism ",
+      "required" : true,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "이주연",
+      "professorNameAdditional" : "Jooyeon, Lee",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 3,
+      "courseNo" : "C03125101",
+      "courseName1" : "인터넷뉴스생태계",
+      "courseName2" : "Internet News Ecosystem",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "김지윤",
+      "professorNameAdditional" : "Kim, Ji Youn",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    } ]
+  }, {
+    "name1" : "언어인지과학과",
+    "name2" : "Department of Linguistics and Cognitive Science",
+    "code" : "ANDC2_H1",
+    "courses" : [ {
+      "courseType" : "부전공",
+      "courseYear" : 3,
+      "courseNo" : "R07351101",
+      "courseName1" : "심리언어학",
+      "courseName2" : "Psycholinguistics",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "박진",
+      "professorNameAdditional" : "Park, Jin",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    } ]
+  }, {
+    "name1" : "융합일본지역전공",
+    "name2" : "Integrated Japanese Studies",
+    "code" : "AJDA1_H1",
+    "courses" : [ {
+      "courseType" : "전공",
+      "courseYear" : 2,
+      "courseNo" : "B02225101",
+      "courseName1" : "융합일본지역학의이해1(사회.문화)",
+      "courseName2" : "Introduction to Integrated Japanese Studies 1(Society & Culture)",
+      "required" : true,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "박용구",
+      "professorNameAdditional" : "Yong Koo, PARK",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 3,
+      "courseNo" : "B02152201",
+      "courseName1" : "현대일본경제론",
+      "courseName2" : "Study on Contemporary Japanese Economics",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "이창민",
+      "professorNameAdditional" : "LEE Changmin",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60,
+      "note" : "일본언어문화전공, 일본문학/어학전공 전공교류(인정)교과목"
+    } ]
+  }, {
+    "name1" : "일본언어문화전공",
+    "name2" : "Japanese Language, Literature and Culture",
+    "code" : "AJCA1_H1",
+    "courses" : [ {
+      "courseType" : "전공",
+      "courseYear" : 2,
+      "courseNo" : "B02274101",
+      "courseName1" : "일본어원서이해(1)",
+      "courseName2" : "Intermediate Readings in Contemporary Japanese(1)",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "금영진",
+      "professorNameAdditional" : "Keum, Young-Jin ",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : { },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60,
+      "note" : "이중전공, 부전공자 수강가능"
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 4,
+      "courseNo" : "B02189201",
+      "courseName1" : "매스미디어일본어",
+      "courseName2" : "Mass-media Japanese",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "손경호",
+      "professorNameAdditional" : "Shon, Kyeong Ho",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : { },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60,
+      "note" : "이중전공, 부전공자 수강가능"
+    } ]
+  }, {
+    "name1" : "정치외교학과",
+    "name2" : "Department of Political Science and Diplomacy",
+    "code" : "ACBA1_H1",
+    "courses" : [ {
+      "courseType" : "전공",
+      "courseYear" : 1,
+      "courseNo" : "C01151301",
+      "courseName1" : "국제관계개론",
+      "courseName2" : "Introduction to International Relations",
+      "required" : true,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "",
+      "professorNameAdditional" : "-",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : { },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 1,
+      "courseNo" : "C01101301",
+      "courseName1" : "정치학개론",
+      "courseName2" : "Introduction to Political Science",
+      "required" : true,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "",
+      "professorNameAdditional" : "-",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : { },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    } ]
+  }, {
+    "name1" : "중국언어문화전공",
+    "name2" : "Chinese Language, Literature and Culture",
+    "code" : "AICA1_H1",
+    "courses" : [ {
+      "courseType" : "전공",
+      "courseYear" : 2,
+      "courseNo" : "B01203601",
+      "courseName1" : "중국어문법작문(1)",
+      "courseName2" : "Chinese Grammar & Composition (1)",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "조은숙",
+      "professorNameAdditional" : "Jeo, Yunsook",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 2,
+      "courseNo" : "B01371301",
+      "courseName1" : "중국어학개론",
+      "courseName2" : "Introduction to Chinese Linguistics ",
+      "required" : true,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "정인정",
+      "professorNameAdditional" : "Jung In Jung",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    } ]
+  }, {
+    "name1" : "중국언어문화학부",
+    "name2" : "Division of Chinese Language, Literature and Culture",
+    "code" : "AIC_H1",
+    "courses" : [ {
+      "courseType" : "전공",
+      "courseYear" : 1,
+      "courseNo" : "B01107101",
+      "courseName1" : "중국문화의이해",
+      "courseName2" : "Understanding of Chinese Culture",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "배도임",
+      "professorNameAdditional" : "Bae Do Im",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 1,
+      "courseNo" : "B01129301",
+      "courseName1" : "초급중국어(1)",
+      "courseName2" : "Elementary Chinese (1)",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "권영실",
+      "professorNameAdditional" : "Kwon Yongsil",
+      "creditHours" : 4,
+      "courseHours" : 4,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 5, 6, 7, 8 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 5, 6, 7, 8 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 5, 6, 7, 8 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 5, 6, 7, 8 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 5, 6, 7, 8 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    } ]
+  }, {
+    "name1" : "중국외교통상전공",
+    "name2" : "Chinese Foreign Affairs and Commerce",
+    "code" : "AIDA1_H1",
+    "courses" : [ {
+      "courseType" : "전공",
+      "courseYear" : 3,
+      "courseNo" : "B01251101",
+      "courseName1" : "중국법제도의이해",
+      "courseName2" : "Understanding of Chinese Law",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "김인식",
+      "professorNameAdditional" : "Kim, In Sik",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 3,
+      "courseNo" : "B01275101",
+      "courseName1" : "중국사회갈등구조의이해",
+      "courseName2" : "Understanding the Structure of China's Conflicts",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "김인",
+      "professorNameAdditional" : "Kim, In",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    } ]
+  }, {
+    "name1" : "철학과",
+    "name2" : "Department of Philosophy",
+    "code" : "ANDA2_H1",
+    "courses" : [ {
+      "courseType" : "부전공",
+      "courseYear" : 1,
+      "courseNo" : "V42301101",
+      "courseName1" : "서양고.중세철학사",
+      "courseName2" : "History of Greek & Medieval Philosophy",
+      "required" : true,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "조명동",
+      "professorNameAdditional" : "Cho Myoung Dong",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    } ]
+  }, {
+    "name1" : "프랑스어과",
+    "name2" : "Department of French",
+    "code" : "AAB01_H1",
+    "courses" : [ {
+      "courseType" : "전공",
+      "courseYear" : 3,
+      "courseNo" : "A02497101",
+      "courseName1" : "프랑스근현대사",
+      "courseName2" : "Modern and Contemporary History of France",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "최석",
+      "professorNameAdditional" : "Choe. Seok",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 40
+    } ]
+  }, {
+    "name1" : "프랑스어학부",
+    "name2" : "Division of French Language",
+    "code" : "AAM_H1",
+    "courses" : [ {
+      "courseType" : "전공",
+      "courseYear" : 2,
+      "courseNo" : "A02490101",
+      "courseName1" : "프랑스명작읽기",
+      "courseName2" : "Reading French Masterpiece",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "김계영",
+      "professorNameAdditional" : "KIM Kyeyoung",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 40
+    } ]
+  }, {
+    "name1" : "한국어교육과",
+    "name2" : "Department of Korean Education",
+    "code" : "AFD01_H1",
+    "courses" : [ {
+      "courseType" : "전공",
+      "courseYear" : 2,
+      "courseNo" : "E04132201",
+      "courseName1" : "외국어로서의한국어어휘교육론",
+      "courseName2" : "Studies on Teaching Lexicon of Korean as a Foreign Language",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "",
+      "professorNameAdditional" : "-",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : { },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 2,
+      "courseNo" : "E04320101",
+      "courseName1" : "표현교육론",
+      "courseName2" : "Theories in Teaching Korean Language Expression",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "",
+      "professorNameAdditional" : "-",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : { },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 3,
+      "courseNo" : "E04369101",
+      "courseName1" : "외국어로서의한국어교육과정및교재론",
+      "courseName2" : "Curriculums and Materials of Korean Education for Foreigners",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "",
+      "professorNameAdditional" : "-",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : { },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    } ]
+  }, {
+    "name1" : "행정학과",
+    "name2" : "Department of Public Administration",
+    "code" : "ACBB1_H1",
+    "courses" : [ {
+      "courseType" : "전공",
+      "courseYear" : 1,
+      "courseNo" : "C01102501",
+      "courseName1" : "행정학개론",
+      "courseName2" : "Introduction to Public Administration",
+      "required" : true,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "윤광진",
+      "professorNameAdditional" : "Kwang-Jin Yoon",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 2,
+      "courseNo" : "C02201101",
+      "courseName1" : "행정조직론",
+      "courseName2" : "Theory of Administrative Organization",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "정재한",
+      "professorNameAdditional" : "Jung, Jae Han",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    }, {
+      "courseType" : "전공",
+      "courseYear" : 3,
+      "courseNo" : "C02207201",
+      "courseName1" : "행정계량분석",
+      "courseName2" : "Quantitative Analysis for Public Adminiatration",
+      "required" : true,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "정재한",
+      "professorNameAdditional" : "Jung, Jae Han",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 60
+    } ]
+  } ],
+  "liberalArts" : [ {
+    "name" : "인문강좌(서울)",
+    "code" : "301_H1",
+    "courses" : [ {
+      "courseType" : "인문강좌",
+      "courseYear" : 1,
+      "courseNo" : "Y12101201",
+      "courseName1" : "미네르바인문강좌1:인간과문명",
+      "courseName2" : "Minerva liberal arts lecture 1: Human being and civilization",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "이가원",
+      "professorNameAdditional" : "Lee, Ka-won",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 45
+    }, {
+      "courseType" : "인문강좌",
+      "courseYear" : 1,
+      "courseNo" : "Y12101202",
+      "courseName1" : "미네르바인문강좌1:인간과문명",
+      "courseName2" : "Minerva liberal arts lecture 1: Human being and civilization",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "강준호",
+      "professorNameAdditional" : "kang Joon Ho",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 45
+    }, {
+      "courseType" : "인문강좌",
+      "courseYear" : 1,
+      "courseNo" : "Y12101203",
+      "courseName1" : "미네르바인문강좌1:인간과문명",
+      "courseName2" : "Minerva liberal arts lecture 1: Human being and civilization",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "오충환",
+      "professorNameAdditional" : "Oh chunghwan",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 45
+    }, {
+      "courseType" : "인문강좌",
+      "courseYear" : 1,
+      "courseNo" : "Y12101204",
+      "courseName1" : "미네르바인문강좌1:인간과문명",
+      "courseName2" : "Minerva liberal arts lecture 1: Human being and civilization",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "이경화",
+      "professorNameAdditional" : "leekyunghwa",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 7, 8, 9 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 45
+    } ]
+  }, {
+    "name" : "교양외국어(서울)",
+    "code" : "302_H1",
+    "courses" : [ {
+      "courseType" : "교양외국어",
+      "courseYear" : 1,
+      "courseNo" : "Y13101201",
+      "courseName1" : "교양영어1",
+      "courseName2" : "Communicative English 1",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "Chris Kobylinski",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 5, 6, 7 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 5, 6, 7 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 5, 6, 7 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 5, 6, 7 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 5, 6, 7 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 30,
+      "note" : "* 진리(17학번 신입생 영어진단평가 미응시자 수강불가)"
+    }, {
+      "courseType" : "교양외국어",
+      "courseYear" : 1,
+      "courseNo" : "Y13101202",
+      "courseName1" : "교양영어1",
+      "courseName2" : "Communicative English 1",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "Todd Robert Hull",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 4, 5, 6 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 30,
+      "note" : "* 평화(14학번 이전 수강 가능, 17학번 신입생 영어진단평가 미응시자 수강불가)"
+    }, {
+      "courseType" : "교양외국어",
+      "courseYear" : 1,
+      "courseNo" : "Y13101203",
+      "courseName1" : "교양영어1",
+      "courseName2" : "Communicative English 1",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "Christopher Frosini",
+      "professorNameAdditional" : "Chris Frosini",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 6, 7, 8 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 6, 7, 8 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 6, 7, 8 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 6, 7, 8 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 6, 7, 8 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 30,
+      "note" : "* 평화(14학번 이전 수강 가능, 17학번 신입생 영어진단평가 미응시자 수강불가)"
+    }, {
+      "courseType" : "교양외국어",
+      "courseYear" : 1,
+      "courseNo" : "Y13115201",
+      "courseName1" : "교양중국어1",
+      "courseName2" : "Communicative Chinese 1",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "안영은",
+      "professorNameAdditional" : "Ahn Young Yeun",
+      "creditHours" : 3,
+      "courseHours" : 3,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 1, 2, 3 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 30,
+      "note" : "* 2017학번 신입생 영어진단평가 미응시자 수강불가"
+    } ]
+  }, {
+    "name" : "HUFS CAREER(서울)",
+    "code" : "304_H1",
+    "courses" : [ {
+      "courseType" : "HUFS CAREER",
+      "courseYear" : 2,
+      "courseNo" : "Y12104201",
+      "courseName1" : "HUFS Career Design 진로설정과취.창업경력개발",
+      "courseName2" : "HUFS Career Design (Defining Career Path & Development)",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : true,
+      "professorNameMain" : "김소현",
+      "professorNameAdditional" : "Sohyun Kim",
+      "creditHours" : 1,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 100,
+      "note" : "* 2016년 이전 입학생 수강가능"
+    } ]
+  }, {
+    "name" : "건강과레포츠(서울)",
+    "code" : "327_H1",
+    "courses" : [ {
+      "courseType" : "건강과레포츠",
+      "courseNo" : "U76378101",
+      "courseName1" : "웰빙시대의운동과다이어트",
+      "courseName2" : "Exercise and Diet of Well-being Ages",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "이지현(체육)",
+      "professorNameAdditional" : "LEE ji hyun",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 70
+    }, {
+      "courseType" : "건강과레포츠",
+      "courseNo" : "U71861101",
+      "courseName1" : "체육(운동과건강)",
+      "courseName2" : "Fitness&Health",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "이재문",
+      "professorNameAdditional" : "Lee, Jae Moon",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 70
+    }, {
+      "courseType" : "건강과레포츠",
+      "courseNo" : "U72242301",
+      "courseName1" : "체육(필라테스)",
+      "courseName2" : "Physical Education (Pilates)",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "최연아",
+      "professorNameAdditional" : "Choi, Yeon A",
+      "creditHours" : 1,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 30
+    } ]
+  }, {
+    "name" : "특별교양(서울)",
+    "code" : "328_H1",
+    "courses" : [ {
+      "courseType" : "특별교양",
+      "courseNo" : "U72193101",
+      "courseName1" : "인간관계와갈등관리",
+      "courseName2" : "Social Relation and Conflict Management ",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "연미영",
+      "professorNameAdditional" : "Yeon Mi Young",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 70
+    }, {
+      "courseType" : "특별교양",
+      "courseNo" : "Y21163201",
+      "courseName1" : "추리논증",
+      "courseName2" : "Reasoning & Argumentation",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "신소혜",
+      "professorNameAdditional" : "SHIN SOHYE",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 70
+    }, {
+      "courseType" : "특별교양",
+      "courseNo" : "U71877101",
+      "courseName1" : "프레젠테이션스킬개발",
+      "courseName2" : "Presentation Skill Development",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "강화석",
+      "professorNameAdditional" : "Kang Hwa Seok",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 70
+    } ]
+  }, {
+    "name" : "실용외국어(선택)(서울)",
+    "code" : "32A_H1",
+    "courses" : [ {
+      "courseType" : "실용외국어(선택)",
+      "courseNo" : "Y71116201",
+      "courseName1" : "드라마로배우는영어",
+      "courseName2" : "English in Drama",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "강선자",
+      "professorNameAdditional" : "Kang Seon Ja",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 30
+    } ]
+  }, {
+    "name" : "외국인을 위한 한국학(서울)",
+    "code" : "32V_H1",
+    "courses" : [ {
+      "courseType" : "외국인을 위한 한국학",
+      "courseNo" : "U71863301",
+      "courseName1" : "한국어학의이해(외)",
+      "courseName2" : "Understanding of Korean Linguistics",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "이규호",
+      "professorNameAdditional" : "I Gyuho",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 70
+    } ]
+  }, {
+    "name" : "언어와문학(서울)",
+    "code" : "330_H1",
+    "courses" : [ {
+      "courseType" : "언어와문학",
+      "courseNo" : "U76217401",
+      "courseName1" : "교양한자와한문",
+      "courseName2" : "General Chinese Characters and Writing",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "이지영",
+      "professorNameAdditional" : "Lee,Ji-young",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 70
+    }, {
+      "courseType" : "언어와문학",
+      "courseNo" : "U71823101",
+      "courseName1" : "문학과성",
+      "courseName2" : "Literature and Sex",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "김용석",
+      "professorNameAdditional" : "KIM, Yong-Seok",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 70
+    }, {
+      "courseType" : "언어와문학",
+      "courseNo" : "U71807101",
+      "courseName1" : "언어와심리(교양)",
+      "courseName2" : "Language and Psychology",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "김성규",
+      "professorNameAdditional" : "Kim. Sung-Gyu",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 70
+    } ]
+  }, {
+    "name" : "문화와예술(서울)",
+    "code" : "331_H1",
+    "courses" : [ {
+      "courseType" : "문화와예술",
+      "courseNo" : "U54107401",
+      "courseName1" : "동남아시아문화의이해",
+      "courseName2" : "Culture of South Asia",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "장준영",
+      "professorNameAdditional" : "Jang Jun Young ",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 70
+    }, {
+      "courseType" : "문화와예술",
+      "courseNo" : "Y21126201",
+      "courseName1" : "뮤지컬의이해와감상",
+      "courseName2" : "Understanding and Apprectiation of Musical",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "서정미",
+      "professorNameAdditional" : "Seo Jeong Mi",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 70
+    }, {
+      "courseType" : "문화와예술",
+      "courseNo" : "U76243101",
+      "courseName1" : "영화의이해와감상",
+      "courseName2" : "Understanding Film",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "이정욱",
+      "professorNameAdditional" : "Lee Jeung Wook",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 70
+    } ]
+  }, {
+    "name" : "역사와철학(서울)",
+    "code" : "332_H1",
+    "courses" : [ {
+      "courseType" : "역사와철학",
+      "courseNo" : "U51108101",
+      "courseName1" : "신화와종교",
+      "courseName2" : "Myth & Religion",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "조명동",
+      "professorNameAdditional" : "Cho Myoung Dong",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 70
+    }, {
+      "courseType" : "역사와철학",
+      "courseNo" : "U71826101",
+      "courseName1" : "영상으로배우는역사",
+      "courseName2" : "Learning of History by Visual Contents",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "이세진",
+      "professorNameAdditional" : "Lee Se Jin",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 70
+    }, {
+      "courseType" : "역사와철학",
+      "courseNo" : "E03109201",
+      "courseName1" : "한국근.현대사",
+      "courseName2" : "History of Modern & Contemporary Korea",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "신운용",
+      "professorNameAdditional" : "shin woon-yong",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 70
+    } ]
+  }, {
+    "name" : "국가와사회(서울)",
+    "code" : "333_H1",
+    "courses" : [ {
+      "courseType" : "국가와사회",
+      "courseNo" : "U74110201",
+      "courseName1" : "민법의이해",
+      "courseName2" : "Basic Understanding of Civil Law",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "박설아",
+      "professorNameAdditional" : "Park, Sirl A",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 5, 6 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 70
+    }, {
+      "courseType" : "국가와사회",
+      "courseNo" : "U04208101",
+      "courseName1" : "북한의정치와사회",
+      "courseName2" : "North Korean Politics & Society",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "김형기",
+      "professorNameAdditional" : "Kim Hyeong Ki",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 70
+    }, {
+      "courseType" : "국가와사회",
+      "courseNo" : "U51403201",
+      "courseName1" : "심리학의이해",
+      "courseName2" : "Introduction to Psychology",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "김영선(교양)",
+      "professorNameAdditional" : "Kim, young sun",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 70
+    } ]
+  }, {
+    "name" : "과학과기술(서울)",
+    "code" : "334_H1",
+    "courses" : [ {
+      "courseType" : "과학과기술",
+      "courseNo" : "U51417201",
+      "courseName1" : "우주와인간",
+      "courseName2" : "The Universe & Man",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "정영진",
+      "professorNameAdditional" : "Jeong , Young Jin",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 70
+    }, {
+      "courseType" : "과학과기술",
+      "courseNo" : "U55107201",
+      "courseName1" : "인터넷의이해",
+      "courseName2" : "Understanding of Internet",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "이명무",
+      "professorNameAdditional" : "LEE, MYUNG MOO",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 40
+    }, {
+      "courseType" : "과학과기술",
+      "courseNo" : "U76307101",
+      "courseName1" : "컴퓨터활용",
+      "courseName2" : "Practical Use Computer",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "허은주",
+      "professorNameAdditional" : "HEO, EUN JU",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 3, 4 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 40
+    } ]
+  }, {
+    "name" : "핵심인문기초(서울)",
+    "code" : "335_H1",
+    "courses" : [ {
+      "courseType" : "핵심인문기초",
+      "courseNo" : "Y51101301",
+      "courseName1" : "논리학입문",
+      "courseName2" : "Introduction to Logic",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "강준호",
+      "professorNameAdditional" : "kang Joon Ho",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 70
+    }, {
+      "courseType" : "핵심인문기초",
+      "courseNo" : "U72136101",
+      "courseName1" : "문학과신화",
+      "courseName2" : "Literature and Myth",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "김계영",
+      "professorNameAdditional" : "KIM Kyeyoung",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 1, 2 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 70
+    }, {
+      "courseType" : "핵심인문기초",
+      "courseNo" : "U76230101",
+      "courseName1" : "문학이란무엇인가",
+      "courseName2" : "What is Literature ?",
+      "required" : false,
+      "online" : false,
+      "foreignLanguage" : false,
+      "teamTeaching" : false,
+      "professorNameMain" : "윤석진",
+      "professorNameAdditional" : "Youn, Sokjin",
+      "creditHours" : 2,
+      "courseHours" : 2,
+      "courseTime" : {
+        "Thu" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        },
+        "Tue" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        },
+        "Mon" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        },
+        "Wed" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        },
+        "Fri" : {
+          "time" : [ 7, 8 ],
+          "class" : " "
+        }
+      },
+      "currentlyEnrolled" : 0,
+      "maximumEnrolled" : 70
+    } ]
+  } ]
+}
