@@ -3695,17 +3695,55 @@
             {"name":"orange", "count": 26},
             {"name":"orange", "count": 36},
         ];
-    var newArr = arr.filter(function(item){
-        return item.name === "orange";
-    });
+    //var newArr = function(fruit) {
+    //    arr.filter(function(item){
+    //        return item.name === fruit;
+    //    })
+    //}
 
     var newArr2 = arr.filter(function(item){
         return item.name === "pear";
     });
 
 
+    var dayOfWeekArr = ["#checkMon", "#checkTue", "#checkWed", "#checkThu", "#checkFri"]
+
+    var dayOfWeekFruit = {
+	"#checkMon": ["apple", "orange"],
+	"#checkTue": ["pear"]
+    }
 
     /***교양 월요일 checkbox***/
+    $(document).ready(
+        function () {
+	    dayOfWeekArr.forEach(dayOfWeek => {
+                $(dayOfWeek).on('click', function () {
+                    //alert("debugging!!");
+                    if ($(dayOfWeek).prop('checked')) {
+                        //alert("debugging!!");
+			var newArr = arr.filter(fruit => dayOfWeekFruit[dayOfWeek].includes(fruit.name))
+			newArr.forEach(fruit => 
+			    $("#select_non_major").append(" <div class='col-md-6 col_m'><input type='checkbox'> " + fruit.name + "</div>"))
+
+			//dayOfWeekFruit.
+                        //var i=0;
+                        //while(newArr[i]!==null) {
+                        //    $("#select_non_major").append(" <div class='col-md-6 col_m'><input type='checkbox'> " + newArr[i].name + "</div>");
+
+                        //    i++;
+
+                        //}
+                    }else{
+                        $(".col_m").detach();
+                    }
+                });
+	    })
+        });
+
+
+   /* 
+
+
     $(document).ready(
         function () {
             $("#checkMon").on('click', function () {
@@ -3725,7 +3763,6 @@
             });
         });
 
-    /***교양 화요일 checkbox***/
     $(document).ready(
         function () {
             $("#checkTue").on('click', function () {
@@ -3739,7 +3776,6 @@
             });
         });
 
-    /***교양 수요일 checkbox***/
     $(document).ready(
         function () {
             $("#checkWed").on('click', function () {
@@ -3753,7 +3789,6 @@
             });
         });
 
-    /***교양 목요일 checkbox***/
     $(document).ready(
         function () {
             $("#checkThu").on('click', function () {
@@ -3767,7 +3802,6 @@
             });
         });
 
-    /***교양 금요일 checkbox***/
     $(document).ready(
         function () {
             $("#checkFri").on('click', function () {
@@ -3781,7 +3815,7 @@
             });
         });
 
-
+*/
 
     /**
     function find_in_object(my_object, my_criteria){
