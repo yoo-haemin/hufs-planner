@@ -13,7 +13,8 @@ import models.{ Department, Campus, Affiliation }
 /**
  * Give access to the [[Department]] object.
  */
-class DepartmentDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigProvider) extends DepartmentDAO {
+class DepartmentDAOImpl @Inject() (
+  protected val dbConfigProvider: DatabaseConfigProvider) extends DepartmentDAO {
   val dbConfig = dbConfigProvider.get[JdbcProfile]
   val db = dbConfig.db
   import dbConfig.profile.api._
@@ -29,17 +30,17 @@ class DepartmentDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfi
     db.run(departments returning departments.map(_.id) += Department)
 
   class DepartmentsTable(tag: Tag) extends Table[Department](tag, "departments") {
-    def id = column[String]("id", O.PrimaryKey)
-    def name = column[String]("name")
-    def campus = column[Campus]("campus")
-    def affiliation = column[Affiliation]("affiliation")
+    def id = column[String]("id", O.PrimaryKey, O.SqlType("char(10)"))
+    def name = column[String]("name", O.SqlType("varchar(45)"))
+    def campus = column[Campus]("campus", O.SqlType("tinyint"))
+    def affiliation = column[Affiliation]("affiliation", O.SqlType("tinyint"))
 
     def * = (id, name, campus, affiliation) <> (Department.tupled, Department.unapply _)
   }
 
   implicit val campusColumnType: BaseColumnType[Campus] =
-    MappedColumnType.base[Campus, Int](Campus.toInt _, Campus.fromInt _)
+    MappedColumnType.base[Campus, Byte](Campus.toByte _, Campus.fromByte _)
 
   implicit val afiliationColumnType: BaseColumnType[Affiliation] =
-    MappedColumnType.base[Affiliation, Int](Affiliation.toInt _, Affiliation.fromInt _)
+    MappedColumnType.base[Affiliation, Byte](Affiliation.toByte _, Affiliation.fromByte _)
 }

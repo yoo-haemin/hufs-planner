@@ -1,3 +1,9 @@
 package models
 
-case class CourseTime(courseId: Int, time: Seq[(java.time.DayOfWeek, Seq[Int], String)])
+import java.time.DayOfWeek
+import collection.immutable.SortedSet
+
+case class CourseTime(
+  id: java.util.UUID,
+  value: Map[DayOfWeek, (SortedSet[Int], String)]
+)
