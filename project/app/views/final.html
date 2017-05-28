@@ -95,12 +95,7 @@
     <br>
     <br>
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+
 
 
     <button type="button" id="add_btn" class="btn btn-primary btn-sm">ADD</button>
@@ -109,6 +104,45 @@
     <br>
     <br>
     <br>
+
+    <form>
+
+
+        <p id="submit_p"></p>
+    </form>
+
+
+    <br>
+    <hr>
+    <div class="col-md-10 col-md-offset-1" id="future_state">
+        <h3>최종 취득 예상</h3>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th></th>
+                <th>취득</th>
+                <th>총</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <th>학점취득현황</th>
+                <td>00</td>
+                <td>154</td>
+            </tr>
+            <tr>
+                <th>성적취득현황</th>
+                <td>00</td>
+                <td>4.5</td>
+            </tr>
+            <tr>
+
+            </tbody>
+        </table>
+
+    </div>
 
 <!--
     <div id="colorpad" style="width:300px;height:300px;background-color:#000">
@@ -124,6 +158,7 @@
 
 
         var num=0;
+        var flag=0;
 
         $("#add_btn").click(function(){
 
@@ -131,7 +166,7 @@
 
 
 
-                $("main").append("<div class='col-md-10 col-md-offset-1'> <h3>미래 목표점수</h3> <table class='table table-colorpad1' >   <thead> <tr> <th></th> <th>취득</th> <th>총</th> </tr> </thead>  <tbody> <tr> <th>해당학기 들을 학점</th> <td>00</td> <td>154</td> </tr> <tr> <th>목표성적</th> <td>00</td> <td>4.5</td> </tr> <tr> </tbody> </table></div>");
+                $("form").append("<div class='col-md-10 col-md-offset-1'> <h3>미래 목표점수</h3> <table class='table table-colorpad1' >   <thead> <tr> <th></th> <th>취득</th> <th>총</th> </tr> </thead>  <tbody> <tr> <th>해당학기 들을 학점</th> <td><div class='col-md-4'><input type='number' class='form-control' min='0' max='154'></div></td> <td>154</td> </tr> <tr> <th>목표성적</th> <td><div class='col-md-4'><input type='number' class='form-control' min='0' max='4.5'></div></td> <td>4.5</td> </tr> <tr> </tbody> </table></div>");
 
                 $(".table-colorpad1").css("background-color", getRandomColor1() );
 
@@ -145,7 +180,7 @@
 
 
 
-                $("main").append("<div class='col-md-10 col-md-offset-1'> <h3>미래 목표점수</h3> <table class='table table-colorpad2'>   <thead> <tr> <th></th> <th>취득</th> <th>총</th> </tr> </thead>  <tbody> <tr> <th>해당학기 들을 학점</th> <td> 00 </td> <td>154</td> </tr> <tr> <th>목표성적</th> <td>00</td> <td>4.5</td> </tr> <tr> </tbody> </table></div>");
+                $("form").append("<div class='col-md-10 col-md-offset-1'> <h3>미래 목표점수</h3> <table class='table table-colorpad2'>   <thead> <tr> <th></th> <th>취득</th> <th>총</th> </tr> </thead>  <tbody> <tr> <th>해당학기 들을 학점</th> <td><div class='col-md-4'><input type='number' class='form-control' min='0' max='154'></div></td> <td>154</td> </tr> <tr> <th>목표성적</th> <td><div class='col-md-4'><input type='number' class='form-control' min='0' max='4.5'></div></td> <td>4.5</td> </tr> <tr> </tbody> </table></div>");
 
                 $(".table-colorpad2").css("background-color", getRandomColor2() );
 
@@ -158,7 +193,7 @@
 
 
 
-                $("main").append("<div class='col-md-10 col-md-offset-1'> <h3>미래 목표점수</h3> <table class='table table-colorpad3'>   <thead> <tr> <th></th> <th>취득</th> <th>총</th> </tr> </thead>  <tbody> <tr> <th>해당학기 들을 학점</th> <td>00</td> <td>154</td> </tr> <tr> <th>목표성적</th> <td>00</td> <td>4.5</td> </tr> <tr> </tbody> </table></div>");
+                $("form").append("<div class='col-md-10 col-md-offset-1'> <h3>미래 목표점수</h3> <table class='table table-colorpad3'>   <thead> <tr> <th></th> <th>취득</th> <th>총</th> </tr> </thead>  <tbody> <tr> <th>해당학기 들을 학점</th> <td><div class='col-md-4'><input type='number' class='form-control' min='0' max='154'></div></td> <td>154</td> </tr> <tr> <th>목표성적</th> <td><div class='col-md-4'><input type='number' class='form-control' min='0' max='4.5'></div></td> <td>4.5</td> </tr> <tr> </tbody> </table></div>");
 
                 $(".table-colorpad3").css("background-color", getRandomColor3() );
 
@@ -167,6 +202,10 @@
 
             }
 
+            if(flag==0){
+                $("#submit_p").append("<input type='submit' value='Submit'>");
+                flag=1;
+            }
         });
 
         function getRandomColor1() {
