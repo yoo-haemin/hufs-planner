@@ -1,7 +1,7 @@
 package models.daos
 
 import scala.concurrent.Future
-
+import java.util.UUID
 import models.Subject
 
 trait SubjectDAO {
@@ -11,6 +11,6 @@ trait SubjectDAO {
 
   def all(): Future[Seq[Subject]]
 
-  def insert(Subject: Subject): Future[String]
+  def insert(Subject: Subject): Future[UUID]
 
 }

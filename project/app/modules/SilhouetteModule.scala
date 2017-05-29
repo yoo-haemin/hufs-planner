@@ -34,6 +34,9 @@ import play.api.libs.openid.OpenIdClient
 import play.api.libs.ws.WSClient
 import utils.auth.{ CustomSecuredErrorHandler, CustomUnsecuredErrorHandler, DefaultEnv }
 
+//Temporary hashmap implementation
+import models.daos.hashmap.UserDAOImpl
+
 /**
  * The Guice module which wires all Silhouette dependencies.
  */

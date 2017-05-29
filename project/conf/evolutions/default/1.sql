@@ -5,460 +5,460 @@
 -- 2017년 05월 25일 (목) 오후 04시 16분 30초
 -- Model: New Model    Version: 1.0
 -- MySQL Workbench Forward Engineering
-
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
-
--- -----------------------------------------------------
--- Schema jamioni
--- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `jamioni` ;
-
--- -----------------------------------------------------
--- Schema jamioni
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `jamioni` DEFAULT CHARACTER SET utf8mb4 ;
-SHOW WARNINGS;
-USE `jamioni` ;
-
--- -----------------------------------------------------
--- Table `users`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `users` ;
-
-SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` BINARY(16) NOT NULL,
-  `login_info` TEXT NULL,
-  `email` VARCHAR(255) NULL,
-  `class_yr` YEAR NULL,
-  `activated` TINYINT(1) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-SHOW WARNINGS;
-
--- -----------------------------------------------------
--- Table `departments`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `departments` ;
-
-SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `departments` (
-  `id` CHAR(10) NOT NULL,
-  `name` VARCHAR(45) NULL,
-  `campus` TINYINT NULL,
-  `affiliation` TINYINT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-SHOW WARNINGS;
-
--- -----------------------------------------------------
--- Table `departments_with_time`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `departments_with_time` ;
-
-SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `departments_with_time` (
-  `year` YEAR NOT NULL,
-  `semester` TINYINT NOT NULL,
-  `department_id` CHAR(10) NOT NULL,
-  PRIMARY KEY (`year`, `semester`, `department_id`),
-  INDEX `fk_department_time_department1_idx` (`department_id` ASC),
-  CONSTRAINT `fk_department_time_department1`
-    FOREIGN KEY (`department_id`)
-    REFERENCES `departments` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-SHOW WARNINGS;
-
--- -----------------------------------------------------
--- Table `subjects`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `subjects` ;
-
-SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `subjects` (
-  `id` BINARY(16) NOT NULL,
-  `code` CHAR(7) NOT NULL,
-  `department_id` CHAR(10) NOT NULL,
-  `name` TEXT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_subject_department1_idx` (`department_id` ASC),
-  CONSTRAINT `fk_subject_department1`
-    FOREIGN KEY (`department_id`)
-    REFERENCES `departments` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-SHOW WARNINGS;
-
--- -----------------------------------------------------
--- Table `professors`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `professors` ;
-
-SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `professors` (
-  `id` BINARY(16) NOT NULL,
-  `name1` TEXT NULL,
-  `name2` TEXT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-SHOW WARNINGS;
-
--- -----------------------------------------------------
--- Table `course_areas`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `course_areas` ;
-
-SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `course_areas` (
-  `id` BINARY(16) NOT NULL,
-  `value` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-SHOW WARNINGS;
-
--- -----------------------------------------------------
--- Table `course_times`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `course_times` ;
-
-SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `course_times` (
-  `id` BINARY(16) NOT NULL,
-  `time_mon` INT NULL,
-  `time_tue` INT NULL,
-  `time_wed` INT NULL,
-  `time_thu` INT NULL,
-  `time_fri` INT NULL,
-  `time_sat` INT NULL,
-  `time_sun` INT NULL,
-  `room_mon` VARCHAR(20) NULL,
-  `room_tue` VARCHAR(45) NULL,
-  `room_wed` VARCHAR(45) NULL,
-  `room_thu` VARCHAR(45) NULL,
-  `room_fri` VARCHAR(45) NULL,
-  `room_sat` VARCHAR(45) NULL,
-  `room_sun` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC))
-ENGINE = InnoDB;
-
-SHOW WARNINGS;
-
--- -----------------------------------------------------
--- Table `courses`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `courses` ;
-
-SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `courses` (
-  `id` BINARY(16) NOT NULL,
-  `code_prefix` CHAR(7) NOT NULL,
-  `code_suffix` TEXT NULL,
-  `department_time_year` YEAR NOT NULL,
-  `department_time_semester` TINYINT NOT NULL,
-  `department_id` CHAR(10) NOT NULL,
-  `subjects_id` BINARY(16) NOT NULL,
-  `professors_id` BINARY(16) NOT NULL,
-  `course_areas_id` BINARY(16) NOT NULL,
-  `course_times_id` BINARY(16) NULL,
-  `type` VARCHAR(20) NOT NULL,
-  `name_1` VARCHAR(45) NOT NULL,
-  `name_2` VARCHAR(45) NULL,
-  `credit_hours` TINYINT NOT NULL,
-  `course_hours` TINYINT NOT NULL,
-  `required` TINYINT(1) NULL COMMENT 'req => required\nonl => online\nfl => foren language\ntt => team teaching',
-  `online` TINYINT(1) NULL,
-  `foreign_language` TINYINT(1) NULL,
-  `team_teaching` TINYINT(1) NULL,
-  INDEX `fk_course_department_time1_idx` (`department_time_year` ASC, `department_time_semester` ASC, `department_id` ASC),
-  INDEX `fk_course_subject1_idx` (`subjects_id` ASC),
-  INDEX `fk_courses_professors1_idx` (`professors_id` ASC),
-  INDEX `fk_courses_course_areas1_idx` (`course_areas_id` ASC),
-  INDEX `fk_courses_course_times1_idx` (`course_times_id` ASC),
-  PRIMARY KEY (`id`),
-  CONSTRAINT `fk_course_department_time1`
-    FOREIGN KEY (`department_time_year` , `department_time_semester` , `department_id`)
-    REFERENCES `departments_with_time` (`year` , `semester` , `department_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_course_subject1`
-    FOREIGN KEY (`subjects_id`)
-    REFERENCES `subjects` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_courses_professors1`
-    FOREIGN KEY (`professors_id`)
-    REFERENCES `professors` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_courses_course_areas1`
-    FOREIGN KEY (`course_areas_id`)
-    REFERENCES `course_areas` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_courses_course_times1`
-    FOREIGN KEY (`course_times_id`)
-    REFERENCES `course_times` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-COMMENT = 'Attributes: From the rightmost bit\nRequired\nOnline\nForeignLanguage\nTeamTeaching\n';
-
-SHOW WARNINGS;
-
--- -----------------------------------------------------
--- Table `majors`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `majors` ;
-
-SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `majors` (
-  `id` BINARY(16) NOT NULL,
-  `name` VARCHAR(255) NOT NULL,
-  `major_type` INT NOT NULL,
-  `year` YEAR NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-SHOW WARNINGS;
-
--- -----------------------------------------------------
--- Table `auth_tokens`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `auth_tokens` ;
-
-SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `auth_tokens` (
-  `authtoken_id` BINARY(16) NOT NULL,
-  `user_id` BINARY(16) NOT NULL,
-  `expiry` DATETIME NULL,
-  PRIMARY KEY (`authtoken_id`),
-  INDEX `fk_auth_tokens_users1_idx` (`user_id` ASC),
-  CONSTRAINT `fk_auth_tokens_users1`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `users` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-SHOW WARNINGS;
-
--- -----------------------------------------------------
--- Table `users_has_majors`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `users_has_majors` ;
-
-SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `users_has_majors` (
-  `users_id` BINARY(16) NOT NULL,
-  `majors_id` BINARY(16) NOT NULL,
-  PRIMARY KEY (`users_id`, `majors_id`),
-  INDEX `fk_users_has_majors_majors1_idx` (`majors_id` ASC),
-  INDEX `fk_users_has_majors_users1_idx` (`users_id` ASC),
-  CONSTRAINT `fk_users_has_majors_users1`
-    FOREIGN KEY (`users_id`)
-    REFERENCES `users` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_users_has_majors_majors1`
-    FOREIGN KEY (`majors_id`)
-    REFERENCES `majors` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-SHOW WARNINGS;
-
--- -----------------------------------------------------
--- Table `users_has_courses`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `users_has_courses` ;
-
-SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `users_has_courses` (
-  `users_id` BINARY(16) NOT NULL,
-  `courses_id` BINARY(16) NOT NULL,
-  `retake` TINYINT(1) NULL,
-  `future` TINYINT(1) NULL,
-  `score` TINYINT NULL COMMENT '-1 -> fail, -2 -> pass\n0 -> F, 2 -> D, 3 -> D+, 4 -> C, 5 -> C+, 6 -> B, 7 -> B+, 8 -> A, 9 -> A+',
-  PRIMARY KEY (`users_id`, `courses_id`),
-  INDEX `fk_users_has_courses_courses1_idx` (`courses_id` ASC),
-  INDEX `fk_users_has_courses_users1_idx` (`users_id` ASC),
-  CONSTRAINT `fk_users_has_courses_users1`
-    FOREIGN KEY (`users_id`)
-    REFERENCES `users` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_users_has_courses_courses1`
-    FOREIGN KEY (`courses_id`)
-    REFERENCES `courses` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-SHOW WARNINGS;
-
--- -----------------------------------------------------
--- Table `majors_has_subjects`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `majors_has_subjects` ;
-
-SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `majors_has_subjects` (
-  `majors_id` BINARY(16) NOT NULL,
-  `subjects_id` BINARY(16) NOT NULL,
-  `required` TINYINT(1) NULL,
-  PRIMARY KEY (`majors_id`, `subjects_id`),
-  INDEX `fk_majors_has_subjects_subjects1_idx` (`subjects_id` ASC),
-  INDEX `fk_majors_has_subjects_majors1_idx` (`majors_id` ASC),
-  CONSTRAINT `fk_majors_has_subjects_majors1`
-    FOREIGN KEY (`majors_id`)
-    REFERENCES `majors` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_majors_has_subjects_subjects1`
-    FOREIGN KEY (`subjects_id`)
-    REFERENCES `subjects` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-SHOW WARNINGS;
-USE `jamioni`;
-
-DELIMITER $$
-
-USE `jamioni`$$
-DROP TRIGGER IF EXISTS `users_BEFORE_INSERT` $$
-SHOW WARNINGS$$
-USE `jamioni`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `users_BEFORE_INSERT` BEFORE INSERT ON `users` FOR EACH ROW
-BEGIN
-  SET new.id = uuid();
-END$$
-
-SHOW WARNINGS$$
-
-USE `jamioni`$$
-DROP TRIGGER IF EXISTS `departments_with_time_BEFORE_INSERT` $$
-SHOW WARNINGS$$
-USE `jamioni`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `departments_with_time_BEFORE_INSERT` BEFORE INSERT ON `departments_with_time` FOR EACH ROW
-BEGIN
-  SET new.id = uuid();
-END$$
-
-SHOW WARNINGS$$
-
-USE `jamioni`$$
-DROP TRIGGER IF EXISTS `subjects_BEFORE_INSERT` $$
-SHOW WARNINGS$$
-USE `jamioni`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `subjects_BEFORE_INSERT` BEFORE INSERT ON `subjects` FOR EACH ROW
-BEGIN
-  SET new.id = uuid();
-END$$
-
-SHOW WARNINGS$$
-
-USE `jamioni`$$
-DROP TRIGGER IF EXISTS `professors_BEFORE_INSERT` $$
-SHOW WARNINGS$$
-USE `jamioni`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `professors_BEFORE_INSERT` BEFORE INSERT ON `professors` FOR EACH ROW
-BEGIN
-  SET new.id = uuid();
-END$$
-
-SHOW WARNINGS$$
-
-USE `jamioni`$$
-DROP TRIGGER IF EXISTS `course_areas_BEFORE_INSERT` $$
-SHOW WARNINGS$$
-USE `jamioni`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `course_areas_BEFORE_INSERT` BEFORE INSERT ON `course_areas` FOR EACH ROW
-BEGIN
-  SET new.id = uuid();
-END$$
-
-SHOW WARNINGS$$
-
-USE `jamioni`$$
-DROP TRIGGER IF EXISTS `course_times_BEFORE_INSERT` $$
-SHOW WARNINGS$$
-USE `jamioni`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `course_times_BEFORE_INSERT` BEFORE INSERT ON `course_times` FOR EACH ROW
-BEGIN
-  SET new.id = uuid();
-END$$
-
-SHOW WARNINGS$$
-
-USE `jamioni`$$
-DROP TRIGGER IF EXISTS `courses_BEFORE_INSERT` $$
-SHOW WARNINGS$$
-USE `jamioni`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `courses_BEFORE_INSERT` BEFORE INSERT ON `courses` FOR EACH ROW
-BEGIN
-  SET new.id = uuid();
-END$$
-
-SHOW WARNINGS$$
-
-USE `jamioni`$$
-DROP TRIGGER IF EXISTS `majors_BEFORE_INSERT` $$
-SHOW WARNINGS$$
-USE `jamioni`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `majors_BEFORE_INSERT` BEFORE INSERT ON `majors` FOR EACH ROW
-BEGIN
-  SET new.id = uuid();
-END$$
-
-SHOW WARNINGS$$
-
-USE `jamioni`$$
-DROP TRIGGER IF EXISTS `auth_tokens_BEFORE_INSERT` $$
-SHOW WARNINGS$$
-USE `jamioni`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `auth_tokens_BEFORE_INSERT` BEFORE INSERT ON `auth_tokens` FOR EACH ROW
-BEGIN
-  SET new.authtoken_id = uuid();
-END$$
-
-SHOW WARNINGS$$
-
-DELIMITER ;
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
+-- 
+-- SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+-- SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+-- SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+-- 
+-- -- -----------------------------------------------------
+-- -- Schema jamioni
+-- -- -----------------------------------------------------
+-- DROP SCHEMA IF EXISTS `jamioni` ;
+-- 
+-- -- -----------------------------------------------------
+-- -- Schema jamioni
+-- -- -----------------------------------------------------
+-- CREATE SCHEMA IF NOT EXISTS `jamioni` DEFAULT CHARACTER SET utf8mb4 ;
+-- SHOW WARNINGS;
+-- USE `jamioni` ;
+-- 
+-- -- -----------------------------------------------------
+-- -- Table `users`
+-- -- -----------------------------------------------------
+-- DROP TABLE IF EXISTS `users` ;
+-- 
+-- SHOW WARNINGS;
+-- CREATE TABLE IF NOT EXISTS `users` (
+--   `id` BINARY(16) NOT NULL,
+--   `login_info` TEXT NULL,
+--   `email` VARCHAR(255) NULL,
+--   `class_yr` YEAR NULL,
+--   `activated` TINYINT(1) NULL,
+--   PRIMARY KEY (`id`))
+-- ENGINE = InnoDB;
+-- 
+-- SHOW WARNINGS;
+-- 
+-- -- -----------------------------------------------------
+-- -- Table `departments`
+-- -- -----------------------------------------------------
+-- DROP TABLE IF EXISTS `departments` ;
+-- 
+-- SHOW WARNINGS;
+-- CREATE TABLE IF NOT EXISTS `departments` (
+--   `id` CHAR(10) NOT NULL,
+--   `name` VARCHAR(45) NULL,
+--   `campus` TINYINT NULL,
+--   `affiliation` TINYINT NULL,
+--   PRIMARY KEY (`id`))
+-- ENGINE = InnoDB;
+-- 
+-- SHOW WARNINGS;
+-- 
+-- -- -----------------------------------------------------
+-- -- Table `departments_with_time`
+-- -- -----------------------------------------------------
+-- DROP TABLE IF EXISTS `departments_with_time` ;
+-- 
+-- SHOW WARNINGS;
+-- CREATE TABLE IF NOT EXISTS `departments_with_time` (
+--   `year` YEAR NOT NULL,
+--   `semester` TINYINT NOT NULL,
+--   `department_id` CHAR(10) NOT NULL,
+--   PRIMARY KEY (`year`, `semester`, `department_id`),
+--   INDEX `fk_department_time_department1_idx` (`department_id` ASC),
+--   CONSTRAINT `fk_department_time_department1`
+--     FOREIGN KEY (`department_id`)
+--     REFERENCES `departments` (`id`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION)
+-- ENGINE = InnoDB;
+-- 
+-- SHOW WARNINGS;
+-- 
+-- -- -----------------------------------------------------
+-- -- Table `subjects`
+-- -- -----------------------------------------------------
+-- DROP TABLE IF EXISTS `subjects` ;
+-- 
+-- SHOW WARNINGS;
+-- CREATE TABLE IF NOT EXISTS `subjects` (
+--   `id` BINARY(16) NOT NULL,
+--   `code` CHAR(7) NOT NULL,
+--   `department_id` CHAR(10) NOT NULL,
+--   `name` TEXT NOT NULL,
+--   PRIMARY KEY (`id`),
+--   INDEX `fk_subject_department1_idx` (`department_id` ASC),
+--   CONSTRAINT `fk_subject_department1`
+--     FOREIGN KEY (`department_id`)
+--     REFERENCES `departments` (`id`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION)
+-- ENGINE = InnoDB;
+-- 
+-- SHOW WARNINGS;
+-- 
+-- -- -----------------------------------------------------
+-- -- Table `professors`
+-- -- -----------------------------------------------------
+-- DROP TABLE IF EXISTS `professors` ;
+-- 
+-- SHOW WARNINGS;
+-- CREATE TABLE IF NOT EXISTS `professors` (
+--   `id` BINARY(16) NOT NULL,
+--   `name1` TEXT NULL,
+--   `name2` TEXT NULL,
+--   PRIMARY KEY (`id`))
+-- ENGINE = InnoDB;
+-- 
+-- SHOW WARNINGS;
+-- 
+-- -- -----------------------------------------------------
+-- -- Table `course_areas`
+-- -- -----------------------------------------------------
+-- DROP TABLE IF EXISTS `course_areas` ;
+-- 
+-- SHOW WARNINGS;
+-- CREATE TABLE IF NOT EXISTS `course_areas` (
+--   `id` BINARY(16) NOT NULL,
+--   `value` VARCHAR(45) NULL,
+--   PRIMARY KEY (`id`))
+-- ENGINE = InnoDB;
+-- 
+-- SHOW WARNINGS;
+-- 
+-- -- -----------------------------------------------------
+-- -- Table `course_times`
+-- -- -----------------------------------------------------
+-- DROP TABLE IF EXISTS `course_times` ;
+-- 
+-- SHOW WARNINGS;
+-- CREATE TABLE IF NOT EXISTS `course_times` (
+--   `id` BINARY(16) NOT NULL,
+--   `time_mon` INT NULL,
+--   `time_tue` INT NULL,
+--   `time_wed` INT NULL,
+--   `time_thu` INT NULL,
+--   `time_fri` INT NULL,
+--   `time_sat` INT NULL,
+--   `time_sun` INT NULL,
+--   `room_mon` VARCHAR(20) NULL,
+--   `room_tue` VARCHAR(45) NULL,
+--   `room_wed` VARCHAR(45) NULL,
+--   `room_thu` VARCHAR(45) NULL,
+--   `room_fri` VARCHAR(45) NULL,
+--   `room_sat` VARCHAR(45) NULL,
+--   `room_sun` VARCHAR(45) NULL,
+--   PRIMARY KEY (`id`),
+--   UNIQUE INDEX `id_UNIQUE` (`id` ASC))
+-- ENGINE = InnoDB;
+-- 
+-- SHOW WARNINGS;
+-- 
+-- -- -----------------------------------------------------
+-- -- Table `courses`
+-- -- -----------------------------------------------------
+-- DROP TABLE IF EXISTS `courses` ;
+-- 
+-- SHOW WARNINGS;
+-- CREATE TABLE IF NOT EXISTS `courses` (
+--   `id` BINARY(16) NOT NULL,
+--   `code_prefix` CHAR(7) NOT NULL,
+--   `code_suffix` TEXT NULL,
+--   `department_time_year` YEAR NOT NULL,
+--   `department_time_semester` TINYINT NOT NULL,
+--   `department_id` CHAR(10) NOT NULL,
+--   `subjects_id` BINARY(16) NOT NULL,
+--   `professors_id` BINARY(16) NOT NULL,
+--   `course_areas_id` BINARY(16) NOT NULL,
+--   `course_times_id` BINARY(16) NULL,
+--   `type` VARCHAR(20) NOT NULL,
+--   `name_1` VARCHAR(45) NOT NULL,
+--   `name_2` VARCHAR(45) NULL,
+--   `credit_hours` TINYINT NOT NULL,
+--   `course_hours` TINYINT NOT NULL,
+--   `required` TINYINT(1) NULL COMMENT 'req => required\nonl => online\nfl => foren language\ntt => team teaching',
+--   `online` TINYINT(1) NULL,
+--   `foreign_language` TINYINT(1) NULL,
+--   `team_teaching` TINYINT(1) NULL,
+--   INDEX `fk_course_department_time1_idx` (`department_time_year` ASC, `department_time_semester` ASC, `department_id` ASC),
+--   INDEX `fk_course_subject1_idx` (`subjects_id` ASC),
+--   INDEX `fk_courses_professors1_idx` (`professors_id` ASC),
+--   INDEX `fk_courses_course_areas1_idx` (`course_areas_id` ASC),
+--   INDEX `fk_courses_course_times1_idx` (`course_times_id` ASC),
+--   PRIMARY KEY (`id`),
+--   CONSTRAINT `fk_course_department_time1`
+--     FOREIGN KEY (`department_time_year` , `department_time_semester` , `department_id`)
+--     REFERENCES `departments_with_time` (`year` , `semester` , `department_id`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION,
+--   CONSTRAINT `fk_course_subject1`
+--     FOREIGN KEY (`subjects_id`)
+--     REFERENCES `subjects` (`id`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION,
+--   CONSTRAINT `fk_courses_professors1`
+--     FOREIGN KEY (`professors_id`)
+--     REFERENCES `professors` (`id`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION,
+--   CONSTRAINT `fk_courses_course_areas1`
+--     FOREIGN KEY (`course_areas_id`)
+--     REFERENCES `course_areas` (`id`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION,
+--   CONSTRAINT `fk_courses_course_times1`
+--     FOREIGN KEY (`course_times_id`)
+--     REFERENCES `course_times` (`id`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION)
+-- ENGINE = InnoDB
+-- COMMENT = 'Attributes: From the rightmost bit\nRequired\nOnline\nForeignLanguage\nTeamTeaching\n';
+-- 
+-- SHOW WARNINGS;
+-- 
+-- -- -----------------------------------------------------
+-- -- Table `majors`
+-- -- -----------------------------------------------------
+-- DROP TABLE IF EXISTS `majors` ;
+-- 
+-- SHOW WARNINGS;
+-- CREATE TABLE IF NOT EXISTS `majors` (
+--   `id` BINARY(16) NOT NULL,
+--   `name` VARCHAR(255) NOT NULL,
+--   `major_type` INT NOT NULL,
+--   `year` YEAR NOT NULL,
+--   PRIMARY KEY (`id`))
+-- ENGINE = InnoDB;
+-- 
+-- SHOW WARNINGS;
+-- 
+-- -- -----------------------------------------------------
+-- -- Table `auth_tokens`
+-- -- -----------------------------------------------------
+-- DROP TABLE IF EXISTS `auth_tokens` ;
+-- 
+-- SHOW WARNINGS;
+-- CREATE TABLE IF NOT EXISTS `auth_tokens` (
+--   `authtoken_id` BINARY(16) NOT NULL,
+--   `user_id` BINARY(16) NOT NULL,
+--   `expiry` DATETIME NULL,
+--   PRIMARY KEY (`authtoken_id`),
+--   INDEX `fk_auth_tokens_users1_idx` (`user_id` ASC),
+--   CONSTRAINT `fk_auth_tokens_users1`
+--     FOREIGN KEY (`user_id`)
+--     REFERENCES `users` (`id`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION)
+-- ENGINE = InnoDB;
+-- 
+-- SHOW WARNINGS;
+-- 
+-- -- -----------------------------------------------------
+-- -- Table `users_has_majors`
+-- -- -----------------------------------------------------
+-- DROP TABLE IF EXISTS `users_has_majors` ;
+-- 
+-- SHOW WARNINGS;
+-- CREATE TABLE IF NOT EXISTS `users_has_majors` (
+--   `users_id` BINARY(16) NOT NULL,
+--   `majors_id` BINARY(16) NOT NULL,
+--   PRIMARY KEY (`users_id`, `majors_id`),
+--   INDEX `fk_users_has_majors_majors1_idx` (`majors_id` ASC),
+--   INDEX `fk_users_has_majors_users1_idx` (`users_id` ASC),
+--   CONSTRAINT `fk_users_has_majors_users1`
+--     FOREIGN KEY (`users_id`)
+--     REFERENCES `users` (`id`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION,
+--   CONSTRAINT `fk_users_has_majors_majors1`
+--     FOREIGN KEY (`majors_id`)
+--     REFERENCES `majors` (`id`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION)
+-- ENGINE = InnoDB;
+-- 
+-- SHOW WARNINGS;
+-- 
+-- -- -----------------------------------------------------
+-- -- Table `users_has_courses`
+-- -- -----------------------------------------------------
+-- DROP TABLE IF EXISTS `users_has_courses` ;
+-- 
+-- SHOW WARNINGS;
+-- CREATE TABLE IF NOT EXISTS `users_has_courses` (
+--   `users_id` BINARY(16) NOT NULL,
+--   `courses_id` BINARY(16) NOT NULL,
+--   `retake` TINYINT(1) NULL,
+--   `future` TINYINT(1) NULL,
+--   `score` TINYINT NULL COMMENT '-1 -> fail, -2 -> pass\n0 -> F, 2 -> D, 3 -> D+, 4 -> C, 5 -> C+, 6 -> B, 7 -> B+, 8 -> A, 9 -> A+',
+--   PRIMARY KEY (`users_id`, `courses_id`),
+--   INDEX `fk_users_has_courses_courses1_idx` (`courses_id` ASC),
+--   INDEX `fk_users_has_courses_users1_idx` (`users_id` ASC),
+--   CONSTRAINT `fk_users_has_courses_users1`
+--     FOREIGN KEY (`users_id`)
+--     REFERENCES `users` (`id`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION,
+--   CONSTRAINT `fk_users_has_courses_courses1`
+--     FOREIGN KEY (`courses_id`)
+--     REFERENCES `courses` (`id`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION)
+-- ENGINE = InnoDB;
+-- 
+-- SHOW WARNINGS;
+-- 
+-- -- -----------------------------------------------------
+-- -- Table `majors_has_subjects`
+-- -- -----------------------------------------------------
+-- DROP TABLE IF EXISTS `majors_has_subjects` ;
+-- 
+-- SHOW WARNINGS;
+-- CREATE TABLE IF NOT EXISTS `majors_has_subjects` (
+--   `majors_id` BINARY(16) NOT NULL,
+--   `subjects_id` BINARY(16) NOT NULL,
+--   `required` TINYINT(1) NULL,
+--   PRIMARY KEY (`majors_id`, `subjects_id`),
+--   INDEX `fk_majors_has_subjects_subjects1_idx` (`subjects_id` ASC),
+--   INDEX `fk_majors_has_subjects_majors1_idx` (`majors_id` ASC),
+--   CONSTRAINT `fk_majors_has_subjects_majors1`
+--     FOREIGN KEY (`majors_id`)
+--     REFERENCES `majors` (`id`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION,
+--   CONSTRAINT `fk_majors_has_subjects_subjects1`
+--     FOREIGN KEY (`subjects_id`)
+--     REFERENCES `subjects` (`id`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION)
+-- ENGINE = InnoDB;
+-- 
+-- SHOW WARNINGS;
+-- USE `jamioni`;
+-- 
+-- DELIMITER $$
+-- 
+-- USE `jamioni`$$
+-- DROP TRIGGER IF EXISTS `users_BEFORE_INSERT` $$
+-- SHOW WARNINGS$$
+-- USE `jamioni`$$
+-- CREATE DEFINER = CURRENT_USER TRIGGER `users_BEFORE_INSERT` BEFORE INSERT ON `users` FOR EACH ROW
+-- BEGIN
+--   SET new.id = uuid();
+-- END$$
+-- 
+-- SHOW WARNINGS$$
+-- 
+-- USE `jamioni`$$
+-- DROP TRIGGER IF EXISTS `departments_with_time_BEFORE_INSERT` $$
+-- SHOW WARNINGS$$
+-- USE `jamioni`$$
+-- CREATE DEFINER = CURRENT_USER TRIGGER `departments_with_time_BEFORE_INSERT` BEFORE INSERT ON `departments_with_time` FOR EACH ROW
+-- BEGIN
+--   SET new.id = uuid();
+-- END$$
+-- 
+-- SHOW WARNINGS$$
+-- 
+-- USE `jamioni`$$
+-- DROP TRIGGER IF EXISTS `subjects_BEFORE_INSERT` $$
+-- SHOW WARNINGS$$
+-- USE `jamioni`$$
+-- CREATE DEFINER = CURRENT_USER TRIGGER `subjects_BEFORE_INSERT` BEFORE INSERT ON `subjects` FOR EACH ROW
+-- BEGIN
+--   SET new.id = uuid();
+-- END$$
+-- 
+-- SHOW WARNINGS$$
+-- 
+-- USE `jamioni`$$
+-- DROP TRIGGER IF EXISTS `professors_BEFORE_INSERT` $$
+-- SHOW WARNINGS$$
+-- USE `jamioni`$$
+-- CREATE DEFINER = CURRENT_USER TRIGGER `professors_BEFORE_INSERT` BEFORE INSERT ON `professors` FOR EACH ROW
+-- BEGIN
+--   SET new.id = uuid();
+-- END$$
+-- 
+-- SHOW WARNINGS$$
+-- 
+-- USE `jamioni`$$
+-- DROP TRIGGER IF EXISTS `course_areas_BEFORE_INSERT` $$
+-- SHOW WARNINGS$$
+-- USE `jamioni`$$
+-- CREATE DEFINER = CURRENT_USER TRIGGER `course_areas_BEFORE_INSERT` BEFORE INSERT ON `course_areas` FOR EACH ROW
+-- BEGIN
+--   SET new.id = uuid();
+-- END$$
+-- 
+-- SHOW WARNINGS$$
+-- 
+-- USE `jamioni`$$
+-- DROP TRIGGER IF EXISTS `course_times_BEFORE_INSERT` $$
+-- SHOW WARNINGS$$
+-- USE `jamioni`$$
+-- CREATE DEFINER = CURRENT_USER TRIGGER `course_times_BEFORE_INSERT` BEFORE INSERT ON `course_times` FOR EACH ROW
+-- BEGIN
+--   SET new.id = uuid();
+-- END$$
+-- 
+-- SHOW WARNINGS$$
+-- 
+-- USE `jamioni`$$
+-- DROP TRIGGER IF EXISTS `courses_BEFORE_INSERT` $$
+-- SHOW WARNINGS$$
+-- USE `jamioni`$$
+-- CREATE DEFINER = CURRENT_USER TRIGGER `courses_BEFORE_INSERT` BEFORE INSERT ON `courses` FOR EACH ROW
+-- BEGIN
+--   SET new.id = uuid();
+-- END$$
+-- 
+-- SHOW WARNINGS$$
+-- 
+-- USE `jamioni`$$
+-- DROP TRIGGER IF EXISTS `majors_BEFORE_INSERT` $$
+-- SHOW WARNINGS$$
+-- USE `jamioni`$$
+-- CREATE DEFINER = CURRENT_USER TRIGGER `majors_BEFORE_INSERT` BEFORE INSERT ON `majors` FOR EACH ROW
+-- BEGIN
+--   SET new.id = uuid();
+-- END$$
+-- 
+-- SHOW WARNINGS$$
+-- 
+-- USE `jamioni`$$
+-- DROP TRIGGER IF EXISTS `auth_tokens_BEFORE_INSERT` $$
+-- SHOW WARNINGS$$
+-- USE `jamioni`$$
+-- CREATE DEFINER = CURRENT_USER TRIGGER `auth_tokens_BEFORE_INSERT` BEFORE INSERT ON `auth_tokens` FOR EACH ROW
+-- BEGIN
+--   SET new.authtoken_id = uuid();
+-- END$$
+-- 
+-- SHOW WARNINGS$$
+-- 
+-- DELIMITER ;
+-- 
+-- SET SQL_MODE=@OLD_SQL_MODE;
+-- SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+-- SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+-- 
 # --- !Downs
--- -----------------------------------------------------
--- Schema jamioni
--- -----------------------------------------------------
-
-DROP TABLE IF EXISTS `users` ;
-DROP TABLE IF EXISTS `departments` ;
-DROP TABLE IF EXISTS `departments_with_time` ;
-DROP TABLE IF EXISTS `subjects` ;
-DROP TABLE IF EXISTS `course_times` ;
-DROP TABLE IF EXISTS `courses` ;
-DROP TABLE IF EXISTS `major_types` ;
-DROP TABLE IF EXISTS `majors` ;
-DROP TABLE IF EXISTS `users_has_majors` ;
-DROP TABLE IF EXISTS `majors_has_subjects` ;
-DROP TABLE IF EXISTS `users_has_courses` ;
-DROP TABLE IF EXISTS `users_has_courses_future` ;
-DROP TABLE IF EXISTS `auth_tokens` ;
+-- -- -----------------------------------------------------
+-- -- Schema jamioni
+-- -- -----------------------------------------------------
+-- 
+-- DROP TABLE IF EXISTS `users` ;
+-- DROP TABLE IF EXISTS `departments` ;
+-- DROP TABLE IF EXISTS `departments_with_time` ;
+-- DROP TABLE IF EXISTS `subjects` ;
+-- DROP TABLE IF EXISTS `course_times` ;
+-- DROP TABLE IF EXISTS `courses` ;
+-- DROP TABLE IF EXISTS `major_types` ;
+-- DROP TABLE IF EXISTS `majors` ;
+-- DROP TABLE IF EXISTS `users_has_majors` ;
+-- DROP TABLE IF EXISTS `majors_has_subjects` ;
+-- DROP TABLE IF EXISTS `users_has_courses` ;
+-- DROP TABLE IF EXISTS `users_has_courses_future` ;
+-- DROP TABLE IF EXISTS `auth_tokens` ;

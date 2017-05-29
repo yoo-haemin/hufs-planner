@@ -9,8 +9,8 @@ import com.mohiva.play.silhouette.api.services.AvatarService
 import com.mohiva.play.silhouette.api.util.PasswordHasherRegistry
 import com.mohiva.play.silhouette.impl.providers._
 import forms.SignUpForm
-import models.User
-import models.services.{ AuthTokenService, UserService }
+import models.{ Major, MajorType, User }
+import models.services.{ AuthTokenService, UserService, MajorService }
 import play.api.i18n.{ I18nSupport, Messages, MessagesApi }
 import play.api.libs.concurrent.Execution.Implicits._
 import play.api.libs.mailer.{ Email, MailerClient }
@@ -36,6 +36,7 @@ class SignUpController @Inject() (
   val messagesApi: MessagesApi,
   silhouette: Silhouette[DefaultEnv],
   userService: UserService,
+  majorService: MajorService,
   authInfoRepository: AuthInfoRepository,
   authTokenService: AuthTokenService,
   avatarService: AvatarService,
@@ -50,7 +51,7 @@ class SignUpController @Inject() (
    * @return The result to display.
    */
   def view = silhouette.UnsecuredAction.async { implicit request =>
-    Future.successful(Ok(views.html.signUp(SignUpForm.form)))
+    for (mt <- majorService.allOfType _) yield Ok(views.html.signUp(SignUpForm.form)(mt _))
   }
 
   /**
@@ -60,7 +61,7 @@ class SignUpController @Inject() (
    */
   def submit = silhouette.UnsecuredAction.async { implicit request =>
     SignUpForm.form.bindFromRequest.fold(
-      form => Future.successful(BadRequest(views.html.signUp(form))),
+      form => Future.successful(BadRequest(views.html.signUp(form)(majorByType))),
       data => {
         val result = Redirect(routes.SignUpController.view()).flashing("info" -> Messages("sign.up.email.sent", data.email))
         val loginInfo = LoginInfo(CredentialsProvider.ID, data.email)
@@ -82,7 +83,8 @@ class SignUpController @Inject() (
               userID = UUID.randomUUID(),
               loginInfo = loginInfo,
               email = Some(data.email),
-              classYear = 0,
+              semester = 1,
+              major = Seq[Major](),
               activated = false
             )
             for {

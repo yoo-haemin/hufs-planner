@@ -1,13 +1,14 @@
 package models
 
 import java.time.Year
-import java.util.UUID
 
-case class Major(id: UUID, name: String, majorType: MajorType, year: Year)
+case class Major(id: String, nameKo: String, nameEn: Option[String], majorType: MajorType, year: Year)
 
 sealed abstract class MajorType(v: Int)
 
 object MajorType {
+  import scala.language.implicitConversions
+
   case object FirstMajor extends MajorType(1)
   case object SecondMajor extends MajorType(2)
   case object FirstMajorMinor extends MajorType(3)
@@ -15,7 +16,7 @@ object MajorType {
   case object MultipleMajor extends MajorType(5)
   case object TeacherCourse extends MajorType(6)
 
-  def fromInt(v: Int): MajorType = v match {
+  implicit def fromInt(v: Int): MajorType = v match {
     case 1 => FirstMajor
     case 2 => SecondMajor
     case 3 => FirstMajorMinor
@@ -24,7 +25,7 @@ object MajorType {
     case 6 => TeacherCourse
   }
 
-  def toInt(mt: MajorType): Int = mt match {
+  implicit def toInt(mt: MajorType): Int = mt match {
     case FirstMajor => 1
     case SecondMajor => 2
     case FirstMajorMinor => 3

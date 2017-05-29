@@ -2,7 +2,8 @@ package modules
 
 import com.google.inject.AbstractModule
 import models.daos._
-import models.services.{ AuthTokenService, AuthTokenServiceImpl }
+import models.services._
+//{ AuthTokenService, AuthTokenServiceImpl }
 import net.codingwell.scalaguice.ScalaModule
 
 /**
@@ -14,14 +15,16 @@ class BaseModule extends AbstractModule with ScalaModule {
    * Configures the module.
    */
   def configure(): Unit = {
-    bind[AuthTokenDAO].to[AuthTokenDAOImpl]
+    bind[AuthTokenDAO].to[hashmap.AuthTokenDAOImpl]
+    bind[CourseDAO].to[hashmap.CourseDAOImpl]
+    bind[CourseTimeDAO].to[hashmap.CourseTimeDAOImpl]
+    bind[DepartmentDAO].to[hashmap.DepartmentDAOImpl]
+    bind[DepartmentTimeDAO].to[hashmap.DepartmentTimeDAOImpl]
+    bind[MajorDAO].to[hashmap.MajorDAOImpl]
+    bind[SubjectDAO].to[hashmap.SubjectDAOImpl]
+    bind[UserDAO].to[hashmap.UserDAOImpl]
+
     bind[AuthTokenService].to[AuthTokenServiceImpl]
-    bind[CourseDAO].to[CourseDAOImpl]
-    bind[CourseTimeDAO].to[CourseTimeDAOImpl]
-    bind[DepartmentDAO].to[DepartmentDAOImpl]
-    bind[DepartmentTimeDAO].to[DepartmentTimeDAOImpl]
-    bind[MajorDAO].to[MajorDAOImpl]
-    bind[SubjectDAO].to[SubjectDAOImpl]
-    bind[UserDAO].to[UserDAOImpl]
+    bind[MajorService].to[MajorServiceImpl]
   }
 }

@@ -29,8 +29,8 @@ class SubjectDAOImpl @Inject() (
   def all(): Future[Seq[Subject]] =
     db.run(subjects.result)
 
-  def insert(Subject: Subject): Future[String] =
-    db.run(subjects returning subjects.map(_.departmentId) += Subject)
+  def insert(Subject: Subject): Future[UUID] =
+    db.run(subjects returning subjects.map(_.id) += Subject)
 
   class SubjectsTable(tag: Tag) extends Table[Subject](tag, "subjects") {
     def id = column[UUID]("id", O.PrimaryKey)
