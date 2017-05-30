@@ -12,6 +12,7 @@
                 <div class="row">
                     <p class="col-md-6"><strong>@Messages("classYear"):</strong></p><p class="col-md-6">@user.classYear</p>
                 </div>
+                @user.loginInfo
                 <div class="row">
                     <p class="col-md-6"><strong>@Messages("email"):</strong></p><p class="col-md-6">@user.email.getOrElse("None")</p>
                 </div>

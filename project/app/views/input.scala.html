@@ -1,5 +1,8 @@
-@()(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
-@*(user: User)(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets) *@
+@(user: models.User
+)(gradeForm: Form[forms.GradeForm.Data]
+)(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+
+@import b3.inline.fieldConstructor
 
 @main(Messages("input.title")) {
     <div class="col-md-10 col-md-offset-2">
@@ -18,13 +21,10 @@
     </div>
 
     <div class="col-md-10 col-md-offset-2">
-        <form method="get">
-
-            <textarea id="get_info" rows="40" cols="100">(여기에 붙여 넣으세요)</textarea><br>
-            <button type="submit">제출</button> <button type="reset"> 지우기</button>
-
-        </form>
+        @helper.form(action = routes.SignUpController.submit()) {
+            @helper.CSRF.formField
+            @b3.textarea( gradeForm("main"), 'rows -> 40, 'cols -> 100, 'placeholder -> Messages("paste.here") )
+            @b3.submit('class -> "btn btn-primary") {<span class="glyphicon glyphicon-ok"></span> @Messages("grades.submit")} @b3.reset('class -> "btn btn-danger"){ <span class="glyphicon glyphicon-remove"></span> @Messages("grades.reset") }
     </div>
-
-
+    }
     }

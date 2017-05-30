@@ -86,11 +86,11 @@ yahoo = Yahoo
 # Emails
 ##########
 
-email.from = Hufs Course Planner <noreply@mohiva.com>
+email.from = Hufs Course Planner <noreply@jamioni.com>
 
 # Sign Up
 email.sign.up.subject = Welcome
-email.sign.up.hello = Hello {0},
+email.sign.up.hello = Hello,
 email.sign.up.html.text = Please follow <a href="{0}">this link</a> to confirm and activate your new account.
 email.sign.up.txt.text = Please follow the link to confirm and activate your new account: {0}
 

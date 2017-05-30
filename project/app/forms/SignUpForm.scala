@@ -13,9 +13,8 @@ object SignUpForm {
    */
   val form = Form(
     mapping(
-      "firstName" -> nonEmptyText,
-      "lastName" -> nonEmptyText,
       "email" -> email,
+      "schoolNumber" -> nonEmptyText,
       "password" -> nonEmptyText,
       "classYear" -> number,
       "firstMajor" -> nonEmptyText,
@@ -33,9 +32,8 @@ object SignUpForm {
    * @param password The password of the user.
    */
   case class Data(
-    firstName: String,
-    lastName: String,
     email: String,
+    schoolNumber: String,
     password: String,
     classYear: Int,
     firstMajor: String,

@@ -10,6 +10,7 @@ import com.mohiva.play.silhouette.api.util.PasswordHasherRegistry
 import com.mohiva.play.silhouette.impl.providers._
 import forms.SignUpForm
 import models.{ Major, MajorType, User }
+import models.MajorType._
 import models.services.{ AuthTokenService, UserService, MajorService }
 import play.api.i18n.{ I18nSupport, Messages, MessagesApi }
 import play.api.libs.concurrent.Execution.Implicits._
@@ -79,21 +80,27 @@ class SignUpController @Inject() (
               bodyText = Some(views.txt.emails.alreadySignedUp(user, url).body),
               bodyHtml = Some(views.html.emails.alreadySignedUp(user, url).body)
             ))
-
             Future.successful(result)
+
           case None =>
             val authInfo = passwordHasherRegistry.current.hash(data.password)
-            val user = User(
-              userID = UUID.randomUUID(),
-              loginInfo = loginInfo,
-              email = Some(data.email),
-              classYear = 2013, //TODO Fix me
-              semester = 1, //TODO Fix me
-              major = Map[MajorType, Major](), //TODO Fix me
-              activated = false
-            )
             for {
-              user <- userService.save(user.copy())
+              fmOption <- majorService.find(data.firstMajor, FirstMajor, data.classYear.toShort)
+              smOption <- majorService.find(data.secondMajor, SecondMajor, data.classYear.toShort)
+              userData = User(
+                userID = UUID.randomUUID(),
+                loginInfo = loginInfo,
+                email = Some(data.email),
+                classYear = data.classYear.toShort,
+                semester = data.semester.toByte,
+                major = Seq(fmOption, smOption)
+                  .filterNot(_.isEmpty)
+                  .map(_.get)
+                  .map(m => m.majorType -> m)
+                  .toMap,
+                activated = false
+              )
+              user <- userService.save(userData.copy())
               authInfo <- authInfoRepository.add(loginInfo, authInfo)
               authToken <- authTokenService.create(user.userID)
             } yield {

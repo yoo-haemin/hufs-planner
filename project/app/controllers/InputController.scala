@@ -4,9 +4,11 @@ import javax.inject.Inject
 
 import com.mohiva.play.silhouette.api.{ Silhouette }
 import com.mohiva.play.silhouette.impl.providers.SocialProviderRegistry
-import play.api.i18n.{ I18nSupport, MessagesApi }
+import play.api.i18n.{ I18nSupport, Messages, MessagesApi }
 import play.api.mvc.Controller
 import utils.auth.DefaultEnv
+import forms.GradeForm
+import shared.Regex._
 
 import scala.concurrent.Future
 
@@ -30,17 +32,25 @@ class InputController @Inject() (
    *
    * @return The result to display.
    */
-  def view = silhouette.UnsecuredAction.async { implicit request =>
-    Future.successful(Ok(views.html.input()))
-  }
-
-  /* TODO 윗 버전은 관상용, 이 버전으로 바꾸기!!
   def view = silhouette.SecuredAction.async { implicit request =>
-    Future.successful(Ok(views.html.input(request.identity)))
+    Future.successful(Ok(views.html.input(request.identity)(GradeForm.form)))
   }
-   */
 
-  def submit = silhouette.UnsecuredAction.async { implicit request =>
-    Future.successful(Ok("OK"))
+  def submit = silhouette.SecuredAction.async { implicit request =>
+    GradeForm.form.bindFromRequest.fold(
+      form => {
+        Future.successful(
+          BadRequest(views.html.input(request.identity)(form))
+            .flashing("error" -> Messages("grades.wrong.input"))
+        )
+      },
+      data => {
+        // 데이터를 받았으니..
+        //data.main match {
+        //  case gradesAllR()
+        //}
+        Future.successful(Ok("접수완료 -_- 하지만 저장은 안됐다는거~ 배고프니까 밥좀먹고 만들게"))
+      }
+    )
   }
 }

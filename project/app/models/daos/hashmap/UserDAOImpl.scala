@@ -7,6 +7,7 @@ import com.mohiva.play.silhouette.api.LoginInfo
 import models.User
 import models.daos.UserDAO
 import scala.concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
  * Give access to the user object.
@@ -36,13 +37,21 @@ class UserDAOImpl @Inject() extends UserDAO {
    * @param user The user to save.
    * @return The saved user.
    */
-  def save(user: User): Future[User] =
-    Future.successful {
-      UserDAOImpl.users = UserDAOImpl.users + user
-      user
-    }
+  def save(user: User): Future[User] = user match {
+    case User(id, _, _, _, _, _, _) =>
+      find(id).map { u =>
+        u match {
+          case Some(origUser) =>
+            UserDAOImpl.users = UserDAOImpl.users.filterNot(_ == origUser) + user; user
+
+          case None =>
+            UserDAOImpl.users = UserDAOImpl.users + user; user
+        }
+      }
+  }
 }
 
 object UserDAOImpl {
-  var users = Set[User]()
+  var users = Set[User]( //User(UUID.randomUUID, LoginInfo("credentials", ))
+  )
 }

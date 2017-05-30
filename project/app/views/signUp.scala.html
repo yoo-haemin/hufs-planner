@@ -13,22 +13,35 @@
         @helper.form(action = routes.SignUpController.submit()) {
             @helper.CSRF.formField
             @b3.text(signUpForm("email"), '_hiddenLabel -> Messages("email"), 'placeholder -> Messages("email"), 'class -> "form-control input-lg", 'pattern -> "[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}")
-            @b3.text(signUpForm("SchoolNumber"), '_hiddenLabel -> Messages("SchoolNumber"), 'placeholder -> Messages("SchoolNumber"), 'class -> "form-control input-lg", 'pattern -> "[0-9]{9}")
+            @b3.text(signUpForm("schoolNumber"), '_hiddenLabel -> Messages("schoolNumber"), 'placeholder -> Messages("SchoolNumber"), 'class -> "form-control input-lg", 'pattern -> "[0-9]{9}")
             @passwordStrength(signUpForm("password"), '_hiddenLabel -> Messages("password"), 'placeholder -> Messages("password"), 'class -> "form-control input-lg")
             <input type="password" class="form-control input-lg" id="passwordcheck" data-rule-required="true" placeholder="비밀번호 확인" maxlength="30">
             <p id="password-match"></p>
 
-            @b3.select( signUpForm("firstMajor"), options = majorByType(FirstMajor), '_label -> Messages("major.first") )
-            @b3.select( signUpForm("secondMajor"), options = majorByType(SecondMajor), '_label -> Messages("major.second") )
+            @b3.select( signUpForm("firstMajor"), options = majorByType(FirstMajor).distinct.map { case (k, e) => k -> (k + " (" + e + ")") } , '_label -> Messages("major.first") )
+
+            @b3.select( signUpForm("secondMajor"), options = majorByType(SecondMajor).distinct.map { case (k, e) => k -> (k + " (" + e + ")") } , '_label -> Messages("major.second") )
 
 
-            @b3.select( signUpForm("semester"),
-                        options = {
-                            val maxSemester = 9
-                            (1 to maxSemester) .map(
-                                i => i.toString ->
-                                (i.toString + (if (i < maxSemester) "학기" else "학기 이상")))
-                        }, '_label -> Messages("current.semester") )
+            @b3.select(
+                signUpForm("classYear"),
+                options = {
+                    val (minClassYear, maxClassYear) = (2012, 2013)
+                    (minClassYear to maxClassYear).map(i => i.toString -> i.toString)
+                },
+                '_label -> Messages("major.second")
+            )
+
+            @b3.select(
+                signUpForm("semester"),
+                options = {
+                    val maxSemester = 9
+                    (1 to maxSemester) .map(
+                        i => i.toString ->
+                        (i.toString + (if (i < maxSemester) "학기" else "학기 이상")))
+                },
+                '_label -> Messages("current.semester")
+            )
 
 
 
@@ -36,9 +49,7 @@
 
 
 
-            @b3.submit('class -> "btn btn-lg btn-primary btn-block") {
-                <span class="glyphicon glyphicon-ok"></span> @Messages("sign.up")
-            }
+            @b3.submit('class -> "btn btn-lg btn-primary btn-block") {<span class="glyphicon glyphicon-ok"></span> @Messages("sign.up") }
 
 
                 <div class="sign-in-now">
@@ -48,4 +59,4 @@
     </fieldset>
     <script src="@routes.Assets.at("javascripts/signUp.js")"></script>
 
-}
+    }
