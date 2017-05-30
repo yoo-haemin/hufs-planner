@@ -1,4 +1,7 @@
-@(signUpForm: Form[forms.SignUpForm.Data])(majorByType: Function1[models.MajorType, Seq[(String, String)]])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+@(signUpForm: Form[forms.SignUpForm.Data]
+)(majorByType: Function1[models.MajorType, Seq[(String, String)]]
+)(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets
+)
 
 @import b3.inline.fieldConstructor
 @import models.MajorType._
@@ -16,71 +19,32 @@
             <p id="password-match"></p>
 
             @b3.select( signUpForm("firstMajor"), options = majorByType(FirstMajor), '_label -> Messages("major.first") )
-            @b3.select( signUpForm("firstMajor"), options = majorByType(SecondMajor), '_label -> Messages("major.second") )
+            @b3.select( signUpForm("secondMajor"), options = majorByType(SecondMajor), '_label -> Messages("major.second") )
 
 
-                <label for="sel3"> 현재 학년(학기)</label>
-                <select class="form-actions">
-                    <option selected>1학기</option>
-
-                    <option>2학기</option>
-
-                    <option>3학기</option>
-
-                    <option>4학기</option>
-
-                    <option>5학기</option>
-
-                    <option>6학기</option>
-
-                    <option>7학기</option>
-
-                    <option>8학기 이상</option>
-
-                </select>
-
-                <br>
-
-                <label for="teachingProfession" class="control-label">교직 이수 여부</label>
-                <label class="radio-inline">
-                    <input type="radio" id="teachingProfessionYN" name="teachingProfessionYN" value="Y"> Yes
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" id="teachingProfessionYN" name="teachingProfessionYN" value="N" checked> No
-                </label>
-
-                <br>
-
-                <label for="privateInfo" class="control-label">개인정보 이용동의 여부</label>
-                <label class="radio-inline">
-                    <input type="radio" id="privateInfoYN" name="privateInfoYN" value="Y"> 동의합니다
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" id="privateInfoYN" name="privateInfoYN" value="N" checked> 동의하지 않습니다
-                </label>
+            @b3.select( signUpForm("semester"),
+                        options = {
+                            val maxSemester = 9
+                            (1 to maxSemester) .map(
+                                i => i.toString ->
+                                (i.toString + (if (i < maxSemester) "학기" else "학기 이상")))
+                        }, '_label -> Messages("current.semester") )
 
 
-            </div>
+
+            @b3.checkbox( signUpForm("teacher"), '_text -> Messages("signup.teacherCourse") )
 
 
-                <!--   패스워드 확인
-            <div class="form-group" id="divPasswordCheck">
-                <label for="inputPasswordCheck" class="col-lg-2 control-label">패스워드 확인</label>
-                <div class="col-lg-10">
-                    <input type="password" class="form-control" id="passwordCheck" data-rule-required="true" placeholder="패스워드 확인" maxlength="30">
+
+            @b3.submit('class -> "btn btn-lg btn-primary btn-block") {
+                <span class="glyphicon glyphicon-ok"></span> @Messages("sign.up")
+            }
+
+
+                <div class="sign-in-now">
+                    <p>@Messages("already.a.member") <a href="@routes.SignInController.view">@Messages("sign.in.now")</a></p>
                 </div>
-            </div>
-            -->
-
-            <div class="form-group">
-                <div>
-                    <button id="submit" type="submit" value="submit" class="btn btn-lg btn-primary btn-block">@Messages("sign.up")</button>
-                </div>
-            </div>
-            <div class="sign-in-now">
-                <p>@Messages("already.a.member") <a href="@routes.SignInController.view">@Messages("sign.in.now")</a></p>
-            </div>
-        }
+                }
     </fieldset>
     <script src="@routes.Assets.at("javascripts/signUp.js")"></script>
 

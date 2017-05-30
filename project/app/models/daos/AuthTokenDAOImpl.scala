@@ -1,5 +1,5 @@
 package models.daos
-
+/*
 import java.util.UUID
 
 import javax.inject.Inject
@@ -68,3 +68,5 @@ class AuthTokenDAOImpl @Inject() (
   implicit val dateTimeColumnType: BaseColumnType[DateTime] =
     MappedColumnType.base[DateTime, Long](_.getMillis(), new DateTime(_))
 }
+
+ */

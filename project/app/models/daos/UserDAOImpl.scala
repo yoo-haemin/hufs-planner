@@ -1,5 +1,5 @@
 package models.daos
-
+/*
 import java.util.UUID
 
 import javax.inject.Inject
@@ -68,3 +68,5 @@ class UserDAOImpl @Inject() (
         LoginInfo(arr(0), arr(1))
       })
 }
+
+ */

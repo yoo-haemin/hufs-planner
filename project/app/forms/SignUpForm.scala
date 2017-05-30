@@ -17,9 +17,10 @@ object SignUpForm {
       "lastName" -> nonEmptyText,
       "email" -> email,
       "password" -> nonEmptyText,
+      "classYear" -> number,
       "firstMajor" -> nonEmptyText,
       "secondMajor" -> text,
-      "classYear" -> number
+      "semester" -> number
     )(Data.apply)(Data.unapply _)
   )
 
@@ -36,7 +37,9 @@ object SignUpForm {
     lastName: String,
     email: String,
     password: String,
+    classYear: Int,
     firstMajor: String,
     secondMajor: String,
-    classYear: Int)
+    semester: Int
+  )
 }

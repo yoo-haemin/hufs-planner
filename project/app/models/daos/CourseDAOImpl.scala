@@ -1,5 +1,5 @@
 package models.daos
-
+/*
 import javax.inject.Inject
 import java.util.UUID
 import play.api.db.slick.DatabaseConfigProvider
@@ -50,3 +50,5 @@ class CourseDAOImpl @Inject() (
     implicit val semesterColumnType: BaseColumnType[Semester] = MappedColumnType.base[Semester, Byte](Semester.toByte _, Semester.fromByte _)
   }
 }
+
+ */

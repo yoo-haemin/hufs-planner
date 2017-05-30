@@ -1,5 +1,5 @@
 package models.daos
-
+/*
 import java.time.Year
 import javax.inject.Inject
 import play.api.db.slick.DatabaseConfigProvider
@@ -39,3 +39,5 @@ class DepartmentTimeDAOImpl @Inject() (
   implicit val semesterColumnType: BaseColumnType[Semester] =
     MappedColumnType.base[Semester, Byte](Semester.toByte _, Semester.fromByte _)
 }
+
+ */

@@ -1,5 +1,5 @@
 package models.daos
-
+/*
 import java.time.Year
 
 import javax.inject.Inject
@@ -47,3 +47,5 @@ class MajorDAOImpl @Inject() (
   implicit val majorTypeColumnType: BaseColumnType[MajorType] =
     MappedColumnType.base[MajorType, Int](MajorType.toInt _, MajorType.fromInt _)
 }
+
+ */

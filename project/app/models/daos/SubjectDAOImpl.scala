@@ -1,5 +1,5 @@
 package models.daos
-
+/*
 import javax.inject.Inject
 
 import play.api.db.slick.DatabaseConfigProvider
@@ -41,3 +41,5 @@ class SubjectDAOImpl @Inject() (
     def * = (id, code, departmentId, name) <> (Subject.tupled, Subject.unapply _)
   }
 }
+
+ */

@@ -1,5 +1,5 @@
 package models.daos
-
+/*
 import javax.inject.Inject
 
 import play.api.db.slick.DatabaseConfigProvider
@@ -44,3 +44,5 @@ class DepartmentDAOImpl @Inject() (
   implicit val afiliationColumnType: BaseColumnType[Affiliation] =
     MappedColumnType.base[Affiliation, Byte](Affiliation.toByte _, Affiliation.fromByte _)
 }
+
+ */

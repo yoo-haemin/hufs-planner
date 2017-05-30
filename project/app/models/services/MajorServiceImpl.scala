@@ -23,14 +23,18 @@ class MajorServiceImpl @Inject() (majorDAO: MajorDAO) extends MajorService {
   def find(name: String, majorType: MajorType): Future[Major] =
     majorDAO.findByName(name).map { majorSeq => majorSeq.filter(_.majorType == majorType).head }
 
-  def allOfType(mt: MajorType): Future[Seq[(String, String)]] = {
-    majorDAO.all().map { majors =>
-      majors.filter {
-        case Major(code, nameKo, nameEn, majorType, year) => majorType == mt
-      }.map {
-        case Major(code, nameKo, nameEn, majorType, year) =>
-          nameKo -> (nameKo + "(" + nameEn.getOrElse("") + ")")
+  def allOfType(): Future[Map[MajorType, Seq[(String, String)]]] = {
+    majorDAO.all()
+      .map {
+        _.groupBy {
+          case Major(id, nameKo, nameEn, majorType, year) => majorType
+        }.map {
+          case (majorType, majorseq) =>
+            majorType ->
+              majorseq.map {
+                case Major(_, nameKo, nameEn, _, _) => nameKo -> nameEn.getOrElse("")
+              }
+        }
       }
-    }
   }
 }

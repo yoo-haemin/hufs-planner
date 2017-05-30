@@ -1,5 +1,5 @@
 package models.daos
-
+/*
 import javax.inject.Inject
 
 import play.api.db.slick.DatabaseConfigProvider
@@ -36,3 +36,5 @@ class CourseAreaDAOImpl @Inject() (
     def * = (id, value) <> (CourseArea.tupled, CourseArea.unapply _)
   }
 }
+
+ */

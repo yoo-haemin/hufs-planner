@@ -18,6 +18,5 @@ trait MajorService {
    */
   def find(name: String, majorType: MajorType): Future[Major]
 
-
-  def allOfType(mt: MajorType): Future[Seq[(String, String)]] 
+  def allOfType(): Future[Map[MajorType, Seq[(String, String)]]]
 }

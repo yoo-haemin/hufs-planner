@@ -1,5 +1,5 @@
 package models.daos
-
+/*
 import java.util.UUID
 import java.time.{ Year, DayOfWeek }
 import javax.inject.Inject
@@ -114,3 +114,5 @@ class CourseTimeDAOImpl @Inject() (
   implicit val yearColumnType: BaseColumnType[Year] =
     MappedColumnType.base[Year, Int](_.getValue, Year.of _)
 }
+
+ */

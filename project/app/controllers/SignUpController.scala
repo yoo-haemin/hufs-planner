@@ -51,7 +51,9 @@ class SignUpController @Inject() (
    * @return The result to display.
    */
   def view = silhouette.UnsecuredAction.async { implicit request =>
-    for (mt <- majorService.allOfType _) yield Ok(views.html.signUp(SignUpForm.form)(mt _))
+
+    for (mt <- majorService.allOfType)
+      yield Ok(views.html.signUp(SignUpForm.form)(mt.apply _))
   }
 
   /**
@@ -61,7 +63,9 @@ class SignUpController @Inject() (
    */
   def submit = silhouette.UnsecuredAction.async { implicit request =>
     SignUpForm.form.bindFromRequest.fold(
-      form => Future.successful(BadRequest(views.html.signUp(form)(majorByType))),
+      form => for (mt <- majorService.allOfType)
+        yield BadRequest(views.html.signUp(SignUpForm.form)(mt.apply _)),
+
       data => {
         val result = Redirect(routes.SignUpController.view()).flashing("info" -> Messages("sign.up.email.sent", data.email))
         val loginInfo = LoginInfo(CredentialsProvider.ID, data.email)
@@ -83,8 +87,9 @@ class SignUpController @Inject() (
               userID = UUID.randomUUID(),
               loginInfo = loginInfo,
               email = Some(data.email),
-              semester = 1,
-              major = Seq[Major](),
+              classYear = 2013, //TODO Fix me
+              semester = 1, //TODO Fix me
+              major = Map[MajorType, Major](), //TODO Fix me
               activated = false
             )
             for {
