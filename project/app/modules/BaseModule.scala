@@ -3,7 +3,6 @@ package modules
 import com.google.inject.AbstractModule
 import models.daos._
 import models.services._
-//{ AuthTokenService, AuthTokenServiceImpl }
 import net.codingwell.scalaguice.ScalaModule
 
 /**
@@ -23,8 +22,10 @@ class BaseModule extends AbstractModule with ScalaModule {
     bind[MajorDAO].to[hashmap.MajorDAOImpl]
     bind[SubjectDAO].to[hashmap.SubjectDAOImpl]
     bind[UserDAO].to[hashmap.UserDAOImpl]
+    bind[UserCourseDAO].to[hashmap.UserCourseDAOImpl]
 
     bind[AuthTokenService].to[AuthTokenServiceImpl]
     bind[MajorService].to[MajorServiceImpl]
+    bind[UserCourseService].to[UserCourseServiceImpl]
   }
 }
