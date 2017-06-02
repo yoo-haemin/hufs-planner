@@ -23,5 +23,9 @@ class CourseAreaDAOImpl @Inject() (
 }
 
 object CourseAreaDAOImpl {
-  var courseAreas = Set[CourseArea]()
+  var courseAreas = Set[CourseArea](
+    CourseArea(UUID.fromString("15ec0fc8-46e2-11e7-8db2-d413de251a16"), "전공"),
+    CourseArea(UUID.fromString("163c0f0f-46e2-11e7-8db2-d413de251a16"), "이중전공"),
+    CourseArea(UUID.fromString("168eb65a-46e2-11e7-8db2-d413de251a16"), "교양")
+  )
 }

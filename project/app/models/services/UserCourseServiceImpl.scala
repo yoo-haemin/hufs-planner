@@ -22,11 +22,7 @@ class UserCourseServiceImpl @Inject() (userCourseDAO: UserCourseDAO) extends Use
   def allCourse(userID: UUID, future: Boolean = false): Future[Seq[Course]] =
     userCourseDAO.allCourse(userID, future)
 
-  def save(userID: UUID, courseID: UUID, future: Boolean = false): Future[UserCourse] =
-    userCourseDAO.save(UserCourse(userID, courseID, future))
-
-  def saveAll(userID: UUID, courseIDs: Seq[UUID], future: Boolean = false): Future[Seq[UserCourse]] =
-    courseIDs.map(save(userID, _, future)).foldLeft(Future.successful(Seq[UserCourse]())) { (acc, uc) =>
-      (acc zip uc).map(p => p._1 :+ p._2)
-    }
+  def save(userID: UUID, courseID: UUID, score: Int,
+    retake: Boolean = false, future: Boolean = false): Future[UserCourse] =
+    userCourseDAO.save(UserCourse(userID, courseID, score, retake, future))
 }

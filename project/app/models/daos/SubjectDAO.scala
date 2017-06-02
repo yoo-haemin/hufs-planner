@@ -1,16 +1,17 @@
 package models.daos
 
 import scala.concurrent.Future
-import java.util.UUID
 import models.Subject
 
 trait SubjectDAO {
-  def findByDepartmentId(id: String): Future[Subject]
+  def findByDepartmentId(id: String): Future[Seq[Subject]]
 
-  def findByName(name: String): Future[Subject]
+  def findByCode(code: String): Future[Seq[Subject]]
+
+  def findByName(name: String): Future[Seq[Subject]]
 
   def all(): Future[Seq[Subject]]
 
-  def insert(Subject: Subject): Future[UUID]
+  def insert(Subject: Subject): Future[String]
 
 }

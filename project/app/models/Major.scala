@@ -1,8 +1,9 @@
 package models
 
+import java.util.UUID
 import java.time.Year
 
-case class Major(id: String, nameKo: String, nameEn: Option[String], majorType: MajorType, year: Year)
+case class Major(id: UUID, nameKo: String, nameEn: Option[String], majorType: MajorType, year: Year)
 
 sealed abstract class MajorType(v: Int)
 
@@ -15,6 +16,7 @@ object MajorType {
   case object Minor extends MajorType(4)
   case object MultipleMajor extends MajorType(5)
   case object TeacherCourse extends MajorType(6)
+  case object LiberalArts extends MajorType(7)
 
   implicit def fromInt(v: Int): MajorType = v match {
     case 1 => FirstMajor
@@ -23,6 +25,7 @@ object MajorType {
     case 4 => Minor
     case 5 => MultipleMajor
     case 6 => TeacherCourse
+    case 7 => LiberalArts
   }
 
   implicit def toInt(mt: MajorType): Int = mt match {
@@ -32,5 +35,6 @@ object MajorType {
     case Minor => 4
     case MultipleMajor => 5
     case TeacherCourse => 6
+    case LiberalArts => 7
   }
 }

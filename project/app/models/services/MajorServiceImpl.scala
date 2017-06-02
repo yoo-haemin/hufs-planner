@@ -30,7 +30,7 @@ class MajorServiceImpl @Inject() (majorDAO: MajorDAO) extends MajorService {
     majorDAO.all()
       .map {
         _.groupBy {
-          case Major(id, nameKo, nameEn, majorType, year) => majorType
+          case Major(_, _, _, majorType, _) => majorType
         }.map {
           case (majorType, majorseq) =>
             majorType ->

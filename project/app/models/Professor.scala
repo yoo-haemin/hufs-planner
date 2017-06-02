@@ -1,7 +1,9 @@
 package models
 
+import java.util.UUID
+
 case class Professor(
-  id: java.util.UUID,
+  id: UUID,
   name1: String,
   name2: Option[String]
 )

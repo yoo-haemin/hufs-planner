@@ -2,17 +2,13 @@ package models
 
 import java.util.UUID
 
-import com.mohiva.play.silhouette.api.{ Identity, LoginInfo }
-
 /**
- * The user object.
- *
- * @param userID The unique ID of the user.
- * @param courseID The ID of the course.
- * @param future The type of this course selection.
+ * The user-has-course object.
  */
 case class UserCourse(
   userID: UUID,
   courseID: UUID,
-  future: Boolean
+  score: Score,
+  future: Boolean = false,
+  retake: Boolean = false
 )

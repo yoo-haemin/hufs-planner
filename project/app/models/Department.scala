@@ -16,7 +16,7 @@ object Campus {
   def fromByte(v: Byte): Campus = v match {
     case 0 => Seoul
     case 1 => Global
-    case _ => sys.error("Campus must be either Seoul or Global")
+    case _ => throw new Exception("Campus must be either Seoul or Global")
   }
 
   def toByte(campus: Campus): Byte = campus match {
@@ -32,7 +32,7 @@ object Affiliation {
 
   def fromByte(v: Byte): Affiliation = v match {
     case 0 => Undergraduate
-    case _ => sys.error("Undefined Affiliation")
+    case _ => throw new Exception("Undefined Affiliation")
   }
 
   def toByte(aff: Affiliation): Byte = aff match {
