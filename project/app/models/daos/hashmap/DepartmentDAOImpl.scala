@@ -4,7 +4,7 @@ import javax.inject.Inject
 
 import scala.concurrent.Future
 
-import models.{ Department }
+import models.{ Department, Campus, Affiliation }
 
 import models.daos.DepartmentDAO
 /**
@@ -25,5 +25,10 @@ class DepartmentDAOImpl @Inject() extends DepartmentDAO {
 }
 
 object DepartmentDAOImpl {
-  var departments = Set[Department]()
+  var departments = Set[Department](
+    Department("ATMB2_H1", "융복합소프트웨어전공", Campus.Seoul, Affiliation.Undergraduate),
+    Department("ACDA1_H1", "언론정보전공", Campus.Seoul, Affiliation.Undergraduate),
+    Department("AEAA1_H1", "국제통상학과", Campus.Seoul, Affiliation.Undergraduate),
+    Department("GYOYANG", "교양", Campus.Seoul, Affiliation.Undergraduate)
+  )
 }

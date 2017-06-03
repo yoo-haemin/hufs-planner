@@ -8,16 +8,14 @@ const fs = require('fs')
 function convert(semester) {
     // Param maj: major OR liberal arts area
     // Return: all courses in major, converted
-    const convertMajor = maj => {
-        return maj.courses.reduce((acc, c) => {
-            c.year = semester.year
-            c.semester = semester.semester
-            c.majorName1 = maj.name1? maj.name1: maj.name
-            c.majorName2 = maj.name2
-            c.majorCode = maj.code
-            return acc.concat(c)
-        }, [])
-    }
+    const convertMajor = maj => maj.courses.reduce((acc, c) => {
+        c.year = semester.year
+        c.semester = semester.semester
+        c.majorName1 = maj.name1? maj.name1: maj.name
+        c.majorName2 = maj.name2
+        c.majorCode = maj.code
+        return acc.concat(c)
+    }, [])
 
     return semester.major.concat(semester.liberalArts).reduce((acc, m) => acc.concat(convertMajor(m)), [])
 }
