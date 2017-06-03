@@ -80,11 +80,44 @@
 <div class="col-md-10 col-md-offset-2">
     <form method="get">
 
-        <textarea id="get_info" rows="40" cols="100">(여기에 붙여 넣으세요)</textarea><br>
+        <textarea id="get_info" rows="40" cols="100" placeholder="(여기에 붙여 넣으세요)" pattern></textarea><br>
+
         <button type="submit">제출</button> <button type="reset"> 지우기</button>
 
     </form>
 </div>
+
+<script type="text/javascript">
+
+    $('#get_info').keyup(validateTextarea);
+
+    function validateTextarea() {
+        var errorMsg = "Please match the format requested.";
+        var textarea = this;
+        var pattern = new RegExp('^' + $(textarea).attr('pattern') + '$');
+        // check each line of text
+        $.each($(this).val().split("\n"), function () {
+            // check if the line matches the pattern
+            var hasError = !this.match(pattern);
+            if (typeof textarea.setCustomValidity === 'function') {
+                textarea.setCustomValidity(hasError ? errorMsg : '');
+            } else {
+                // Not supported by the browser, fallback to manual error display...
+                $(textarea).toggleClass('error', !!hasError);
+                $(textarea).toggleClass('ok', !hasError);
+                if (hasError) {
+                    $(textarea).attr('title', errorMsg);
+                } else {
+                    $(textarea).removeAttr('title');
+                }
+            }
+            return !hasError;
+        });
+    }
+
+
+
+</script>
 
 
 
