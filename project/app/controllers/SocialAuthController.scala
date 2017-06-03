@@ -1,5 +1,5 @@
 package controllers
-
+/*
 import javax.inject.Inject
 
 import com.mohiva.play.silhouette.api._
@@ -64,3 +64,4 @@ class SocialAuthController @Inject() (
     }
   }
 }
+ */

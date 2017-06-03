@@ -51,6 +51,14 @@ object MajorDAOImpl {
     Major(
       UUID.fromString("130aff94-46e2-11e7-8db2-d413de251a16"), "교양", Some("Liberal Arts"),
       LiberalArts, Year.of(2013)
+    ),
+    Major(
+      UUID.fromString("9313c946-7fa9-4fe6-9e99-3d4a7b45058d"), "자선", Some("Free Choice"),
+      FreeCourse, Year.of(2013)
+    ),
+    Major(
+      UUID.fromString("c4211166-b7b4-451b-93bb-ac8cda7ca7a3"), "자선", Some("Free Choice"),
+      FreeCourse, Year.of(2012)
     )
   )
 }

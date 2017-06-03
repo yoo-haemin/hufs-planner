@@ -23,10 +23,11 @@ class BaseModule extends AbstractModule with ScalaModule {
     bind[SubjectDAO].to[hashmap.SubjectDAOImpl]
     bind[UserDAO].to[hashmap.UserDAOImpl]
     bind[UserCourseDAO].to[hashmap.UserCourseDAOImpl]
+    bind[UserMajorDAO].to[hashmap.UserMajorDAOImpl]
     bind[MajorSubjectDAO].to[hashmap.MajorSubjectDAOImpl]
 
     bind[AuthTokenService].to[AuthTokenServiceImpl]
-    //bind[CourseService].to[CourseServiceImpl]
+    bind[CourseService].to[CourseServiceImpl]
     //bind[CourseTimeService].to[CourseTimeServiceImpl]
     //bind[DepartmentService].to[DepartmentServiceImpl]
     //bind[DepartmentTimeService].to[DepartmentTimeServiceImpl]
@@ -34,6 +35,6 @@ class BaseModule extends AbstractModule with ScalaModule {
     //bind[SubjectService].to[SubjectServiceImpl]
     bind[UserService].to[UserServiceImpl]
     bind[UserCourseService].to[UserCourseServiceImpl]
-    //bind[MajorSubjectService].to[MajorSubjectServiceImpl]
+    bind[UserMajorService].to[UserMajorServiceImpl]
   }
 }

@@ -38,7 +38,7 @@ class UserDAOImpl @Inject() extends UserDAO {
    * @return The saved user.
    */
   def save(user: User): Future[User] = user match {
-    case User(id, _, _, _, _, _, _) =>
+    case User(id, _, _, _, _, _) =>
       find(id).map { u =>
         u match {
           case Some(origUser) =>

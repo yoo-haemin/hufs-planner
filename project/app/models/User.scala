@@ -20,8 +20,7 @@ case class User(
   userID: UUID,
   loginInfo: LoginInfo,
   email: Option[String],
-  classYear: Short,
-  major: Map[MajorType, Major],
-  semester: Byte,
+  classYear: Int,
+  semester: Int,
   activated: Boolean
 ) extends Identity

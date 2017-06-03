@@ -11,9 +11,13 @@ case class Subject(
   name2: Option[String],
   department: Department
 ) {
-  require(code.length == Subject.length, s"Code length must be ${Subject.length}")
+  require(code.length <= Subject.length, s"Code length must be less than ${Subject.length}")
+
+  def equals(that: Subject): Boolean =
+    if (this.code == that.code && this.department == that.department) true
+    else false
 }
 
-final object Subject {
+object Subject {
   val length = 6
 }

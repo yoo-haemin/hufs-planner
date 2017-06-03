@@ -5,9 +5,6 @@ import models._
 
 import scala.concurrent.Future
 
-/**
- * Handles actions to auth tokens.
- */
 trait CourseService {
 
   /**
@@ -19,6 +16,7 @@ trait CourseService {
    */
   def findById(id: UUID): Future[Option[Course]]
 
-  def findBySubject(subject: Subject): Future[Seq[Course]]
+  def findAllById(ids: Seq[UUID]): Future[Seq[Option[Course]]]
 
+  def findBySubject(subject: Subject): Future[Seq[Course]]
 }

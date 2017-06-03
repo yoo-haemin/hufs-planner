@@ -11,7 +11,7 @@ import scala.concurrent.Future
  */
 trait UserCourseDAO {
 
-  def allCourse(userID: UUID, future: Boolean = false): Future[Seq[Course]]
+  def allCourse(userID: UUID, future: Boolean = false): Future[Seq[UserCourse]]
 
   def save(userCourse: UserCourse): Future[UserCourse]
 }

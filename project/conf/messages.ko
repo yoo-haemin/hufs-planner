@@ -103,3 +103,31 @@ email.activate.account.subject = Activate account
 email.activate.account.hello = Hello {0},
 email.activate.account.html.text = Please follow <a href="{0}">this link</a> to confirm and activate your new account.
 email.activate.account.txt.text = Please follow the link to confirm and activate your new account: {0}
+
+# Semesters
+first.semester = 1학기
+second.semester = 2학기
+summer.semester = 여름계절학기
+winter.semester = 겨울계절학기
+year = 년
+
+# Input Page
+input.title = 성적을 입력해주세요
+
+# Summary Page
+summary.title = 학점 정리
+no.entry = 보여드릴게 없어요 ㅠㅠ
+
+
+# Goal Page
+goal.title = 목표를 입력해주세요
+
+# MajorType
+first.major = 1전공
+second.major = 이중전공
+first.major.with.minor = 1전공
+minor = 부전공
+multiple.major = 복수전공
+teacher.course = 교직
+liberal.arts = 교양
+free.course = 자선

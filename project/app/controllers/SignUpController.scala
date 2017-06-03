@@ -9,14 +9,15 @@ import com.mohiva.play.silhouette.api.services.AvatarService
 import com.mohiva.play.silhouette.api.util.PasswordHasherRegistry
 import com.mohiva.play.silhouette.impl.providers._
 import forms.SignUpForm
-import models.{ Major, MajorType, User }
+import models.{ Major, MajorType, User, UserMajor }
 import models.MajorType._
-import models.services.{ AuthTokenService, UserService, MajorService }
+import models.services.{ AuthTokenService, UserService, MajorService, UserMajorService }
 import play.api.i18n.{ I18nSupport, Messages, MessagesApi }
 import play.api.libs.concurrent.Execution.Implicits._
 import play.api.libs.mailer.{ Email, MailerClient }
 import play.api.mvc.Controller
 import utils.auth.DefaultEnv
+import shared.Util.reverseEffect
 
 import scala.concurrent.Future
 
@@ -38,6 +39,7 @@ class SignUpController @Inject() (
   silhouette: Silhouette[DefaultEnv],
   userService: UserService,
   majorService: MajorService,
+  userMajorService: UserMajorService,
   authInfoRepository: AuthInfoRepository,
   authTokenService: AuthTokenService,
   avatarService: AvatarService,
@@ -91,16 +93,13 @@ class SignUpController @Inject() (
                 userID = UUID.randomUUID(),
                 loginInfo = loginInfo,
                 email = Some(data.email),
-                classYear = data.classYear.toShort,
-                semester = data.semester.toByte,
-                major = Seq(fmOption, smOption)
-                  .filterNot(_.isEmpty)
-                  .map(_.get)
-                  .map(m => m.majorType -> m)
-                  .toMap,
+                classYear = data.classYear,
+                semester = data.semester,
                 activated = false
               )
-              user <- userService.save(userData.copy())
+              userMajors = Seq(fmOption, smOption).filterNot(_.isEmpty).map(_.get).map(m => UserMajor(userData.userID, m.id))
+              savedUserMajors <- reverseEffect(userMajors.map(userMajor => userMajorService.save(userMajor)))
+              user <- userService.save(userData)
               authInfo <- authInfoRepository.add(loginInfo, authInfo)
               authToken <- authTokenService.create(user.userID)
             } yield {

@@ -112,11 +112,20 @@ email.activate.account.hello = Hello {0},
 email.activate.account.html.text = Please follow <a href="{0}">this link</a> to confirm and activate your new account.
 email.activate.account.txt.text = Please follow the link to confirm and activate your new account: {0}
 
+# Semesters
+first.semester = First Semester
+second.semester = Second Semester
+summer.semester = Summer Semester
+winter.semester = Winter Semester
+
+year = year
+
 # Input Page
 input.title = Input your grades!
 
 # Summary Page
 summary.title = Grade Summary
+no.entry = Nothing to show you :(
 
 
 # Goal Page

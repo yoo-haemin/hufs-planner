@@ -12,17 +12,8 @@ import scala.concurrent.ExecutionContext.Implicits.global
  * Give access to the user object.
  */
 class UserCourseDAOImpl @Inject() (courseDAO: CourseDAO) extends UserCourseDAO {
-  def allCourse(userID: UUID, future: Boolean = false): Future[Seq[Course]] = {
-    val courseList = UserCourseDAOImpl.userCourses.filter(_.userID == userID).map(_.courseID).toSeq
-    //Seq[Future[Course]] -> Future[Seq[Course]]
-    courseList.foldLeft(Future.successful(Seq[Course]())) { (acc, id) =>
-      (acc zip courseDAO.findById(id)).map { p =>
-        p._2 match {
-          case Some(c) => p._1 :+ c
-          case None => p._1
-        }
-      }
-    }
+  def allCourse(userID: UUID, future: Boolean = false): Future[Seq[UserCourse]] = {
+    Future.successful(UserCourseDAOImpl.userCourses.filter(_.userID == userID).toSeq)
   }
 
   def save(userCourse: UserCourse): Future[UserCourse] = {

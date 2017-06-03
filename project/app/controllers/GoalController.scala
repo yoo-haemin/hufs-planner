@@ -30,15 +30,9 @@ class GoalController @Inject() (
    *
    * @return The result to display.
    */
-  def view = silhouette.UnsecuredAction.async { implicit request =>
-    Future.successful(Ok(views.html.goal()))
-  }
-
-  /* TODO 윗 버전은 관상용, 이 버전으로 바꾸기!!
   def view = silhouette.SecuredAction.async { implicit request =>
-    Future.successful(Ok(views.html.input(request.identity)))
+    Future.successful(Ok(views.html.goal(request.identity)))
   }
-   */
 
   // TODO Finish me!
   def submit = silhouette.UnsecuredAction.async { implicit request =>

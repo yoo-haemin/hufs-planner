@@ -1,12 +1,16 @@
 package controllers
 
 import javax.inject.Inject
+import java.time.Year
 
 import com.mohiva.play.silhouette.api.{ Silhouette }
 import com.mohiva.play.silhouette.impl.providers.SocialProviderRegistry
 import play.api.i18n.{ I18nSupport, MessagesApi }
 import play.api.mvc.Controller
 import utils.auth.DefaultEnv
+
+import models.services._
+import models._
 
 import scala.concurrent.Future
 
@@ -21,22 +25,24 @@ import scala.concurrent.Future
 class SummaryController @Inject() (
   val messagesApi: MessagesApi,
   silhouette: Silhouette[DefaultEnv],
-  socialProviderRegistry: SocialProviderRegistry,
+  userCourseService: UserCourseService,
+  courseService: CourseService,
   implicit val webJarAssets: WebJarAssets)
   extends Controller with I18nSupport {
 
   /**
-   * Handles the index action.
+   * Handles the summary action.
    *
    * @return The result to display.
    */
-  def view = silhouette.UnsecuredAction.async { implicit request =>
-    Future.successful(Ok(views.html.summary()))
-  }
-
-  /* TODO 윗 버전은 관상용, 이 버전으로 바꾸기!!
   def view = silhouette.SecuredAction.async { implicit request =>
-    Future.successful(Ok(views.html.summary(request.identity)))
+    import scala.concurrent.ExecutionContext.Implicits.global
+    for {
+      allCourses <- userCourseService.allCourse(request.identity.userID)
+      perSemesterAvg <- userCourseService.perSemesterAvg(request.identity.userID)
+      perMajor <- userCourseService.perMajor(request.identity.userID)
+    } yield {
+      Ok(views.html.summary(perSemesterAvg, perMajor))
+    }
   }
-   */
 }

@@ -1,159 +1,134 @@
-@()(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+@(perSemesterAvg: Map[(java.time.Year, models.Semester), (Int, Double)]
+ ,perMajor: Map[Major, Seq[(Option[models.Course], models.Score)]]
+)(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+
+@import models.Score
+@import models.Score._
+@import scala.util.Try
+
+@*)(perMajor: Map[Major, Seq[UserCourse]]*@
 
 @main(Messages("summary.title")) {
     <main class="container">
         <!--grade info start-->
         <div class="col-md-5">
-
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#grade_table1" data-toggle="tab">학기별</a></li>
-                <li><a href="#grade_table2" data-toggle="tab">전공구분별</a></li>
-            </ul>
-
-
-            <div class="tab-content">
-
-                <div class="tab-pane fade in active" id="grade_table1">
-                    <h3>학기별 점수</h3>
-
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>학기</th>
-                                <th>점수</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>00</td>
-                                <td>00</td>
-                            </tr>
-                            <tr>
-                                <td>00</td>
-                                <td>00</td>
-                            </tr>
-                            <tr>
-                                <td>00</td>
-                                <td>00</td>
-                            </tr>
-                        </tbody>
-
-                        <tfoot>
-                            <tr>
-                                <td>00</td>
-                                <td>00</td>
-                            </tr>
-                        </tfoot>
-                    </table>
-
-                </div>
-
-                <div class="tab-pane fade" id="grade_table2">
-                    <h3>전공구분별 점수</h3>
-
-                    <table class="table">
-                        <thead class="thead-inverse">
-                            <tr>
-                                <th>구분</th>
-                                <th>점수</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <th scope="row">1전공</th>
-                                <td>00</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2중전공</th>
-                                <td>00</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">교양</th>
-                                <td>00</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">자선</th>
-                                <td>00</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">교직</th>
-                                <td>00</td>
-                            </tr>
-                        </tbody>
-
-                        <tfoot>
-                            <th>총</th>
-                            <td>00</td>
-                        </tfoot>
-
-                    </table>
-
-                </div>
-
-            </div>
-
-
+            <h3>학기별</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>학기</th>
+                        <th>학점</th>
+                        <th>평점</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        @if(perSemesterAvg.size >= 0) {
+                            @for(t <- perSemesterAvg) {
+                                <td>@{t._1._1}@Messages("year") @Messages(t._1._2.toString)</td>
+                                <td>@t._2._1</td>
+                                <td>@{f"${t._2._2}%2.2f"}</td>
+                                }
+                                } else {
+                                <td>@Messages("no.entry")</td>
+                                }
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <!--grade info end-->
 
         <!--summary info start-->
         <div class="col-md-6 col-md-offset-1">
+            <h3>전공구분별</h3>
             <table class="table">
                 <thead class="thead-inverse">
                     <tr>
-                        <th>구분</th>
-                        <th>기수강</th>
-                        <th>C+이하</th>
-                        <th>미수강</th>
-                        <th>F</th>
+                        <th><center>구분</center></th>
+                        <th><center>기수강 (F 제외)</center></th>
+                        <th><center>F</center></th>
+                        <th><center>재수강 대상</center></th>
+                        <th><center>평점</center></th>
                     </tr>
                 </thead>
-
                 <tbody>
-                    <tr>
-                        <th scope="row">1전공</th>
-                        <td>00</td>
-                        <td>00</td>
-                        <td>00</td>
-                        <td>00</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2중전공</th>
-                        <td>00</td>
-                        <td>00</td>
-                        <td>00</td>
-                        <td>00</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">교양</th>
-                        <td>00</td>
-                        <td>00</td>
-                        <td>00</td>
-                        <td>00</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">자선</th>
-                        <td>00</td>
-                        <td>00</td>
-                        <td>00</td>
-                        <td>00</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">교직</th>
-                        <td>00</td>
-                        <td>00</td>
-                        <td>00</td>
-                        <td>00</td>
-                    </tr>
+                    @for(s <- perMajor.toSeq.sortBy(p => p._1.majorType.toInt)) {
+                        <tr>
+                            @* 구분 *@
+                            <th scope ="row">@Messages(s._1.majorType.toString)</th>
+                            @*기수강*@
+                            <td><center>
+                                @{s ._2
+                                .filter {
+                                    case (Some(course), score) => score.passed
+                                    case _ => throw new NoSuchElementException("Invalid course by user")
+                                }
+                                .map {
+                                    case (Some(course), score) => course.creditHours
+                                    case _ => throw new NoSuchElementException("Invalid course by user")
+                                }
+                                .sum
+                                } / @{s._1.required}
+                            </center></td>
+
+                            @*F*@
+
+                            <td><center>
+                                @{s ._2
+                                .filter {
+                                    case (Some(course), score) => score.failed
+                                    case _ => throw new NoSuchElementException("Invalid course by user")
+                                }
+                                .map {
+                                    case (Some(course), score) => course.creditHours
+                                    case _ => throw new NoSuchElementException("Invalid course by user")
+                                }
+                                .sum
+                                }
+
+
+                            </center></td>
+
+                            @*재수강 대상*@
+                            <td><center>
+                                @{s ._2
+                                .filter {
+                                    case (Some(course), score) => score.retakable
+                                case _ => throw new NoSuchElementException("Invalid course by user")
+                                }
+                                .map {
+                                    case (Some(course), score) => course.creditHours
+                                case _ => throw new NoSuchElementException("Invalid course by user")
+                                }
+                                .sum
+                                }
+                                </center></td>
+                                @*평점 *@
+                                <td><center>
+                                @{val averageScore = avg(s._2.map {
+                                    case (Some(course), score) => score -> course.creditHours.toInt
+                                    case _ => throw new NoSuchElementException("Invalid course by user")
+                                })
+                                f"$averageScore%2.2f"
+                                }
+                                </center></td>
+                        </tr>
+                        }
                 </tbody>
                 <tfoot>
-                    <th>총</th>
-                    <td>00</td>
-                    <td>00</td>
-                    <td>00</td>
-                    <td>00</td>
+                    <th>합계</th>
+                    <td><center>
+                        @perMajor.map(_._2).foldLeft(Seq[(Option[Course], Score)]())({ (acc, s) => acc ++ s }).map(p => p._1.get -> p._2).filter(p => p._2.passed).map(p => p._1.creditHours).sum
+                    </center></td>
+                    <td><center>
+                        @perMajor.map(_._2).foldLeft(Seq[(Option[Course], Score)]())({ (acc, s) => acc ++ s }).map(p => p._1.get -> p._2).filter(p => p._2.failed).map(p => p._1.creditHours).sum
+                    </center></td>
+                    <td><center>
+                        @perMajor.map(_._2).foldLeft(Seq[(Option[Course], Score)]())({ (acc, s) => acc ++ s }).map(p => p._1.get -> p._2).filter(p => p._2.retakable).map(p => p._1.creditHours).sum
+                    </center></td>
+                    <td><center>
+                        @avg(perMajor.map(_._2).foldLeft(Seq[(Option[Course], Score)]())({ (acc, s) => acc ++ s }).map(p => p._2 -> p._1.get.creditHours.toInt))
+                    </center></td>
                 </tfoot>
             </table>
         </div>
@@ -161,51 +136,26 @@
 
         <!--details start-->
         <div class="column_bottom">
-
+            <h3>세부정보</h3>
             <table class="table table-bordered">
-                <thead class="thead-bordered">
-                    <tr>
-                        <th>1전공</th>
-                        <th>이중전공</th>
-                        <th>교양</th>
-                        <th>자선</th>
-                        <th>교직이수</th>
-                    </tr>
+                @defining(perMajor.toSeq.sortBy(p => p._1.majorType.toInt)) { sortedList =>
+                    <thead class="thead-bordered">
+                            @for(p <- sortedList) {
+                                <th>@Messages(p._1.majorType.toString)</th>
+                                }
                 </thead>
-
                 <tbody>
-                    <tr>
-                        <td>00</td>
-                        <td>00</td>
-                        <td>00</td>
-                        <td>00</td>
-                        <td>00</td>
-                    </tr>
-                    <tr>
-                        <td>00</td>
-                        <td>00</td>
-                        <td>00</td>
-                        <td>00</td>
-                        <td>00</td>
-                    </tr>
-                    <tr>
-                        <td>00</td>
-                        <td>00</td>
-                        <td>00</td>
-                        <td>00</td>
-                        <td>00</td>
-                    </tr>
+                    @defining(sortedList.map(_._2.size).max) { indexMax =>
+                        @for(i <- 0 until indexMax) {
+                            <tr>
+                            @for(m <- sortedList) {
+                                <td>@{Try(m._2(i)._1.get.name1 + " / ").toOption.getOrElse("")} @{Messages(Try(m._2(i)._2.toString).toOption.getOrElse(""))}</td>
+                            }
+                            </tr>
+                        }
+                    }
                 </tbody>
-
-                <tfoot>
-                    <tr>
-                        <td>00</td>
-                        <td>00</td>
-                        <td>00</td>
-                        <td>00</td>
-                        <td>00</td>
-                    </tr>
-                </tfoot>
+                }
             </table>
         </div>
         <!--details start-->

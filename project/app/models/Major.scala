@@ -3,38 +3,21 @@ package models
 import java.util.UUID
 import java.time.Year
 
-case class Major(id: UUID, nameKo: String, nameEn: Option[String], majorType: MajorType, year: Year)
+import MajorType._
 
-sealed abstract class MajorType(v: Int)
-
-object MajorType {
-  import scala.language.implicitConversions
-
-  case object FirstMajor extends MajorType(1)
-  case object SecondMajor extends MajorType(2)
-  case object FirstMajorMinor extends MajorType(3)
-  case object Minor extends MajorType(4)
-  case object MultipleMajor extends MajorType(5)
-  case object TeacherCourse extends MajorType(6)
-  case object LiberalArts extends MajorType(7)
-
-  implicit def fromInt(v: Int): MajorType = v match {
-    case 1 => FirstMajor
-    case 2 => SecondMajor
-    case 3 => FirstMajorMinor
-    case 4 => Minor
-    case 5 => MultipleMajor
-    case 6 => TeacherCourse
-    case 7 => LiberalArts
-  }
-
-  implicit def toInt(mt: MajorType): Int = mt match {
-    case FirstMajor => 1
-    case SecondMajor => 2
-    case FirstMajorMinor => 3
-    case Minor => 4
-    case MultipleMajor => 5
-    case TeacherCourse => 6
-    case LiberalArts => 7
+case class Major(id: UUID, nameKo: String, nameEn: Option[String], majorType: MajorType, year: Year) {
+  //TODO move this to other appropriate place
+  def required: Int = year match {
+    case i if i.getValue <= 2014 => majorType match {
+      case FirstMajor => 54
+      case SecondMajor => 54
+      case FirstMajorMinor => 75
+      case Minor => 21
+      case MultipleMajor => 0
+      case TeacherCourse => 0
+      case LiberalArts => 26
+      case FreeCourse => 0
+    }
+    case _ => 0
   }
 }
