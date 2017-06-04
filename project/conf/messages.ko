@@ -19,7 +19,7 @@ sign.up.account = 새로운 계정 만들기
 sign.in.credentials = Sign in with your credentials
 
 error = Error!
-info = 훕스플래너
+info = 로그인 페이지
 success = Success!
 home = 홈으로
 first.name = First name
