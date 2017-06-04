@@ -18,9 +18,9 @@ welcome.signed.in = Welcome, you are now signed in!
 sign.up.account = 새로운 계정 만들기
 sign.in.credentials = Sign in with your credentials
 
-error = Error!
-info = 훕스플래너
-success = Success!
+error = 에러:
+info = 알림:
+success = 성공:
 home = 홈으로
 first.name = First name
 last.name = Last name
@@ -113,6 +113,11 @@ year = 년
 
 # Input Page
 input.title = 성적을 입력해주세요
+grades.submit = 제출
+grades.reset = 지우기
+paste.here = 여기에 붙여넣으세요
+grades.wrong.input = 입력이 잘못되었습니다. 다시 시도해주세요!
+grades.wrong.input.total.mismatch = 합계가 다릅니다
 
 # Summary Page
 summary.title = 학점 정리

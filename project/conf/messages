@@ -122,6 +122,9 @@ year = year
 
 # Input Page
 input.title = Input your grades!
+grades.submit = Submit grades
+grades.reset = Reset
+grades.wrong.input = Wrong format, please retry!
 
 # Summary Page
 summary.title = Grade Summary

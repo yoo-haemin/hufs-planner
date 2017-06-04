@@ -1,14 +1,14 @@
 @(perSemesterAvg: Map[(java.time.Year, models.Semester), (Int, Double)]
  ,perMajor: Map[Major, Seq[(Option[models.Course], models.Score)]]
+ ,user: models.User
 )(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
 
 @import models.Score
 @import models.Score._
 @import scala.util.Try
 
-@*)(perMajor: Map[Major, Seq[UserCourse]]*@
 
-@main(Messages("summary.title")) {
+@main(Messages("summary.title"), Some(user)) {
     <main class="container">
         <!--grade info start-->
         <div class="col-md-5">
@@ -109,7 +109,7 @@
                                     case (Some(course), score) => score -> course.creditHours.toInt
                                     case _ => throw new NoSuchElementException("Invalid course by user")
                                 })
-                                f"$averageScore%2.2f"
+                                f"${averageScore}%#2.2f"
                                 }
                                 </center></td>
                         </tr>
@@ -145,7 +145,7 @@
                                 }
                 </thead>
                 <tbody>
-                    @defining(sortedList.map(_._2.size).max) { indexMax =>
+                    @defining(Try(sortedList.map(_._2.size).max).getOrElse(0)) { indexMax =>
                         @for(i <- 0 until indexMax) {
                             <tr>
                             @for(m <- sortedList) {

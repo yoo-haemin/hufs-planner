@@ -29,7 +29,7 @@ class BaseModule extends AbstractModule with ScalaModule {
     bind[AuthTokenService].to[AuthTokenServiceImpl]
     bind[CourseService].to[CourseServiceImpl]
     //bind[CourseTimeService].to[CourseTimeServiceImpl]
-    //bind[DepartmentService].to[DepartmentServiceImpl]
+    bind[DepartmentService].to[DepartmentServiceImpl]
     //bind[DepartmentTimeService].to[DepartmentTimeServiceImpl]
     bind[MajorService].to[MajorServiceImpl]
     //bind[SubjectService].to[SubjectServiceImpl]

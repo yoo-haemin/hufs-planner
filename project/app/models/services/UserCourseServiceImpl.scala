@@ -4,8 +4,9 @@ import java.util.UUID
 import java.time.Year
 import javax.inject.Inject
 
-import models.{ Course, UserCourse, Score, Semester, Major }
-import models.daos.UserCourseDAO
+import models._
+import models.daos._
+import models.MajorType._
 import shared.Util.reverseEffect
 import play.api.libs.concurrent.Execution.Implicits._
 
@@ -13,8 +14,10 @@ import scala.concurrent.Future
 
 class UserCourseServiceImpl @Inject() (
   userCourseDAO: UserCourseDAO,
+  majorSubjectDAO: MajorSubjectDAO,
   courseService: CourseService,
   majorService: MajorService,
+  userService: UserService,
   userMajorService: UserMajorService
 ) extends UserCourseService {
 
@@ -92,6 +95,169 @@ class UserCourseServiceImpl @Inject() (
         }
     }
 
+  /**
+   * Course recommendation methods
+   */
+  def recommendedCourse(userID: UUID, yearSemester: (Year, Semester)): Future[Map[MajorType, Seq[Course]]] = for {
+    //Find the majors from users
+    majors <- majorService.findByUser(userID)
+
+    user <- userService.retrieve(userID).map(_.get)
+
+    //Find already taken courses
+    takenCourses: Seq[(Option[Course], Score)] <- allCourse(userID)
+
+    passedCourses = takenCourses.filter { takenCourse: (Option[Course], Score) =>
+      takenCourse match {
+        case (Some(c), s) if s.passed => true
+        case _ => false
+      }
+    } map {
+      case (courseOpt: Option[Course], score) => courseOpt.get
+    }
+
+    //Find subjects from majors by user
+    majorSubjects: Seq[(MajorType, Seq[(Subject, Boolean)])] <- reverseEffect(
+      majors.filter {
+        m => m.majorType == FirstMajor || m.majorType == SecondMajor
+      } map {
+        m => Future.successful(m.majorType) zip majorSubjectDAO.findByMajor(m.id)
+      })
+
+    //Filter unfulfilled subjects
+    unFulfilledSubjects: Seq[(MajorType, Seq[Subject])] = majorSubjects.map {
+      case (mt, subjects) =>
+        mt -> (subjects.filter {
+          case (sbj, req) =>
+            //required and not over user's next semester OR
+            (req && sbj.recommendedYear.getOrElse(0) < (user.semester + 1) / 2) ||
+              //subject has same recommended year as the user's next semester
+              sbj.recommendedYear.getOrElse(0) == ((user.semester + 1) / 2)
+        } map { case (sbj, req) => sbj })
+    }
+
+    //Filter by subject
+    recommendedCourseSeq <- reverseEffect(
+      unFulfilledSubjects.map {
+        case (mt, seq) =>
+          Future.successful(mt) zip
+            reverseEffect(seq.map { sbj => courseService.findBySubject(sbj) })
+            .map(_.flatten.filterNot(c => passedCourses.exists(pc => pc.codePrefix == c.codePrefix)))
+      })
+
+    //Filter by time
+    recommendedCourse = recommendedCourseSeq.map {
+      case (mt, seq) =>
+        mt -> seq.filter(c => c.year == yearSemester._1 && c.semester == yearSemester._2)
+    }.toMap
+
+  } yield recommendedCourse
+
+  def retakeCourse(userID: UUID, yearSemester: (Year, Semester)): Future[Map[MajorType, Seq[Course]]] =
+    for {
+      //Find the majors from users
+      majors <- majorService.findByUser(userID)
+
+      user <- userService.retrieve(userID).map(_.get)
+
+      //Find already taken courses
+      takenCourses: Seq[(Option[Course], Score)] <- allCourse(userID)
+
+      retakableCourses = takenCourses.filter { takenCourse: (Option[Course], Score) =>
+        takenCourse match {
+          case (Some(c), s) if s.retakable => true
+          case _ => false
+        }
+      } map {
+        case (courseOpt: Option[Course], score) => courseOpt.get
+      }
+
+      //Find subjects from majors by user
+      majorSubjects: Seq[(MajorType, Seq[(Subject, Boolean)])] <- reverseEffect(
+        majors.filter {
+          m => m.majorType == FirstMajor || m.majorType == SecondMajor
+        } map {
+          m => Future.successful(m.majorType) zip majorSubjectDAO.findByMajor(m.id)
+        })
+
+      //Filter unfulfilled subjects
+      unFulfilledSubjects: Seq[(MajorType, Seq[Subject])] = majorSubjects.map {
+        case (mt, subjects) =>
+          mt -> subjects.map { case (sbj, req) => sbj }
+      }
+
+      //Filter by subject
+      recommendedCourseSeq <- reverseEffect(
+        unFulfilledSubjects.map {
+          case (mt, seq) =>
+            Future.successful(mt) zip
+              reverseEffect(seq.map { sbj => courseService.findBySubject(sbj) })
+              .map(_.flatten.filter(c => retakableCourses.exists(pc => pc.codePrefix == c.codePrefix)))
+        })
+
+      //Filter by time
+      recommendedCourse = recommendedCourseSeq.map {
+        case (mt, seq) =>
+          mt -> seq.filter(c => c.year == yearSemester._1 && c.semester == yearSemester._2)
+      }.toMap
+
+    } yield recommendedCourse
+
+  def otherMajorCourse(userID: UUID, yearSemester: (Year, Semester)): Future[Map[MajorType, Seq[Course]]] = for {
+    //Find the majors from users
+    majors <- majorService.findByUser(userID)
+
+    user <- userService.retrieve(userID).map(_.get)
+
+    //Find already taken courses
+    takenCourses: Seq[(Option[Course], Score)] <- allCourse(userID)
+
+    notTakenCourse = takenCourses.filter { takenCourse: (Option[Course], Score) =>
+      takenCourse match {
+        case (Some(c), s) => true
+        case _ => false
+      }
+    } map {
+      case (courseOpt: Option[Course], score) => courseOpt.get
+    }
+
+    //Find subjects from majors by user
+    majorSubjects: Seq[(MajorType, Seq[(Subject, Boolean)])] <- reverseEffect(
+      majors.filter {
+        m => m.majorType == FirstMajor || m.majorType == SecondMajor
+      } map {
+        m => Future.successful(m.majorType) zip majorSubjectDAO.findByMajor(m.id)
+      })
+
+    //Filter unfulfilled subjects
+    unFulfilledSubjects: Seq[(MajorType, Seq[Subject])] = majorSubjects.map {
+      case (mt, subjects) =>
+        mt -> (subjects.filter {
+          case (sbj, req) =>
+            sbj.recommendedYear.getOrElse(0) < (user.semester + 1) / 2
+        } map { case (sbj, req) => sbj })
+    }
+
+    //Filter by subject
+    recommendedCourseSeq <- reverseEffect(
+      unFulfilledSubjects.map {
+        case (mt, seq) =>
+          Future.successful(mt) zip
+            reverseEffect(seq.map { sbj => courseService.findBySubject(sbj) })
+            .map(courses => courses.flatten.filterNot(c => notTakenCourse.exists(pc => pc.codePrefix == c.codePrefix)))
+      })
+
+    //Filter by time
+    recommendedCourse = recommendedCourseSeq.map {
+      case (mt, seq) =>
+        mt -> seq.filter(c => c.year == yearSemester._1 && c.semester == yearSemester._2)
+    }.toMap
+
+  } yield recommendedCourse
+
   def save(userID: UUID, courseID: UUID, score: Int, retake: Boolean = false, future: Boolean = false): Future[UserCourse] =
     userCourseDAO.save(UserCourse(userID, courseID, score, retake, future))
+
+  def removeAll(userID: UUID, future: Boolean = false): Future[Unit] =
+    allUserCourse(userID, future).map(ucs => ucs.map(userCourseDAO.remove(_)))
 }

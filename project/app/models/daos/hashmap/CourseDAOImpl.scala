@@ -14,6 +14,18 @@ class CourseDAOImpl @Inject() extends CourseDAO {
   def findById(id: UUID): Future[Option[Course]] =
     Future.successful(CourseDAOImpl.courses.filter(_.id == id).headOption)
 
+  def find(
+    year: Option[Year] = None,
+    semester: Option[Semester] = None,
+    codePrefix: Option[String] = None,
+    codeSuffix: Option[String] = None
+  ): Future[Seq[Course]] = Future.successful {
+    (CourseDAOImpl.courses.filter { c => if (year.isEmpty) true else c.year == year.get } intersect
+      CourseDAOImpl.courses.filter { c => if (year.isEmpty && semester.isEmpty) true else c.semester == semester.get } intersect
+      CourseDAOImpl.courses.filter { c => if (codePrefix.isEmpty) true else c.codePrefix == codePrefix.get } intersect
+      CourseDAOImpl.courses.filter { c => if (codeSuffix.isEmpty) true else c.codeSuffix == codeSuffix.get }).toSeq
+  }
+
   def findByCodeDepartment(codePrefix: String, department: Department): Future[Seq[Course]] =
     Future.successful {
       CourseDAOImpl.courses.filter(

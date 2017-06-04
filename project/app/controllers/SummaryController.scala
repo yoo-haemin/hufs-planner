@@ -42,7 +42,7 @@ class SummaryController @Inject() (
       perSemesterAvg <- userCourseService.perSemesterAvg(request.identity.userID)
       perMajor <- userCourseService.perMajor(request.identity.userID)
     } yield {
-      Ok(views.html.summary(perSemesterAvg, perMajor))
+      Ok(views.html.summary(perSemesterAvg, perMajor, request.identity))
     }
   }
 }

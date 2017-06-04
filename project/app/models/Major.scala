@@ -17,6 +17,7 @@ case class Major(id: UUID, nameKo: String, nameEn: Option[String], majorType: Ma
       case TeacherCourse => 0
       case LiberalArts => 26
       case FreeCourse => 0
+      case PracticalFL => 4
     }
     case _ => 0
   }

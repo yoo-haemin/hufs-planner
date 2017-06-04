@@ -93,6 +93,20 @@ object Score {
     case -2 => Fail
   }
 
+  implicit def fromString(s: String): Score = s match {
+    case "A+" => Ap
+    case "A0" => Az
+    case "B+" => Bp
+    case "B0" => Bz
+    case "C+" => Cp
+    case "C0" => Cz
+    case "D+" => Dp
+    case "D0" => Dz
+    case "F" => Fz
+    case "PASS" => Pass
+    case "FAIL" => Fail
+  }
+
   def avg(ss: Seq[(Score, Int)]): Double = {
     val woPF = ss.filterNot { case (s, i) => s == Pass || s == Fail }
     val (scoreSum, creditSum) = ((0.0 -> 0) /: woPF) {
