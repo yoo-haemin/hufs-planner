@@ -4,13 +4,13 @@ invalid.credentials = Invalid credentials!
 access.denied = Access denied!
 could.not.authenticate = Could not authenticate with social provider! Please try again!
 
-home.title = 훕스플래너 - Home
-sign.up.title = 훕스플래너 - Sign Up
-sign.in.title = 훕스플래너 - Sign In
-forgot.password.title = 훕스플래너 - Forgot Password
-reset.password.title = 훕스플래너 - Reset Password
-change.password.title = 훕스플래너 - Change Password
-activate.account.title = 훕스플래너 - Activate Account
+home.title = Jamioni
+sign.up.title = Jamioni - 회원가입
+sign.in.title = 로그인하세요
+forgot.password.title = Jamioni - 비밀번호 찾기
+reset.password.title = Jamioni - 비밀번호 초기화
+change.password.title = Jamioni - 비밀번호 변경
+activate.account.title = Jamioni - 계정 활성화
 
 toggle.navigation = Toggle navigation
 welcome.signed.in = 환영합니다! 정보를 확인하세요.
@@ -78,11 +78,11 @@ yahoo = Yahoo
 # Emails
 ##########
 
-email.from = 훕스플래너 <noreply@mohiva.com>
+email.from = Jamioni <noreply@jamioni.com>
 
 # Sign Up
 email.sign.up.subject = Welcome
-email.sign.up.hello = Hello {0},
+email.sign.up.hello = Hello,
 email.sign.up.html.text = Please follow <a href="{0}">this link</a> to confirm and activate your new account.
 email.sign.up.txt.text = Please follow the link to confirm and activate your new account: {0}
 

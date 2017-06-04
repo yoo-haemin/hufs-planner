@@ -86,7 +86,7 @@ yahoo = Yahoo
 # Emails
 ##########
 
-email.from = Hufs Course Planner <noreply@jamioni.com>
+email.from = Jamioni <noreply@jamioni.com>
 
 # Sign Up
 email.sign.up.subject = Welcome
