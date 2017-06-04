@@ -60,7 +60,7 @@
 
 <main class="container">
 
-    <form>
+    <form method="post">
     <div class="col-md-6" id="first_major">
         <h1>제1전공</h1>
 
@@ -685,7 +685,7 @@
                     })
                     //console.log(timeOfWeek)
 
-                    return $("#select_non_major").append("<div class='col-md-6 col_m'><input type='checkbox'>" + suchCourse.courseName1 + "(" + dayAndtime +")" + "</div>")
+                    return $("#select_non_major").append("<div class='col-md-6 col_m'><input type='checkbox' name='courseNo' value='"+  suchCourse.courseNo + "'>" + suchCourse.courseName1 + "(" + dayAndtime +")" + "</div>")
 
                 })
 
