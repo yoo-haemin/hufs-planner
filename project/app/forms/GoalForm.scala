@@ -12,12 +12,10 @@ object GoalForm {
    * Form for accepting grade input
    */
   val form = Form(
-    seq(
-      mapping(
-        "courseNo" -> (text verifying (t => t.length > 0 && t.length < 12))
-      )(Data.apply)(Data.unapply _)
-    )
+    mapping(
+      "courseNo" -> list(text)
+    )(Data.apply)(Data.unapply _)
   )
 
-  case class Data(courseid: String)
+  case class Data(courseNo: List[String])
 }

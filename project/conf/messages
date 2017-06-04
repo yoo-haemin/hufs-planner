@@ -129,7 +129,10 @@ grades.wrong.input = Wrong format, please retry!
 # Summary Page
 summary.title = Grade Summary
 no.entry = Nothing to show you :(
+not.sure = ?
 
 
 # Goal Page
 goal.title = Input Goal
+goal.submit = Submit course selection!
+saved.future.course = Saved {0} Course(s)!

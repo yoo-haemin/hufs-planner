@@ -1,105 +1,82 @@
 [
-    Course(UUID.fromString("4c6822cb-12cf-43a6-8b39-f92c5c9f4af7"), "A12345", "101", "GYOYANG", 2017, 1, UUID.fromString("159e7537-46e2-11e7-8db2-d413de251a16"), UUID.fromString("168eb65a-46e2-11e7-8db2-d413de251a16"), UUID.fromString("972e74bb-6fb3-4003-a38a-9b12bc73c1f7"), "교양영어", None, 3, 3),
-    Course(UUID.fromString("d430ef5c-aa61-4bf5-874e-c4c4b5385403"), "B45678", "101", "GYOYANG", 2017, 1, UUID.fromString("159e7537-46e2-11e7-8db2-d413de251a16"), UUID.fromString("168eb65a-46e2-11e7-8db2-d413de251a16"), UUID.fromString("45cb7741-f06f-410d-9c0b-60ea42944580"), "인터넷의이해", None, 3, 3),
-    Course(UUID.fromString("2cd158b7-2f2e-4d7d-8203-42f5951cfeda"), "C54321", "101", "GYOYANG", 2017, 1, UUID.fromString("159e7537-46e2-11e7-8db2-d413de251a16"), UUID.fromString("168eb65a-46e2-11e7-8db2-d413de251a16"), UUID.fromString("f1843f6b-f6aa-4540-8941-b462239abaa4"), "씐나는교양", None, 3, 3),
-    Course(UUID.fromString("3158389a-00a0-4c4a-9cdd-5ad39b529f9a"), "A12345", "102", "GYOYANG", 2017, 1, UUID.fromString("159e7537-46e2-11e7-8db2-d413de251a16"), UUID.fromString("168eb65a-46e2-11e7-8db2-d413de251a16"), UUID.fromString("fe467d4f-fcc5-4da9-9d90-59011a31cf93"), "교양영어", None, 3, 3),
-    Course(UUID.fromString("7aa7f23a-53dc-44e4-8417-35f6367e155b"), "B45678", "102", "GYOYANG", 2017, 1, UUID.fromString("159e7537-46e2-11e7-8db2-d413de251a16"), UUID.fromString("168eb65a-46e2-11e7-8db2-d413de251a16"), UUID.fromString("801d4734-4aa6-45c7-8c63-3e7c518eec0c"), "인터넷의이해", None, 3, 3),
-    Course(UUID.fromString("53a2f3cd-868b-4938-84c4-892febccee41"), "C54321", "102", "GYOYANG", 2017, 1, UUID.fromString("159e7537-46e2-11e7-8db2-d413de251a16"), UUID.fromString("168eb65a-46e2-11e7-8db2-d413de251a16"), UUID.fromString("972e74bb-6fb3-4003-a38a-9b12bc73c1f7"), "씐나는교양", None, 3, 3)
-
     {
-        "courseType": "인문학공통",
-        "courseNo": "A12345101",
-        "courseName1": "러시아.투르크.몽골의민족과종교",
-        "courseName2": "Russian, Turkic, Mongolian Peoples and their Religions",
-        "courseTime": {
-            "Thu": {
-                "time": [
-                    5,
-                    6
-                ],
-                "class": "3305"
-            }
-        },
-        "majorName2": "CORE Global Studies"
-
-    },
-    {
-        "courseType": "인문학공통",
-        "courseNo": "J11003101",
-        "courseName1": "러시아.투르크.몽골의인문지리와사회",
-        "courseName2": "Russian, Turkic, Mongolian Human Geography and Society",
+        "courseType": "교양외국어",
+        "courseNo": "A12345102",
+        "courseName1": "교양영어",
+        "courseName2": "",
         "courseTime": {
             "Mon": {
-                "time": [
-                    7,
-                    8
-                ],
-                "class": "2409"
-            }
-        },
-        "majorName2": "CORE Global Studies"
-    },
-    {
-        "courseType": "인문학공통",
-        "courseNo": "J11002101",
-        "courseName1": "서양문학과대중문화",
-        "courseName2": "Western Literature and Popular Culture",
-        "courseTime": {
+                "time": [1, 2, 3],
+                "class": "3302"
+            },
             "Thu": {
-                "time": [
-                    3,
-                    4
-                ],
-                "class": "1409"
+                "time": [1,2,3],
+                "class": "3302"
             }
-        },
-        "majorName2": "CORE Global Studies"
+        }
     },
     {
-        "courseType": "인문학공통",
-        "courseNo": "J11001101",
-        "courseName1": "유럽근현대사",
-        "courseName2": "Modern and Contemporary History of Europe",
+        "courseType": "교양외국어",
+        "courseNo": "A12345102",
+        "courseName1": "교양영어",
+        "courseName2": "",
+        "courseTime": {
+            "Mon": {
+                "time": [1, 2, 3],
+                "class": "3302"
+            },
+            "Wed": {
+                "time": [1,2,3],
+                "class": "3302"
+            }
+        }
+    },
+    {
+        "courseType": "과학과기술",
+        "courseNo": "B45678101",
+        "courseName1": "인터넷의이해",
+        "courseName2": "",
         "courseTime": {
             "Wed": {
-                "time": [
-                    3,
-                    4
-                ],
-                "class": "1303"
+                "time": [4, 5, 6],
+                "class": "1208"
             }
-        },
-        "majorName2": "CORE Global Studies"
+        }
     },
     {
-        "courseType": "인문학공통",
-        "courseNo": "J11010101",
-        "courseName1": "이슬람사상의이해(1)",
-        "courseName2": "Understanding of Islamic Thought (1)",
+        "courseType": "과학과기술",
+        "courseNo": "B45678102",
+        "courseName1": "인터넷의이해",
+        "courseName2": "",
         "courseTime": {
             "Thu": {
-                "time": [
-                    1,
-                    2,
-                    3
-                ],
-                "class": "1501"
+                "time": [4, 5, 6],
+                "class": "1208"
             }
-            "majorName2": "CORE Global Studies"
-        },
-        {
-            "courseType": ""
-            "courseNo": "",
-            "courseName1": "",
-            "courseName2": "",
-            "courseTime": {
-                "Wed": {
-                    "time": [
-                        1,
-                        2
-                    ],
-                    "class": "1402"
-                }
-                "majorName2": "CORE Global Studies"
+        }
+    },
+    {
+        "courseType": "핵심인문기초",
+        "courseNo": "C54321101",
+        "courseName1": "씐나는교양",
+        "courseName2": "Funfun Liberal Arts",
+        "courseTime": {
+            "Mon": {
+                "time": [4, 5, 6],
+                "class": "C1000"
             }
-        ]
+        }
+    },
+    {
+        "courseType": "핵심인문기초",
+        "courseNo": "C54321102",
+        "courseName1": "씐나는교양",
+        "courseName2": "FunFun Liberal Arts",
+        "courseTime": {
+            "Tue": {
+                "time": [3, 4, 5],
+                "class": "C1000"
+            }
+        }
+    }
+]

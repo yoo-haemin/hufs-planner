@@ -33,7 +33,7 @@ class UserCourseServiceImpl @Inject() (
 
   def allCourse(userID: UUID, future: Boolean = false): Future[Seq[(Option[Course], Score)]] =
     for {
-      userCourses <- allUserCourse(userID)
+      userCourses <- allUserCourse(userID, future)
       userCourseInfo <- courseService.findAllById(userCourses.map(_.courseID))
       scores = userCourses.map(_.score)
     } yield userCourseInfo zip scores
@@ -256,7 +256,7 @@ class UserCourseServiceImpl @Inject() (
   } yield recommendedCourse
 
   def save(userID: UUID, courseID: UUID, score: Int, retake: Boolean = false, future: Boolean = false): Future[UserCourse] =
-    userCourseDAO.save(UserCourse(userID, courseID, score, retake, future))
+    userCourseDAO.save(UserCourse(userID, courseID, score, retake = retake, future = future))
 
   def removeAll(userID: UUID, future: Boolean = false): Future[Unit] =
     allUserCourse(userID, future).map(ucs => ucs.map(userCourseDAO.remove(_)))

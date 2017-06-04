@@ -15,7 +15,7 @@ class UserCourseDAOImpl @Inject() (courseDAO: CourseDAO) extends UserCourseDAO {
   import UserCourseDAOImpl._
 
   def allCourse(userID: UUID, future: Boolean = false): Future[Seq[UserCourse]] = {
-    Future.successful(UserCourseDAOImpl.userCourses.filter(_.userID == userID).toSeq)
+    Future.successful(UserCourseDAOImpl.userCourses.filter(uc => uc.userID == userID && uc.future == future).toSeq)
   }
 
   def save(userCourse: UserCourse): Future[UserCourse] = {

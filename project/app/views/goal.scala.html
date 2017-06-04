@@ -5,10 +5,11 @@
 )(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
 
 @import models.MajorType._
-
+@import b3.inline.fieldConstructor
 
 @main(Messages("goal.title"), Some(user)) {
-
+    @helper.form(action = routes.GoalController.submit()) {
+    @helper.CSRF.formField
     <main class="container">
 
         <div class="col-md-6" id="first_major">
@@ -18,7 +19,7 @@
                 <fieldset>
                     <legend>다음학기 추천 강의</legend>
                     @for(courseSeq <- recommendedCourse(FirstMajor)) {
-                        <ul>@{courseSeq.codePrefix + courseSeq.codeSuffix} @courseSeq.name1</ul>
+                        <div class="col-md-6 col_m"><input name="courseNo[]" value="@{courseSeq.codePrefix + courseSeq.codeSuffix}" type="checkbox">@courseSeq.name1</div>
                         }
 
 
@@ -30,7 +31,7 @@
                 <fieldset>
                     <legend>재수강</legend>
                     @for(courseSeq <- retakeCourse(FirstMajor)) {
-                        <ul>@{courseSeq.codePrefix + courseSeq.codeSuffix} @courseSeq.name1</ul>
+                        <div class="col-md-6 col_m"><input name="courseNo[]" value="@{courseSeq.codePrefix + courseSeq.codeSuffix}" type="checkbox">@courseSeq.name1</div>
                         }
 
 
@@ -42,7 +43,7 @@
                 <fieldset>
                     <legend>기타 전공인정 강의</legend>
                     @for(courseSeq <- otherMajorCourse(FirstMajor)) {
-                        <ul>@{courseSeq.codePrefix + courseSeq.codeSuffix} @courseSeq.name1</ul>
+                        <div class="col-md-6 col_m"><input name="courseNo[]" value="@{courseSeq.codePrefix + courseSeq.codeSuffix}" type="checkbox">@courseSeq.name1</div>
                         }
 
 
@@ -59,8 +60,8 @@
                 <fieldset>
                     <legend>다음학기 추천 강의</legend>
                     @for(courseSeq <- recommendedCourse(SecondMajor)) {
-                        <ul>@{courseSeq.codePrefix + courseSeq.codeSuffix} @courseSeq.name1</ul>
-                        }
+                        <div class="col-md-6 col_m"><input name="courseNo[]" value="@{courseSeq.codePrefix + courseSeq.codeSuffix}" type="checkbox">@courseSeq.name1</div>
+                    }
 
                 </fieldset>
             </div>
@@ -69,7 +70,7 @@
                 <fieldset>
                     <legend>재수강</legend>
                     @for(courseSeq <- retakeCourse(SecondMajor)) {
-                        <ul>@{courseSeq.codePrefix + courseSeq.codeSuffix} @courseSeq.name1</ul>
+                        <div class="col-md-6 col_m"><input name="courseNo[]" value="@{courseSeq.codePrefix + courseSeq.codeSuffix}" type="checkbox">@courseSeq.name1</div>
                         }
 
                 </fieldset>
@@ -79,7 +80,7 @@
                 <fieldset>
                     <legend>기타 전공인정 강의</legend>
                     @for(courseSeq <- otherMajorCourse(SecondMajor)) {
-                        <ul>@{courseSeq.codePrefix + courseSeq.codeSuffix} @courseSeq.name1</ul>
+                        <div class="col-md-6 col_m"><input name="courseNo[]" value="@{courseSeq.codePrefix + courseSeq.codeSuffix}" type="checkbox">@courseSeq.name1</div>
                         }
                 </fieldset>
             </div>
@@ -321,31 +322,12 @@
 
 
         </div>
-
-
-        <div class="col-md-6">
-            <h2>자선과목</h2>
-            <div id="custom-search-input">
-                <div class="input-group col-md-12">
-                    <input type="text" class="form-control input-lg"/>
-                    <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="button">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </button>
-                    </span>
-                </div>
-            </div>
-        </div>
-
-
-
-        <!--
-             <div class="col-md-6">
-             <h1>json test</h1>
-             <p id="demo"></p>
-             </div>
-           -->
-
+        <br />
+        <br />
+        <br />
+        @b3.submit('class -> "btn btn-primary btn-lg btn-block") { @Messages("goal.submit")}
+        }
 
     </main>
+            <script src="@routes.Assets.at("javascripts/goal.js")"></script>
     }

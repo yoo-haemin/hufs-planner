@@ -20,8 +20,8 @@ class CourseDAOImpl @Inject() extends CourseDAO {
     codePrefix: Option[String] = None,
     codeSuffix: Option[String] = None
   ): Future[Seq[Course]] = Future.successful {
-    (CourseDAOImpl.courses.filter { c => if (year.isEmpty) true else c.year == year.get } intersect
-      CourseDAOImpl.courses.filter { c => if (year.isEmpty && semester.isEmpty) true else c.semester == semester.get } intersect
+    (CourseDAOImpl.courses.filter { c => if (year.isEmpty) true else c.year.getValue == year.get.getValue } intersect
+      CourseDAOImpl.courses.filter { c => if (year.isEmpty && semester.isEmpty) true else c.semester.toInt == semester.get.toInt } intersect
       CourseDAOImpl.courses.filter { c => if (codePrefix.isEmpty) true else c.codePrefix == codePrefix.get } intersect
       CourseDAOImpl.courses.filter { c => if (codeSuffix.isEmpty) true else c.codeSuffix == codeSuffix.get }).toSeq
   }

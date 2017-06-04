@@ -13,10 +13,10 @@ change.password.title = 훕스플래너 - Change Password
 activate.account.title = 훕스플래너 - Activate Account
 
 toggle.navigation = Toggle navigation
-welcome.signed.in = Welcome, you are now signed in!
+welcome.signed.in = 환영합니다! 정보를 확인하세요.
 
 sign.up.account = 새로운 계정 만들기
-sign.in.credentials = Sign in with your credentials
+sign.in.credentials = 로그인 해 주세요
 
 error = 에러:
 info = 알림:
@@ -105,6 +105,7 @@ email.activate.account.html.text = Please follow <a href="{0}">this link</a> to 
 email.activate.account.txt.text = Please follow the link to confirm and activate your new account: {0}
 
 # Semesters
+semester = 학기
 first.semester = 1학기
 second.semester = 2학기
 summer.semester = 여름계절학기
@@ -122,10 +123,14 @@ grades.wrong.input.total.mismatch = 합계가 다릅니다
 # Summary Page
 summary.title = 학점 정리
 no.entry = 보여드릴게 없어요 ㅠㅠ
+not.sure = 미정
 
 
 # Goal Page
 goal.title = 목표를 입력해주세요
+goal.submit = 원하는 수업을 모두 선택 후 클릭
+saved.future.course = 목표 수업 {0}개를 저장 완료했습니다!
+
 
 # MajorType
 first.major = 1전공
