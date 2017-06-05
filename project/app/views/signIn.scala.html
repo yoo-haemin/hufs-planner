@@ -6,11 +6,13 @@
 @main(Messages("sign.in.title")) {
 
     <div class="jumbotron col-md-12">
-        <h3>답이 없는 학교생활,<br>외대생의 조그마한 길잡이가 될</h3>
+        <h3>지금 니 성적에</h3>
         <h1><strong>자미오니</strong></h1>
         <hr class="my-4">
+        <p>답이 없는 학교생활,<br>외대생의 조그마한 길잡이</p>
         <p>기존의 성적을 <strong>한눈에!</strong> 앞으로의 계획을 <strong>한번에!</strong></p>
     </div>
+
     <fieldset class="col-md-6 col-md-offset-3 signIn_fieldset">
         <legend>@Messages("info")</legend>
         @helper.form(action = routes.SignInController.submit()) {

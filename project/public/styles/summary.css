@@ -314,6 +314,21 @@ h2{
     color: red;
 }
 
+.col-md-12 fieldset .btn{
+    width:350px;
+}
+
+#first_major h1{
+    font-family: "한국외대체 B";
+}
+
+#second_major h1{
+    font-family: "한국외대체 B";
+}
+
+form .col-md-12 h1{
+    font-family: "한국외대체 B";
+}
 
 
 
