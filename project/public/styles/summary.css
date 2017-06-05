@@ -1,0 +1,320 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, "맑은 고딕", "Malgun gothic", sans-serif;
+    padding-top: 50px;
+    font-size: 16px;
+    background: #f5f7f9;
+}
+
+main.container{
+    margin-bottom: 50px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+}
+.starter-template {
+    padding: 40px 15px;
+}
+
+input, button {
+    margin: 5px 0;
+}
+
+input:hover, input:focus {
+    outline: 0;
+    transition: all .5s linear;
+    box-shadow: inset 0 0 10px #ccc;
+}
+
+fieldset {
+    margin-top: 100px;
+}
+legend {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 20px;
+    padding: 15px;
+}
+a {
+    cursor: pointer;
+}
+
+.provider {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    border-radius: 4px;
+    outline: none;
+}
+.facebook { background: #3B5998; }
+.google { background: #D14836; }
+.twitter { background: #00ACED; }
+.yahoo { background: #731A8B; }
+.xing { background: #006567; }
+.vk { background: #567ca4; }
+
+.social-providers,
+.sign-in-now,
+.already-member,
+.not-a-member {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.clef-button-wrapper {
+    width: 190px!important;
+    height: 34px!important;
+    margin: 20px auto 0 auto!important;
+}
+
+.user {
+    margin-top: 50px;
+}
+.user .data {
+    margin-top: 10px;
+}
+
+.form-control {
+    border-radius: 0;
+}
+
+[class^='ion-'] {
+    font-size: 1.2em;
+}
+
+.has-feedback .form-control-feedback {
+    top: 0;
+    left: 0;
+    width: 46px;
+    height: 46px;
+    line-height: 46px;
+    color: #555;
+}
+
+.has-feedback .form-control {
+    padding-left: 42.5px;
+}
+
+.btn {
+    font-weight: bold;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
+}
+
+.btn-lg {
+    font-size: 18px;
+}
+
+meter {
+    /* Reset the default appearance */
+    -moz-appearance: none;
+    appearance: none;
+
+    margin: 0 auto 1em;
+    width: 100%;
+    height: .5em;
+
+    /* Applicable only to Firefox */
+    background: none;
+    background-color: rgba(0,0,0,0.1);
+}
+
+meter::-webkit-meter-bar {
+    background: none;
+    background-color: rgba(0,0,0,0.1);
+}
+
+meter[value="0"]::-webkit-meter-optimum-value,
+meter[value="1"]::-webkit-meter-optimum-value { background: red; }
+meter[value="2"]::-webkit-meter-optimum-value { background: orange; }
+meter[value="3"]::-webkit-meter-optimum-value { background: yellow; }
+meter[value="4"]::-webkit-meter-optimum-value { background: green; }
+
+meter::-webkit-meter-even-less-good-value { background: red; }
+meter::-webkit-meter-suboptimum-value { background: orange; }
+meter::-webkit-meter-optimum-value { background: green; }
+
+meter[value="1"]::-moz-meter-bar,
+meter[value="1"]::-moz-meter-bar { background: red; }
+meter[value="2"]::-moz-meter-bar { background: orange; }
+meter[value="3"]::-moz-meter-bar { background: yellow; }
+meter[value="4"]::-moz-meter-bar { background: green; }
+
+meter::-webkit-meter-optimum-value {
+    transition: width .4s ease-out;
+}
+
+.column_left{
+    float:left;
+    width:350px;
+}
+
+.column_right{
+    position:relative;
+    float:right;
+    width:350px;
+    left:-200px;
+    top: 30px;
+ }
+
+.column_bottom{
+    clear:both;
+    padding-top:8px;
+    text-align:left;
+    zoom:1
+}
+
+.table-bordered{
+    border-width:2px;
+    border-color: black;
+}
+
+.thead-bordered{
+    background-color: #b9def0;
+}
+
+main div h1{
+    text-align: left;
+}
+
+.btn span.glyphicon {
+    opacity: 0;
+}
+.btn.active span.glyphicon {
+    opacity: 1;
+}
+#custom-search-input{
+    padding: 3px;
+    border: solid 1px #E4E4E4;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+#custom-search-input input{
+    border: 0;
+    box-shadow: none;
+}
+
+#custom-search-input button{
+    margin: 2px 0 0 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+    color: #666666;
+    padding: 0 8px 0 10px;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input button:hover{
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input .glyphicon-search{
+    font-size: 23px;
+}
+
+fieldset
+{
+    border: 1px solid #ddd !important;
+    margin: 0;
+    xmin-width: 0;
+    padding: 10px;
+    position: relative;
+    border-radius:4px;
+    background-color:#f5f5f5;
+    padding-left:10px!important;
+}
+
+legend
+{
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom: 0px;
+    width: 35%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px 5px 5px 10px;
+    background-color: #ffffff;
+}
+
+.glyphicon-arrow-down{
+    left:350px;
+}
+
+#present_state{
+    background-color: #00ACED;
+    border-radius: 10px;
+}
+
+#future_state{
+    background-color: #faebcc;
+    border-radius: 10px;
+}
+
+hr{
+
+    border-width: thick;
+}
+
+.btn-sm{
+    width: 200px;
+}
+
+.input_h3{
+    font-family: 나눔바른고딕;
+}
+
+header{
+    font-family: 나눔바른고딕;
+}
+
+.input_ol li{
+    font-family: "한국외대체 B";
+    margin: 20px;
+}
+
+.input_ol li img{
+    margin-top: 100px;
+    display: block;
+    margin: 0 auto;
+    border-width:2px;
+    border-color:black;
+    border-style: solid;
+}
+
+h2{
+    font-family: 나눔바른고딕;
+}
+
+.table thead{
+    background-color: #d9edf7;
+}
+
+.signIn_fieldset .form_group div button{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.jumbotron h2{
+    font-family: "한국외대체 B";
+}
+
+.jumbotron h1{
+    font-family: "한국외대체 B";
+}
+
+.jumbotron p{
+    font-size: 15px;
+}
+
+.jumbotron p strong{
+    color: red;
+}
+
+
+
+
+
