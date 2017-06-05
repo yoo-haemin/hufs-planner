@@ -145,3 +145,4 @@ free.course = 자선
 # Signup Page
 class.year = 입학년도
 current.semester = 현재 학기
+signup.teacherCourse = 교직이수
