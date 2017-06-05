@@ -11,10 +11,6 @@
         <hr class="my-4">
         <p>기존의 성적을 <strong>한눈에!</strong> 앞으로의 계획을 <strong>한번에!</strong></p>
     </div>
-
-    user:
-    @models.daos.hashmap.UserDAOImpl.users.toString
-
     <fieldset class="col-md-6 col-md-offset-3 signIn_fieldset">
         <legend>@Messages("info")</legend>
         @helper.form(action = routes.SignInController.submit()) {
