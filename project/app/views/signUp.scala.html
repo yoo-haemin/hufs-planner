@@ -18,9 +18,9 @@
             <input type="password" class="form-control input-lg" id="passwordcheck" data-rule-required="true" placeholder="비밀번호 확인" maxlength="30">
             <p id="password-match"></p>
 
-            @b3.select( signUpForm("firstMajor"), options = majorByType(FirstMajor).distinct.map { case (k, e) => k -> (k + " (" + e + ")") } , '_label -> Messages("major.first") )
+            @b3.select( signUpForm("firstMajor"), options = majorByType(FirstMajor).distinct.map { case (k, e) => k -> (k + " (" + e + ")") } , '_label -> Messages("first.major") )
 
-            @b3.select( signUpForm("secondMajor"), options = majorByType(SecondMajor).distinct.map { case (k, e) => k -> (k + " (" + e + ")") } , '_label -> Messages("major.second") )
+            @b3.select( signUpForm("secondMajor"), options = majorByType(SecondMajor).distinct.map { case (k, e) => k -> (k + " (" + e + ")") } , '_label -> Messages("second.major") )
 
 
             @b3.select(
@@ -29,7 +29,7 @@
                     val (minClassYear, maxClassYear) = (2012, 2013)
                     (minClassYear to maxClassYear).map(i => i.toString -> i.toString)
                 },
-                '_label -> Messages("major.second")
+                '_label -> Messages("class.year")
             )
 
             @b3.select(
