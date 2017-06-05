@@ -18,6 +18,7 @@ case class Course(
   name2: Option[String],
   creditHours: Byte,
   courseHours: Byte,
+  //recommendedYear: Int,
   online: Boolean = false,
   foreignLanguage: Boolean = false,
   teamTeaching: Boolean = false

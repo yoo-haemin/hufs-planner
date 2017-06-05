@@ -4,7 +4,6 @@ import javax.inject.Inject
 import java.time.Year
 
 import com.mohiva.play.silhouette.api.{ Silhouette }
-import com.mohiva.play.silhouette.impl.providers.SocialProviderRegistry
 import play.api.i18n.{ I18nSupport, MessagesApi }
 import play.api.mvc.Controller
 import utils.auth.DefaultEnv
@@ -38,11 +37,14 @@ class SummaryController @Inject() (
   def view = silhouette.SecuredAction.async { implicit request =>
     import scala.concurrent.ExecutionContext.Implicits.global
     for {
-      allCourses <- userCourseService.allCourse(request.identity.userID)
       perSemesterAvg <- userCourseService.perSemesterAvg(request.identity.userID)
-      perMajor <- userCourseService.perMajor(request.identity.userID)
+      perSemesterAvgFut <- userCourseService.perSemesterAvg(request.identity.userID, true)
+      perSemesterAvgTotal = perSemesterAvg ++ perSemesterAvgFut
+
+      perMajor <- userCourseService.perMajor(request.identity.userID, future = false)
+      perMajorFut <- userCourseService.perMajor(request.identity.userID, future = true)
     } yield {
-      Ok(views.html.summary(perSemesterAvg, perMajor))
+      Ok(views.html.summary(perSemesterAvgTotal, perMajor, perMajorFut, request.identity))
     }
   }
 }

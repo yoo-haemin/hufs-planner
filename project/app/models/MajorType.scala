@@ -10,6 +10,7 @@ sealed abstract class MajorType(v: Int) {
     case MajorType.TeacherCourse => "teacher.course"
     case MajorType.LiberalArts => "liberal.arts"
     case MajorType.FreeCourse => "free.course"
+    case MajorType.PracticalFL => "practical.fl"
   }
 }
 
@@ -24,6 +25,7 @@ object MajorType {
   case object TeacherCourse extends MajorType(6)
   case object LiberalArts extends MajorType(7)
   case object FreeCourse extends MajorType(8)
+  case object PracticalFL extends MajorType(9)
 
   implicit def fromInt(v: Int): MajorType = v match {
     case 1 => FirstMajor
@@ -34,6 +36,7 @@ object MajorType {
     case 6 => TeacherCourse
     case 7 => LiberalArts
     case 8 => FreeCourse
+    case 9 => PracticalFL
   }
 
   implicit def toInt(mt: MajorType): Int = mt match {
@@ -45,5 +48,18 @@ object MajorType {
     case TeacherCourse => 6
     case LiberalArts => 7
     case FreeCourse => 8
+    case PracticalFL => 9
+  }
+
+  implicit def fromString(s: String): MajorType = s match {
+    case "1전공" => FirstMajor
+    case "이중" => SecondMajor
+    case "1전공2" => FirstMajorMinor
+    case "부전공" => Minor
+    case "2전공" => MultipleMajor
+    case "교직" => TeacherCourse
+    case "교양" => LiberalArts
+    case "자선" => FreeCourse
+    case "실외" => PracticalFL
   }
 }

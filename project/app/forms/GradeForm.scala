@@ -6,7 +6,7 @@ import play.api.data.Forms._
 import shared.Regex._
 
 /**
- * The form which handles the sign up process.
+ * The form which handles the score input process.
  */
 object GradeForm {
 
@@ -15,8 +15,8 @@ object GradeForm {
    */
   val form = Form(
     mapping(
-      "main" -> text.verifying(
-        _ match {
+      "main" -> text.verifying("wrong.input", data =>
+        data match {
           case gradeAllR(body, point) => true
           case _ => false
         }

@@ -4,23 +4,23 @@ invalid.credentials = Invalid credentials!
 access.denied = Access denied!
 could.not.authenticate = Could not authenticate with social provider! Please try again!
 
-home.title = 훕스플래너 - Home
-sign.up.title = 훕스플래너 - Sign Up
-sign.in.title = 훕스플래너 - Sign In
-forgot.password.title = 훕스플래너 - Forgot Password
-reset.password.title = 훕스플래너 - Reset Password
-change.password.title = 훕스플래너 - Change Password
-activate.account.title = 훕스플래너 - Activate Account
+home.title = Jamioni
+sign.up.title = Jamioni - 회원가입
+sign.in.title = 로그인하세요
+forgot.password.title = Jamioni - 비밀번호 찾기
+reset.password.title = Jamioni - 비밀번호 초기화
+change.password.title = Jamioni - 비밀번호 변경
+activate.account.title = Jamioni - 계정 활성화
 
 toggle.navigation = Toggle navigation
-welcome.signed.in = Welcome, you are now signed in!
+welcome.signed.in = 환영합니다! 정보를 확인하세요.
 
 sign.up.account = 새로운 계정 만들기
-sign.in.credentials = Sign in with your credentials
+sign.in.credentials = 로그인 해 주세요
 
-error = Error!
-info = 로그인 페이지
-success = Success!
+error = 에러:
+info = 알림:
+success = 성공:
 home = 홈으로
 first.name = First name
 last.name = Last name
@@ -78,11 +78,11 @@ yahoo = Yahoo
 # Emails
 ##########
 
-email.from = 훕스플래너 <noreply@mohiva.com>
+email.from = Jamioni <noreply@jamioni.com>
 
 # Sign Up
 email.sign.up.subject = Welcome
-email.sign.up.hello = Hello {0},
+email.sign.up.hello = Hello,
 email.sign.up.html.text = Please follow <a href="{0}">this link</a> to confirm and activate your new account.
 email.sign.up.txt.text = Please follow the link to confirm and activate your new account: {0}
 
@@ -105,6 +105,7 @@ email.activate.account.html.text = Please follow <a href="{0}">this link</a> to 
 email.activate.account.txt.text = Please follow the link to confirm and activate your new account: {0}
 
 # Semesters
+semester = 학기
 first.semester = 1학기
 second.semester = 2학기
 summer.semester = 여름계절학기
@@ -113,14 +114,23 @@ year = 년
 
 # Input Page
 input.title = 성적을 입력해주세요
+grades.submit = 제출
+grades.reset = 지우기
+paste.here = 여기에 붙여넣으세요
+grades.wrong.input = 입력이 잘못되었습니다. 다시 시도해주세요!
+grades.wrong.input.total.mismatch = 합계가 다릅니다
 
 # Summary Page
 summary.title = 학점 정리
 no.entry = 보여드릴게 없어요 ㅠㅠ
+not.sure = 미정
 
 
 # Goal Page
 goal.title = 목표를 입력해주세요
+goal.submit = 원하는 수업을 모두 선택 후 클릭
+saved.future.course = 목표 수업 {0}개를 저장 완료했습니다!
+
 
 # MajorType
 first.major = 1전공
@@ -131,3 +141,7 @@ multiple.major = 복수전공
 teacher.course = 교직
 liberal.arts = 교양
 free.course = 자선
+
+# Signup Page
+class.year = 입학년도
+current.semester = 현재 학기

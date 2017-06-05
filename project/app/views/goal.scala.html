@@ -1,21 +1,53 @@
- @(user: models.User)(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets) 
+@(user: models.User
+, recommendedCourse: Map[MajorType, Seq[Course]]
+, retakeCourse: Map[MajorType, Seq[Course]]
+, otherMajorCourse: Map[MajorType, Seq[Course]]
+)(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
 
-@main(Messages("goal.title")) {
+@import models.MajorType._
+@import b3.inline.fieldConstructor
+
+@main(Messages("goal.title"), Some(user)) {
+    @helper.form(action = routes.GoalController.submit()) {
+    @helper.CSRF.formField
     <main class="container">
 
         <div class="col-md-6" id="first_major">
             <h1>제1전공</h1>
 
-            <div>
-                <h3>다음학기 추천 강의</h3>
+            <div id="first_major_recom">
+                <fieldset>
+                    <legend>다음학기 추천 강의</legend>
+                    @for(courseSeq <- recommendedCourse(FirstMajor)) {
+                        <div class="col-md-6 col_m"><input name="courseNo[]" value="@{courseSeq.codePrefix + courseSeq.codeSuffix}" type="checkbox">@courseSeq.name1</div>
+                        }
+
+
+
+                </fieldset>
             </div>
 
-            <div>
-                <h3>재수강</h3>
+            <div id="first_major_re">
+                <fieldset>
+                    <legend>재수강</legend>
+                    @for(courseSeq <- retakeCourse(FirstMajor)) {
+                        <div class="col-md-6 col_m"><input name="courseNo[]" value="@{courseSeq.codePrefix + courseSeq.codeSuffix}" type="checkbox">@courseSeq.name1</div>
+                        }
+
+
+                </fieldset>
             </div>
 
-            <div>
-                <h3>기타 전공인정 강의 </h3>
+            <div id="first_major_other">
+
+                <fieldset>
+                    <legend>기타 전공인정 강의</legend>
+                    @for(courseSeq <- otherMajorCourse(FirstMajor)) {
+                        <div class="col-md-6 col_m"><input name="courseNo[]" value="@{courseSeq.codePrefix + courseSeq.codeSuffix}" type="checkbox">@courseSeq.name1</div>
+                        }
+
+
+                </fieldset>
             </div>
 
         </div>
@@ -25,15 +57,32 @@
             <h1>제2전공</h1>
 
             <div>
-                <h3>다음학기 추천 강의</h3>
+                <fieldset>
+                    <legend>다음학기 추천 강의</legend>
+                    @for(courseSeq <- recommendedCourse(SecondMajor)) {
+                        <div class="col-md-6 col_m"><input name="courseNo[]" value="@{courseSeq.codePrefix + courseSeq.codeSuffix}" type="checkbox">@courseSeq.name1</div>
+                    }
+
+                </fieldset>
             </div>
 
             <div>
-                <h3>재수강</h3>
+                <fieldset>
+                    <legend>재수강</legend>
+                    @for(courseSeq <- retakeCourse(SecondMajor)) {
+                        <div class="col-md-6 col_m"><input name="courseNo[]" value="@{courseSeq.codePrefix + courseSeq.codeSuffix}" type="checkbox">@courseSeq.name1</div>
+                        }
+
+                </fieldset>
             </div>
 
             <div>
-                <h3>기타 전공인정 강의 </h3>
+                <fieldset>
+                    <legend>기타 전공인정 강의</legend>
+                    @for(courseSeq <- otherMajorCourse(SecondMajor)) {
+                        <div class="col-md-6 col_m"><input name="courseNo[]" value="@{courseSeq.codePrefix + courseSeq.codeSuffix}" type="checkbox">@courseSeq.name1</div>
+                        }
+                </fieldset>
             </div>
 
         </div>
@@ -46,32 +95,32 @@
                 <legend>요일</legend>
 
                 <label class="btn btn-success">
-                    <input type="checkbox" autocomplete="off" id="checkAll">전체
+                    <input type="checkbox" class="checkbox_click" autocomplete="off" id="checkAll">전체
                     <span class="glyphicon glyphicon-ok"></span>
                 </label>
 
                 <label class="btn btn-primary btn-week">
-                    <input type="checkbox" autocomplete="off">월요일
+                    <input type="checkbox" class="checkbox_click" autocomplete="off" id="checkMon">월요일
                     <span class="glyphicon glyphicon-ok"></span>
                 </label>
 
                 <label class="btn btn-info btn-week">
-                    <input type="checkbox" autocomplete="off">화요일
+                    <input type="checkbox" class="checkbox_click" autocomplete="off" id="checkTue">화요일
                     <span class="glyphicon glyphicon-ok"></span>
                 </label>
 
                 <label class="btn btn-default btn-week">
-                    <input type="checkbox" autocomplete="off">수요일
+                    <input type="checkbox" class="checkbox_click" autocomplete="off" id="checkWed">수요일
                     <span class="glyphicon glyphicon-ok"></span>
                 </label>
 
                 <label class="btn btn-warning btn-week">
-                    <input type="checkbox" autocomplete="off">목요일
+                    <input type="checkbox" class="checkbox_click" autocomplete="off" id="checkThu">목요일
                     <span class="glyphicon glyphicon-ok"></span>
                 </label>
 
                 <label class="btn btn-danger btn-week">
-                    <input type="checkbox" autocomplete="off">금요일
+                    <input type="checkbox" class="checkbox_click" autocomplete="off" id="checkFri">금요일
                     <span class="glyphicon glyphicon-ok"></span>
                 </label>
             </fieldset>
@@ -91,70 +140,75 @@
 
                                 <li class="list-group-item">
                                     <label class="btn btn-success">
-                                        <input type="checkbox" autocomplete="off" id="checkAll_2">전체
+                                        <input type="checkbox" class="checkbox_click" autocomplete="off" id="checkAll_2">전체
                                         <span class="glyphicon glyphicon-ok"></span>
                                     </label>
                                 </li>
 
                                 <li class="list-group-item">
                                     <label class="btn btn-info btn-area">
-                                        <input type="checkbox" autocomplete="off">인문강좌
+                                        <input type="checkbox" class="checkbox_click" autocomplete="off" id="common_1">인문강좌
                                         <span class="glyphicon glyphicon-ok"></span>
                                     </label>
                                 </li>
 
                                 <li class="list-group-item">
                                     <label class="btn btn-info btn-area">
-                                        <input type="checkbox" autocomplete="off">교양외국어
+                                        <input type="checkbox" class="checkbox_click" autocomplete="off" id="common_2">교양외국어
                                         <span class="glyphicon glyphicon-ok"></span>
                                     </label>
                                 </li>
 
                                 <li class="list-group-item">
                                     <label class="btn btn-info btn-area">
-                                        <input type="checkbox" autocomplete="off">실용외국어
+                                        <input type="checkbox" class="checkbox_click" autocomplete="off" id="common_3">실용외국어
                                         <span class="glyphicon glyphicon-ok"></span>
                                     </label>
                                 </li>
 
                                 <li class="list-group-item">
                                     <label class="btn btn-info btn-area">
-                                        <input type="checkbox" autocomplete="off">언어와 문학
+                                        <input type="checkbox" class="checkbox_click" autocomplete="off" id="common_4">언어와
+                                        문학
                                         <span class="glyphicon glyphicon-ok"></span>
                                     </label>
                                 </li>
 
                                 <li class="list-group-item">
                                     <label class="btn btn-info btn-area">
-                                        <input type="checkbox" autocomplete="off">문화와 예술
+                                        <input type="checkbox" class="checkbox_click" autocomplete="off" id="common_5">문화와
+                                        예술
                                         <span class="glyphicon glyphicon-ok"></span>
                                     </label>
                                 </li>
 
                                 <li class="list-group-item">
                                     <label class="btn btn-info btn-area">
-                                        <input type="checkbox" autocomplete="off">역사와 철학
+                                        <input type="checkbox" class="checkbox_click" autocomplete="off" id="common_6">역사와
+                                        철학
                                         <span class="glyphicon glyphicon-ok"></span>
                                     </label>
                                 </li>
 
                                 <li class="list-group-item">
                                     <label class="btn btn-info btn-area">
-                                        <input type="checkbox" autocomplete="off">국가와 사회
+                                        <input type="checkbox" class="checkbox_click" autocomplete="off" id="common_7">국가와
+                                        사회
                                         <span class="glyphicon glyphicon-ok"></span>
                                     </label>
                                 </li>
 
                                 <li class="list-group-item">
                                     <label class="btn btn-info btn-area">
-                                        <input type="checkbox" autocomplete="off">과학과 기술
+                                        <input type="checkbox" class="checkbox_click" autocomplete="off" id="common_8">과학과
+                                        기술
                                         <span class="glyphicon glyphicon-ok"></span>
                                     </label>
                                 </li>
 
                                 <li class="list-group-item">
                                     <label class="btn btn-info btn-area">
-                                        <input type="checkbox" autocomplete="off">핵심인문기초
+                                        <input type="checkbox" class="checkbox_click" autocomplete="off" id="common_9">핵심인문기초
                                         <span class="glyphicon glyphicon-ok"></span>
                                     </label>
                                 </li>
@@ -164,7 +218,6 @@
                         </div>
                     </div>
                 </div>
-
 
 
                 <div class="panel-group col-md-6">
@@ -179,70 +232,70 @@
 
                                 <li class="list-group-item">
                                     <label class="btn btn-success">
-                                        <input type="checkbox" autocomplete="off" id="checkAll_3">전체 &nbsp; &nbsp; &nbsp;&nbsp;
+                                        <input type="checkbox" class="checkbox_click" autocomplete="off" id="checkAll_3">전체 &nbsp; &nbsp; &nbsp;&nbsp;
                                         <span class="glyphicon glyphicon-ok"></span>
                                     </label>
 
 
                                     <li class="list-group-item">
                                         <label class="btn btn-info btn-special">
-                                            <input type="checkbox" autocomplete="off">신입생세미나
+                                            <input type="checkbox" class="checkbox_click" autocomplete="off" id="special_1">신입생세미나
                                             <span class="glyphicon glyphicon-ok"></span>
                                         </label>
                                     </li>
 
                                     <li class="list-group-item">
                                         <label class="btn btn-info btn-special">
-                                            <input type="checkbox" autocomplete="off">HUFS CAREER
+                                            <input type="checkbox" class="checkbox_click" autocomplete="off" id="special_2">HUFS CAREER
                                             <span class="glyphicon glyphicon-ok"></span>
                                         </label>
                                     </li>
 
                                     <li class="list-group-item">
                                         <label class="btn btn-info btn-special">
-                                            <input type="checkbox" autocomplete="off">학습포트폴리오
+                                            <input type="checkbox" class="checkbox_click" autocomplete="off" id="special_3">학습포트폴리오
                                             <span class="glyphicon glyphicon-ok"></span>
                                         </label>
                                     </li>
 
                                     <li class="list-group-item">
                                         <label class="btn btn-info btn-special">
-                                            <input type="checkbox" autocomplete="off">건강과 레포츠
+                                            <input type="checkbox" class="checkbox_click" autocomplete="off" id="special_4">건강과 레포츠
                                             <span class="glyphicon glyphicon-ok"></span>
                                         </label>
                                     </li>
 
                                     <li class="list-group-item">
                                         <label class="btn btn-info btn-special">
-                                            <input type="checkbox" autocomplete="off">특별교양
+                                            <input type="checkbox" class="checkbox_click" autocomplete="off" id="special_5">특별교양
                                             <span class="glyphicon glyphicon-ok"></span>
                                         </label>
                                     </li>
 
                                     <li class="list-group-item">
                                         <label class="btn btn-info btn-special">
-                                            <input type="checkbox" autocomplete="off">외국인을 위한 한국학
+                                            <input type="checkbox" class="checkbox_click" autocomplete="off" id="special_6">외국인을 위한 한국학
                                             <span class="glyphicon glyphicon-ok"></span>
                                         </label>
                                     </li>
 
                                     <li class="list-group-item">
                                         <label class="btn btn-info btn-special">
-                                            <input type="checkbox" autocomplete="off">공동교양(한예종)
+                                            <input type="checkbox" class="checkbox_click" autocomplete="off" id="special_7">공동교양(한예종)
                                             <span class="glyphicon glyphicon-ok"></span>
                                         </label>
                                     </li>
 
                                     <li class="list-group-item">
                                         <label class="btn btn-info btn-special">
-                                            <input type="checkbox" autocomplete="off">군사학
+                                            <input type="checkbox" class="checkbox_click" autocomplete="off" id="special_8">군사학
                                             <span class="glyphicon glyphicon-ok"></span>
                                         </label>
                                     </li>
 
                                     <li class="list-group-item">
                                         <label class="btn btn-info btn-special">
-                                            <input type="checkbox" autocomplete="off">핵심인문기초
+                                            <input type="checkbox" class="checkbox_click" autocomplete="off" id="special_9">핵심인문기초
                                             <span class="glyphicon glyphicon-ok"></span>
                                         </label>
                                     </li>
@@ -258,43 +311,23 @@
 
         </div>
 
-        <div class="col-md-6">
-            <h2>교양과목</h2>
-            <div id="custom-search-input">
-                <div class="input-group col-md-12">
-                    <input type="text" class="form-control input-lg"/>
-                    <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="button">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </button>
-                    </span>
-                </div>
-            </div>
+        <!--Show the non-major classes-->
+        <div class="col-md-12">
+
+            <fieldset id="select_non_major">
+                <legend>교양과목을 선택하세요</legend>
+
+
+            </fieldset>
+
+
         </div>
-
-
-
+        <br />
+        <br />
+        <br />
+        @b3.submit('class -> "btn btn-primary btn-lg btn-block") { @Messages("goal.submit")}
+        }
 
     </main>
-
-    <script type="text/javascript">
-
-     $("#checkAll").change(function () {
-         $(".col-md-12 .btn-week input:checkbox").prop('checked', $(this).prop("checked"));
-     });
-
-     $("#checkAll_2").change(function () {
-         $(".col-md-12 .btn-area input:checkbox").prop('checked', $(this).prop("checked"));
-     });
-
-     $("#checkAll_3").change(function () {
-         $(".col-md-12 .btn-special input:checkbox").prop('checked', $(this).prop("checked"));
-     });
-
-    </script>
-
-    <script type="text/javascript" src="goal.json">
-     var mydata=JSON.parse()
-
-    </script>
+            <script src="@routes.Assets.at("javascripts/goal.js")"></script>
     }

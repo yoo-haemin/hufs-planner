@@ -3,7 +3,7 @@ package models.services
 import java.util.UUID
 import java.time.Year
 
-import models.{ UserCourse, Course, Score, Major, Semester }
+import models._
 import scala.concurrent.Future
 
 trait UserCourseService {
@@ -27,8 +27,14 @@ trait UserCourseService {
 
   def perMajorAvg(userID: UUID, future: Boolean = false): Future[Map[Major, (Int, Double)]]
 
-  /**
-   *
-   */
+  def recommendedCourse(userID: UUID, yearSemester: (Year, Semester)): Future[Map[MajorType, Seq[Course]]]
+
+  def retakeCourse(userID: UUID, yearSemester: (Year, Semester)): Future[Map[MajorType, Seq[Course]]]
+
+  def otherMajorCourse(userID: UUID, yearSemester: (Year, Semester)): Future[Map[MajorType, Seq[Course]]]
+
   def save(userID: UUID, courseID: UUID, score: Int, retake: Boolean = false, future: Boolean = false): Future[UserCourse]
+
+  def removeAll(userID: UUID, future: Boolean = false): Future[Unit]
+
 }

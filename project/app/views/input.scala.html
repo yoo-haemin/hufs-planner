@@ -4,7 +4,7 @@
 
 @import b3.inline.fieldConstructor
 
-@main(Messages("input.title")) {
+@main(Messages("input.title"), Some(user)) {
     <div class="col-md-10 col-md-offset-2">
         <br>
         <h3 class="input_h3">회원정보 입력하는 방법</h3>
@@ -21,7 +21,8 @@
     </div>
 
     <div class="col-md-10 col-md-offset-2">
-        @helper.form(action = routes.SignUpController.submit()) {
+        <ul>제출 후에는 기존에 있던 성적은 삭제됩니다!</ul>
+        @helper.form(action = routes.InputController.submit()) {
             @helper.CSRF.formField
             @b3.textarea( gradeForm("main"), 'rows -> 40, 'cols -> 100, 'placeholder -> Messages("paste.here") )
             @b3.submit('class -> "btn btn-primary") {<span class="glyphicon glyphicon-ok"></span> @Messages("grades.submit")} @b3.reset('class -> "btn btn-danger"){ <span class="glyphicon glyphicon-remove"></span> @Messages("grades.reset") }

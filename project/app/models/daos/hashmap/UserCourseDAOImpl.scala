@@ -12,8 +12,10 @@ import scala.concurrent.ExecutionContext.Implicits.global
  * Give access to the user object.
  */
 class UserCourseDAOImpl @Inject() (courseDAO: CourseDAO) extends UserCourseDAO {
+  import UserCourseDAOImpl._
+
   def allCourse(userID: UUID, future: Boolean = false): Future[Seq[UserCourse]] = {
-    Future.successful(UserCourseDAOImpl.userCourses.filter(_.userID == userID).toSeq)
+    Future.successful(UserCourseDAOImpl.userCourses.filter(uc => uc.userID == userID && uc.future == future).toSeq)
   }
 
   def save(userCourse: UserCourse): Future[UserCourse] = {
@@ -21,6 +23,10 @@ class UserCourseDAOImpl @Inject() (courseDAO: CourseDAO) extends UserCourseDAO {
       UserCourseDAOImpl.userCourses = UserCourseDAOImpl.userCourses + userCourse
       userCourse
     }
+  }
+
+  def remove(userCourse: UserCourse): Future[Unit] = {
+    Future.successful(userCourses = userCourses - userCourse)
   }
 }
 

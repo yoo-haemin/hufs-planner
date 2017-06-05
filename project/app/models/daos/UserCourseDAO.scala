@@ -14,4 +14,6 @@ trait UserCourseDAO {
   def allCourse(userID: UUID, future: Boolean = false): Future[Seq[UserCourse]]
 
   def save(userCourse: UserCourse): Future[UserCourse]
+
+  def remove(userCourse: UserCourse): Future[Unit]
 }

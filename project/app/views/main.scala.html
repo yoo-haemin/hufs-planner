@@ -31,15 +31,11 @@
                 </div>
                 <nav class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="@routes.ApplicationController.index">@Messages("home")</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav">
-                        <!-- TODO 로그인 되어있는지 여부에 따라 분류하기 -->
-                        <li><a href="@routes.InputController.view">@Messages("nav.input")</a></li>
-                        <li><a href="@routes.SummaryController.view">@Messages("nav.summary")</a></li>
-                        <li><a href="@routes.GoalController.view">@Messages("nav.goal")</a></li>
                         @user.map { u =>
                             <li><a href="@routes.ApplicationController.index">@u.email</a></li>
+                            <li><a href="@routes.InputController.view">@Messages("nav.input")</a></li>
+                            <li><a href="@routes.SummaryController.view">@Messages("nav.summary")</a></li>
+                            <li><a href="@routes.GoalController.view">@Messages("nav.goal")</a></li>
                             @if(u.loginInfo.providerID == com.mohiva.play.silhouette.impl.providers.CredentialsProvider.ID) {
                                 <li><a href="@routes.ChangePasswordController.view">@Messages("change.password")</a></li>
                             }

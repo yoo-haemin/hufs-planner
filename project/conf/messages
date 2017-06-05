@@ -86,7 +86,7 @@ yahoo = Yahoo
 # Emails
 ##########
 
-email.from = Hufs Course Planner <noreply@jamioni.com>
+email.from = Jamioni <noreply@jamioni.com>
 
 # Sign Up
 email.sign.up.subject = Welcome
@@ -122,11 +122,17 @@ year = year
 
 # Input Page
 input.title = Input your grades!
+grades.submit = Submit grades
+grades.reset = Reset
+grades.wrong.input = Wrong format, please retry!
 
 # Summary Page
 summary.title = Grade Summary
 no.entry = Nothing to show you :(
+not.sure = ?
 
 
 # Goal Page
 goal.title = Input Goal
+goal.submit = Submit course selection!
+saved.future.course = Saved {0} Course(s)!
