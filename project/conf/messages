@@ -136,3 +136,9 @@ not.sure = ?
 goal.title = Input Goal
 goal.submit = Submit course selection!
 saved.future.course = Saved {0} Course(s)!
+
+
+# Signup Page
+signup.teacherCourse = Teacher Course
+class.year = Year of class
+current.semester = Current Semester
